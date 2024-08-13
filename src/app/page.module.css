@@ -1,0 +1,14 @@
+.tituloHomePage {
+   color: blueviolet;
+}
+
+.imagemHomePage {
+   width: 50rem;
+   height: 50rem;
+   margin: 3rem;
+}
+
+.containerImagem {
+   display: flex;
+   flex-direction: row;
+}
