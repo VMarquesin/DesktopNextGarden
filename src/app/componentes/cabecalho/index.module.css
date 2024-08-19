@@ -1,0 +1,116 @@
+.containerNav {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #b71c1c;
+   border-bottom: 0.4rem solid #b71c1c;
+   font-size: 4.4rem;
+   max-width: 112.8rem;
+}
+
+.containerNav .menu {
+   height: 8rem;
+   padding: 0.3rem 2rem 0.4rem 2rem;
+   font-size: 4.4rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.containerNav .menu .icon {
+   color: #b71c1c;
+   font-size: 4.4rem;
+   user-select: none;
+}
+
+.containerNav .menu .menuGrande {
+   display: flex;
+}
+
+.containerNav .menu .menuGrande a {
+   width: 12rem;
+   height: 8rem;
+   color: #b71c1c;
+   text-align: center;
+   text-decoration: none;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   font-size: 1.6rem;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.containerNav .menu .menuGrande a:hover {
+   border: 0.4rem solid #f05545;
+   color: #f05545;
+}
+
+.containerNav .menu .menuGrande a.active {
+   background-color: #b71c1c;
+   color: #fafafa;
+   border: 0.4rem solid #b71c1c;
+}
+
+.containerNav .menu .menuMobile {
+   display: none;
+}
+
+.containerNav .menuMobileExpandidon {
+   display: none;
+}
+
+.containerNav .menuMobileExpandidos a {
+   display: none;
+   border: 0.4rem solid #fafafa;
+   width: 100%;
+   height: 4rem;
+   color: #b71c1c;
+   text-decoration: none;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   font-size: 1.6rem;
+   font-weight: bold;
+   cursor: pointer;
+}
+
+.containerNav .menuMobileExpandidos a:hover {
+   border: 0.4rem solid #f05545;
+   color: #f05545;
+}
+
+.containerNav .menuMobileExpandidos a.active {
+   background-color: #b71c1c;
+   color: #fafafa;
+   border: 0.4rem solid #b71c1c;
+}
+
+@media screen and (max-width: 940px) {
+   .containerNav {
+      flex-direction: column;
+   }
+
+   .containerNav .menu {
+      width: 88%;
+      justify-content: space-between;
+   }
+
+   .containerNav .menu .menuGrande {
+      display: none;
+   }
+
+   .containerNav .menu .menuMobile {
+      display: flex;
+   }
+}
+
+@media screen and (max-width: 940px) {
+   .containerNav .menuMobileExpandidos {
+      display: flex;
+      flex-direction: column;
+      width: 92%;
+   }
+}
