@@ -1,0 +1,15 @@
+.LoginContainer {
+   border: solid;
+   border-color: black;
+}
+
+.BackgroundLogin {
+   background-color: "#FFFCFC";
+   margin-left: 0%;
+}
+
+.BackgroundImageLogin {
+   width: 50%;
+   height: 50%;
+   margin-left: 50%;
+}
