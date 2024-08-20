@@ -25,7 +25,7 @@ function Cabecalho() {
          <nav className={styles.containerNav}>
             <div className={styles.menu}>
                <div>
-                  <MdFastfood className={styles.icon} id="logo" />
+                  {/* <MdFastfood className={styles.icon} id="logo" /> */}
                   <label id="titulo">BomBurguer</label>
                </div>
                <div className={styles.menuGrande}>
