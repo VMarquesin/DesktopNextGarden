@@ -3,9 +3,9 @@ import styles from "./page.module.css";
 
 export default function Login() {
    return (
-      <div className="LoginContainer">
-         <div className="BackgroundLogin">
-            <h1>Garden</h1>
+     <div className={styles.LoginContainer}>
+         <div className={styles.LoginContainer}>
+            <p>Garden</p>
             <p>Acesse sua conta:</p>
          </div>
          <div className={styles.BackgroundImageLogin}>
@@ -14,7 +14,7 @@ export default function Login() {
                width={500}
                height={500}
                alt="Imagem"
-               className={styles.imagemHomePage}
+               className={styles.BackgroundImageLogin}
             />
          </div>
       </div>
