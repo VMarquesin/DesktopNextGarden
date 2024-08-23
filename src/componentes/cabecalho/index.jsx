@@ -26,32 +26,20 @@ function Cabecalho() {
             <div className={styles.menu}>
                <div>
                   <MdFastfood className={styles.icon} id="logo" />
-                  <label id="titulo">BomBurguer</label>
+                  <label id="titulo">Garden </label>
                </div>
                <div className={styles.menuGrande}>
                   <Link href="/" className={rota === "/" ? styles.active : ""}>
                      Home
                   </Link>
-                  <Link
-                     href="/listprod"
-                     className={rota === "/listprod" ? styles.active : ""}
-                  >
-                     Produtos
-                  </Link>
-                  <Link
-                     href="/usuarios/cadastro"
-                     className={
-                        rota === "/usuarios/cadastro" ? styles.active : ""
-                     }
-                  >
-                     Cadastrar
-                  </Link>
+         
                   <Link
                      href="/sobre"
                      className={rota === "/sobre" ? styles.active : ""}
                   >
                      Sobre
                   </Link>
+                  
                   <Link
                      href="/usuarios/login"
                      className={rota === "/usuarios/login" ? styles.active : ""}
@@ -82,20 +70,7 @@ function Cabecalho() {
                >
                   Home
                </Link>
-               <Link
-                  href="/listprod"
-                  onClick={ativaMenu}
-                  className={rota === "/listprod" ? styles.active : ""}
-               >
-                  Produtos
-               </Link>
-               <Link
-                  href="/usuarios/cadastro"
-                  onClick={ativaMenu}
-                  className={rota === "/usuarios/cadastro" ? styles.active : ""}
-               >
-                  Cadastrar
-               </Link>
+
                <Link
                   href="/sobre"
                   onClick={ativaMenu}

@@ -1,14 +1,59 @@
 .LoginContainer {
-   font-size: xx-large;
-   margin-left: 7%;
+   display: flex;
+   height: 80vh; /* Altura total da tela */
+   overflow: hidden; /* Evita rolagem */
+}
+
+.LoginContent {
+   display: flex;
+   width: 100%;
+}
+
+.LoginForm {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   padding: 3rem; /* Espaçamento interno */
+   box-sizing: border-box;
+   font-size: 3rem;
+   margin-top: 0%;
 }
 
 .BackgroundImageLogin {
-   width: 50%;
-   height: 50%;
-   margin-left: 30.0rem;
+   flex: 1;
+   position: relative; /* Necessário para o posicionamento da imagem */
 }
 
-.pGarden {
-   font-size: 0%;
+.InputField {
+   width: 100%;
+   padding: 1rem;
+   font-size: 1rem;
+   border: 2px solid #59d606;
+   border-radius: 4px;
 }
+
+.SubmitButton {
+   width: 50%;
+   padding: 0.75rem;
+   font-size: 2rem;
+   color: #fff;
+   background-color: #07b332;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   margin-left: 30%;
+}
+
+.SubmitButton:hover {
+   background-color: #088d03;
+}
+
+.FormGroup {
+   margin-bottom: 1.5rem;
+   font-size: 2rem;
+}
+
+/* .p {
+   margin: 0 0 1rem 0; /* Espaçamento inferior */
+/* } */ 
