@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
    return (
       <html lang="pt-br">
          <body>
-            <Cabecalho />
+            {/* <Cabecalho /> */}
             {children}
-            <Rodape />
+            {/* <Rodape /> */}
          </body>
       </html>
    );

@@ -1,14 +1,136 @@
-.tituloHomePage {
-   color: blueviolet;
+.container {
+   display: grid;
+   grid-template-areas:
+      "sidebar header"
+      "sidebar search"
+      "sidebar main";
+   grid-template-columns: 250px 1fr;
+   grid-template-rows: 70px 20px 1fr;
+   height: 100vh;
 }
 
-.imagemHomePage {
-   width: 50rem;
-   height: 50rem;
-   margin: 3rem;
+.header {
+   grid-area: header;
+   color: white;
+   background-color: #f4f4f4;
+   border: solid 2px black;
+   /* align-items: center;
+   justify-content: space-between;
+   background-color: #4caf50;
+   color: white;
+   padding: 20px 40px; */
+   /* min-height: 75px; */
 }
-
-.containerImagem {
+.header .headercontainer {
+   width: 100%;
+   height: 100%;
    display: flex;
-   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+
+/* area do perfil (top-bar) */
+.header .headercontainer nav {
+   margin-left: 75%;
+}
+.header .headercontainer nav ul {
+   display: flex;
+   align-items: center;
+}
+.header nav ul li {
+   padding-left: 5rem;
+}
+.header nav ul li .notifications {
+   font-size: 1.5rem;
+   cursor: pointer;
+}
+
+.header nav ul li .profileImage {
+   border-radius: 50%;
+   width: 5rem;
+   height: 5rem;
+}
+
+.header nav ul li .profileName {
+   font-size: 1.2rem;
+}
+
+/* Pesquisa do paciente */
+
+.patientSelect {
+   grid-area: search;
+   background-color: #f4f4f4;
+   display: flex;
+   align-items: center;
+}
+.patientSelect .patient {
+   padding: 4rem;
+}
+
+.selectBox {
+   margin-left: 10px;
+   padding: 5px;
+}
+
+.searchBar {
+   display: flex;
+   flex: 1;
+   align-items: center;
+   justify-content: center;
+}
+
+.searchBar input {
+   width: 45%;
+   padding: 0.5rem;
+}
+
+/* barra lateral */
+
+.logo {
+   grid-area: sidebar;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+   height: 140px;
+   font-size: 1.5rem;
+   font-weight: bold;
+   background-color: red;
+}
+
+.sidebar {
+   grid-area: sidebar;
+   background-color: #f4f4f4;
+}
+
+.sidebar ul {
+   list-style-type: none;
+   padding: 0;
+}
+.sidebar ul li p {
+   margin-left: 0.5rem;
+}
+.sidebar ul li {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 1.6rem;
+   font-size: 1.2rem;
+   cursor: pointer;
+   transition: 0.4s;
+}
+
+.sidebar ul li:hover {
+   background-color: #ddd;
+}
+
+/* area de visualização */
+
+.mainContent {
+   grid-area: main;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
 }
