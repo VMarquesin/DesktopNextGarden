@@ -10,7 +10,7 @@
 
 .containerNav .menu {
    height: 8rem;
-   padding: 0.3rem 5rem 0.4rem 5rem;
+   padding: 0.4rem 2rem 0.4rem 0.2rem;
    font-size: 4.4rem;
    display: flex;
    align-items: center;
@@ -31,8 +31,8 @@
 
 .containerNav .menu .menuGrande a {
    width: 12rem;
-   height: 8rem;
-   padding: 0rem;
+   height: 1rem;
+   padding: 3rem;
    color: #0ac438;
    text-align: center;
    text-decoration: none;

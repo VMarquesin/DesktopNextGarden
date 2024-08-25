@@ -6,9 +6,10 @@ export default function Login() {
      <div className={styles.LoginContainer}>
          <div className={styles.LoginContent}>
             <div className={styles.LoginForm}>
-            <label htmlFor="nomeProjeto">Garden</label>
-            <label htmlFor="Acesse">Acesse sua conta</label>
-         
+              <div className={styles.LoginAcess}> 
+               <label htmlFor="nomeProjeto">GARDEN</label>
+               <label htmlFor="Acesse" className={styles.AcesseSuaConta}>Acesse sua conta:</label>
+              </div>        
                
                <form>
                   <div className={styles.FormGroup}>
