@@ -1,6 +1,8 @@
 import Head from "next/head";
 import styles from "./page.module.css";
+
 import Image from "next/image";
+import PacienteButton from "../componentes/pacienteButton";
 
 export default function Home() {
    return (
@@ -11,10 +13,19 @@ export default function Home() {
          <div className={styles.container}>
             <header className={styles.header}>
                <div className={styles.headercontainer}>
+                  <div className={styles.logo}>Garden Logo</div>
                   <nav>
                      <ul>
                         <li>
-                           <div className={styles.notifications}>🔔</div>
+                           <div className={styles.notifications}>
+                              <Image
+                                 src="/icones/noticacao.png"
+                                 alt="tiktok"
+                                 width={20}
+                                 height={20}
+                                 className={styles.icone}
+                              />
+                           </div>
                         </li>
                         <li>
                            <span className={styles.profileName}>Dr. Silva</span>
@@ -32,14 +43,16 @@ export default function Home() {
             </header>
 
             <section className={styles.patientSelect}>
-               <div className={styles.patient}>
+               <PacienteButton />
+
+               {/* <div className={styles.patient}>
                   <label htmlFor="patientSelect">Pacientes:</label>
 
                   <select id="pac_id" className={styles.selectBox}>
                      <option value="patient1">Paciente 1</option>
                      <option value="patient2">Paciente 2</option>
                   </select>
-               </div>
+               </div> */}
 
                <div className={styles.searchBar}>
                   <input type="text" placeholder="Pesquisar..." />
@@ -49,8 +62,6 @@ export default function Home() {
             {/* barra lateral */}
 
             <aside className={styles.sidebar}>
-               <div className={styles.logo}>Garden Logo</div>
-
                <ul>
                   <li>
                      <Image

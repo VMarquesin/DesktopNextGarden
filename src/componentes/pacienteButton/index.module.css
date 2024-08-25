@@ -1,0 +1,63 @@
+.pacienteContainer {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+}
+
+.botaoPaciente {
+   background-color: #074a05;
+   color: white;
+   border: none;
+   padding: 1rem 6rem;
+   border-radius: 7px 0 0 7px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+   margin-left: 1.9rem;
+}
+
+.checkboxPaciente {
+   display: none;
+}
+
+.labelCheckbox {
+   background-color: #074a05;
+   color: white;
+   border: none;
+   padding: 0.7504rem;
+   margin-left: 0.1rem;
+   border-radius: 0 20px 20px 0;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   transition: 0.3s;
+}
+
+.labelCheckbox:hover {
+   background-color: #056403;
+}
+
+.listaPacientes {
+   display: none;
+   z-index: 10;
+   position: absolute;
+   top: 40px;
+   left: 0;
+   background-color: #f4f4f4;
+   border: 1px solid #ccc;
+   border-radius: 0 15px 15px 15px;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+   width: 20rem;
+}
+
+.checkboxPaciente:checked + .labelCheckbox + .listaPacientes {
+   display: block;
+}
+
+.pacienteItem {
+   padding: 10px;
+   cursor: pointer;
+}
+
+.pacienteItem:hover {
+   background-color: #e4e4e4;
+}
