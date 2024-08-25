@@ -1,7 +1,7 @@
 .pacienteContainer {
    display: flex;
    align-items: center;
-   gap: 10px;
+   gap: 0.2rem;
 }
 
 .botaoPaciente {
@@ -23,9 +23,9 @@
    background-color: #074a05;
    color: white;
    border: none;
-   padding: 0.7504rem;
-   margin-left: 0.1rem;
-   border-radius: 0 20px 20px 0;
+   padding: 0.76rem;
+   /* margin-left: 0.1rem; */
+   border-radius: 0px 7px 7px 0px;
    cursor: pointer;
    display: flex;
    align-items: center;
@@ -40,13 +40,13 @@
    display: none;
    z-index: 10;
    position: absolute;
-   top: 40px;
-   left: 0;
+   top: 9.5rem;
+   left: 2rem;
    background-color: #f4f4f4;
    border: 1px solid #ccc;
-   border-radius: 0 15px 15px 15px;
+   border-radius: 0px 0px 7px 7px;
    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-   width: 20rem;
+   width: 21rem;
 }
 
 .checkboxPaciente:checked + .labelCheckbox + .listaPacientes {
@@ -54,7 +54,7 @@
 }
 
 .pacienteItem {
-   padding: 10px;
+   padding: 1.4rem;
    cursor: pointer;
 }
 

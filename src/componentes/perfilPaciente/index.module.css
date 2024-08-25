@@ -1,8 +1,14 @@
 .perfilContainer {
    padding: 20px;
    background-color: #f9f9f9;
-   border-radius: 10px;
-   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   border: 1px solid #ddd;
+   border-radius: 8px;
+   max-width: 400px;
+   position: absolute; /* Alterado para absolute ou fixed */
+   top: 10rem; /* Ajuste esta posição conforme necessário */
+   left: 25rem; /* Ajuste esta posição conforme necessário */
+   z-index: 20; /* Assegure que está acima de outros elementos */
+   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cabecalho {

@@ -6,8 +6,6 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
-// ("use client");
-
 export default function PacienteButton() {
    const [nomePaciente, setNomePaciente] = useState("Paciente");
    const [pacienteSelecionado, setPacienteSelecionado] = useState(null);

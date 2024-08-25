@@ -19,8 +19,8 @@ export default function Home() {
                         <li>
                            <div className={styles.notifications}>
                               <Image
-                                 src="/icones/noticacao.png"
-                                 alt="tiktok"
+                                 src="/icones/Notificacao.png"
+                                 alt="sino de notificação"
                                  width={20}
                                  height={20}
                                  className={styles.icone}
@@ -44,16 +44,6 @@ export default function Home() {
 
             <section className={styles.patientSelect}>
                <PacienteButton />
-
-               {/* <div className={styles.patient}>
-                  <label htmlFor="patientSelect">Pacientes:</label>
-
-                  <select id="pac_id" className={styles.selectBox}>
-                     <option value="patient1">Paciente 1</option>
-                     <option value="patient2">Paciente 2</option>
-                  </select>
-               </div> */}
-
                <div className={styles.searchBar}>
                   <input type="text" placeholder="Pesquisar..." />
                </div>
