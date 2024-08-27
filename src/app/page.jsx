@@ -4,10 +4,10 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import PacienteButton from "../componentes/pacienteButton";
 
-// import { useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
-   // const [Tela, setTela] = useState(0);
+   const [Tela, setTela] = useState(0);
 
    return (
       <div className={styles.containerGlobal}>
@@ -60,7 +60,7 @@ export default function Home() {
                   <li>
                      <button
                         data-target="#anotacoes"
-                        // onClick={() => setTela(1)}
+                        onClick={() => setTela(1)}
                      >
                         {" "}
                         <Image
