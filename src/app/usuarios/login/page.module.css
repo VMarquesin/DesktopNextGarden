@@ -1,0 +1,90 @@
+.LoginContainer {
+   display: grid;
+   grid-template-areas:
+      "form button image"
+      "form button image";
+   grid-template-columns: 1fr 60px 1fr;
+   grid-template-rows: 30px 1fr;
+   height: 100vh; /* Altura total da tela */
+   overflow: hidden; /* Evita rolagem */
+}
+
+.LoginAcess {
+   grid-area: form;
+   font-size: 8rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.AcesseSuaConta {
+   font-size: 1.5rem;
+}
+
+.LoginForm {
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
+   align-items: center; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
+   padding: 2rem; /* Espaçamento interno */
+   font-size: 5rem;
+   margin: 0; /* Remove margens externas */
+}
+
+.InputField {
+   width: 100%;
+   padding: 1rem;
+   font-size: 1rem;
+   border: 2px solid #59d606;
+   border-radius: 4px;
+}
+
+.SubmitButton {
+   width: 50%;
+   padding: 0.75rem;
+   font-size: 2rem;
+   color: #fff;
+   background-color: #07b332;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   margin-left: 30%;
+   transition: 0.3s;
+}
+
+.SubmitButton:hover {
+   background-color: #088d03;
+}
+
+.containerButton {
+   grid-area: button;
+   z-index: 1;
+}
+
+.ButtonCadastro {
+   padding: 0.75rem;
+   font-size: 2rem;
+   color: #fff;
+   background-color: #07b332;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   transition: 0.3s;
+}
+
+.ButtonCadastro:hover {
+   background-color: #088d03;
+}
+.FormGroup {
+   margin-bottom: 1.5rem;
+   font-size: 2rem;
+}
+
+.BackgroundImageLogin {
+   grid: image;
+   background-image: url("/path/to/your/image.jpg");
+   background-size: cover; /* Faz a imagem cobrir o elemento */
+   background-position: center; /* Centraliza a imagem */
+   background-repeat: no-repeat; /* Evita repetição da imagem */
+   width: 100%; /* Ajusta a largura do contêiner */
+   height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
+}
