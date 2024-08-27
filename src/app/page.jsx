@@ -1,9 +1,12 @@
+"use client";
+
 import Head from "next/head";
 import styles from "./page.module.css";
 
 import Image from "next/image";
 import PacienteButton from "../componentes/pacienteButton";
 
+import PsicologoAnotacao from "../componentes/psicologoAnotacao";
 import { useState } from "react";
 
 export default function Home() {
@@ -62,14 +65,13 @@ export default function Home() {
                         data-target="#anotacoes"
                         onClick={() => setTela(1)}
                      >
-                        {" "}
-                        <Image
+                        {/* <Image
                            src="/icones/Note.png"
                            alt="tiktok"
                            width={20}
                            height={20}
                            className={styles.icone}
-                        />
+                        /> */}
                         Anotações
                      </button>
                      <Image
@@ -144,10 +146,7 @@ export default function Home() {
             </aside>
 
             <main className={styles.mainContent}>
-               {/* {
-                  tela == 1 ? 
-                  <cadCliente />
-               } */}
+               {Tela == 1 ? <PsicologoAnotacao /> : null}
             </main>
          </div>
       </div>

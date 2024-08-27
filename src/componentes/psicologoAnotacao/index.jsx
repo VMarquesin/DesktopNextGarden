@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./PsicologoAnotacao.module.css";
+import styles from "./index.module.css";
 
 export default function PsicologoAnotacao() {
    return (
