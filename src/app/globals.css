@@ -104,9 +104,9 @@ nav,
 section {
    display: block;
 }
-body {
+/* body {
    line-height: 1;
-}
+} */
 ol,
 ul {
    list-style: none;
@@ -139,21 +139,25 @@ body {
    font-style: normal;
    font-size: 1.6rem;
    /* border: 0.3rem solid #f00; */
-   display: flex;
+   /* display: flex;
    flex-direction: column;
-   align-items: center;
-   background-color: #ffffff;
+   align-items: center; */
 }
 
 .containerGlobal {
-   width: 100%;
+   /* width: 100%;
    max-width: 112.8rem;
-   /* border: 0.3rem solid rgb(4, 0, 238); */
-   /* height: 100vh; */
+   border: 0.3rem solid rgb(4, 0, 238);
+   height: 100vh;
    padding-top: 1rem;
    padding-bottom: 2rem;
    display: flex;
-   flex-direction: column;
+   flex-direction: column; */
+   margin: 0;
+   padding: 0;
+   border: none;
+   font-weight: 300;
+   box-sizing: border-box;
 }
 
 h1 {
@@ -169,4 +173,8 @@ h3 {
    font-size: 1.6rem;
    margin: 0.3rem;
    font-weight: bold;
+}
+
+img {
+   max-width: 100%;
 }
