@@ -1,9 +1,9 @@
 .LoginContainer {
    display: grid;
    grid-template-areas:
-      "form button image"
-      "form button image";
-   grid-template-columns: 1fr 60px 1fr;
+      "form image"
+      "form image";
+   grid-template-columns: 1fr 1fr;
    grid-template-rows: 30px 1fr;
    height: 100vh; /* Altura total da tela */
    overflow: hidden; /* Evita rolagem */
@@ -57,7 +57,6 @@
 
 .containerButton {
    grid-area: button;
-   z-index: 1;
 }
 
 .ButtonCadastro {
@@ -81,7 +80,7 @@
 
 .BackgroundImageLogin {
    grid: image;
-   background-image: url("/path/to/your/image.jpg");
+   background-image: url("/public/images/ImageLogin.png");
    background-size: cover; /* Faz a imagem cobrir o elemento */
    background-position: center; /* Centraliza a imagem */
    background-repeat: no-repeat; /* Evita repetição da imagem */
