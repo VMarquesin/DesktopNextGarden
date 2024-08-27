@@ -4,7 +4,11 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import PacienteButton from "../componentes/pacienteButton";
 
+// import { useState } from "react";
+
 export default function Home() {
+   // const [Tela, setTela] = useState(0);
+
    return (
       <div className={styles.containerGlobal}>
          <Head>
@@ -45,7 +49,7 @@ export default function Home() {
             <section className={styles.patientSelect}>
                <PacienteButton />
                <div className={styles.searchBar}>
-                  <input type="text" placeholder="Pesquisar..." />
+                  <input type="text" placeholder="Pesquisar paciente..." />
                </div>
             </section>
 
@@ -54,6 +58,20 @@ export default function Home() {
             <aside className={styles.sidebar}>
                <ul>
                   <li>
+                     <button
+                        data-target="#anotacoes"
+                        onClick={() => setTela(1)}
+                     >
+                        {" "}
+                        <Image
+                           src="/icones/Note.png"
+                           alt="tiktok"
+                           width={20}
+                           height={20}
+                           className={styles.icone}
+                        />
+                        Anotações
+                     </button>
                      <Image
                         src="/icones/Note.png"
                         alt="tiktok"
@@ -61,7 +79,6 @@ export default function Home() {
                         height={20}
                         className={styles.icone}
                      />
-                     <p>Anotações</p>
                   </li>
                   <li>
                      <Image
@@ -127,8 +144,10 @@ export default function Home() {
             </aside>
 
             <main className={styles.mainContent}>
-               <h2>Área de Trabalho</h2>
-               <p>Aqui as ações do psicólogo serão exibidas.</p>
+               {/* {
+                  tela == 1 ? 
+                  <cadCliente />
+               } */}
             </main>
          </div>
       </div>
