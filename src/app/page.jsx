@@ -63,7 +63,7 @@ export default function Home() {
                   <li>
                      <Image
                         src="/icones/Note.png"
-                        alt="note"
+                        alt="Note"
                         width={20}
                         height={20}
                         className={styles.icone}
@@ -77,48 +77,30 @@ export default function Home() {
                   </li>
                   <li>
                      <Image
-                        src="/icones/favoritos.png"
-                        alt="tiktok"
+                        src="/icones/diario.png"
+                        alt="Diario"
+                        width={20}
+                        height={20}
+                        className={styles.icone}
+                     />
+                     <button data-target="#diario" onClick={() => setTela(2)}>
+                        <p>Diário</p>
+                     </button>
+                  </li>
+                  <li>
+                     <Image
+                        src="/icones/exercicios.png"
+                        alt="Exercícios"
                         width={20}
                         height={20}
                         className={styles.icone}
                      />
                      <button
-                        data-target="#favoritos"
+                        data-target="#exercicios"
                         onClick={() => setTela(2)}
                      >
-                        <p>Favoritos</p>
+                        <p>Exercícios</p>
                      </button>
-                  </li>
-                  <li>
-                     <Image
-                        src="/icones/diario.png"
-                        alt="tiktok"
-                        width={20}
-                        height={20}
-                        className={styles.icone}
-                     />
-                     <p>Diário</p>
-                  </li>
-                  <li>
-                     <Image
-                        src="/icones/chat.png"
-                        alt="tiktok"
-                        width={20}
-                        height={20}
-                        className={styles.icone}
-                     />
-                     <p>Chat</p>
-                  </li>
-                  <li>
-                     <Image
-                        src="/icones/exercicios.png"
-                        alt="tiktok"
-                        width={20}
-                        height={20}
-                        className={styles.icone}
-                     />
-                     <p>Exercícios</p>
                   </li>
                   <li>
                      <Image
@@ -128,23 +110,39 @@ export default function Home() {
                         height={20}
                         className={styles.icone}
                      />
-                     <p>Lembrete</p>
+                     <button
+                        data-target="#exercicios"
+                        onClick={() => setTela(2)}
+                     >
+                        <p>Lembrete</p>
+                     </button>
                   </li>
                   <li>
                      <Image
                         src="/icones/dashboard.png"
-                        alt="tiktok"
+                        alt="Dashboard"
                         width={20}
                         height={20}
                         className={styles.icone}
                      />
-                     <p>Dashboard</p>
+                     <button
+                        data-target="#dashboard"
+                        onClick={() => setTela(2)}
+                     >
+                        <p>Dashboard</p>
+                     </button>
                   </li>
                </ul>
             </aside>
 
             <main className={styles.mainContent}>
-               {Tela == 1 ? <PsicologoAnotacao /> : null}
+               {Tela === 1 ? (
+                  <PsicologoAnotacao />
+               ) : // : Tela === 2 ? < />
+               // : Tela === 3 ? < />
+               // : Tela === 4 ? < />
+               // : Tela === 5 ? < />
+               null}
             </main>
          </div>
       </div>
