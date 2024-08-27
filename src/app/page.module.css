@@ -114,9 +114,9 @@
    list-style-type: none;
    padding: 0;
 }
-.sidebar ul li p {
+/* .sidebar ul li p {
    margin-left: 0.5rem;
-}
+} */
 .sidebar ul li {
    display: flex;
    margin-left: 1rem;

@@ -60,7 +60,7 @@ export default function Home() {
                   <li>
                      <button
                         data-target="#anotacoes"
-                        onClick={() => setTela(1)}
+                        // onClick={() => setTela(1)}
                      >
                         {" "}
                         <Image
