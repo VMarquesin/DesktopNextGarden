@@ -114,9 +114,16 @@
    list-style-type: none;
    padding: 0;
 }
-/* .sidebar ul li p {
-   margin-left: 0.5rem;
-} */
+.sidebar ul li button {
+   border: none; /* Remove as bordas */
+   background: none; /* Remove o fundo */
+   font: inherit; /* Herda a fonte do elemento pai */
+   cursor: pointer; /* Adiciona o cursor de "mãozinha" */
+   margin-left: 0.3rem;
+}
+.sidebar ul li p {
+   font-size: 2rem;
+}
 .sidebar ul li {
    display: flex;
    margin-left: 1rem;

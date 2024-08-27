@@ -61,26 +61,19 @@ export default function Home() {
             <aside className={styles.sidebar}>
                <ul>
                   <li>
-                     <button
-                        data-target="#anotacoes"
-                        onClick={() => setTela(1)}
-                     >
-                        {/* <Image
-                           src="/icones/Note.png"
-                           alt="tiktok"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        /> */}
-                        Anotações
-                     </button>
                      <Image
                         src="/icones/Note.png"
-                        alt="tiktok"
+                        alt="note"
                         width={20}
                         height={20}
                         className={styles.icone}
                      />
+                     <button
+                        data-target="#anotacoes"
+                        onClick={() => setTela(1)}
+                     >
+                        <p>Anotações</p>
+                     </button>
                   </li>
                   <li>
                      <Image
@@ -90,7 +83,12 @@ export default function Home() {
                         height={20}
                         className={styles.icone}
                      />
-                     <p>Favoritos</p>
+                     <button
+                        data-target="#favoritos"
+                        onClick={() => setTela(2)}
+                     >
+                        <p>Favoritos</p>
+                     </button>
                   </li>
                   <li>
                      <Image
