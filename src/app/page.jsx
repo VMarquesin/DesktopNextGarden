@@ -12,6 +12,11 @@ import { useState } from "react";
 export default function Home() {
    const [Tela, setTela] = useState(0);
 
+   const [Modal, setModal] = useState(false);
+
+   const abrirModal = () => setModalAberto(true);
+   const fecharModal = () => setModalAberto(false);
+
    return (
       <div className={styles.containerGlobal}>
          <Head>
@@ -95,12 +100,22 @@ export default function Home() {
                         height={20}
                         className={styles.icone}
                      />
-                     <button
-                        data-target="#exercicios"
-                        onClick={() => setTela(2)}
-                     >
+                     <button data-target="#exercicios" onClick={abrirModal}>
                         <p>Exercícios</p>
                      </button>
+                     {modalAberto && (
+                        <div className={styles.modal}>
+                           <div className={styles.modalContent}>
+                              <span>
+                                 className={styles.closeButton}
+                                 onClick={fecharModal}
+                                 &times;
+                              </span>
+                              <h2>Conteudo</h2>
+                              <p>conteudo modal</p>
+                           </div>
+                        </div>
+                     )}
                   </li>
                   <li>
                      <Image
