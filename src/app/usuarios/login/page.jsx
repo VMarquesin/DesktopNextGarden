@@ -6,16 +6,24 @@ export default function Login() {
       <div className={styles.LoginContainer}>
          {/* <div className={styles.LoginContent}> */}
 
+
          <div className={styles.LoginAcess}>
             <div className={styles.LoginForm}>
-               <label htmlFor="nomeProjeto">GARDEN</label>
-               <label htmlFor="Acesse" className={styles.AcesseSuaConta}>
+
+            <button type="submit" className={styles.ButtonCadastro}>
+                      Cadastrar-se
+                  </button>
+
+              <div className={styles.Titulo}>
+                <label htmlFor="nomeProjeto">GARDEN</label>
+                 <label htmlFor="Acesse" className={styles.AcesseSuaConta}>
                   Acesse sua conta:
-               </label>
+                </label>
+               </div>   
 
                <form>
                   <div className={styles.FormGroup}>
-                     <label htmlFor="username">Nome de usuário:</label>
+                     <label htmlFor="username">Usuário:</label>
                      <input
                         type="text"
                         id="username"
@@ -23,6 +31,13 @@ export default function Login() {
                         placeholder="Digite seu nome de usuário"
                         className={styles.InputField}
                      />
+                       <Image
+                         src="/Icones/Usuario.svg"
+                         width={20}
+                         height={20}
+                         alt="Icone Usuário"
+                         className={styles.Icons}
+                        />
                   </div>
 
                   <div className={styles.FormGroup}>
@@ -34,7 +49,16 @@ export default function Login() {
                         placeholder="Digite sua senha"
                         className={styles.InputField}
                      />
+                     <Image
+                         src="/Icones/OcultaSenha.svg"
+                         width={20}
+                         height={20}
+                         alt="Icone Senha"
+                         className={styles.Icons}
+                        />
                   </div>
+
+                  <label htmlFor="Esqueceu sua senha?" className={styles.EsqueceuSuaSenha}>Esqueceu sua senha?</label>
 
                   <button type="submit" className={styles.SubmitButton}>
                      Entrar
@@ -43,11 +67,7 @@ export default function Login() {
             </div>
          </div>
 
-         <div className={styles.containerButton}>
-            <button type="submit" className={styles.ButtonCadastro}>
-               Cadastrar-se
-            </button>
-         </div>
+         <div className={styles.containerButton}></div>
 
          <div>
             <Image

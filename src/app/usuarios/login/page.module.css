@@ -16,8 +16,27 @@
    flex-direction: column;
 }
 
+.Titulo{
+   flex-direction: column;
+   display: flex;
+   justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
+   align-items: start; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
+   padding: 10rem; /* Espaçamento interno */
+   font-size: 5rem;
+   font-weight: bold;
+   align-content: start;
+   margin-left: -10rem;
+}
+
 .AcesseSuaConta {
    font-size: 1.5rem;
+}
+
+.EsqueceuSuaSenha {
+   font-size: 1rem ;
+   font-weight: bold;
+   align-content: start;
+   display: flex;
 }
 
 .LoginForm {
@@ -31,23 +50,25 @@
 }
 
 .InputField {
-   width: 100%;
+   width: 33rem;
    padding: 1rem;
    font-size: 1rem;
-   border: 2px solid #59d606;
-   border-radius: 4px;
+   border: none;
+   border-bottom: 2px solid #00000054;
+   flex-direction: column;
+   display: flex;
 }
 
 .SubmitButton {
-   width: 50%;
-   padding: 0.75rem;
-   font-size: 2rem;
+   width: 25rem;
+   padding: 0.80rem;
+   font-size: 1.50rem;
    color: #fff;
-   background-color: #07b332;
+   background-color: #074A05;
    border: none;
    border-radius: 50px;
    cursor: pointer;
-   margin-left: 30%;
+   margin-left: 10%;
    transition: 0.3s;
 }
 
@@ -60,14 +81,17 @@
 }
 
 .ButtonCadastro {
-   padding: 0.75rem;
+   padding: 2rem;
    font-size: 2rem;
    color: #fff;
-   background-color: #07b332;
+   background-color: #074A05;
    border: none;
-   border-radius: 50px;
    cursor: pointer;
    transition: 0.3s;
+   align-self: end;
+   display: flex;
+   margin-right: -2rem;
+   margin-top: -2rem;
 }
 
 .ButtonCadastro:hover {
@@ -86,4 +110,8 @@
    background-repeat: no-repeat; /* Evita repetição da imagem */
    width: 100%; /* Ajusta a largura do contêiner */
    height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
+}
+
+.Icons {
+ right: -1rem;
 }
