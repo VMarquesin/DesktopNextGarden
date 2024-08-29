@@ -150,8 +150,8 @@
    left: 50%;
    transform: translate(-50%, -50%);
    z-index: 1000;
-   background-color: rgba(255, 255, 255, 0.9);
-   padding: 20px;
+   background-color: #ffffff;
+   padding: 200px;
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
    border-radius: 8px;
 }
@@ -165,7 +165,7 @@
    top: 10px;
    right: 10px;
    font-size: 20px;
-   cursor: pointer;
+   /* cursor: pointer; */
 }
 
 .modalBackground {
@@ -184,8 +184,8 @@
    background-color: #f4f4f4;
    grid-area: main;
    display: flex;
-   flex-direction: column;
+   /* flex-direction: column;
    align-items: center;
-   justify-content: center;
-   padding: 20px;
+   justify-content: center; */
+   
 }

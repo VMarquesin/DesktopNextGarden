@@ -9,13 +9,13 @@ export default function PsicologoAnotacao() {
          <aside className={styles.sidebar}>
             <ul className={styles.anotacoesLista}>
                <li>
-                  <strong>01/08/2024</strong> - Anotação 1
+                  <strong>01/08/2024</strong> <p>Anotação 1</p>
                </li>
                <li>
-                  <strong>15/08/2024</strong> - Anotação 2
+                  <strong>15/08/2024</strong> <p>Anotação 2</p>
                </li>
                <li>
-                  <strong>20/08/2024</strong> - Anotação 3
+                  <strong>20/08/2024</strong> <p>Anotação 3</p>
                </li>
             </ul>
          </aside>
