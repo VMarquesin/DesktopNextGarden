@@ -130,9 +130,19 @@
    border-radius: 7px;
    background-color: #ddd;
 }
-
+.activeButton {
+   color: white;
+   background-color: #074a05 !important;
+   border-radius: 7px;
+}
+.icone {
+   color: #074a05 !important;
+}
+.activeIcone {
+   color: white;
+}
 .sidebar ul li button p {
-   font-size: 2rem;
+   font-size: 1.6rem;
    margin-left: 1rem;
 }
 
