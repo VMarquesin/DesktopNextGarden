@@ -1,0 +1,14 @@
+.calendario {
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   overflow-y: hidden; /* Ativa a rolagem vertical */
+   overflow-x: hidden; /* Oculta a rolagem horizontal */
+}
+
+.reactCalendar {
+   padding: 1rem;
+   text-align: center;
+   border-radius: 50%;
+   color: #000; /* Cor do texto padrão */
+}

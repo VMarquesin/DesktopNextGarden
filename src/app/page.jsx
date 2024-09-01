@@ -3,15 +3,17 @@
 import Head from "next/head";
 import styles from "./page.module.css";
 
+import { useState } from "react";
 import Image from "next/image";
+
 import PacienteButton from "../componentes/pacienteButton";
-
 import PsicologoAnotacao from "../componentes/psicologoAnotacao";
-import PacienteDiario from "../componentes/pacienteDiario";
 
+import PacienteDiario from "../componentes/pacienteDiario";
 import PacienteExercicios from "../componentes/pacienteExericios";
 
-import { useState } from "react";
+import LembreteSessao from "../componentes/lembreteSessao";
+import Dashboard from "../componentes/dashboard";
 
 export default function Home() {
    const [Tela, setTela] = useState(0);
@@ -133,32 +135,30 @@ export default function Home() {
                      )} */}
                   </li>
                   <li>
-                     <Image
-                        src="/icones/lembrete.png"
-                        alt="tiktok"
-                        width={20}
-                        height={20}
-                        className={styles.icone}
-                     />
-                     <button
-                        data-target="#exercicios"
-                        onClick={() => setTela(2)}
-                     >
+                     <button data-target="#lembrete" onClick={() => setTela(4)}>
+                        <Image
+                           src="/icones/lembrete.png"
+                           alt="tiktok"
+                           width={20}
+                           height={20}
+                           className={styles.icone}
+                        />
+
                         <p>Lembrete</p>
                      </button>
                   </li>
                   <li>
-                     <Image
-                        src="/icones/dashboard.png"
-                        alt="Dashboard"
-                        width={20}
-                        height={20}
-                        className={styles.icone}
-                     />
                      <button
                         data-target="#dashboard"
-                        onClick={() => setTela(2)}
+                        onClick={() => setTela(5)}
                      >
+                        <Image
+                           src="/icones/dashboard.png"
+                           alt="Dashboard"
+                           width={20}
+                           height={20}
+                           className={styles.icone}
+                        />
                         <p>Dashboard</p>
                      </button>
                   </li>
@@ -172,9 +172,11 @@ export default function Home() {
                   <PacienteDiario />
                ) : Tela === 3 ? (
                   <PacienteExercicios />
-               ) : // : Tela === 4 ? < />
-               // : Tela === 5 ? < />
-               null}
+               ) : Tela === 4 ? (
+                  <LembreteSessao />
+               ) : Tela === 5 ? (
+                  <Dashboard />
+               ) : null}
             </main>
          </div>
       </div>
