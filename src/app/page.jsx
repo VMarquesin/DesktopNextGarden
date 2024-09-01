@@ -37,7 +37,7 @@ export default function Home() {
                         <li>
                            <div className={styles.notifications}>
                               <Image
-                                 src="/icones/Notificacao.png"
+                                 src="/icones/Notification.svg"
                                  alt="sino de notificação"
                                  width={20}
                                  height={20}
