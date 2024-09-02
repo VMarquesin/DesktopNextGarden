@@ -11,7 +11,7 @@ export default function Login() {
             <div className={styles.LoginForm}>
 
             <button type="submit" className={styles.ButtonCadastro}>
-                      Cadastrar-se
+                      CRIAR CONTA
                   </button>
 
               <div className={styles.Titulo}>
@@ -21,38 +21,37 @@ export default function Login() {
                 </label>
                </div>   
 
+
                <form>
-                  <div className={styles.FormGroup}>
-                     <label htmlFor="username">Usuário:</label>
+                <div className={styles.FormGroup}>
                      <input
                         type="text"
                         id="username"
                         name="username"
-                        placeholder="Digite seu nome de usuário"
+                        placeholder="Usuário"
                         className={styles.InputField}
                      />
-                       <Image
+                     <Image
                          src="/Icones/Usuario.svg"
-                         width={20}
-                         height={20}
+                         width={25}
+                         height={25}
                          alt="Icone Usuário"
                          className={styles.Icons}
                         />
                   </div>
-
+                  
                   <div className={styles.FormGroup}>
-                     <label htmlFor="password">Senha:</label>
                      <input
                         type="password"
                         id="password"
                         name="password"
-                        placeholder="Digite sua senha"
+                        placeholder="Senha"
                         className={styles.InputField}
                      />
-                     <Image
+                       <Image
                          src="/Icones/OcultaSenha.svg"
-                         width={20}
-                         height={20}
+                         width={25}
+                         height={25}
                          alt="Icone Senha"
                          className={styles.Icons}
                         />
@@ -61,10 +60,10 @@ export default function Login() {
                   <label htmlFor="Esqueceu sua senha?" className={styles.EsqueceuSuaSenha}>Esqueceu sua senha?</label>
 
                   <button type="submit" className={styles.SubmitButton}>
-                     Entrar
+                     ENTRAR
                   </button>
-               </form>
-            </div>
+                  </form>
+             </div>
          </div>
 
          <div className={styles.containerButton}></div>
@@ -78,7 +77,6 @@ export default function Login() {
                className={styles.BackgroundImageLogin}
             />
          </div>
-         {/* </div> */}
       </div>
    );
 }
