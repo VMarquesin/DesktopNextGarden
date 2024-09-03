@@ -54,7 +54,31 @@
 .header nav ul li .notifications {
    font-size: 1.5rem;
    cursor: pointer;
-   /* margin-right: 2rem; */
+   transition: transform 0.3s ease;
+   animation: swing 0.6s; /* Aplica a animação */
+}
+
+/* Define a animação swing */
+@keyframes swing {
+   0% {
+      transform: rotate(0deg); /* Começa em 0 graus */
+   }
+   25% {
+      transform: rotate(10deg); /* Gira 10 graus */
+   }
+   50% {
+      transform: rotate(0deg); /* Volta para 0 graus */
+   }
+   75% {
+      transform: rotate(-10deg); /* Gira -10 graus */
+   }
+   100% {
+      transform: rotate(0deg); /* Volta para 0 graus */
+   }
+}
+
+.header nav ul li .notifications:hover {
+   animation: swing 0.6s ease-in-out infinite; /* Aplica a animação ao passar o mouse */
 }
 
 .header nav ul li .profileImage {
@@ -136,7 +160,7 @@
    border-radius: 7px;
 }
 .icone {
-   color: #074a05 !important;
+   color: #e2e7e2 !important;
 }
 .activeIcone {
    color: white;

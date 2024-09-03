@@ -15,6 +15,8 @@ import PacienteExercicios from "../componentes/pacienteExericios";
 import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
+import PacientePerfil from "../componentes/perfilPaciente";
+
 export default function Home() {
    const [Tela, setTela] = useState(0);
 

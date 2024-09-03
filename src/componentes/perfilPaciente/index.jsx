@@ -11,30 +11,48 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
    };
 
    return (
-      <div className={styles.perfilContainer}>
-         <img
-            src={paciente.foto}
-            alt={`Foto de ${paciente.nome}`}
-            className={styles.fotoPerfil}
-         />
-         <h2>{paciente.nome}</h2>
-         <h3>{paciente.nickname}</h3>
-         <p>Telefone: {paciente.telefone}</p>
-         <p>Data de Nascimento: {paciente.dataNascimento}</p>
-         <p>CPF: {paciente.cpf}</p>
-         <p>Filhos: {paciente.filhos}</p>
-         <p>Escolaridade: {paciente.escolaridade}</p>
-         <p>Trabalho: {paciente.trabalho}</p>
-         <p>Estado Civil: {paciente.estadoCivil}</p>
-         <p>Status: {paciente.status}</p>
+      <div className={styles.refContainer}>
+         <div className={styles.perfilContainer}>
+            <div className={styles.containerNome}>
+               <img
+                  src={paciente.foto}
+                  alt={`Foto ${paciente.nome}`}
+                  className={styles.fotoPerfil}
+               />
+               <div className={styles.nome}>
+                  <h2>{paciente.nome}</h2>
+                  <h3>{paciente.nickname}</h3>
+               </div>
+            </div>
+            <div className={styles.atributos}>
+               <p>Telefone: {paciente.telefone}</p>
+               <p>Data de Nascimento: {paciente.dataNascimento}</p>
+               <p>CPF: {paciente.cpf}</p>
+               <p>Filhos: {paciente.filhos}</p>
+               <p>Escolaridade: {paciente.escolaridade}</p>
+               <p>Trabalho: {paciente.trabalho}</p>
+               <p>Estado Civil: {paciente.estadoCivil}</p>
+               <p>Status: {paciente.status}</p>
+            </div>
+            <div className={styles.containerNotaSave}>
 
-         <textarea
-            placeholder="Adicionar nota..."
-            value={nota}
-            onChange={handleNoteChange}
-            className={styles.textAreaNota}
-         />
-         <button onClick={() => onSaveNote(nota)}>Salvar Nota</button>
+               <textarea
+                  placeholder="Adicionar nota..."
+                  value={nota}
+                  onChange={handleNoteChange}
+                  className={styles.notaTextarea}
+               />
+               
+               <div className={styles.containerButton}>
+                  <button
+                     onClick={() => onSaveNote(nota)}
+                     className={styles.saveButton}
+                  >
+                     Salvar Nota
+                  </button>
+               </div>
+            </div>
+         </div>
       </div>
    );
 }

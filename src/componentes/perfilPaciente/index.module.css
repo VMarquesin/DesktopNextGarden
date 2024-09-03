@@ -1,66 +1,73 @@
 .perfilContainer {
-   padding: 20px;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-30%, -44%);
+   padding: 2rem;
    background-color: #f9f9f9;
    border: 1px solid #ddd;
-   border-radius: 8px;
-   max-width: 400px;
-   position: absolute; /* Alterado para absolute ou fixed */
-   top: 10rem; /* Ajuste esta posição conforme necessário */
-   left: 25rem; /* Ajuste esta posição conforme necessário */
-   z-index: 20; /* Assegure que está acima de outros elementos */
+   border-radius: 7px;
+   width: 600px;
+   height: 750px;
+   z-index: 20;
    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
+.containerNome {
+   display: flex;
+   /* justify-content: space-evenly; */
+   align-items: center;
+   margin-bottom: 3rem;
+   margin-left: 12rem;
+}
 
-.cabecalho {
+.containerNome .nome {
+   margin-left: 10rem;
+}
+.fotoPerfil {
+   width: 5rem;
+   height: 5rem;
+   /* border-radius: 50%; */
+}
+.atributos {
+   margin-left: 11rem;
+   margin-bottom: 3rem;
+}
+.atributos p {
+   margin-bottom: 1.5rem;
+}
+.containerNotaSave {
+   display: flex;
+   flex-direction: column;
+}
+.notaTextarea {
+   display: flex;
+   align-self: center;
+   justify-content: space-between;
+   padding: 2rem;
+   font-size: 1.2rem;
+   border-radius: 4px;
+   border: 1px solid #ccc;
+   margin-bottom: 2rem;
+   width: 90%;
+   height: 30rem;
+   resize: none; /* Desativa a capacidade de redimensionar manualmente */
+   overflow-y: auto; /* Ativa a rolagem vertical */
+   overflow-x: hidden; /* Oculta a rolagem horizontal */
+   box-sizing: border-box;
+}
+.containerButton {
+   display: flex;
+   justify-content: center;
+}
+.saveButton {
    display: flex;
    align-items: center;
-   margin-bottom: 20px;
-}
-
-.fotoPerfil {
-   width: 80px;
-   height: 80px;
-   border-radius: 50%;
-   margin-right: 20px;
-}
-
-.infoPessoal {
-   flex-grow: 1;
-}
-
-.nickname {
-   font-size: 14px;
-   color: #666;
-}
-
-.infoDetalhada {
-   margin-bottom: 20px;
-}
-
-.infoDetalhada p {
-   margin: 5px 0;
-}
-
-.notaContainer {
-   margin-top: 20px;
-}
-
-.notaTextarea {
-   width: 100%;
-   height: 100px;
-   padding: 10px;
-   border-radius: 5px;
-   border: 1px solid #ccc;
-   font-size: 16px;
-}
-
-.saveButton {
-   margin-top: 10px;
+   justify-content: center;
    padding: 10px 20px;
    background-color: #074a05;
    color: white;
    border: none;
-   border-radius: 5px;
+   border-radius: 7px;
    cursor: pointer;
 }
 
