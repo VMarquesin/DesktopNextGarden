@@ -1,0 +1,127 @@
+.CadastroContainer {
+   display: grid;
+   grid-template-areas:
+      "image form"
+      "image form";
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 1fr 30px;
+   height: 100vh; /* Altura total da tela */
+   overflow: hidden; /* Evita rolagem */
+}
+
+.CadastroAcess {
+   grid-area: form;
+   font-size: 8rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.Titulo {
+   flex-direction: column;
+   display: flex;
+   justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
+   align-items: start; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
+   padding: 10rem; /* Espaçamento interno */
+   font-size: 8rem;
+   font-weight: bold;
+   align-content: start;
+   margin-left: -15rem;
+   margin-top: -8rem;
+}
+
+.Retornar {
+   font-size: 2rem;
+   font-weight: bolder;
+}
+
+.CadastroForm {
+   display: flex;
+   flex-direction: column;
+   justify-content: center; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
+   align-items: center; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
+   padding: 0rem; /* Espaçamento interno */
+   font-size: 5rem;
+   margin: 0; /* Remove margens externas */
+}
+
+.InputField {
+   width: 50rem;
+   padding: 1rem;
+   font-size: 2rem;
+   border: none;
+   border-bottom: 2px solid #00000054;
+   flex-direction: column;
+   display: flex;
+}
+
+.SubmitButton {
+   width: 30rem;
+   padding: 2rem;
+   font-size: 1.5rem;
+   color: #fff;
+   background-color: #074a05;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   margin-left: 20%;
+   margin-top: 5rem;
+   transition: 0.3s;
+}
+
+.SubmitButton:hover {
+   background-color: #088d03;
+}
+
+.containerButton {
+   grid-area: button;
+}
+
+.ButtonRetornar {
+   padding: 2rem;
+   font-size: 2rem;
+   color: #fff;
+   background-color: #074a05;
+   border: none;
+   cursor: pointer;
+   transition: 0.3s;
+   align-self: self-start;
+   display: flex;
+   margin-right: -1rem;
+   margin-top: -1rem;
+}
+
+.ButtonRetornar:hover {
+   background-color: #088d03;
+}
+
+.FormGroup {
+   display: flex; /* Usa flexbox para alinhar o conteúdo */
+   justify-content: space-between; /* Espaça o conteúdo ao longo do eixo principal */
+   align-items: s; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
+   margin-bottom: 4rem;
+   font-size: 2rem;
+   flex-direction: row;
+}
+
+.inputIcone {
+   flex-direction: column;
+   display: flex;
+}
+
+.BackgroundImageCadastro {
+   grid: image;
+   background-image: url("/public/images/ImageCadastro.png");
+   background-size: cover; /* Faz a imagem cobrir o elemento */
+   background-position: center; /* Centraliza a imagem */
+   background-repeat: no-repeat; /* Evita repetição da imagem */
+   width: 100%; /* Ajusta a largura do contêiner */
+   height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
+}
+
+.Icons {
+   display: flex;
+   align-items: flex-end; /* Alinha o ícone no final da div FormGroup vertical e horizontalmente */
+   margin-top: 2rem;
+   margin-left: -3rem;
+   margin-bottom: 0.5rem;
+}
