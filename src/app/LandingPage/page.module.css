@@ -1,17 +1,104 @@
-/* .container {
-    display: grid;
-    grid-template-areas:
-       "header header"
-       "search search"
-       "sidebar main";
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: 50px 50px 1fr;
-    height: 100vh;
- } */
-  .containerInicio{
+.container {
+   font-family: Arial, sans-serif;
+   color: #333;
+ }
+ 
+ .header {
+   background-color: #f8f9fa;
+   padding: 20px;
+ }
+ 
+ .topBar {
    display: flex;
-   justify-content: center;
+   justify-content: space-between;
    align-items: center;
-   color: aqua;
-   font-size: 10rem;
-  }
+ }
+ 
+ .nav a {
+   margin-right: 20px;
+   text-decoration: none;
+   color: #074A05;
+ }
+ 
+ .hero {
+   text-align: center;
+   margin-top: 50px;
+ }
+ 
+ .saibaMais {
+   background: linear-gradient(to right, #074A05, #32CD32);
+   border: none;
+   padding: 10px 20px;
+   color: white;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+ 
+ .pacienteSection {
+   padding: 50px 20px;
+ }
+ 
+ .pacienteIntro {
+   background-color: #f0f0f0;
+   padding: 20px;
+   border-radius: 10px;
+ }
+ 
+ .pacienteCards {
+   display: flex;
+   justify-content: space-around;
+   margin-top: 30px;
+ }
+ 
+ .card {
+   text-align: center;
+ }
+ 
+ .segurancaSection {
+   background-image: url('/background-image.png');
+   background-size: cover;
+   padding: 50px 20px;
+   color: white;
+ }
+ 
+ .segurancaContent {
+   display: flex;
+ }
+ 
+ .textContent {
+   margin-left: 20px;
+ }
+ 
+ .divWithGradient {
+   background: linear-gradient(to bottom, #32CD32, #074A05);
+   padding: 20px;
+   border-radius: 10px 0 10px 0;
+   color: white;
+ }
+ 
+ .psicologoSection {
+   padding: 50px 20px;
+   display: flex;
+   justify-content: space-between;
+ }
+ 
+ .featureCard {
+   background-color: rgba(255, 255, 255, 0.1);
+   padding: 20px;
+   border-radius: 10px;
+   margin-bottom: 20px;
+ }
+ 
+ .footer {
+   background-color: #f8f9fa;
+   padding: 20px;
+   text-align: center;
+   margin-top: 50px;
+ }
+ 
+ .footer nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   color: #074A05;
+ }
+ 
