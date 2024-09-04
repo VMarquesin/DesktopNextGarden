@@ -80,7 +80,7 @@
    padding: 2rem;
    font-size: 2rem;
    color: #fff;
-   background-color: #074a05;
+   background: linear-gradient(40deg, #2b8a0e, #1c351b);
    border: none;
    cursor: pointer;
    transition: 0.3s;
@@ -91,7 +91,7 @@
 }
 
 .ButtonRetornar:hover {
-   background-color: #088d03;
+   background: linear-gradient(40deg, #1c351b, #2b8a0e);
 }
 
 .FormGroup {
