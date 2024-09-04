@@ -13,7 +13,6 @@ export default function LembreteSessao() {
 
    const ChangeDate = (date) => {
       setDate(date);
-      console.log("Data selecionada: ", date);
    };
 
    return (

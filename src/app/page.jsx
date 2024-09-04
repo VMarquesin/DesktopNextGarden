@@ -16,6 +16,7 @@ import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
 import PacientePerfil from "../componentes/perfilPaciente";
+import Notifications from "../componentes/notificacao";
 
 export default function Home() {
    const [Tela, setTela] = useState(0);
@@ -38,13 +39,14 @@ export default function Home() {
                      <ul>
                         <li>
                            <div className={styles.notifications}>
-                              <Image
-                                 src="/icones/Notification.svg"
-                                 alt="sino de notificação"
-                                 width={20}
-                                 height={20}
-                                 className={styles.icone}
-                              />
+                              <Notifications />
+                              {/* <Image
+                                    src="/icones/Notification.svg"
+                                    alt="sino de notificação"
+                                    width={20}
+                                    height={20}
+                                    className={styles.icone}
+                                 /> */}
                            </div>
                         </li>
                         <li>
