@@ -16,7 +16,7 @@
    flex-direction: column;
 }
 
-.Titulo{
+.Titulo {
    flex-direction: column;
    display: flex;
    justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
@@ -35,7 +35,7 @@
 }
 
 .EsqueceuSuaSenha {
-   font-size: 1rem ;
+   font-size: 1rem;
    font-weight: bolder;
    align-content: start;
    display: flex;
@@ -64,10 +64,10 @@
 
 .SubmitButton {
    width: 20rem;
-   padding: 0.90rem;
-   font-size: 1.50rem;
+   padding: 0.9rem;
+   font-size: 1.5rem;
    color: #fff;
-   background-color: #074A05;
+   background-color: #074a05;
    border: none;
    border-radius: 50px;
    cursor: pointer;
@@ -88,7 +88,7 @@
    padding: 2rem;
    font-size: 2rem;
    color: #fff;
-   background-color: #074A05;
+   background: linear-gradient(40deg, #2b8a0e, #1c351b);
    border: none;
    cursor: pointer;
    transition: 0.3s;
@@ -99,7 +99,7 @@
 }
 
 .ButtonCadastro:hover {
-   background-color: #088d03;
+   background: linear-gradient(40deg, #1c351b, #2b8a0e);
 }
 
 .FormGroup {
@@ -111,10 +111,9 @@
    flex-direction: row;
 }
 
-.inputIcone{
+.inputIcone {
    flex-direction: column;
    display: flex;
-   
 }
 
 .BackgroundImageLogin {
