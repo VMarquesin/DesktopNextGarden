@@ -21,16 +21,21 @@
    display: flex;
    justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
    align-items: start; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
-   padding: 10rem; /* Espaçamento interno */
-   font-size: 8rem;
+   padding: 9rem; /* Espaçamento interno */
+   font-size: 5rem;
    font-weight: bold;
    align-content: start;
-   margin-left: -15rem;
+   margin-left: -20rem;
    margin-top: -8rem;
 }
 
 .Retornar {
    font-size: 2rem;
+   font-weight: bolder;
+}
+
+.CriarConta {
+   font-size: 1.5rem;
    font-weight: bolder;
 }
 
@@ -45,7 +50,7 @@
 }
 
 .InputField {
-   width: 50rem;
+   width: 40rem;
    padding: 1rem;
    font-size: 2rem;
    border: none;
@@ -97,8 +102,8 @@
 .FormGroup {
    display: flex; /* Usa flexbox para alinhar o conteúdo */
    justify-content: space-between; /* Espaça o conteúdo ao longo do eixo principal */
-   align-items: s; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
-   margin-bottom: 4rem;
+   align-items: start; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
+   margin-bottom: 3rem;
    font-size: 2rem;
    flex-direction: row;
 }
@@ -111,7 +116,8 @@
 .BackgroundImageCadastro {
    grid: image;
    background-image: url("/public/images/ImageCadastro.png");
-   background-size: cover; /* Faz a imagem cobrir o elemento */
+   object-fit: cover; /* Faz a imagem cobrir o elemento */
+   object-position: right;
    background-position: center; /* Centraliza a imagem */
    background-repeat: no-repeat; /* Evita repetição da imagem */
    width: 100%; /* Ajusta a largura do contêiner */
@@ -121,7 +127,7 @@
 .Icons {
    display: flex;
    align-items: flex-end; /* Alinha o ícone no final da div FormGroup vertical e horizontalmente */
-   margin-top: 2rem;
+   margin-top: 1.7rem;
    margin-left: -3rem;
    margin-bottom: 0.5rem;
 }

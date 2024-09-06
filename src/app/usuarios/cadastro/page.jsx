@@ -14,7 +14,7 @@ export default function Cadastro() {
 
                <div className={styles.Titulo}>
                   <label htmlFor="nomeProjeto">GARDEN</label>
-                  <label htmlFor="Acesse" className={styles.Retornar}>
+                  <label htmlFor="Acesse" className={styles.CriarConta}>
                      Criar conta:
                   </label>
                </div>
@@ -117,8 +117,8 @@ export default function Cadastro() {
          <div>
             <Image
                src="/images/ImageCadastro.png"
-               width={500}
-               height={500}
+               width={2880}
+               height={2048}
                alt="Imagem"
                className={styles.BackgroundImageCadastro}
             />
