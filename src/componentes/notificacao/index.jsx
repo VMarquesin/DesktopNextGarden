@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import styles from "./index.module.css"
 import Image from "next/image";
 
 export default function Notificacoes() {
   const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false);
+
+  const notificacaoRef = useRef();
 
   // Exemplo de lista de notificações
   const notificacoes = [
@@ -20,8 +22,8 @@ export default function Notificacoes() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-       if (notificationRef.current && !notificationRef.current.contains(event.target)) {
-          setShowNotifications(false);
+       if (notificacaoRef.current && !notificacaoRef.current.contains(event.target)) {
+        setMostrarNotificacoes(false);
        }
     };
 
@@ -45,7 +47,7 @@ export default function Notificacoes() {
 
       {/* Lista de notificações que aparece quando o estado mostrarNotificacoes é true */}
       {mostrarNotificacoes && (
-        <div className={styles.listaNotificacoes}>
+        <div ref={notificacaoRef} className={styles.listaNotificacoes}>
           {notificacoes.length > 0 ? (
             notificacoes.map((notificacao) => (
               <div key={notificacao.id} className={styles.notificacao}>

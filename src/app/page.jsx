@@ -18,6 +18,8 @@ import Dashboard from "../componentes/dashboard";
 import PacientePerfil from "../componentes/perfilPaciente";
 import Notifications from "../componentes/notificacao";
 
+import { Feather } from "react-icons/fa";
+
 export default function Home() {
    const [Tela, setTela] = useState(0);
 
@@ -97,13 +99,14 @@ export default function Home() {
                         onClick={() => setTela(2)}
                         className={Tela === 2 ? styles.activeButton : " "}
                      >
-                        <Image
+                        {/* <Image
                            src="/icones/diario.svg"
                            alt="Diario"
                            width={20}
                            height={20}
                            className={styles.icone}
-                        />
+                        /> */}
+                        <book-open/>
                         <p>Diário</p>
                      </button>
                   </li>
