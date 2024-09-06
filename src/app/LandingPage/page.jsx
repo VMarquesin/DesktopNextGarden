@@ -4,7 +4,7 @@ import styles from "./page.module.css";
 export default function Page() {
    return (
       <div className={styles.container}>
-         <header className={styles.header}>
+         <div className={styles.header}>
             <div className={styles.topBar}>
                <div className={styles.logo}>GARDEN</div>
                <nav className={styles.nav}>
@@ -19,13 +19,16 @@ export default function Page() {
                <button className={styles.saibaMais}>Saiba Mais</button>
             </div>
 
-            <Image
-               src="/images/BackgroundHeader.jpg"
-               fill={true}
-               alt="Tela de fundo"
-               className={styles.BackgroundHeader}
-            />
-         </header>
+            <div className={styles.BackgroundHeader}>
+               <Image
+                  src="/images/BackgroundHeader.jpg"
+                  width={1440}
+                  height={2207}
+                  alt="Tela de fundo"
+                  className={styles.BackgroundHeader}
+               />
+            </div>
+         </div>
 
          <section id="paciente" className={styles.pacienteSection}>
             <div className={styles.pacienteIntro}>
