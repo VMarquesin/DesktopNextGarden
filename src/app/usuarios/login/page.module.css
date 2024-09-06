@@ -119,7 +119,8 @@
 .BackgroundImageLogin {
    grid: image;
    background-image: url("/public/images/ImageLogin.png");
-   background-size: cover; /* Faz a imagem cobrir o elemento */
+   object-fit: cover; 
+   object-position: right /*Escolhe qual parte da imagem ira aparecer */;
    background-position: center; /* Centraliza a imagem */
    background-repeat: no-repeat; /* Evita repetição da imagem */
    width: 100%; /* Ajusta a largura do contêiner */

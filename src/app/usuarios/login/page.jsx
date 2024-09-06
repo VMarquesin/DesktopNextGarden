@@ -70,9 +70,9 @@ export default function Login() {
 
          <div>
             <Image
-               src="/ImageLogin.png"
-               width={500}
-               height={500}
+               src="/images/ImageLogin.png"
+               width={2880}
+               height={2048}
                alt="Imagem"
                className={styles.BackgroundImageLogin}
             />
