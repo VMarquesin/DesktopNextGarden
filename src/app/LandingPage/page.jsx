@@ -4,29 +4,29 @@ import styles from "./page.module.css";
 export default function Page() {
    return (
       <div className={styles.container}>
-         <div className={styles.header}>
-            <div className={styles.topBar}>
-               <div className={styles.logo}>GARDEN</div>
-               <nav className={styles.nav}>
-                  <a href="#paciente">Paciente</a>
-                  <a href="#seguranca">Segurança</a>
-                  <a href="#psicologo">Psicólogo</a>
-                  <a href="#login">Login</a>
-               </nav>
-            </div>
-            <div className={styles.hero}>
-               <p>Texto introdutório aqui.</p>
-               <button className={styles.saibaMais}>Saiba Mais</button>
-            </div>
+         <div className={styles.BackgroundHeader}>
+            <div className={styles.header}>
+               <div className={styles.topBar}>
+                  <div className={styles.logo}>GARDEN</div>
+                  <nav className={styles.nav}>
+                     <a href="#paciente">Paciente</a>
+                     <a href="#seguranca">Segurança</a>
+                     <a href="#psicologo">Psicólogo</a>
+                     <a href="#login">Login</a>
+                  </nav>
+               </div>
+               <div className={styles.hero}>
+                  <p>Texto introdutório aqui.</p>
+                  <button className={styles.saibaMais}>Saiba Mais</button>
+               </div>
 
-            <div className={styles.BackgroundHeader}>
-               <Image
-                  src="/images/BackgroundHeader.jpg"
+               {/* <Image
+                  src="/public/images/BackgroundHeader.jpg"
                   width={1440}
                   height={2207}
                   alt="Tela de fundo"
                   className={styles.BackgroundHeader}
-               />
+               /> */}
             </div>
          </div>
 
