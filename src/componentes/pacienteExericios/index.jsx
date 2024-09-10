@@ -9,13 +9,13 @@ export default function PacienteExercicios() {
          <aside className={styles.sidebar}>
             <ul className={styles.anotacoesLista}>
                <li>
-                  <strong>01/08/2024</strong> <p>Anotação 1</p>
+                  <strong>08/09/2024</strong> <p>Atividade 0</p>
                </li>
                <li>
-                  <strong>15/08/2024</strong> <p>Anotação 2</p>
+                  <strong>15/05/2024</strong> <p>Atividade 02</p>
                </li>
                <li>
-                  <strong>20/08/2024</strong> <p>Anotação 3</p>
+                  <strong>10/02/2024</strong> <p>Atividade 03</p>
                </li>
             </ul>
          </aside>

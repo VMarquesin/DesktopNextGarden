@@ -15,18 +15,12 @@ import PacienteExercicios from "../componentes/pacienteExericios";
 import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
-import PacientePerfil from "../componentes/perfilPaciente";
 import Notifications from "../componentes/notificacao";
-
-import { Feather } from "react-icons/fa";
+// import { Feather } from "react-icons/fa";
 
 export default function Home() {
+   
    const [Tela, setTela] = useState(0);
-
-   //  const [modalAberto, setModalAberto] = useState(false);
-
-   //  const abrirModal = () => setModalAberto(true);
-   //  const fecharModal = () => setModalAberto(false);
 
    return (
       <div className={styles.containerGlobal}>
@@ -34,6 +28,9 @@ export default function Home() {
             <title>Área de Trabalho - Psicólogo</title>
          </Head>
          <div className={styles.container}>
+
+            {/* Topbar */}
+
             <header className={styles.header}>
                <div className={styles.headercontainer}>
                   <div className={styles.logo}>Garden Logo</div>
@@ -42,13 +39,6 @@ export default function Home() {
                         <li>
                            <div className={styles.notifications}>
                               <Notifications />
-                              {/* <Image
-                                    src="/icones/Notification.svg"
-                                    alt="sino de notificação"
-                                    width={20}
-                                    height={20}
-                                    className={styles.icone}
-                                 /> */}
                            </div>
                         </li>
                         <li>
@@ -65,6 +55,8 @@ export default function Home() {
                   </nav>
                </div>
             </header>
+
+            {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>
                <PacienteButton />
@@ -125,27 +117,6 @@ export default function Home() {
                         />
                         <p>Exercícios</p>
                      </button>
-
-                     {/* opção abrir modal */}
-                     {/* <button
-                        data-target="#exercicios"
-                        onClick={abrirModal}
-                     ></button>
-                     {modalAberto && (
-                        <div className={styles.modal}>
-                           <div className={styles.modalContent}>
-                              <span
-                                 className={styles.closeButton}
-                                 onClick={fecharModal}
-                              >
-                                 &times;
-                              </span>
-
-                              <h2>Conteudo</h2>
-                              <p>conteudo modal</p>
-                           </div>
-                        </div>
-                     )} */}
                   </li>
                   <li>
                      <button
@@ -199,4 +170,36 @@ export default function Home() {
          </div>
       </div>
    );
+}
+
+
+
+   //  const [modalAberto, setModalAberto] = useState(false);
+
+   //  const abrirModal = () => setModalAberto(true);
+   //  const fecharModal = () => setModalAberto(false);
+
+{
+   /* opção abrir modal */
+}
+{
+   /* <button
+                        data-target="#exercicios"
+                        onClick={abrirModal}
+                     ></button>
+                     {modalAberto && (
+                        <div className={styles.modal}>
+                           <div className={styles.modalContent}>
+                              <span
+                                 className={styles.closeButton}
+                                 onClick={fecharModal}
+                              >
+                                 &times;
+                              </span>
+
+                              <h2>Conteudo</h2>
+                              <p>conteudo modal</p>
+                           </div>
+                        </div>
+                     )} */
 }

@@ -7,9 +7,9 @@ import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
 export default function PacienteButton() {
-   const [nomePaciente, setNomePaciente] = useState("Paciente");
-   const [pacienteSelecionado, setPacienteSelecionado] = useState(null);
-   const [showPerfil, setShowPerfil] = useState(false);
+   const [nomePaciente, setNomePaciente] = useState("Paciente");  // paciente atualmente selecionado
+   const [pacienteSelecionado, setPacienteSelecionado] = useState(null);  //objeto do paciente atualmente selecionado
+   const [showPerfil, setShowPerfil] = useState(false);  //exibição do perfil do paciente
 
    const pacientes = [
       {
@@ -53,15 +53,14 @@ export default function PacienteButton() {
       },
    ];
    function selecionarPaciente(paciente) {
-      setNomePaciente(paciente.nome);
-      setPacienteSelecionado(paciente);
-      setShowPerfil(true);
+      setNomePaciente(paciente.nome);  // Atualiza o nome exibido no botão
+      setPacienteSelecionado(paciente);  // Define o paciente selecionado
+      setShowPerfil(true);  // Exibe o perfil do paciente
    }
 
-   const handleSaveNote = (nota) => {
-      console.log(`Nota salva para ${pacienteSelecionado.nome}: ${nota}`);
-      // Lógica para salvar a nota na API
-   };
+   // const handleSaveNote = (nota) => {
+   //    console.log(`Nota salva para ${pacienteSelecionado.nome}: ${nota}`);
+   // };
 
    return (
       <div>
@@ -69,9 +68,9 @@ export default function PacienteButton() {
             <button
                id="pacienteButton"
                className={styles.botaoPaciente}
-               onClick={() => setShowPerfil(!showPerfil)}
+               onClick={() => setShowPerfil(!showPerfil)}  // Mostrar e esconder o perfil
             >
-               {nomePaciente}
+               {nomePaciente}  {/* Nome do paciente exibido no botão */}
             </button>
             <input
                type="checkbox"
@@ -93,7 +92,7 @@ export default function PacienteButton() {
                   <p
                      key={paciente.nome}
                      className={styles.pacienteItem}
-                     onClick={() => selecionarPaciente(paciente)}
+                     onClick={() => selecionarPaciente(paciente)}  // Seleção do paciente
                   >
                      {paciente.nome}
                   </p>
@@ -104,8 +103,8 @@ export default function PacienteButton() {
          {showPerfil && pacienteSelecionado && (
             <main>
                <PacientePerfil
-                  paciente={pacienteSelecionado}
-                  onSaveNote={handleSaveNote}
+                  paciente={pacienteSelecionado}  // Passa o paciente selecionado para o componente de perfil
+                  // onSaveNote={handleSaveNote}
                />
             </main>
          )}
