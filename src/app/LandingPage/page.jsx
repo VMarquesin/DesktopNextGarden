@@ -5,29 +5,28 @@ export default function Page() {
    return (
       <div className={styles.container}>
          <div className={styles.BackgroundHeader}>
+            <Image
+               className={styles.logo}
+               src="/images/LogoGarden.png"
+               width={200}
+               height={100}
+               alt="Picture of the author"
+            />
             <div className={styles.header}>
                <div className={styles.topBar}>
-                  <div className={styles.logo}>GARDEN</div>
                   <nav className={styles.nav}>
-                     <a href="#paciente">Paciente</a>
-                     <a href="#seguranca">Segurança</a>
-                     <a href="#psicologo">Psicólogo</a>
-                     <a href="#login">Login</a>
+                     <a href="#paciente">PACIENTE</a>
+                     <a href="#seguranca">SEGURANÇA</a>
+                     <a href="#psicologo">PSICÓLOGO</a>
+                     <a href="#login">LOGIN</a>
                   </nav>
                </div>
-               <div className={styles.hero}>
-                  <p>Texto introdutório aqui.</p>
-                  <button className={styles.saibaMais}>Saiba Mais</button>
-               </div>
-
-               {/* <Image
-                  src="/public/images/BackgroundHeader.jpg"
-                  width={1440}
-                  height={2207}
-                  alt="Tela de fundo"
-                  className={styles.BackgroundHeader}
-               /> */}
             </div>
+         </div>
+
+         <div className={styles.hero}>
+            <p>Texto introdutório aqui.</p>
+            <button className={styles.saibaMais}>Saiba Mais</button>
          </div>
 
          <section id="paciente" className={styles.pacienteSection}>
@@ -67,14 +66,7 @@ export default function Page() {
 
          <section id="seguranca" className={styles.segurancaSection}>
             <div className={styles.segurancaContent}>
-               <div className={styles.segurancaImage}>
-                  <Image
-                     src="/background-image.png"
-                     alt="Background"
-                     layout="fill"
-                     objectFit="cover"
-                  />
-               </div>
+               <div className={styles.segurancaImage}></div>
                <div className={styles.textContent}>
                   <h2>Expresse sem medo</h2>
                   <p>Texto explicativo sobre segurança.</p>

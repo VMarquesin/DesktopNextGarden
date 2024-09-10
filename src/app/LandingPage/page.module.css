@@ -19,22 +19,27 @@
 }
 
 .header {
-   background-color: #f8f9fa;
-   padding: 20px;
+   display: flex;
    z-index: 10;
+   font-size: 3rem;
+   font-weight: bolder;
 }
+
+/* .logo {
+   
+} */
 
 .topBar {
    display: flex;
-   justify-content: space-between;
-   align-items: center;
+   /* justify-content: space-between; */
+   /* align-items: center; */
    z-index: 10;
 }
 
 .nav a {
-   margin-right: 20px;
+   margin-right: 2rem;
    text-decoration: none;
-   color: #074a05;
+   color: #ffffff;
    z-index: 10;
 }
 
