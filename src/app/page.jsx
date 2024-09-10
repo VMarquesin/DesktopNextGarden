@@ -99,14 +99,14 @@ export default function Home() {
                         onClick={() => setTela(2)}
                         className={Tela === 2 ? styles.activeButton : " "}
                      >
-                        {/* <Image
+                        <Image
                            src="/icones/diario.svg"
                            alt="Diario"
                            width={20}
                            height={20}
                            className={styles.icone}
-                        /> */}
-                        <book-open/>
+                        />
+                        <book-open />
                         <p>Diário</p>
                      </button>
                   </li>

@@ -137,16 +137,16 @@
    background-color: #ddd;
 }
 .activeButton {
-   color: white;
-   background-color: #074a05 !important;
+   /* color: white; */
+   background-color: #ddd !important;
    border-radius: 7px;
 }
-.icone {
+/* .icone {
    color: #e2e7e2 !important;
 }
 .activeIcone {
    color: white;
-}
+} */
 .sidebar ul li button p {
    font-size: 1.6rem;
    margin-left: 1rem;
