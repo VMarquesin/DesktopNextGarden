@@ -5,60 +5,63 @@ export default function Page() {
    return (
       <div className={styles.container}>
          <div className={styles.BackgroundHeader}>
+         <div className={styles.header}>
+         <div className={styles.topBar}>
             <Image
                className={styles.logo}
-               src="/images/LogoGarden.png"
-               width={200}
-               height={100}
+               src="/images/LogoWhite.png"
+               width={700}
+               height={300}
                alt="Picture of the author"
             />
-            <div className={styles.header}>
-               <div className={styles.topBar}>
                   <nav className={styles.nav}>
-                     <a href="#paciente">PACIENTE</a>
-                     <a href="#seguranca">SEGURANÇA</a>
-                     <a href="#psicologo">PSICÓLOGO</a>
-                     <a href="#login">LOGIN</a>
+                     <ul>
+                     <li><a href="#paciente">PACIENTE</a></li>
+                     <li><a href="#seguranca">SEGURANÇA</a></li>
+                     <li><a href="#psicologo">PSICÓLOGO</a></li>
+                     <li><a href="#login">LOGIN</a></li>
+                     </ul>                   
                   </nav>
                </div>
             </div>
-         </div>
+        
 
          <div className={styles.hero}>
-            <p>Texto introdutório aqui.</p>
+            <p> Seu bem estar está em suas mãos e o Garden está aqui para te ajudar</p>
             <button className={styles.saibaMais}>Saiba Mais</button>
          </div>
 
+         </div>
          <section id="paciente" className={styles.pacienteSection}>
             <div className={styles.pacienteIntro}>
                <p>Informações sobre o paciente.</p>
             </div>
             <div className={styles.pacienteCards}>
                <div className={styles.card}>
-                  <Image
+                  {/* <Image
                      src="/image1.png"
                      alt="Imagem 1"
                      width={150}
                      height={150}
-                  />
+                  /> */}
                   <p>Descrição 1</p>
                </div>
                <div className={styles.card}>
-                  <Image
+                  {/* <Image
                      src="/image2.png"
                      alt="Imagem 2"
                      width={150}
                      height={150}
-                  />
+                  /> */}
                   <p>Descrição 2</p>
                </div>
                <div className={styles.card}>
-                  <Image
+                  {/* <Image
                      src="/image3.png"
                      alt="Imagem 3"
                      width={150}
                      height={150}
-                  />
+                  /> */}
                   <p>Descrição 3</p>
                </div>
             </div>
