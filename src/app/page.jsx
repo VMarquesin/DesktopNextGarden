@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 import { useState } from "react";
 import Image from "next/image";
 
-import PacienteButton from "../componentes/pacienteButton";
+import PacienteButton from "../componentes/pacienteButton";'   '
 import PsicologoAnotacao from "../componentes/psicologoAnotacao";
 
 import PacienteDiario from "../componentes/pacienteDiario";
