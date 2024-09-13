@@ -38,7 +38,7 @@
 .mainContent {
    grid-area: main;
    width: 100%;
-   background-color: #074a05;
+   /* background-color: #7baf79; */
 }
 
 /* .anotacao {
