@@ -1,4 +1,4 @@
-.container {
+/* .container {
    display: grid;
    grid-template-areas: "sidebar main";
    grid-template-columns: 200px 1fr;
@@ -19,11 +19,11 @@
    flex-direction: column;
    width: 100%;
    list-style-type: none;
-   /* padding: 2rem; */
+ 
 }
 
 .diarioLista li {
-   /* margin-bottom: 2rem; */
+ 
    padding: 1rem;
    cursor: pointer;
    transition: 0.3s;
@@ -31,15 +31,15 @@
 
 .diarioLista li:hover {
    background-color: #ddd;
-}
+} */
 
 /* container anotação */
 
-.mainContent {
+/* .mainContent {
    grid-area: main;
    width: 100%;
-   /* background-color: #7baf79; */
-}
+  
+} */
 
 /* .anotacao {
    display: flex;
@@ -102,3 +102,65 @@
    color: black;
    margin-left: 11rem;
 } */
+
+.container {
+   display: grid;
+   grid-template-columns: 1fr 3fr;
+   gap: 20px;
+   height: 100vh;
+ }
+ 
+ .sidebar {
+   background-color: #f0f0f0;
+   padding: 20px;
+ }
+ 
+ .sidebar ul {
+   list-style-type: none;
+   padding: 0;
+ }
+ 
+ .sidebar li {
+   cursor: pointer;
+   padding: 10px;
+   border-bottom: 1px solid #ccc;
+ }
+ 
+ .sidebar li:hover {
+   background-color: #ddd;
+ }
+ 
+ .visualizacaoNota {
+   background-color: #074a05;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ 
+ .notaDetalhada {
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   width: 100%;
+   max-width: 600px;
+ }
+ 
+ .notaHeader {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   margin-bottom: 20px;
+ }
+ 
+ .fotoPaciente {
+   border-radius: 50%;
+ }
+ 
+ .informacoesPaciente h2 {
+   margin: 0;
+ }
+ 
+ .conteudoNota {
+   font-size: 16px;
+ }
+ 
