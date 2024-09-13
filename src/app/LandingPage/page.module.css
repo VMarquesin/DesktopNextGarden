@@ -10,6 +10,17 @@
    /* z-index: 0; */
 }
 
+.BackgroundPaciente {
+   background-image: url("/images/.BackgroundPaciente.jpg");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 2260px;
+   margin-left: 55%;
+   margin-top: -15rem;
+}
+
 .container {
    font-family: Arial, sans-serif;
    color: #333;
@@ -53,17 +64,17 @@
 }
 
 .saibaMais {
-   background: linear-gradient(to right, #074a05, #32cd32);
+   width: 25rem;
+   padding: 1.6rem;
+   font-size: 2rem;
+   color: #fff;
+   background: linear-gradient(40deg, #2b8a0e, #1c351b);
    border: none;
-   padding: 10px 20px;
-   color: white;
-   border-radius: 7px;
-   margin-top: 7rem;
+   border-radius: 5px;
    cursor: pointer;
-}
-
-.saibaMais:hover {
-   
+   transition: 0.3s;
+   align-items: center;
+   margin-top: 20%;
 }
 
 
@@ -75,6 +86,12 @@
    background-color: #f0f0f0;
    padding: 20px;
    border-radius: 10px;
+   justify-content: center;
+   align-items: start;
+   display: flex;
+   width: 60rem;
+   font-size: 2rem;
+   font-family: Arial, sans-serif;
 }
 
 .pacienteCards {

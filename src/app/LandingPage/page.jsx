@@ -30,12 +30,22 @@ export default function Page() {
             <p> Seu bem estar está em suas mãos e o Garden está aqui para te ajudar</p>
             <button className={styles.saibaMais}>Saiba Mais</button>
          </div>
-
          </div>
+
          <section id="paciente" className={styles.pacienteSection}>
-            <div className={styles.pacienteIntro}>
-               <p>Informações sobre o paciente.</p>
+         <div className={styles.BackgroundPaciente}>
+                  <Image 
+                     src="/images/BackgroundPaciente.png"       //Imagem de fundo parte PACIENTE
+                     alt="Escada das emoções"
+                     width={743}
+                     height={2389}
+                  />
+
+               
             </div>
+
+            
+
             <div className={styles.pacienteCards}>
                <div className={styles.card}>
                   {/* <Image
