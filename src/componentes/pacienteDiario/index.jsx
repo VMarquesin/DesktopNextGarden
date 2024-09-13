@@ -41,11 +41,11 @@
 //    );
 // }
 import { useState, useEffect } from "react";
-// import axios from 'axios'; // para chamadas à API
+import axios from "axios"; // para chamadas à API
 import Image from "next/image";
 import styles from "./index.module.css";
 
-export default function PacienteDiario({ pacienteId }) {
+export default function PacienteDiario({ dia_id }) {
    const [notas, setNotas] = useState([]);
    const [notaSelecionada, setNotaSelecionada] = useState(null);
    const [paciente, setPaciente] = useState(null);
@@ -54,7 +54,7 @@ export default function PacienteDiario({ pacienteId }) {
    useEffect(() => {
       async function fetchNotas() {
          try {
-            const response = await axios.get(`/api/notas/${pacienteId}`);
+            const response = await axios.get(`/diario/${dia_id}`);
             setNotas(response.data);
          } catch (error) {
             console.error("Erro ao buscar notas:", error);
@@ -63,7 +63,7 @@ export default function PacienteDiario({ pacienteId }) {
 
       async function fetchPaciente() {
          try {
-            const response = await axios.get(`/api/paciente/${pacienteId}`);
+            const response = await axios.get(`/paciente/${pac_id}`);
             setPaciente(response.data);
          } catch (error) {
             console.error("Erro ao buscar paciente:", error);
@@ -72,7 +72,7 @@ export default function PacienteDiario({ pacienteId }) {
 
       fetchNotas();
       fetchPaciente();
-   }, [pacienteId]);
+   }, [dia_id]);
 
    return (
       <div className={styles.container}>
