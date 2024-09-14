@@ -45,7 +45,7 @@ import axios from "axios"; // para chamadas à API
 import Image from "next/image";
 import styles from "./index.module.css";
 
-export default function PacienteDiario({ dia_id }) {
+export default function DiarioPaciente({ dia_id }) {
    const [notas, setNotas] = useState([]);
    const [notaSelecionada, setNotaSelecionada] = useState(null);
    const [paciente, setPaciente] = useState(null);
