@@ -32,6 +32,8 @@ export default function Page() {
          </div>
          </div>
 
+
+{/* Seção paciente */}
          <section id="paciente" className={styles.pacienteSection}>
          <div className={styles.BackgroundPaciente}>
                   <Image 
@@ -40,12 +42,14 @@ export default function Page() {
                      width={743}
                      height={2389}
                   />
-
-               
             </div>
 
-            
-
+            <div className={styles.pacienteIntro}>
+             <p>No aplicativo Garden, você tem a oportunidade excepcional de elevar seu autoconhecimento a níveis inimagináveis, embarcando em uma jornada única de exploração dos seus pensamentos, emoções e convicções mais profundas. Através de uma colaboração verdadeira, 
+               ajudamos você a acessar suas crenças mais arraigadas e a trabalhar de forma consciente para impulsionar sua evolução pessoal, espiritual e profissional.
+             </p>
+           </div>
+           
             <div className={styles.pacienteCards}>
                <div className={styles.card}>
                   {/* <Image
