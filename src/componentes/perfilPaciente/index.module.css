@@ -1,14 +1,22 @@
+/* .refContainer {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+   width: 100%;
+} */
+
 .perfilContainer {
    position: absolute;
    top: 50%;
    left: 50%;
-   transform: translate(-30%, -44%);
-   padding: 2rem;
+   transform: translate(-30%, -50%);
+   /* padding: 2rem; */
    background-color: #f9f9f9;
    border: 1px solid #ddd;
    border-radius: 7px;
-   width: 600px;
-   height: 750px;
+   width: 60rem;
+   height: 75rem;
    z-index: 20;
    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
@@ -26,14 +34,14 @@
 .fotoPerfil {
    width: 5rem;
    height: 5rem;
-   /* border-radius: 50%; */
+   border-radius: 50%;
 }
 .atributos {
    margin-left: 11rem;
    margin-bottom: 3rem;
 }
 .atributos p {
-   margin-bottom: 1.5rem;
+   margin-bottom: 1.2rem;
 }
 .containerNotaSave {
    display: flex;
