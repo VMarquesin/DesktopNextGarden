@@ -26,13 +26,13 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
             </div>
             <div className={styles.atributos}>
                <p>Telefone: {paciente.pac_telefone}</p>
-               <p>Data de Nascimento: {paciente.dataNascimento}</p>
-               <p>CPF: {paciente.cpf}</p>
-               <p>Filhos: {paciente.filhos}</p>
-               <p>Escolaridade: {paciente.escolaridade}</p>
-               <p>Trabalho: {paciente.trabalho}</p>
-               <p>Estado Civil: {paciente.estadoCivil}</p>
-               <p>Status: {paciente.status}</p>
+               <p>Data de Nascimento: {paciente.pac_data_nasc}</p>
+               <p>CPF: {paciente.pac_cpf}</p>
+               <p>Filhos: {paciente.pac_filho}</p>
+               <p>Escolaridade: {paciente.pac_escolaridade}</p>
+               <p>Trabalho: {paciente.pac_trabalho}</p>
+               <p>Estado Civil: {paciente.pac_estado_civil}</p>
+               <p>Status: {paciente.pac_status}</p>
             </div>
             <div className={styles.containerNotaSave}>
 

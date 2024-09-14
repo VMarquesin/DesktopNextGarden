@@ -14,6 +14,12 @@
    margin: 0.2rem;
 }
 
+.sidebar h3 {
+   display: flex;
+   justify-content: center;
+   margin-top: 0.6rem;
+}
+
 .anotacoesLista {
    display: flex;
    flex-direction: column;
@@ -99,4 +105,102 @@
    background-color: #ccc;
    color: black;
    margin-left: 11rem;
+}
+
+/* Estilos para o modal */
+.modal {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0, 0, 0, 0.5); /* Fundo escuro translúcido */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 999; /* Garantir que o modal esteja acima de outros elementos */
+}
+
+.modalContent {
+   background-color: #fff;
+   padding: 20px;
+   border-radius: 10px;
+   width: 400px; /* Largura do modal */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+}
+
+.modalContent h2 {
+   margin-bottom: 20px;
+   font-size: 20px;
+   color: #333;
+}
+
+/* Lista de pacientes dentro do modal */
+.pacientesLista {
+   list-style: none;
+   padding: 0;
+   margin: 0 0 20px 0;
+   width: 100%;
+   max-height: 200px;
+   overflow-y: auto; /* Para permitir scroll se a lista for longa */
+}
+
+.pacientesLista li {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px;
+   border-bottom: 1px solid #eee;
+}
+
+.pacientesLista li:last-child {
+   border-bottom: none;
+}
+
+.pacientesLista img {
+   border-radius: 50%;
+}
+
+.pacientesLista span {
+   flex-grow: 1;
+   margin-left: 10px;
+   font-size: 16px;
+   color: #333;
+}
+
+/* Estilos dos botões na modal */
+.modalBotoes {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.salvarButton,
+.cancelarButton {
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+.salvarButton {
+   background-color: #074a05;
+   color: white;
+   transition: 0.3s;
+}
+.salvarButton:hover{
+   background-color: #046b08;
+}
+
+.cancelarButton {
+   background-color: #ccc;
+   color: #000;
+   transition: 0.3s;
+}
+.cancelarButton:hover{
+   background-color: #b3b0b0;
 }

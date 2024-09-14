@@ -39,8 +39,7 @@
 .container {
    display: grid;
    grid-template-columns: 1fr 3fr;
-   gap: 20px;
-   height: 100vh;
+   height: 100%;
 }
 
 .sidebar {
@@ -52,14 +51,13 @@
    margin-top: 0.2rem;
 }
 
-.sidebar h3{
+.sidebar h3 {
    display: flex;
    justify-content: center;
    margin-top: 0.6rem;
 }
 
 .sidebar ul {
-  
    list-style-type: none;
    padding: 0;
 }
@@ -107,4 +105,10 @@
 
 .conteudoNota {
    font-size: 16px;
+}
+
+.avisoNota {
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }

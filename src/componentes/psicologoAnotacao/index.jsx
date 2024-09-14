@@ -43,6 +43,7 @@ export default function PsicologoAnotacao() {
    return (
       <div className={styles.container}>
          <aside className={styles.sidebar}>
+            <h3>Suas Notas</h3>
             <ul className={styles.anotacoesLista}>
                {anotacoes.map((anotacao) => (
                   <li key={anotacao.id}>
