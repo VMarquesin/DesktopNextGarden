@@ -40,8 +40,11 @@
 //       </div>
 //    );
 // }
+"use cliente";
+
 import { useState, useEffect } from "react";
 import axios from "axios"; // para chamadas à API
+
 import Image from "next/image";
 import styles from "./index.module.css";
 
@@ -81,9 +84,12 @@ export default function DiarioPaciente({ dia_id }) {
             <h3>Notas do Diário</h3>
             <ul>
                {notas.map((nota) => (
-                  <li key={nota.id} onClick={() => setNotaSelecionada(nota)}>
-                     <p>{nota.data}</p>
-                     <p>{nota.conteudo.slice(0, 20)}...</p>{" "}
+                  <li
+                     key={nota.dia_id}
+                     onClick={() => setNotaSelecionada(nota)}
+                  >
+                     <p>{nota.dia_data}</p>
+                     <p>{nota.conteudo.slice(0, 15)}...</p>{" "}
                      {/* Mostra os primeiros 20 caracteres */}
                   </li>
                ))}
@@ -105,8 +111,9 @@ export default function DiarioPaciente({ dia_id }) {
                               className={styles.fotoPaciente}
                            />
                            <div className={styles.informacoesPaciente}>
-                              <h2>{paciente.nome}</h2>
-                              <p>{notaSelecionada.data}</p>
+                              <h2>{paciente.usu_nome}</h2>
+                              {/* tem que associar a tabela usuarios ou ja push of pacientes? */}
+                              <p>{notaSelecionada.dia_data}</p>
                            </div>
                         </>
                      )}
