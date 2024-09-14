@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 import Image from "next/image";
@@ -17,7 +17,7 @@ export default function PacienteButton() {
    useEffect(() => {
       async function fetchPacientes() {
          try {
-            const response = await axios.get("/api/pacientes"); // Ajuste a rota para sua API
+            const response = await axios.get("/paciente");
             setPacientes(response.data);
          } catch (error) {
             console.error("Erro ao buscar pacientes:", error);
@@ -35,7 +35,7 @@ export default function PacienteButton() {
 
    const handleSaveNote = async (nota) => {
       try {
-         await axios.post("/api/anotacoes", {
+         await axios.post("/psi_anotacao", {
             pacienteId: pacienteSelecionado.id,
             conteudo: nota,
          });
@@ -91,10 +91,6 @@ export default function PacienteButton() {
    //    setShowPerfil(true); // Exibe o perfil do paciente
    // }
 
-   // const handleSaveNote = (nota) => {
-   //    console.log(`Nota salva para ${pacienteSelecionado.nome}: ${nota}`);
-   // };
-
    return (
       <div>
          <div className={styles.pacienteContainer}>
@@ -137,7 +133,7 @@ export default function PacienteButton() {
             <main>
                <PacientePerfil
                   paciente={pacienteSelecionado} // Passa o paciente selecionado para o componente de perfil
-                  // onSaveNote={handleSaveNote}
+                  onSaveNote={handleSaveNote}
                />
             </main>
          )}

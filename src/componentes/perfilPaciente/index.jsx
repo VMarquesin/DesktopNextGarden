@@ -25,7 +25,7 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
                </div>
             </div>
             <div className={styles.atributos}>
-               <p>Telefone: {paciente.telefone}</p>
+               <p>Telefone: {paciente.pac_telefone}</p>
                <p>Data de Nascimento: {paciente.dataNascimento}</p>
                <p>CPF: {paciente.cpf}</p>
                <p>Filhos: {paciente.filhos}</p>
