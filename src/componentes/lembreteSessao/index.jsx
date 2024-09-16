@@ -6,7 +6,7 @@ import FullCalendar from "@fullcalendar/react"; // Importando o componente de ca
 import dayGridPlugin from "@fullcalendar/daygrid"; // Importando o plugin de grade diária
 import styles from "./index.module.css"; // Importando o arquivo de estilos
 
-import { Calendar } from "@fullcalendar/core";
+// import { Calendar } from "@fullcalendar/core";
 // import dayGridPlugin from "@fullcalendar/daygrid";
 
 export default function Calendario() {
@@ -18,6 +18,7 @@ export default function Calendario() {
    return (
       <div className={styles.container}>
          <FullCalendar
+            themeSystem="Cyborg"
             plugins={[dayGridPlugin]} // Definindo o plugin de visualização de grade diária
             initialView="dayGridMonth" // Inicializa com a visão mensal
             events={eventos} // Eventos que serão exibidos no calendário
