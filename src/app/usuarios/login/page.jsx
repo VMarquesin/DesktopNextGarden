@@ -9,6 +9,8 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import api from "../../../services/api";
 
+// import { login } from "../../../../mocks";
+
 function Login() {
    const router = useRouter();
 
