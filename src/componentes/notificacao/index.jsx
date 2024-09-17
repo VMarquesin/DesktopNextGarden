@@ -1,73 +1,94 @@
 import { useState, useEffect, useRef } from "react";
+import styles from "./index.module.css";
 
-import styles from "./index.module.css"
 import Image from "next/image";
+import axios from "axios";
 
 export default function Notificacoes() {
-  const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false);  // Se a lista de notificações está visível
+   const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false); // Se a lista de notificações está visível
+   const [notificacao, setNotificacao] = useState([]);
+   const [notificacaoSelecionada, setNotificacaoSelecionada] = useState(null);
+   const notificacaoRef = useRef(); // Referência para o contêiner
 
-  const notificacaoRef = useRef();  // Referência para o contêiner
+   // Array de uma lista de notificações
 
-  // Array de uma lista de notificações
+   // const notificacoes = [
+   //   { id: 1, mensagem: "Nova mensagem de paciente X" },
+   //   { id: 2, mensagem: "Sessão agendada com paciente Y" },
+   //   { id: 3, mensagem: "Atividade concluída por paciente Z" },
+   // ];
 
-  const notificacoes = [
-    { id: 1, mensagem: "Nova mensagem de paciente X" },
-    { id: 2, mensagem: "Sessão agendada com paciente Y" },
-    { id: 3, mensagem: "Atividade concluída por paciente Z" },
-  ];
+   useEffect(() => {
+      async function fetchNotificacao() {
+         try {
+            const response = await axios.get(`/diario/${dia_id}`);
+            setNotificacao(response.data);
+         } catch (error) {
+            console.error("Error ao receber notificações:", error);
+         }
+      }
 
-  // Alterna entre mostrar ou esconder a lista de notificações
+      fetchNotificacao();
+   }, [dia_id]);
 
-  const toggleNotificacoes = () => {
-    setMostrarNotificacoes(!mostrarNotificacoes);
-  };
+   // Alterna entre mostrar ou esconder a lista de notificações
 
-  useEffect(() => {
+   const toggleNotificacoes = () => {
+      setMostrarNotificacoes(!mostrarNotificacoes);
+   };
 
-    // Verifica se clicou fora de notificações
-    const handleClickOutside = (event) => {
-       if (notificacaoRef.current && !notificacaoRef.current.contains(event.target)) {
-        setMostrarNotificacoes(false);
-       }
-    };
-  
-    // Ouvinte para cliques no documento
-    
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-       document.removeEventListener('mousedown', handleClickOutside);
-    };
- }, []);
+   useEffect(() => {
+      // Verifica se clicou fora de notificações
+      const handleClickOutside = (event) => {
+         if (
+            notificacaoRef.current &&
+            !notificacaoRef.current.contains(event.target)
+         ) {
+            setMostrarNotificacoes(false);
+         }
+      };
 
-  return (
-    <div>
+      // Ouvinte para cliques no documento
 
-      {/* Ícone de notificações */}
-      <button  className={styles.icon} onClick={toggleNotificacoes}> {/* visibilidade da lista */}
-        <Image
-          src="/icones/Notification.svg"
-          alt="Notificações"
-          width={20}
-          height={20}
-         
-        />
-      </button>
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
 
-      {/* Lista de notificações que aparece quando o estado mostrarNotificacoes é true */}
+   return (
+      <div>
+         {/* Ícone de notificações */}
+         <button className={styles.icon} onClick={toggleNotificacoes}>
+            {" "}
+            {/* visibilidade da lista */}
+            <Image
+               src="/icones/Notification.svg"
+               alt="Notificações"
+               width={20}
+               height={20}
+            />
+         </button>
 
-      {mostrarNotificacoes && (
-        <div ref={notificacaoRef} className={styles.listaNotificacoes}>
-          {notificacoes.length > 0 ? (
-            notificacoes.map((notificacao) => (
-              <div key={notificacao.id} className={styles.notificacao}>
-                {notificacao.mensagem}
-              </div>
-            ))
-          ) : (
-            <div className={styles.notificacao}>Sem notificações</div>
-          )}
-        </div>
-      )}
-    </div>
-  )
-};
+         {/* Lista de notificações que aparece quando o estado mostrarNotificacoes é true */}
+
+         {mostrarNotificacoes && (
+            <div ref={notificacaoRef} className={styles.listaNotificacoes}>
+               {notificacao.length > 0 ? (
+                  notificacao.map((notificacao) => (
+                     <li
+                        key={notificacao.id}
+                        onClick={() => setNotificacaoSelecionada(notificacao)}
+                        className={styles.notificacao}
+                     >
+                        {notificacao.mensagem}
+                     </li>
+                  ))
+               ) : (
+                  <div className={styles.notificacao}>Sem notificações</div>
+               )}
+            </div>
+         )}
+      </div>
+   );
+}
