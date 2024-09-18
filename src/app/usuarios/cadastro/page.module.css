@@ -72,7 +72,7 @@
    max-width: 50rem; /* Limita a largura máxima */
    padding: 2rem;
    font-size: 2rem;
-   border: none;
+   border: 2px solid;
    border-bottom: 0.2rem solid #00000054;
    display: flex;
    flex-direction: row;
@@ -90,6 +90,8 @@
    cursor: pointer;
    margin-left: 25%; /* Ajuste para melhor espaçamento */
    transition: background-color 0.3s;
+   margin-top: 1;
+   margin-bottom: 5rem;
 }
 
 .SubmitButton:hover {

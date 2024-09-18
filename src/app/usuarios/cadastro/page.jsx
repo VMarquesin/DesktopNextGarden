@@ -652,6 +652,23 @@ export default function Cadastro() {
 
                   <div className={styles.FormGroup}>
                      <input
+                        type="CEP"
+                        id="CEP"
+                        name="CEP"
+                        placeholder="Digite seu CEP"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/IconeCEP.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone CEP"
+                        className={styles.Icons}
+                     />
+                  </div>
+
+                  <div className={styles.FormGroup}>
+                     <input
                         type="Endereco"
                         id="Endereco"
                         name="Endereco"
@@ -667,40 +684,21 @@ export default function Cadastro() {
                      />
                   </div>
 
-                  <div className={styles.Endereco}>
-                     <div className={styles.FormGroup}>
-                        <input
-                           type="Numero"
-                           id="Numero"
-                           name="Numero"
-                           placeholder="Digite seu Número"
-                           className={styles.InputField}
-                        />
-                        <Image
-                           src="/icones/IconeNumero.svg"
-                           width={25}
-                           height={25}
-                           alt="Icone Numero"
-                           className={styles.Icons}
-                        />
-                     </div>
-
-                     <div className={styles.FormGroup}>
-                        <input
-                           type="CEP"
-                           id="CEP"
-                           name="CEP"
-                           placeholder="Digite seu CEP"
-                           className={styles.InputField}
-                        />
-                        <Image
-                           src="/icones/IconeCEP.svg"
-                           width={25}
-                           height={25}
-                           alt="Icone CEP"
-                           className={styles.Icons}
-                        />
-                     </div>
+                  <div className={styles.FormGroup}>
+                     <input
+                        type="Numero"
+                        id="Numero"
+                        name="Numero"
+                        placeholder="Digite seu Número"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/IconeNumero.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Numero"
+                        className={styles.Icons}
+                     />
                   </div>
 
                   <div className={styles.FormGroup}>
