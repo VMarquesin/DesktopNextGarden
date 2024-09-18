@@ -1,3 +1,9 @@
+.container {
+   font-family: Arial, sans-serif;
+   color: #333;
+   max-width: 100%;
+}
+
 .BackgroundHeader {
    background-image: url("/images/BackgroundHeader.jpg");
    background-size: cover;
@@ -7,20 +13,17 @@
    height: 2227px;
    /* position: relative; */
    /* margin-top: -20rem; */
-   /* z-index: 0; */
+   z-index: 20;
 }
 
-.container {
-   font-family: Arial, sans-serif;
-   color: #333;
-}
 .header .topBar {
    display: flex;
+   margin-top: -6rem;
    padding: 20px 30px;
    justify-content: space-between;
    align-items: center;
    min-height: 75px;
- }
+}
 .header nav ul {
    display: flex;
 }
@@ -40,8 +43,8 @@
    background-color: rgb(3, 161, 24);
 }
 
-.logo{
-   margin-left: -5rem;
+.logo {
+   /* margin-left: -5rem; */
 }
 
 .hero {
@@ -69,39 +72,46 @@
 /* seção paciente */
 
 .BackgroundPaciente {
-   background-image: url("/images/.BackgroundPaciente.jpg");
-   /* background-size: cover; */
-   background-position: center;
+   background-image: url("/images/BackgroundPaciente.png");
+   background-position: right;
    background-repeat: no-repeat;
-   width: 100%;
+   /* width: 100%; */
    height: 2260px;
-   margin-left: 55%;
-   margin-top: -15rem;
-}
-.pacienteSection {
-   padding: 50px 20px;
+   margin-top: -4.3rem;
+   /* margin-left: 60%; */
+   /* margin-top: -45.5rem; */
 }
 
+/* .pacienteSection {
+   padding: 50px 20px;
+} */
+
 .pacienteIntro {
-   background-color: #f0f0f0;
-   padding: 20px;
+   background-color: #fff;
+   color: black;
+   padding: 10rem;
+   position: relative;
+   top: 45rem;
+   left: 15%;
    border-radius: 10px;
-   justify-content: center;
-   align-items: start;
-   display: flex;
-   width: 60rem;
+   width: 85rem;
+   height: 25rem;
    font-size: 2rem;
    font-family: Arial, sans-serif;
 }
 
 .pacienteCards {
    display: flex;
-   justify-content: space-around;
-   margin-top: 30px;
+   justify-content: space-evenly;
+   margin-top: 85rem;
 }
 
 .card {
    text-align: center;
+   transition: transform 0.5s ease;
+}
+.card:hover {
+   transform: scale(1.02);
 }
 
 .segurancaSection {
@@ -111,17 +121,59 @@
    color: white;
 }
 
-.segurancaContent {
+/* seção segurança */
+
+.segurancaImage {
+   background-image: url("/images/BackgroundHeader.jpg");
+   background-size: cover;
+   background-position: top;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 1080px;
    display: flex;
+   flex-direction: row;
+}
+.telemovel {
+   display: flex;
+   align-items: center;
+   margin-left: 1rem;
+}
+.segurancaContent {
+   max-width: 100%;
+   color: black;
 }
 
 .textContent {
-   margin-left: 20px;
+   width: 59.5rem;
+   height: 30rem;
+   color: #fff;
+   margin-top: 29rem;
 }
+.textContent .primeiro {
+   color: #fff;
+}
+.textContent h2 {
+   color: #0c7a08;
+   font-size: 70px;
+   font-weight: bolder;
+}
+.textContent p {
+   margin-top: 2rem;
+   font-size: 26px;
+}
+
+
+/* conteudo gradiente */
 
 .divWithGradient {
    background: linear-gradient(to bottom, #32cd32, #074a05);
    padding: 20px;
+   margin-top: 3rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 90rem;
+   height: 30rem;
    border-radius: 10px 0 10px 0;
    color: white;
 }
