@@ -124,7 +124,7 @@ export default function Page() {
             </div>
          </section>
 
-         <section className={styles.divWithGradient}>
+         <section className={styles.divGradient}>
             <p>
                Integrando o Garden em sua prática, você estará oferecendo uma
                ferramenta adicional de apoio aos seus pacientes, complementando
@@ -134,33 +134,49 @@ export default function Page() {
             </p>
          </section>
 
-         <section id="psicologo" className={styles.psicologoSection}>
-            <div className={styles.psicologoLeft}>
-               <div className={styles.featureCard}>
-                  <i className="icon-example"></i>
-                  <p>Feature 1</p>
+         <section id="psicologo">
+            <div className={styles.contianerPsi}>
+               <div className={styles.backgroundPsicologo}>
+                  {/* <Image
+                  src="/images/fundoPsi.svg"
+                  alt="Imagem 3"
+                  width={1440}
+                  height={2242}
+                  className={styles.backgroundPsicologo}
+               /> */}
+
+                  <div className={styles.psicologoLeft}>
+                     <div className={styles.featureCard}>
+                        <i className="icon-example"></i>
+                        <p>Feature 1</p>
+                     </div>
+                     <div className={styles.featureCard}>
+                        <i className="icon-example"></i>
+                        <p>Feature 2</p>
+                     </div>
+                     <div className={styles.featureCard}>
+                        <i className="icon-example"></i>
+                        <p>Feature 3</p>
+                     </div>
+                  </div>
+
+                  <div className={styles.psicologoRight}>
+                     <h2>Título</h2>
+                     <h3>Subtítulo</h3>
+                     <p>Texto explicativo.</p>
+                  </div>
                </div>
-               <div className={styles.featureCard}>
-                  <i className="icon-example"></i>
-                  <p>Feature 2</p>
-               </div>
-               <div className={styles.featureCard}>
-                  <i className="icon-example"></i>
-                  <p>Feature 3</p>
-               </div>
-            </div>
-            <div className={styles.psicologoRight}>
-               <h2>Título</h2>
-               <h3>Subtítulo</h3>
-               <p>Texto explicativo.</p>
             </div>
          </section>
 
-         <section className={styles.divWithGradient}>
-            <p>
-               Estamos aqui para ser o solo fértil onde suas aspirações podem
-               florescer. Venha mergulhar nas maravilhas do seu jardim interior.
-            </p>
+         <section>
+            <div className={styles.divGradient}>
+               <p>
+                  Estamos aqui para ser o solo fértil onde suas aspirações podem
+                  florescer. Venha mergulhar nas maravilhas do seu jardim
+                  interior.
+               </p>
+            </div>
          </section>
 
          <footer className={styles.footer}>

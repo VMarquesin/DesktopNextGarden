@@ -43,10 +43,6 @@
    background-color: rgb(3, 161, 24);
 }
 
-.logo {
-   /* margin-left: -5rem; */
-}
-
 .hero {
    margin-top: 50rem;
    color: white;
@@ -90,13 +86,22 @@
    background-color: #fff;
    color: black;
    padding: 10rem;
+   display: flex;
    position: relative;
    top: 45rem;
    left: 15%;
    border-radius: 10px;
    width: 85rem;
    height: 25rem;
+}
+
+.pacienteIntro p {
+   display: flex;
+   align-items: center;
+   margin-left: 18rem;
+   width: 68rem;
    font-size: 2rem;
+   line-height: 2.8rem;
    font-family: Arial, sans-serif;
 }
 
@@ -162,34 +167,63 @@
    font-size: 26px;
 }
 
-
 /* conteudo gradiente */
 
-.divWithGradient {
-   background: linear-gradient(to bottom, #32cd32, #074a05);
+.divGradient {
+   background: linear-gradient(to bottom, #0c7a08, #002621);
    padding: 20px;
-   margin-top: 3rem;
+   margin: 20rem auto;
    display: flex;
    justify-content: center;
    align-items: center;
    width: 90rem;
-   height: 30rem;
+   height: 28rem;
    border-radius: 10px 0 10px 0;
    color: white;
 }
 
-.psicologoSection {
-   padding: 50px 20px;
-   display: flex;
-   justify-content: space-between;
+.divGradient p {
+   align-items: center;
+   width: 60rem;
+   line-height: 2.8rem;
 }
 
+/* seção psicólogo */
+
+.backgroundPsicologo {
+   background-image: url("/images/fundoPsi2.jpg");
+   background-color: #333;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 1440px;
+   /* position: relative; */
+   /* margin-top: -20rem; */
+   z-index: 20;
+}
+.containerPsi{
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Duas colunas com tamanhos iguais */
+      grid-template-rows: 1fr 1fr; /* Duas linhas com tamanhos iguais */
+      gap: 10px; /* Espaço entre os itens */
+      width: 100%;
+      height: 400px;
+}
 .featureCard {
    background-color: rgba(255, 255, 255, 0.1);
    padding: 20px;
+   width: 200px;
    border-radius: 10px;
    margin-bottom: 20px;
 }
+
+
+
+
+
+/* rodapé */
+
 
 .footer {
    background-color: #f8f9fa;
