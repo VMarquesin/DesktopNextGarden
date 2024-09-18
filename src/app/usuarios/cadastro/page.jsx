@@ -534,8 +534,6 @@ export default function Cadastro() {
 
    return (
       <div className={styles.CadastroContainer}>
-         {/* <div className={styles.LoginContent}> */}
-
          <div className={styles.CadastroAcess}>
             <div className={styles.CadastroForm}>
                <button type="submit" className={styles.ButtonRetornar}>
@@ -647,8 +645,8 @@ export default function Cadastro() {
          <div>
             <Image
                src="/images/ImageCadastro.png"
-               width={500}
-               height={500}
+               width={2880}
+               height={2048}
                alt="Imagem"
                className={styles.BackgroundImageCadastro}
             />
