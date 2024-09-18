@@ -67,6 +67,17 @@
    flex-direction: column;
 }
 
+.Endereço {
+   width: 10rem; /* Ajuste baseado na largura do contêiner pai */
+   max-width: 50rem; /* Limita a largura máxima */
+   padding: 2rem;
+   font-size: 2rem;
+   border: none;
+   border-bottom: 0.2rem solid #00000054;
+   display: flex;
+   flex-direction: row;
+}
+
 .SubmitButton {
    width: 80%; /* Ajuste baseado na largura do contêiner pai */
    max-width: 30rem; /* Limita a largura máxima */

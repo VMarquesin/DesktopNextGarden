@@ -633,6 +633,110 @@ export default function Cadastro() {
                      />
                   </div>
 
+                  <div className={styles.FormGroup}>
+                     <input
+                        type="CNPJ"
+                        id="CNPJ"
+                        name="Cadastro de Pessoa Jurica"
+                        placeholder="CNPJ (Opcional)"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/iconeCNPJ.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone CNPJ"
+                        className={styles.Icons}
+                     />
+                  </div>
+
+                  <div className={styles.FormGroup}>
+                     <input
+                        type="Endereco"
+                        id="Endereco"
+                        name="Endereco"
+                        placeholder="Digite seu Endereço"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/IconeEndereco.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Endereco"
+                        className={styles.Icons}
+                     />
+                  </div>
+
+                  <div className={styles.Endereco}>
+                     <div className={styles.FormGroup}>
+                        <input
+                           type="Numero"
+                           id="Numero"
+                           name="Numero"
+                           placeholder="Digite seu Número"
+                           className={styles.InputField}
+                        />
+                        <Image
+                           src="/icones/IconeNumero.svg"
+                           width={25}
+                           height={25}
+                           alt="Icone Numero"
+                           className={styles.Icons}
+                        />
+                     </div>
+
+                     <div className={styles.FormGroup}>
+                        <input
+                           type="CEP"
+                           id="CEP"
+                           name="CEP"
+                           placeholder="Digite seu CEP"
+                           className={styles.InputField}
+                        />
+                        <Image
+                           src="/icones/IconeCEP.svg"
+                           width={25}
+                           height={25}
+                           alt="Icone CEP"
+                           className={styles.Icons}
+                        />
+                     </div>
+                  </div>
+
+                  <div className={styles.FormGroup}>
+                     <input
+                        type="Cidada"
+                        id="Cidade"
+                        name="Cidade"
+                        placeholder="Digite sua Cidade"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/IconeCidade.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Cidade"
+                        className={styles.Icons}
+                     />
+                  </div>
+
+                  <div className={styles.FormGroup}>
+                     <input
+                        type="Estado"
+                        id="Estado"
+                        name="Estado"
+                        placeholder="Digite seu Estado"
+                        className={styles.InputField}
+                     />
+                     <Image
+                        src="/icones/IconeEstado.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Estado"
+                        className={styles.Icons}
+                     />
+                  </div>
+
                   <button type="submit" className={styles.SubmitButton}>
                      CADASTRAR
                   </button>
