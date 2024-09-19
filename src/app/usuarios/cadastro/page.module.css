@@ -4,21 +4,33 @@
       "image form"
       "image form";
    grid-template-columns: 1fr 1fr;
-   grid-template-rows: 1fr 30px;
-   height: 100vh; /* Altura total da tela */
-   overflow: hidden; /* Evita rolagem */
+   grid-template-rows: 1fr auto; /* Ajuste a altura da linha para auto */
+   height: 100vh;
+   overflow: hidden;
+}
+
+.BackgroundImageCadastro {
+   grid-area: image;
+   background-image: url("/public/images/ImageCadastro.png");
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   width: 100%;
+   height: 100vh;
 }
 
 .CadastroAcess {
    grid-area: form;
-   font-size: 8rem;
+   font-size: 5vw; /* Usando vw para melhor responsividade */
    display: flex;
    flex-direction: column;
+   height: 100vh;
+   overflow-y: auto; /* Adiciona rolagem vertical se necessário */
 }
 
 .Titulo {
-   flex-direction: column;
    display: flex;
+<<<<<<< HEAD
    justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
    align-items: start; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
    padding: 9rem; /* Espaçamento interno */
@@ -27,6 +39,16 @@
    align-content: start;
    margin-left: -20rem;
    margin-top: -8rem;
+=======
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding: 5vw; /* Usando vw para responsividade */
+   font-size: 5vw;
+   font-weight: bold;
+   margin-left: -7vw; /* Ajustado para evitar estouramento */
+   margin-top: -5vw; /* Ajustado para evitar estouramento */
+>>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
 }
 
 .Retornar {
@@ -42,25 +64,44 @@
 .CadastroForm {
    display: flex;
    flex-direction: column;
-   justify-content: center; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
-   align-items: center; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
-   padding: 0rem; /* Espaçamento interno */
-   font-size: 5rem;
-   margin: 0; /* Remove margens externas */
+   justify-content: center;
+   align-items: center;
+   padding: 0;
+   font-size: 4vw; /* Usando vw para melhor responsividade */
+   margin: 0;
+   height: auto; /* Ajuste para se adaptar ao conteúdo */
 }
 
 .InputField {
+<<<<<<< HEAD
    width: 40rem;
    padding: 1rem;
+=======
+   width: 80rem; /* Ajuste baseado na largura do contêiner pai */
+   max-width: 50rem; /* Limita a largura máxima */
+   padding: 2rem;
+>>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    font-size: 2rem;
    border: none;
-   border-bottom: 2px solid #00000054;
-   flex-direction: column;
+   border-bottom: 0.2rem solid #00000054;
    display: flex;
+   flex-direction: column;
+}
+
+.Endereço {
+   width: 10rem; /* Ajuste baseado na largura do contêiner pai */
+   max-width: 50rem; /* Limita a largura máxima */
+   padding: 2rem;
+   font-size: 2rem;
+   border: 2px solid;
+   border-bottom: 0.2rem solid #00000054;
+   display: flex;
+   flex-direction: row;
 }
 
 .SubmitButton {
-   width: 30rem;
+   width: 80%; /* Ajuste baseado na largura do contêiner pai */
+   max-width: 30rem; /* Limita a largura máxima */
    padding: 2rem;
    font-size: 1.5rem;
    color: #fff;
@@ -68,9 +109,10 @@
    border: none;
    border-radius: 50px;
    cursor: pointer;
-   margin-left: 20%;
-   margin-top: 5rem;
-   transition: 0.3s;
+   margin-left: 25%; /* Ajuste para melhor espaçamento */
+   transition: background-color 0.3s;
+   margin-top: 1;
+   margin-bottom: 5rem;
 }
 
 .SubmitButton:hover {
@@ -88,11 +130,11 @@
    background: linear-gradient(40deg, #2b8a0e, #1c351b);
    border: none;
    cursor: pointer;
-   transition: 0.3s;
-   align-self: self-start;
+   transition: background 0.3s;
+   align-self: flex-start;
    display: flex;
-   margin-right: -1rem;
-   margin-top: -1rem;
+   margin-right: 0;
+   margin-top: 0;
 }
 
 .ButtonRetornar:hover {
@@ -100,17 +142,23 @@
 }
 
 .FormGroup {
+<<<<<<< HEAD
    display: flex; /* Usa flexbox para alinhar o conteúdo */
    justify-content: space-between; /* Espaça o conteúdo ao longo do eixo principal */
    align-items: start; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
    margin-bottom: 3rem;
+=======
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+   margin-bottom: 2rem; /* Ajustado para melhor espaçamento */
+>>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    font-size: 2rem;
-   flex-direction: row;
 }
 
 .inputIcone {
-   flex-direction: column;
    display: flex;
+<<<<<<< HEAD
 }
 
 .BackgroundImageCadastro {
@@ -122,12 +170,97 @@
    background-repeat: no-repeat; /* Evita repetição da imagem */
    width: 100%; /* Ajusta a largura do contêiner */
    height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
+=======
+   flex-direction: column;
+>>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
 }
 
 .Icons {
    display: flex;
+<<<<<<< HEAD
    align-items: flex-end; /* Alinha o ícone no final da div FormGroup vertical e horizontalmente */
    margin-top: 1.7rem;
    margin-left: -3rem;
+=======
+   align-items: flex-end;
+   margin-top: 1rem; /* Ajustado para melhor espaçamento */
+   margin-left: -2rem;
+>>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    margin-bottom: 0.5rem;
+}
+
+/* Media Query para telas menores */
+@media (max-width: 1280px) {
+   .Titulo {
+      font-size: 4vw;
+      padding: 2vw;
+      margin-left: -20rem;
+      margin-top: -5rem;
+   }
+
+   .CadastroForm {
+      font-size: 3vw;
+   }
+
+   .InputField {
+      width: 50rem;
+   }
+
+   .SubmitButton {
+      width: 90%;
+      font-size: 1.2rem;
+   }
+
+   .ButtonRetornar {
+      font-size: 1.2rem;
+      padding: 1rem;
+   }
+}
+
+@media (max-width: 480px) {
+   .CadastroContainer {
+      display: grid;
+      grid-template-areas: "form";
+      grid-template-columns: 1fr; /* Apenas uma coluna */
+      grid-template-rows: auto; /* Ajusta a altura da linha para auto */
+      height: auto; /* Ajusta a altura para o conteúdo */
+      overflow: hidden;
+   }
+
+   .BackgroundImageCadastro {
+      display: none; /* Oculta a imagem em telas menores */
+   }
+
+   .CadastroAcess {
+      grid-area: form;
+      padding: 1rem; /* Ajusta o padding do formulário */
+   }
+
+   .Titulo {
+      font-size: 6rem; /* Ajusta o tamanho da fonte para telas menores */
+      padding: 7rem; /* Ajusta o padding */
+      margin-left: -10rem; /* Remove margens negativas */
+   }
+
+   .CadastroForm {
+      width: 100%; /* Ajusta a largura do formulário para ocupar toda a tela */
+      max-width: none; /* Remove o limite de largura máxima */
+      padding: 1rem; /* Ajusta o padding interno do formulário */
+   }
+
+   .InputField {
+      width: 30rem; /* Ajusta a largura dos campos de entrada para ocupar toda a largura disponível */
+      font-size: 1rem; /* Ajusta o tamanho da fonte dos campos */
+   }
+
+   .SubmitButton {
+      width: 50%; /* Ajusta a largura do botão para ocupar toda a largura disponível */
+      font-size: 1rem; /* Ajusta o tamanho da fonte do botão */
+      padding: 0.8rem; /* Ajusta o padding do botão */
+   }
+
+   .ButtonRetornar {
+      font-size: 1rem; /* Ajusta o tamanho da fonte do botão de retorno */
+      padding: 0.8rem; /* Ajusta o padding */
+   }
 }
