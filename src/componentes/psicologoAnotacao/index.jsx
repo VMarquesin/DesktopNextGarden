@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 
 import axios from "axios";
+import api from "../../../services/api"
 
 export default function PsicologoAnotacao() {
    const [anotacoes, setAnotacoes] = useState([]);

@@ -4,7 +4,9 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import axios from "axios";
 
-export default function Notificacoes() {
+import api from "../../../services/api"
+
+export default function Notificacoes({ dia_id }) {
    const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false); // Se a lista de notificações está visível
    const [notificacao, setNotificacao] = useState([]);
    const [notificacaoSelecionada, setNotificacaoSelecionada] = useState(null);

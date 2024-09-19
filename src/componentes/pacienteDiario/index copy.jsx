@@ -1,4 +1,4 @@
-"use client";
+"use cliente";
 
 import { useState, useEffect } from "react";
 import axios from "axios"; // para chamadas à API
@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 import api from "../../../services/api";
 
 export default function DiarioPaciente({ dia_id, pac_id }) {
-   const [notas, setNotas] = useState([]); // Inicializa como array vazio
+   const [notas, setNotas] = useState([]);
    const [notaSelecionada, setNotaSelecionada] = useState(null);
    const [paciente, setPaciente] = useState(null);
 
@@ -18,17 +18,15 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
       async function fetchNotas() {
          try {
             const response = await api.get(`/diario/2`);
-            // Garante que sempre será um array, mesmo que a resposta não seja
-            setNotas(Array.isArray(response.data) ? response.data : []);
+            setNotas(response.data);
          } catch (error) {
             console.error("Erro ao buscar notas:", error);
-            setNotas([]); // Caso ocorra erro, mantém como array vazio
          }
       }
 
       async function fetchPaciente() {
          try {
-            const response = await api.get(`/paciente/`);
+            const response = await api.get(`/paciente/${pac_id}`);
             setPaciente(response.data);
          } catch (error) {
             console.error("Erro ao buscar paciente:", error);
@@ -37,7 +35,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
 
       fetchNotas();
       fetchPaciente();
-   }, [dia_id, pac_id]);
+   }, [dia_id]);
 
    return (
       <div className={styles.container}>
@@ -45,20 +43,16 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
          <aside className={styles.sidebar}>
             <h3>Notas do Diário</h3>
             <ul>
-               {notas.length > 0 ? (
-                  notas.map((nota) => (
-                     <li
-                        key={nota.dia_id}
-                        onClick={() => setNotaSelecionada(nota)}
-                        className={styles.notaItem}
-                     >
-                        <p>{new Date(nota.dia_data).toLocaleDateString()}</p>
-                        <p>{nota.conteudo.slice(0, 20)}...</p>
-                     </li>
-                  ))
-               ) : (
-                  <li>Nenhuma nota encontrada</li>
-               )}
+               {notas.map((nota) => (
+                  <li
+                     key={nota.dia_id}
+                     onClick={() => setNotaSelecionada(nota)}
+                  >
+                     <p>{nota.dia_data}</p>
+                     <p>{nota.conteudo.slice(0, 15)}...</p>{" "}
+                     {/* Mostra os primeiros 20 caracteres */}
+                  </li>
+               ))}
             </ul>
          </aside>
 
@@ -71,14 +65,15 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                         <>
                            <Image
                               src={paciente.foto}
-                              alt={paciente.usu_nome}
+                              alt={paciente.nome}
                               width={50}
                               height={50}
                               className={styles.fotoPaciente}
                            />
                            <div className={styles.informacoesPaciente}>
                               <h2>{paciente.usu_nome}</h2>
-                              <p>{new Date(notaSelecionada.dia_data).toLocaleDateString()}</p>
+                              {/* tem que associar a tabela usuarios ou ja push of pacientes? */}
+                              <p>{notaSelecionada.dia_data}</p>
                            </div>
                         </>
                      )}

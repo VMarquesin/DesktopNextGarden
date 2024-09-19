@@ -2,8 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Para conectar à API
+
 import Image from "next/image";
 import styles from "./index.module.css";
+
+import api from "../../../services/api"
 
 export default function PacienteExercicios() {
    const [exercicios, setExercicios] = useState([]); // Exercícios passados

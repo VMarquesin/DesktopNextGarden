@@ -3,6 +3,8 @@
 import { useState } from "react";
 import styles from "./index.module.css";
 
+import api from "../../../services/api"
+
 export default function PacientePerfil({ paciente, onSaveNote }) {
    const [nota, setNota] = useState("");
 
