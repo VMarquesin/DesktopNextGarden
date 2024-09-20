@@ -88,7 +88,7 @@ export default function Cadastro() {
          validado: valDefault,
          mensagem: [],
       },
-      nascimento: {
+      Apelido: {
          validado: valDefault,
          mensagem: [],
       },
@@ -96,15 +96,15 @@ export default function Cadastro() {
          validado: valDefault,
          mensagem: [],
       },
-      cpf: {
+      senha: {
          validado: valDefault,
          mensagem: [],
       },
-      uf: {
+      nascimento: {
          validado: valDefault,
          mensagem: [],
       },
-      cidade: {
+      cnpj: {
          validado: valDefault,
          mensagem: [],
       },
