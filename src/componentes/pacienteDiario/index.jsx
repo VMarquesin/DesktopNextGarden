@@ -28,7 +28,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
 
       async function fetchPaciente() {
          try {
-            const response = await api.get(`/paciente/`);
+            const response = await api.get(`/paciente/5`);
             setPaciente(response.data);
          } catch (error) {
             console.error("Erro ao buscar paciente:", error);
