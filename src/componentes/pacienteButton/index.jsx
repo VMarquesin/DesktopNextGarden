@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
-import api from "../../../services/api"
+import api from "../../../services/api";
 import axios from "axios";
 
 export default function PacienteButton() {
@@ -18,8 +18,9 @@ export default function PacienteButton() {
    useEffect(() => {
       async function fetchPacientes() {
          try {
-            const response = await axios.get("/paciente");
-            setPacientes(response.data);
+            const response = await api.get("/pacientes");
+            // setPacientes(response.data);
+            setPacientes(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar pacientes:", error);
          }
@@ -29,22 +30,26 @@ export default function PacienteButton() {
    }, []);
 
    function selecionarPaciente(paciente) {
-      setNomePaciente(paciente.nome);
+      setNomePaciente(paciente.pac_id);
       setPacienteSelecionado(paciente);
       setShowPerfil(true);
-   }
-
-   const handleSaveNote = async (nota) => {
-      try {
-         await axios.post("/psi_anotacao", {
-            pacienteId: pacienteSelecionado.id,
-            conteudo: nota,
-         });
-         console.log(`Nota salva para ${pacienteSelecionado.nome}: ${nota}`);
-      } catch (error) {
-         console.error("Erro ao salvar nota:", error);
-      }
    };
+
+   // const handleSaveNote = async (nota) => {
+   //    try {
+   //       await api.post("/psi_anotacao", {
+   //          pacienteId: pacienteSelecionado.pac_id,
+   //          conteudo: pan_anotacao,
+   //       });
+   //       console.log(
+   //          `Nota salva para ${pacienteSelecionado.pac_id}: ${pan_anotacao}`
+   //       );
+   //    } catch (error) {
+   //       console.error("Erro ao salvar nota:", error);
+   //    }
+   // };
+
+
    // const pacientes = [
    //    {
    //       nome: "Paciente 1",
@@ -86,11 +91,11 @@ export default function PacienteButton() {
    //       foto: "/path/to/foto3.jpg",
    //    },
    // ];
-   function selecionarPaciente(paciente) {
-      setNomePaciente(paciente.nome); // Atualiza o nome exibido no botão
-      setPacienteSelecionado(paciente); // Define o paciente selecionado
-      setShowPerfil(true); // Exibe o perfil do paciente
-   }
+   // function selecionarPaciente(paciente) {
+   //    setNomePaciente(paciente.pac_id); // Atualiza o nome exibido no botão
+   //    setPacienteSelecionado(paciente); // Define o paciente selecionado
+   //    setShowPerfil(true); // Exibe o perfil do paciente
+   // }
 
    return (
       <div>
@@ -120,7 +125,7 @@ export default function PacienteButton() {
             <div id="listaPacientes" className={styles.listaPacientes}>
                {pacientes.map((paciente) => (
                   <p
-                     key={paciente.id}
+                     key={paciente.pac_id}
                      className={styles.pacienteItem}
                      onClick={() => selecionarPaciente(paciente)} // Seleção do paciente
                   >
