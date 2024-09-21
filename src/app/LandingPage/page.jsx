@@ -145,9 +145,18 @@ export default function Page() {
                   className={styles.backgroundPsicologo}
                /> */}
 
+               <div className={styles.psicologoCenter}>
                   <div className={styles.psicologoLeft}>
                      <div className={styles.featureCard}>
-                        <i className="icon-example"></i>
+                        <div> 
+                        <Image
+                        src="/images/DiarioPsicologo.jpg"
+                        alt="Imagem 3"
+                        width={377}
+                        height={251}
+                        className={styles.iconDiario}
+                        />
+                     </div>
                         <p>Feature 1</p>
                      </div>
                      <div className={styles.featureCard}>
@@ -164,6 +173,7 @@ export default function Page() {
                      <h2>Título</h2>
                      <h3>Subtítulo</h3>
                      <p>Texto explicativo.</p>
+                  </div>
                   </div>
                </div>
             </div>

@@ -211,16 +211,46 @@
       height: 400px;
 }
 .featureCard {
-   background-color: rgba(255, 255, 255, 0.1);
+   background-color: rgba(255, 10, 10, 0.61);
    padding: 20px;
-   width: 200px;
+   width: 15rem;
+   height: 15rem;
    border-radius: 10px;
    margin-bottom: 20px;
+   align-items: center;
+   display: flex;
 }
 
+.psicologoCenter {
+   color: #fff;
+   flex-direction: row;
+   justify-content: center;
+   display: flex;
+   padding: 10rem;
+   gap: 5rem;
+}
 
+.psicologoRight {
+   color: #fff;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   display: flex;
+}
 
+.psicologoLeft {
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+}
 
+.iconDiario {
+   object-fit: url("/images/DiarioPsicologo.jpg");
+   background-color: #f8f9fa;
+   width: 50rrem;
+
+}
 
 /* rodapé */
 
