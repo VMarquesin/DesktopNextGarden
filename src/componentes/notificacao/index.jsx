@@ -2,9 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 
 import Image from "next/image";
-import axios from "axios";
-
-import api from "../../../services/api"
+import api from "../../../services/api";
 
 export default function Notificacoes({ dia_id }) {
    const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false); // Se a lista de notificações está visível
@@ -23,7 +21,7 @@ export default function Notificacoes({ dia_id }) {
    useEffect(() => {
       async function fetchNotificacao() {
          try {
-            const response = await axios.get(`/diario/${dia_id}`);
+            const response = await api.get(`/diario/${dia_id}`);
             setNotificacao(response.data);
          } catch (error) {
             console.error("Error ao receber notificações:", error);

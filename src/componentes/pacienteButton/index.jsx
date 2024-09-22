@@ -42,8 +42,10 @@ export default function PacienteButton() {
    // Função para selecionar o paciente e exibir o nome baseado na relação com o usuário
    function selecionarPaciente(paciente) {
       // Encontrando o usuário associado ao paciente
-      const usuarioRelacionado = usuarios.find(user => user.usu_id === paciente.usu_id);
-      
+      const usuarioRelacionado = usuarios.find(
+         (user) => user.usu_id === paciente.usu_id
+      );
+
       // Se o usuário for encontrado, define o nome do paciente baseado no usuário
       if (usuarioRelacionado) {
          setNomePaciente(usuarioRelacionado.usu_nome);
@@ -88,9 +90,8 @@ export default function PacienteButton() {
                      onClick={() => selecionarPaciente(paciente)} // Seleção do paciente
                   >
                      {/* Exibindo o nome do usuário associado ao paciente */}
-                     {
-                        usuarios.find(user => user.usu_id === paciente.usu_id)?.usu_nome || "Paciente"
-                     }
+                     {usuarios.find((user) => user.usu_id === paciente.usu_id)
+                        ?.usu_nome || "Paciente"}
                   </p>
                ))}
             </div>
@@ -102,6 +103,9 @@ export default function PacienteButton() {
                   paciente={pacienteSelecionado} // Passa o paciente selecionado para o componente de perfil
                />
             </main>
+         )}
+         {pacienteSelecionado && (
+            <GraficoEmocoes pac_id={setPacienteSelecionado.pac_id} />
          )}
       </div>
    );
