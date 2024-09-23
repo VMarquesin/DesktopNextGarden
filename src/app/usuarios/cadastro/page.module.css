@@ -30,16 +30,6 @@
 
 .Titulo {
    display: flex;
-<<<<<<< HEAD
-   justify-content: start; /* Centraliza o conteúdo verticalmente dentro do .LoginForm */
-   align-items: start; /* Centraliza o conteúdo horizontalmente dentro do .LoginForm */
-   padding: 9rem; /* Espaçamento interno */
-   font-size: 5rem;
-   font-weight: bold;
-   align-content: start;
-   margin-left: -20rem;
-   margin-top: -8rem;
-=======
    flex-direction: column;
    justify-content: flex-start;
    align-items: flex-start;
@@ -48,7 +38,6 @@
    font-weight: bold;
    margin-left: -7vw; /* Ajustado para evitar estouramento */
    margin-top: -5vw; /* Ajustado para evitar estouramento */
->>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
 }
 
 .Retornar {
@@ -73,14 +62,8 @@
 }
 
 .InputField {
-<<<<<<< HEAD
-   width: 40rem;
+   width: 50rem;
    padding: 1rem;
-=======
-   width: 80rem; /* Ajuste baseado na largura do contêiner pai */
-   max-width: 50rem; /* Limita a largura máxima */
-   padding: 2rem;
->>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    font-size: 2rem;
    border: none;
    border-bottom: 0.2rem solid #00000054;
@@ -142,23 +125,15 @@
 }
 
 .FormGroup {
-<<<<<<< HEAD
-   display: flex; /* Usa flexbox para alinhar o conteúdo */
-   justify-content: space-between; /* Espaça o conteúdo ao longo do eixo principal */
-   align-items: start; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
-   margin-bottom: 3rem;
-=======
    display: flex;
    justify-content: space-between;
    align-items: flex-end;
    margin-bottom: 2rem; /* Ajustado para melhor espaçamento */
->>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    font-size: 2rem;
 }
 
 .inputIcone {
    display: flex;
-<<<<<<< HEAD
 }
 
 .BackgroundImageCadastro {
@@ -166,26 +141,16 @@
    background-image: url("/public/images/ImageCadastro.png");
    object-fit: cover; /* Faz a imagem cobrir o elemento */
    object-position: right;
-   background-position: center; /* Centraliza a imagem */
-   background-repeat: no-repeat; /* Evita repetição da imagem */
-   width: 100%; /* Ajusta a largura do contêiner */
-   height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
-=======
-   flex-direction: column;
->>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
+   background-position: center;
+   background-repeat: no-repeat;
+   height: 100vh;
 }
 
 .Icons {
    display: flex;
-<<<<<<< HEAD
-   align-items: flex-end; /* Alinha o ícone no final da div FormGroup vertical e horizontalmente */
-   margin-top: 1.7rem;
-   margin-left: -3rem;
-=======
    align-items: flex-end;
    margin-top: 1rem; /* Ajustado para melhor espaçamento */
    margin-left: -2rem;
->>>>>>> a7879c3cdfa0c2064e081eea9a463615b4ba6165
    margin-bottom: 0.5rem;
 }
 
@@ -222,8 +187,8 @@
       display: grid;
       grid-template-areas: "form";
       grid-template-columns: 1fr; /* Apenas uma coluna */
-      grid-template-rows: auto; /* Ajusta a altura da linha para auto */
-      height: auto; /* Ajusta a altura para o conteúdo */
+      grid-template-rows: auto;
+      height: auto;
       overflow: hidden;
    }
 
@@ -238,29 +203,29 @@
 
    .Titulo {
       font-size: 6rem; /* Ajusta o tamanho da fonte para telas menores */
-      padding: 7rem; /* Ajusta o padding */
-      margin-left: -10rem; /* Remove margens negativas */
+      padding: 7rem;
+      margin-left: -10rem;
    }
 
    .CadastroForm {
       width: 100%; /* Ajusta a largura do formulário para ocupar toda a tela */
-      max-width: none; /* Remove o limite de largura máxima */
-      padding: 1rem; /* Ajusta o padding interno do formulário */
+      max-width: none;
+      padding: 1rem;
    }
 
    .InputField {
       width: 30rem; /* Ajusta a largura dos campos de entrada para ocupar toda a largura disponível */
-      font-size: 1rem; /* Ajusta o tamanho da fonte dos campos */
+      font-size: 1rem;
    }
 
    .SubmitButton {
       width: 50%; /* Ajusta a largura do botão para ocupar toda a largura disponível */
-      font-size: 1rem; /* Ajusta o tamanho da fonte do botão */
-      padding: 0.8rem; /* Ajusta o padding do botão */
+      font-size: 1rem;
+      padding: 0.8rem;
    }
 
    .ButtonRetornar {
-      font-size: 1rem; /* Ajusta o tamanho da fonte do botão de retorno */
-      padding: 0.8rem; /* Ajusta o padding */
+      font-size: 1rem;
+      padding: 0.8rem;
    }
 }
