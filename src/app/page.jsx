@@ -3,7 +3,7 @@
 import Head from "next/head";
 import styles from "./page.module.css";
 
-import { useState } from "react";
+import { useState, Image } from "react";
 import Image from "next/image";
 
 import PacienteButton from "../componentes/pacienteButton";
@@ -19,7 +19,6 @@ import Notifications from "../componentes/notificacao";
 // import { Feather } from "react-icons/fa";
 
 export default function Home() {
-   
    const [Tela, setTela] = useState(0);
 
    return (
@@ -28,12 +27,13 @@ export default function Home() {
             <title>Área de Trabalho - Psicólogo</title>
          </Head>
          <div className={styles.container}>
-
             {/* Topbar */}
 
             <header className={styles.header}>
                <div className={styles.headercontainer}>
-                  <div className={styles.logo}>Garden Logo</div>
+                  <div className={styles.logo}>
+                     <Image></Image>
+                  </div>
                   <nav>
                      <ul>
                         <li>
@@ -172,12 +172,10 @@ export default function Home() {
    );
 }
 
+//  const [modalAberto, setModalAberto] = useState(false);
 
-
-   //  const [modalAberto, setModalAberto] = useState(false);
-
-   //  const abrirModal = () => setModalAberto(true);
-   //  const fecharModal = () => setModalAberto(false);
+//  const abrirModal = () => setModalAberto(true);
+//  const fecharModal = () => setModalAberto(false);
 
 {
    /* opção abrir modal */
