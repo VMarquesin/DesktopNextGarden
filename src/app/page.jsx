@@ -3,7 +3,7 @@
 import Head from "next/head";
 import styles from "./page.module.css";
 
-import { useState, Image } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 import PacienteButton from "../componentes/pacienteButton";
@@ -16,6 +16,7 @@ import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
 import Notifications from "../componentes/notificacao";
+import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
 
 export default function Home() {
@@ -32,7 +33,13 @@ export default function Home() {
             <header className={styles.header}>
                <div className={styles.headercontainer}>
                   <div className={styles.logo}>
-                     <Image></Image>
+                     <Image
+                        src="/images/logoGarden.png"
+                        alt="logo Garden"
+                        width={140}
+                        height={50}
+                        // className={styles.icone}
+                     />
                   </div>
                   <nav>
                      <ul>
@@ -59,6 +66,9 @@ export default function Home() {
             {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>
+               <PacienteProvider>
+                  <Component {...pageProps} />
+               </PacienteProvider>
                <PacienteButton />
                <div className={styles.searchBar}>
                   <input type="text" placeholder="Pesquisar paciente..." />

@@ -7,7 +7,7 @@ import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
 import api from "../../../services/api";
-import GraficoEmocoes from "../../componentes/dashboard";
+// import GraficoEmocoes from "../../componentes/dashboard";
 
 export default function PacienteButton() {
    const [nomePaciente, setNomePaciente] = useState("Paciente"); // Nome do paciente atualmente selecionado

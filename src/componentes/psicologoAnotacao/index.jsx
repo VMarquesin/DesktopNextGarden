@@ -6,7 +6,7 @@ import api from "../../../services/api";
 
 export default function PsicologoAnotacao() {
    const [anotacoes, setAnotacoes] = useState([]);
-   const [titulo, setTitulo] = useState("");
+   // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
 
    // Função para buscar as anotações existentes na API
@@ -28,14 +28,20 @@ export default function PsicologoAnotacao() {
       try {
          const response = await api.post("/psi_anotacao", {
             // titulo,
-            conteudo,
+            psi_id: 1,
+            pan_anotacao: conteudo,
+            pan_anotacao_data: new Date().toISOString(),
+            pac_id: 11,
          });
+         console.log("Resposta da API:", response);
 
          const novaAnotacao = {
-            id: response.pan_id,
+            id: response.pan_anotacao_data.pan_id,
             // titulo,
-            conteudo,
-            data: new pan_anotacao_data().toISOString(),
+            psi_id: 1,
+            pan_anotacao: conteudo,
+            pan_anotacao_data: new Date().toISOString(),
+            pac_id: 11,
          };
 
          // nova anotação
