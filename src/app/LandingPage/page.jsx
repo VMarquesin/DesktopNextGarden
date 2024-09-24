@@ -9,7 +9,7 @@ export default function Page() {
                <div className={styles.topBar}>
                   <Image
                      className={styles.logo}
-                     src="/images/LogoWhite.png"
+                     src="/images/LogoGardenWhite.png"
                      width={700}
                      height={300}
                      alt="Picture of the author"
