@@ -122,7 +122,7 @@
 .segurancaSection {
    background-image: url("/background-image.png");
    background-size: cover;
-   padding: 50px 20px;
+   padding: 50px 30px;
    color: white;
 }
 
@@ -137,6 +137,7 @@
    height: 1080px;
    display: flex;
    flex-direction: row;
+   margin-top: -5.5rem;
 }
 .telemovel {
    display: flex;
@@ -197,27 +198,75 @@
    background-position: center;
    background-repeat: no-repeat;
    width: 100%;
-   height: 1440px;
+   height: 2000px;
    /* position: relative; */
    /* margin-top: -20rem; */
    z-index: 20;
 }
-.containerPsi{
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* Duas colunas com tamanhos iguais */
-      grid-template-rows: 1fr 1fr; /* Duas linhas com tamanhos iguais */
-      gap: 10px; /* Espaço entre os itens */
-      width: 100%;
-      height: 400px;
+.containerPsi {
+   display: grid;
+   grid-template-columns: 1fr 1fr; /* Duas colunas com tamanhos iguais */
+   grid-template-rows: 1fr 1fr; /* Duas linhas com tamanhos iguais */
+   gap: 10px; /* Espaço entre os itens */
+   width: 100%;
+   height: 400px;
 }
 .featureCard {
-   background-color: rgba(255, 10, 10, 0.61);
-   padding: 20px;
-   width: 15rem;
-   height: 15rem;
+   background-color: #00000091;
+   padding: 1vw;
+   width: 16vw;
+   height: 8vw;
    border-radius: 10px;
    margin-bottom: 20px;
    align-items: center;
+   display: flex;
+   gap: 2vw;
+   font-size: 2.5rem;
+   font-weight: bolder;
+   word-break: normal;
+   box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.418);
+}
+
+.TituloBorder {
+   border: #0c7a08 solid;
+   border-width: medium;
+   margin-bottom: 3rem;
+   border-radius: 10px;
+   /* align-self: end;
+   display: flex; */
+   background-color: #000000af;
+}
+
+.TituloPsicologos {
+   font-size: 4rem;
+   color: #0c7a08;
+   margin-left: 10rem;
+   margin-right: 10rem;
+   flex-direction: column;
+   margin-top: 0%;
+}
+
+.SubtituloPsicologos {
+   font-size: 4rem;
+   margin-bottom: 5rem;
+   flex-direction: column;
+   width: 60rem;
+}
+
+.TextoPsicologos {
+   font-size: 2.9rem;
+   /* font-weight: bolder; */
+   text-align: start;
+   width: 30vw;
+}
+
+.ContainerTextoRight {
+   width: 30vw;
+}
+
+.ContainerTextoLeft {
+   /* width: 30vw; */
+   flex-direction: row;
    display: flex;
 }
 
@@ -226,8 +275,8 @@
    flex-direction: row;
    justify-content: center;
    display: flex;
-   padding: 10rem;
-   gap: 5rem;
+   padding: 20rem;
+   gap: 7rem;
 }
 
 .psicologoRight {
@@ -239,6 +288,7 @@
 }
 
 .psicologoLeft {
+   color: #fff;
    align-items: center;
    display: flex;
    justify-content: center;
@@ -246,14 +296,28 @@
 }
 
 .iconDiario {
-   object-fit: url("/images/DiarioPsicologo.jpg");
-   background-color: #f8f9fa;
-   width: 50rrem;
+   object-fit: url("/icones/DiarioPsicologo.svg");
+   background-color: #00000000;
+}
 
+.iconAtividade {
+   object-fit: url("/icones/AtividadePsicologo.svg");
+   background-color: #00000000;
+}
+
+.iconLembrete {
+   object-fit: url("/icones/LembretePsicologo.svg");
+   background-color: #00000000;
+}
+
+.ImagePc {
+   object-fit: url("/images/PcPsicologo.png");
+   background-color: #00000000;
+   flex-direction: row;
+   display: flex;
 }
 
 /* rodapé */
-
 
 .footer {
    background-color: #f8f9fa;

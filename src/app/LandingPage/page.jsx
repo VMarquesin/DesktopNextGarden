@@ -145,35 +145,106 @@ export default function Page() {
                   className={styles.backgroundPsicologo}
                /> */}
 
-               <div className={styles.psicologoCenter}>
-                  <div className={styles.psicologoLeft}>
-                     <div className={styles.featureCard}>
-                        <div> 
-                        <Image
-                        src="/images/DiarioPsicologo.jpg"
-                        alt="Imagem 3"
-                        width={377}
-                        height={251}
-                        className={styles.iconDiario}
-                        />
+                  <div className={styles.psicologoCenter}>
+                     <div className={styles.psicologoLeft}>
+                        <div className={styles.featureCard}>
+                           <div>
+                              <Image
+                                 src="/icones/DiarioPsicologo.svg"
+                                 alt="Imagem 3"
+                                 width={40}
+                                 height={40}
+                                 className={styles.iconDiario}
+                              />
+                           </div>
+                           <p>Diário</p>
+                        </div>
+
+                        <div className={styles.featureCard}>
+                           <div>
+                              <Image
+                                 src="/icones/AtividadePsicologo.svg"
+                                 alt="Imagem 3"
+                                 width={40}
+                                 height={40}
+                                 className={styles.iconAtividade}
+                              />
+                           </div>
+                           <p>Atividade</p>
+                        </div>
+
+                        <div className={styles.featureCard}>
+                           <Image
+                              src="/icones/LembretePsicologo.svg"
+                              alt="Imagem 3"
+                              width={40}
+                              height={40}
+                              className={styles.iconLembrete}
+                           />
+                           <p>Lembretes</p>
+                        </div>
                      </div>
-                        <p>Feature 1</p>
-                     </div>
-                     <div className={styles.featureCard}>
-                        <i className="icon-example"></i>
-                        <p>Feature 2</p>
-                     </div>
-                     <div className={styles.featureCard}>
-                        <i className="icon-example"></i>
-                        <p>Feature 3</p>
+
+                     <div className={styles.psicologoRight}>
+                        <div className={styles.TituloBorder}>
+                           <h2 className={styles.TituloPsicologos}>Garden</h2>
+                        </div>
+                        <div className={styles.ContainerTextoRight}>
+                           <h3 className={styles.SubtituloPsicologos}>
+                              O primeiro passo para exponenciar seus resultados
+                           </h3>
+                           <p className={styles.TextoPsicologos}>
+                              Acompanhe de perto o progresso e a evolução
+                              emocional de seus pacientes através da
+                              visualização do diário integrado ao Garden. Esta
+                              funcionalidade permite que você acesse facilmente
+                              os registros diários de seus pacientes, explorando
+                              suas experiências, emoções e pensamentos ao longo
+                              do tempo. Com insights valiosos fornecidos pelo
+                              diário do paciente, você pode adaptar sua
+                              abordagem terapêutica, identificar padrões
+                              comportamentais e fornecer orientação
+                              personalizada para promover o bem-estar emocional
+                              de seus pacientes.
+                           </p>
+                        </div>
                      </div>
                   </div>
 
-                  <div className={styles.psicologoRight}>
-                     <h2>Título</h2>
-                     <h3>Subtítulo</h3>
-                     <p>Texto explicativo.</p>
-                  </div>
+                  <div className={styles.psicologoLeft}>
+                     <div className={styles.TituloBorder}>
+                        <h2 className={styles.TituloPsicologos}>Dashboard</h2>
+                     </div>
+
+                     <div className={styles.ContainerTextoLeft}>
+                        <div>
+                           <h3 className={styles.SubtituloPsicologos}>
+                              Grafíco detalhado de emoções e acontecimentos
+                           </h3>
+                           <p className={styles.TextoPsicologos}>
+                              Tenha uma visão abrangente do estado emocional de
+                              seus pacientes com o Dashboard baseado no diário
+                              integrado ao Garden. Esta ferramenta poderosa
+                              oferece uma análise visual dos dados coletados nos
+                              registros diários dos pacientes, destacando
+                              tendências, padrões emocionais e marcos de
+                              progresso. Com o Dashboard, você pode monitorar o
+                              bem-estar emocional de seus pacientes de forma
+                              eficaz, identificando áreas de preocupação e
+                              oportunidades de intervenção terapêutica para
+                              apoiar seu crescimento pessoal e emocional.
+                           </p>
+                        </div>
+                        <div>
+                           <Image
+                              src="/images/PcPsicologo.png"
+                              alt="Imagem 3"
+                              width={517}
+                              height={450}
+                              className={styles.ImagePc}
+                           />
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
