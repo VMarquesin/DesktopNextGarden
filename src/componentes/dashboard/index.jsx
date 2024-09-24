@@ -24,7 +24,7 @@ ChartJS.register(
    Legend
 );
 
-export default function GraficoEmocoes({ pacienteId }) {
+export default function GraficoEmocoes({ pac_id }) {
    const [dadosEmocoes, setDadosEmocoes] = useState(null); // Estado para armazenar os dados das emoções
    const [loading, setLoading] = useState(true);
 
@@ -32,7 +32,7 @@ export default function GraficoEmocoes({ pacienteId }) {
    useEffect(() => {
       async function fetchEmocoes() {
          try {
-            const response = await api.get(`/emocoes/${pacienteId}`); // API para buscar as emoções do paciente
+            const response = await api.get(`/emocao_paciente/${pac_id}`); // API para buscar as emoções do paciente
             setDadosEmocoes(response.data);
             setLoading(false);
          } catch (error) {
@@ -42,7 +42,7 @@ export default function GraficoEmocoes({ pacienteId }) {
       }
 
       fetchEmocoes();
-   }, [pacienteId]);
+   }, [pac_id]);
 
    // Dados para o gráfico
    const data = {

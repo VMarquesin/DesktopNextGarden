@@ -34,7 +34,7 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
       }
    
       fetchUsuario();
-   }, [usuario.usu_id]);
+   }, []);
 
    // useEffect(() => {
    //    async function fetchUsuario() {
