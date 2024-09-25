@@ -249,16 +249,22 @@ export default function Page() {
                </div>
             </div>
          </section>
-
-         <section>
-            <div className={styles.divGradient}>
-               <p>
-                  Estamos aqui para ser o solo fértil onde suas aspirações podem
-                  florescer. Venha mergulhar nas maravilhas do seu jardim
-                  interior.
-               </p>
+         <div className={styles.devs}>
+            <div className={styles.devsTitulo}>
+               <h1>Sobre nós:</h1>
             </div>
-         </section>
+         </div>
+         <div>
+            <div className={styles.rodape}>
+               <div>
+                  <p>
+                     Estamos aqui para ser o solo fértil onde suas aspirações
+                     podem florescer. Venha mergulhar nas maravilhas do seu
+                     jardim interior.
+                  </p>
+               </div>
+            </div>
+         </div>
 
          <footer className={styles.footer}>
             <p>© 2024 Garden. Todos os direitos reservados.</p>
