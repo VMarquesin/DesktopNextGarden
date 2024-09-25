@@ -35,7 +35,7 @@ export default function PsicologoAnotacao() {
             psi_id: 1,
             pan_anotacao: conteudo,
             pan_anotacao_data: new Date().toISOString(),
-            pac_id: 11,
+            pac_id: pacienteSelecionado.pac_id,
          });
          console.log("Resposta da API:", response);
 
@@ -45,13 +45,10 @@ export default function PsicologoAnotacao() {
             psi_id: 1,
             pan_anotacao: conteudo,
             pan_anotacao_data: new Date().toISOString(),
-            pac_id: 11,
+            pac_id: pacienteSelecionado.pac_id,
          };
 
-         // nova anotação
-
          setAnotacoes([...anotacoes, novaAnotacao]);
-
          // setTitulo("");
          setConteudo("");
       } catch (error) {

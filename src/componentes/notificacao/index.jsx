@@ -10,14 +10,6 @@ export default function Notificacoes({ dia_id }) {
    const [notificacaoSelecionada, setNotificacaoSelecionada] = useState(null);
    const notificacaoRef = useRef(); // Referência para o contêiner
 
-   // Array de uma lista de notificações
-
-   // const notificacoes = [
-   //   { id: 1, mensagem: "Nova mensagem de paciente X" },
-   //   { id: 2, mensagem: "Sessão agendada com paciente Y" },
-   //   { id: 3, mensagem: "Atividade concluída por paciente Z" },
-   // ];
-
    useEffect(() => {
       async function fetchNotificacao() {
          try {

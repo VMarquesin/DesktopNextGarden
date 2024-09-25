@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
-export default function PacienteExercicios() {
+export default function PacienteExercicios(carregaPaciente) {
    const [exercicios, setExercicios] = useState([]);
    // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
@@ -42,7 +42,7 @@ export default function PacienteExercicios() {
          const response = await api.post("/atividade", {
             // titulo,
             conteudo,
-            pacientes: pacientesSelecionados,
+            pacientes: setPacienteSel,
          });
          setExercicios([...atividade, response.ati_data]);
          // setTitulo("");
@@ -166,7 +166,7 @@ export default function PacienteExercicios() {
                      </button>
                      <button
                         className={styles.cancelarButton}
-                        onClick={() => setShowModal(false)} // Fecha a modal
+                        onClick={() => setShowModal(false)}
                      >
                         Cancelar
                      </button>

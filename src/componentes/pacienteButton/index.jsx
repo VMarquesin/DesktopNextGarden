@@ -9,15 +9,13 @@ import PacientePerfil from "../perfilPaciente";
 import api from "../../../services/api";
 import { usePaciente } from "../pacienteContext";
 
-export default function PacienteButton() {
+export default function PacienteButton({ carregaPaciente }) {
+   const { pacienteSelecionado, setPacienteSelecionado } = usePaciente();
    const [nomePaciente, setNomePaciente] = useState("Paciente");
-   const [pacienteSelecionado, setPacienteSelecionado] = useState(null);
-   // const {setPacienteSelecionadoContext} = useState([]); 
-   const [showPerfil, setShowPerfil] = useState(false); 
-   const [pacientes, setPacientes] = useState([]); 
-   const [usuarios, setUsuarios] = useState([]); 
+   const [showPerfil, setShowPerfil] = useState(false);
+   const [pacientes, setPacientes] = useState([]);
+   const [usuarios, setUsuarios] = useState([]);
 
-   // Buscando pacientes e usuários na API
    useEffect(() => {
       async function fetchPacientes() {
          try {
@@ -41,13 +39,7 @@ export default function PacienteButton() {
       fetchUsuarios();
    }, []);
 
-   // const selecionarPaciente = (paciente) => {
-   //    setPacienteSelecionado(paciente);
-   // };
-
-   // Função para selecionar o paciente e exibir o nome baseado na relação com o usuário
    function selecionarPaciente(paciente) {
-    
       const usuarioRelacionado = usuarios.find(
          (user) => user.usu_id === paciente.usu_id
       );
@@ -60,6 +52,7 @@ export default function PacienteButton() {
 
       setPacienteSelecionado(paciente);
       setShowPerfil(true);
+      carregaPaciente(paciente.usu_id);
    }
 
    return (
@@ -68,7 +61,7 @@ export default function PacienteButton() {
             <button
                id="pacienteButton"
                className={styles.botaoPaciente}
-               onClick={() => setShowPerfil(!showPerfil)} 
+               onClick={() => setShowPerfil(!showPerfil)}
             >
                {nomePaciente}
             </button>
@@ -92,9 +85,8 @@ export default function PacienteButton() {
                   <p
                      key={paciente.pac_id}
                      className={styles.pacienteItem}
-                     onClick={() => selecionarPaciente(paciente)} 
+                     onClick={() => selecionarPaciente(paciente)}
                   >
-      
                      {usuarios.find((user) => user.usu_id === paciente.usu_id)
                         ?.usu_nome || "Paciente"}
                   </p>
@@ -104,9 +96,7 @@ export default function PacienteButton() {
 
          {showPerfil && pacienteSelecionado && (
             <main>
-               <PacientePerfil
-                  paciente={pacienteSelecionado} 
-               />
+               <PacientePerfil paciente={pacienteSelecionado} />
             </main>
          )}
       </div>
