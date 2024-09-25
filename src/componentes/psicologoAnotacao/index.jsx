@@ -1,10 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { usePaciente } from "../pacienteContext";
+
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
 export default function PsicologoAnotacao() {
+   const { pacienteSelecionado } = usePaciente();
+
    const [anotacoes, setAnotacoes] = useState([]);
    // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
@@ -58,6 +62,13 @@ export default function PsicologoAnotacao() {
    return (
       <div className={styles.container}>
          <aside className={styles.sidebar}>
+         <div>
+         {pacienteSelecionado ? (
+            <p>Paciente Selecionado: {pacienteSelecionado.pac_id}</p>
+         ) : (
+            <p>Nenhum paciente selecionado</p>
+         )}
+      </div>
             <h3>Suas Notas</h3>
             <ul className={styles.anotacoesLista}>
                {Array.isArray(anotacoes) && anotacoes.length > 0 ? (

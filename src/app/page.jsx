@@ -67,19 +67,20 @@ export default function Home() {
 
             <section className={styles.patientSelect}>
                <PacienteProvider>
-                  <Component {...pageProps} />
-               </PacienteProvider>
                <PacienteButton />
                <div className={styles.searchBar}>
                   <input type="text" placeholder="Pesquisar paciente..." />
                </div>
+               </PacienteProvider>
             </section>
 
             {/* barra lateral */}
 
             <aside className={styles.sidebar}>
+               <PacienteProvider>
                <ul>
                   <li>
+                     
                      <button
                         data-target="#anotacoes"
                         onClick={() => setTela(1)}
@@ -162,9 +163,11 @@ export default function Home() {
                      </button>
                   </li>
                </ul>
+               </PacienteProvider>
             </aside>
 
             <main className={styles.mainContent}>
+               <PacienteProvider>
                {Tela === 1 ? (
                   <PsicologoAnotacao />
                ) : Tela === 2 ? (
@@ -176,6 +179,7 @@ export default function Home() {
                ) : Tela === 5 ? (
                   <Dashboard />
                ) : null}
+               </PacienteProvider>
             </main>
          </div>
       </div>

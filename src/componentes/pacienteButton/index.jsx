@@ -7,14 +7,15 @@ import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
 import api from "../../../services/api";
-// import GraficoEmocoes from "../../componentes/dashboard";
+import { usePaciente } from "../pacienteContext";
 
 export default function PacienteButton() {
-   const [nomePaciente, setNomePaciente] = useState("Paciente"); // Nome do paciente atualmente selecionado
-   const [pacienteSelecionado, setPacienteSelecionado] = useState(null); // Paciente atualmente selecionado
-   const [showPerfil, setShowPerfil] = useState(false); // Exibição do perfil do paciente
-   const [pacientes, setPacientes] = useState([]); // Lista de pacientes
-   const [usuarios, setUsuarios] = useState([]); // Lista de usuários
+   const [nomePaciente, setNomePaciente] = useState("Paciente");
+   const [pacienteSelecionado, setPacienteSelecionado] = useState(null);
+   // const {setPacienteSelecionadoContext} = useState([]); 
+   const [showPerfil, setShowPerfil] = useState(false); 
+   const [pacientes, setPacientes] = useState([]); 
+   const [usuarios, setUsuarios] = useState([]); 
 
    // Buscando pacientes e usuários na API
    useEffect(() => {
@@ -40,14 +41,17 @@ export default function PacienteButton() {
       fetchUsuarios();
    }, []);
 
+   // const selecionarPaciente = (paciente) => {
+   //    setPacienteSelecionado(paciente);
+   // };
+
    // Função para selecionar o paciente e exibir o nome baseado na relação com o usuário
    function selecionarPaciente(paciente) {
-      // Encontrando o usuário associado ao paciente
+    
       const usuarioRelacionado = usuarios.find(
          (user) => user.usu_id === paciente.usu_id
       );
 
-      // Se o usuário for encontrado, define o nome do paciente baseado no usuário
       if (usuarioRelacionado) {
          setNomePaciente(usuarioRelacionado.usu_nome);
       } else {
@@ -64,9 +68,9 @@ export default function PacienteButton() {
             <button
                id="pacienteButton"
                className={styles.botaoPaciente}
-               onClick={() => setShowPerfil(!showPerfil)} // Mostrar e esconder o perfil
+               onClick={() => setShowPerfil(!showPerfil)} 
             >
-               {nomePaciente} {/* Nome do paciente exibido no botão */}
+               {nomePaciente}
             </button>
             <input
                type="checkbox"
@@ -88,9 +92,9 @@ export default function PacienteButton() {
                   <p
                      key={paciente.pac_id}
                      className={styles.pacienteItem}
-                     onClick={() => selecionarPaciente(paciente)} // Seleção do paciente
+                     onClick={() => selecionarPaciente(paciente)} 
                   >
-                     {/* Exibindo o nome do usuário associado ao paciente */}
+      
                      {usuarios.find((user) => user.usu_id === paciente.usu_id)
                         ?.usu_nome || "Paciente"}
                   </p>
@@ -101,13 +105,10 @@ export default function PacienteButton() {
          {showPerfil && pacienteSelecionado && (
             <main>
                <PacientePerfil
-                  paciente={pacienteSelecionado} // Passa o paciente selecionado para o componente de perfil
+                  paciente={pacienteSelecionado} 
                />
             </main>
          )}
-         {/* {pacienteSelecionado && (
-            <GraficoEmocoes pac_id={setPacienteSelecionado.pac_id} />
-         )} */}
       </div>
    );
 }
