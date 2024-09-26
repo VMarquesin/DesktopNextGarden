@@ -249,12 +249,13 @@ export default function Page() {
                </div>
             </div>
          </section>
+         
          <div className={styles.devs}>
             <div className={styles.devsTitulo}>
                <h1>Sobre nós:</h1>
             </div>
-         </div>
-         <div>
+         
+            <div>
             <div className={styles.rodape}>
                <div>
                   <p>
@@ -265,6 +266,43 @@ export default function Page() {
                </div>
             </div>
          </div>
+
+            <div className={styles.devsCards}>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/diario.svg"
+                        alt="Imagem 1"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/emocao.svg"
+                        alt="Imagem 2"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/conhecimento.svg"
+                        alt="Imagem 3"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/conhecimento.svg"
+                        alt="Imagem 3"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+               </div>
+            </div>
+       
 
          <footer className={styles.footer}>
             <p>© 2024 Garden. Todos os direitos reservados.</p>

@@ -187,6 +187,7 @@
    align-items: center;
    width: 60rem;
    line-height: 2.8rem;
+   font-size: 2rem;
 }
 
 /* seção psicólogo */
@@ -335,6 +336,12 @@
 }
 
 .devs {
+   margin-top: 1rem;
+   align-items: center;
+   justify-content: center;
+   display: flex;
+   flex-direction: column;
+
 }
 
 .devsTitulo {
@@ -343,12 +350,22 @@
    border: solid;
    border-width: medium;
    border-radius: 20px;
+   padding-left: 5rem;
+   padding-right: 5rem;
+   margin-top: 5rem;
+   margin-bottom: 10rem;
+}
+
+.devsCards {
+   display: flex;
+   justify-content: center;
+
 }
 
 .rodape {
    background: linear-gradient(to bottom, #0c7a08, #002621);
    padding: 20px;
-   margin: 20rem auto;
+   margin: 10rem auto;
    margin-top: 1rem;
    display: flex;
    justify-content: center;
@@ -363,4 +380,5 @@
    align-items: center;
    width: 60rem;
    line-height: 2.8rem;
+   font-size: 2rem;
 }
