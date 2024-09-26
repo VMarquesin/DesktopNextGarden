@@ -16,7 +16,7 @@ import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
 import Notifications from "../componentes/notificacao";
-import { PacienteProvider } from "../componentes/pacienteContext";
+// import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
 
 export default function Home() {
@@ -71,18 +71,17 @@ export default function Home() {
             {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>
-               <PacienteProvider>
+         
                   <PacienteButton carregaPaciente={carregaPaciente} />
                   <div className={styles.searchBar}>
                      <input type="text" placeholder="Pesquisar paciente..." />
                   </div>
-               </PacienteProvider>
+         
             </section>
 
             {/* barra lateral */}
 
             <aside className={styles.sidebar}>
-               <PacienteProvider>
                   <ul>
                      <li>
                         <button
@@ -167,11 +166,10 @@ export default function Home() {
                         </button>
                      </li>
                   </ul>
-               </PacienteProvider>
             </aside>
 
             <main className={styles.mainContent}>
-               <PacienteProvider>
+         
                   {Tela === 1 ? (
                      <PsicologoAnotacao />
                   ) : Tela === 2 ? (
@@ -183,7 +181,7 @@ export default function Home() {
                   ) : Tela === 5 ? (
                      <Dashboard />
                   ) : null}
-               </PacienteProvider>
+        
             </main>
          </div>
       </div>

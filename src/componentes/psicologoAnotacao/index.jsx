@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { usePaciente } from "../pacienteContext";
+// import { usePaciente } from "../pacienteContext";
 
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
-export default function PsicologoAnotacao() {
-   const { pacienteSelecionado } = usePaciente();
+export default function PsicologoAnotacao(carregaPaciente) {
+   // const { pacienteSelecionado } = usePaciente();
 
    const [anotacoes, setAnotacoes] = useState([]);
    // const [titulo, setTitulo] = useState("");
@@ -18,6 +18,7 @@ export default function PsicologoAnotacao() {
       async function fetchAnotacoes() {
          try {
             const response = await api.get("/psi_anotacao");
+            console.log(response.data);
             setAnotacoes(response.data);
          } catch (error) {
             console.error("Erro ao buscar anotações:", error);
@@ -26,7 +27,9 @@ export default function PsicologoAnotacao() {
 
       fetchAnotacoes();
    }, []);
-
+      // function listaAnotacao(notas){
+         
+      // }
    // Função para salvar uma nova anotação
    const handleSave = async () => {
       try {
@@ -35,22 +38,23 @@ export default function PsicologoAnotacao() {
             psi_id: 1,
             pan_anotacao: conteudo,
             pan_anotacao_data: new Date().toISOString(),
-            pac_id: pacienteSelecionado.pac_id,
+            pac_id: carregaPaciente.pac_id,
          });
          console.log("Resposta da API:", response);
 
          const novaAnotacao = {
-            id: response.pan_anotacao_data.pan_id,
+            pan_id: response.pan_anotacao_data.pan_id,
             // titulo,
             psi_id: 1,
             pan_anotacao: conteudo,
             pan_anotacao_data: new Date().toISOString(),
-            pac_id: pacienteSelecionado.pac_id,
+            pac_id: carregaPaciente.pac_id,
          };
 
          setAnotacoes([...anotacoes, novaAnotacao]);
          // setTitulo("");
          setConteudo("");
+         console.log(anotacoes)
       } catch (error) {
          console.error("Erro ao salvar anotação:", error);
       }
@@ -60,24 +64,27 @@ export default function PsicologoAnotacao() {
       <div className={styles.container}>
          <aside className={styles.sidebar}>
          <div>
-         {pacienteSelecionado ? (
-            <p>Paciente Selecionado: {pacienteSelecionado.pac_id}</p>
+         {carregaPaciente ? (
+            <p>Paciente Selecionado: {carregaPaciente.pac_id}</p>
+            
          ) : (
             <p>Nenhum paciente selecionado</p>
          )}
+         
       </div>
             <h3>Suas Notas</h3>
             <ul className={styles.anotacoesLista}>
                {Array.isArray(anotacoes) && anotacoes.length > 0 ? (
                   anotacoes.map((anotacao) => (
                      <li key={anotacao.pan_id}>
-                        <strong>{anotacao.pan_anotacao_data}</strong>{" "}
+                        <strong> {new Date(anotacao.pan_anotacao_data).toLocaleDateString("pt-BR")}</strong>{" "}
                         {/* <p>{anotacao.titulo}</p> */}
                      </li>
                   ))
                ) : (
                   <li>Nenhuma anotação disponível</li>
                )}
+               
             </ul>
          </aside>
          <main className={styles.mainContent}>

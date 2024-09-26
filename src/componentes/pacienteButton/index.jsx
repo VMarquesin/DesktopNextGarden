@@ -7,10 +7,10 @@ import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
 import api from "../../../services/api";
-import { usePaciente } from "../pacienteContext";
+// import { usePaciente } from "../pacienteContext";
 
 export default function PacienteButton({ carregaPaciente }) {
-   const { pacienteSelecionado, setPacienteSelecionado } = usePaciente();
+   const [pacienteSelecionado, setPacienteSelecionado] = useState();
    const [nomePaciente, setNomePaciente] = useState("Paciente");
    const [showPerfil, setShowPerfil] = useState(false);
    const [pacientes, setPacientes] = useState([]);
@@ -54,6 +54,7 @@ export default function PacienteButton({ carregaPaciente }) {
       setShowPerfil(true);
       carregaPaciente(paciente.usu_id);
    }
+   console.log(selecionarPaciente);
 
    return (
       <div>
