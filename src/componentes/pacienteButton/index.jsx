@@ -26,6 +26,7 @@ export default function PacienteButton({ carregaPaciente }) {
          }
       }
 
+
       async function fetchUsuarios() {
          try {
             const response = await api.get("/usuarios");
@@ -38,6 +39,8 @@ export default function PacienteButton({ carregaPaciente }) {
       fetchPacientes();
       fetchUsuarios();
    }, []);
+
+console.log("meus pacientes: ",pacientes);
 
    function selecionarPaciente(paciente) {
       const usuarioRelacionado = usuarios.find(
