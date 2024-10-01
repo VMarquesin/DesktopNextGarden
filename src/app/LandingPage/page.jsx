@@ -1,7 +1,57 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect } from "react";
+
+const Footer = () => {
+   return (
+      <nav className={styles.footerAnimation}>
+         <div className={styles.footerAnimation}>
+            <a href="#paciente">Paciente</a>
+         </div>
+
+         <div>
+            <a href="#seguranca">Segurança</a>
+         </div>
+
+         <div>
+            <a href="#psicologo">Psicólogo</a>
+         </div>
+
+         <div>
+            <a href="#login">Login</a>
+         </div>
+      </nav>
+   );
+};
 
 export default function Page() {
+   //Efeito de REDIRECIONAMENTO do RODAPÉ da página
+   useEffect(() => {
+      const links = document.querySelectorAll("nav a");
+
+      const handleScroll = (e) => {
+         e.preventDefault();
+         const targetId = e.currentTarget.getAttribute("href");
+         const targetElement = document.querySelector(targetId);
+         if (targetElement) {
+            targetElement.scrollIntoView({
+               behavior: "smooth",
+               block: "start",
+            });
+         }
+      };
+
+      links.forEach((link) => link.addEventListener("click", handleScroll));
+
+      return () => {
+         links.forEach((link) =>
+            link.removeEventListener("click", handleScroll)
+         );
+      };
+   }, []);
+
    return (
       <div className={styles.container}>
          <div className={styles.BackgroundHeader}>
@@ -189,7 +239,7 @@ export default function Page() {
                         <div className={styles.TituloBorder}>
                            <h2 className={styles.TituloPsicologos}>Garden</h2>
                         </div>
-                        <div className={styles.ContainerTextoRight}>
+                        <div className={styles.textAnimacao}>
                            <h3 className={styles.SubtituloPsicologos}>
                               O primeiro passo para exponenciar seus resultados
                            </h3>
@@ -217,7 +267,7 @@ export default function Page() {
                      </div>
 
                      <div className={styles.ContainerTextoLeft}>
-                        <div>
+                        <div className={styles.textAnimacao}>
                            <h3 className={styles.SubtituloPsicologos}>
                               Grafíco detalhado de emoções e acontecimentos
                            </h3>
@@ -249,25 +299,26 @@ export default function Page() {
                </div>
             </div>
          </section>
-         
+
          <div className={styles.devs}>
             <div className={styles.devsTitulo}>
                <h1>Sobre nós:</h1>
             </div>
-         
+
             <div>
-            <div className={styles.rodape}>
-               <div>
-                  <p>
-                     Estamos aqui para ser o solo fértil onde suas aspirações
-                     podem florescer. Venha mergulhar nas maravilhas do seu
-                     jardim interior.
-                  </p>
+               <div className={styles.rodape}>
+                  <div>
+                     <p>
+                        Estamos aqui para ser o solo fértil onde suas aspirações
+                        podem florescer. Venha mergulhar nas maravilhas do seu
+                        jardim interior.
+                     </p>
+                  </div>
                </div>
             </div>
-         </div>
 
-            <div className={styles.devsCards}>
+            <div className={styles.sobreNos}>
+               <div className={styles.devsCards}>
                   <div className={styles.card}>
                      <Image
                         src="/images/diario.svg"
@@ -302,17 +353,22 @@ export default function Page() {
                   </div>
                </div>
             </div>
-       
+         </div>
 
-         <footer className={styles.footer}>
-            <p>© 2024 Garden. Todos os direitos reservados.</p>
-            <nav>
-               <a href="#paciente">Paciente</a>
-               <a href="#seguranca">Segurança</a>
-               <a href="#psicologo">Psicólogo</a>
-               <a href="#login">Login</a>
-            </nav>
-         </footer>
+         <Footer />
+         <div className={styles.footer}>
+            <p>© 2024 Garden.</p>
+         </div>
+         <div className={styles.footer}>
+            <p> Todos os direitos reservados.</p>
+         </div>
+
+         {/* <div>
+            <section id="paciente">Conteúdo do Paciente</section>
+            <section id="seguranca">Conteúdo da Segurança</section>
+            <section id="psicologo">Conteúdo do Psicólogo</section>
+            <section id="login">Conteúdo do Login</section>
+         </div> */}
       </div>
    );
 }

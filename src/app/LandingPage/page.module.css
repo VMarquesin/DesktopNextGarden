@@ -49,6 +49,11 @@
    font-size: 5rem;
    width: 45rem;
    margin-left: 20rem;
+   transition: transform 0.5s ease;
+}
+
+.hero:hover {
+   transform: scale(1.07);
 }
 
 .saibaMais {
@@ -83,9 +88,9 @@
 } */
 
 .pacienteIntro {
-   background-color: #fff;
+   background-color: #ffffff00;
    color: black;
-   padding: 10rem;
+   padding: 1rem;
    display: flex;
    position: relative;
    top: 45rem;
@@ -93,6 +98,7 @@
    border-radius: 10px;
    width: 85rem;
    height: 25rem;
+   align-items: start;
 }
 
 .pacienteIntro p {
@@ -103,6 +109,11 @@
    font-size: 2rem;
    line-height: 2.8rem;
    font-family: Arial, sans-serif;
+   transition: transform 1s ease;
+}
+
+.pacienteIntro:hover {
+   transform: scale(1.03);
 }
 
 .pacienteCards {
@@ -154,12 +165,18 @@
    height: 30rem;
    color: #fff;
    margin-top: 29rem;
+   transition: transform 0.5s ease;
 }
+
+.textContent:hover {
+   transform: scale(1.09);
+}
+
 .textContent .primeiro {
    color: #fff;
 }
 .textContent h2 {
-   color: #0c7a08;
+   color: #30dd5b;
    font-size: 70px;
    font-weight: bolder;
 }
@@ -181,6 +198,11 @@
    height: 28rem;
    border-radius: 10px 0 10px 0;
    color: white;
+   transition: transform 0.5s ease;
+}
+
+.divGradient:hover {
+   transform: scale(1.07);
 }
 
 .divGradient p {
@@ -228,6 +250,11 @@
    font-weight: bolder;
    word-break: normal;
    box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.418);
+   transition: transform 0.5s ease;
+}
+
+.featureCard:hover {
+   transform: scale(1.02);
 }
 
 .TituloBorder {
@@ -261,6 +288,14 @@
    /* font-weight: bolder; */
    text-align: start;
    width: 30vw;
+}
+
+.textAnimacao {
+   transition: transform 0.5s ease;
+}
+
+.textAnimacao:hover {
+   transform: scale(1.02);
 }
 
 .ContainerTextoRight {
@@ -301,6 +336,7 @@
 .iconDiario {
    object-fit: url("/icones/DiarioPsicologo.svg");
    background-color: #00000000;
+   transition: transform 0.5s ease;
 }
 
 .iconAtividade {
@@ -323,16 +359,45 @@
 /* rodapé */
 
 .footer {
-   background-color: #f8f9fa;
-   padding: 20px;
+   background-color: #bdecb6;
+   padding: 1rem;
    text-align: center;
-   margin-top: 50px;
+   gap: 5rem;
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* margin-top: 50px; */
+}
+
+.footerAnimation {
+   background-color: #bdecb6;
+   padding: 1rem;
+   text-align: center;
+   gap: 5rem;
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* margin-top: 50px; */
+}
+
+.footerAnimation nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   color: #fa0505;
+   padding: 1rem;
+   margin-top: 5rem;
+   scroll-behavior: smooth;
 }
 
 .footer nav a {
    margin-right: 10px;
    text-decoration: none;
-   color: #074a05;
+   color: #000000;
+   padding: 1rem;
+   margin-top: 5rem;
+   scroll-behavior: smooth;
 }
 
 .devs {
@@ -341,7 +406,6 @@
    justify-content: center;
    display: flex;
    flex-direction: column;
-
 }
 
 .devsTitulo {
@@ -359,7 +423,6 @@
 .devsCards {
    display: flex;
    justify-content: center;
-
 }
 
 .rodape {
@@ -374,6 +437,11 @@
    height: 28rem;
    border-radius: 10px 0 10px 0;
    color: white;
+   transition: transform 0.5s ease;
+}
+
+.rodape:hover {
+   transform: scale(1.07);
 }
 
 .rodape p {
@@ -381,4 +449,10 @@
    width: 60rem;
    line-height: 2.8rem;
    font-size: 2rem;
+}
+
+.sobreNos {
+   background-color: #bdecb6;
+   padding: 5rem;
+   height: max-content;
 }
