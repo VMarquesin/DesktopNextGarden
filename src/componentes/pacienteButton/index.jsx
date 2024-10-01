@@ -26,7 +26,6 @@ export default function PacienteButton({ carregaPaciente }) {
          }
       }
 
-
       async function fetchUsuarios() {
          try {
             const response = await api.get("/usuarios");
@@ -40,13 +39,13 @@ export default function PacienteButton({ carregaPaciente }) {
       fetchUsuarios();
    }, []);
 
-console.log("meus pacientes: ",pacientes);
+   console.log("meus pacientes: ", pacientes);
 
    function selecionarPaciente(paciente) {
       const usuarioRelacionado = usuarios.find(
          (user) => user.usu_id === paciente.usu_id
       );
-
+      // console.log(user.usu_id, "a", paciente.usu_id, "b");
       if (usuarioRelacionado) {
          setNomePaciente(usuarioRelacionado.usu_nome);
       } else {
@@ -55,7 +54,7 @@ console.log("meus pacientes: ",pacientes);
 
       setPacienteSelecionado(paciente);
       setShowPerfil(true);
-      carregaPaciente(paciente.usu_id);
+      carregaPaciente(paciente.pac_id);
    }
    console.log(selecionarPaciente);
 

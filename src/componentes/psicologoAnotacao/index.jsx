@@ -1,25 +1,22 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import { usePaciente } from "../pacienteContext";
-
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
 export default function PsicologoAnotacao(carregaPaciente) {
-   // const { pacienteSelecionado } = usePaciente();
-
    const [anotacoes, setAnotacoes] = useState([]);
-   // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
-
+   const [isModalOpen, setIsModalOpen] = useState(false);
+   const [selectedAnotacao, setSelectedAnotacao] = useState(null);
+   
    // Função para buscar as anotações existentes na API
    useEffect(() => {
       async function fetchAnotacoes() {
          try {
-            const response = await api.get("/psi_anotacao/");
+            const response = await api.get(`/psi_anotacao/${carregaPaciente}`);
             setAnotacoes(response.data.dados);
-            console.log(response.data.dados);
+            console.log(carregaPaciente,"i don't know")
          } catch (error) {
             console.error("Erro ao buscar anotações:", error);
          }
@@ -27,48 +24,45 @@ export default function PsicologoAnotacao(carregaPaciente) {
 
       fetchAnotacoes();
    }, []);
-   // function listaAnotacao(notas){
-   console.log("teste", anotacoes);
-   console.log(carregaPaciente.id);
-   // console.log(conteudo);
-   // }
+
+   // Função para abrir o modal com a anotação selecionada
+   const openModal = (anotacao) => {
+      setSelectedAnotacao(anotacao);
+      setIsModalOpen(true);
+   };
+
+   // Função para fechar o modal
+   const closeModal = () => {
+      setIsModalOpen(false);
+      setSelectedAnotacao(null);
+   };
+
    // Função para salvar uma nova anotação
-   // const handleSave = async () => {
-   //    try {
-   //       const response = await api.post("/psi_anotacao", {
-   //          titulo,
-   //          psi_id: 1,
-   //          pan_anotacao: conteudo,
-   //          pan_anotacao_data: new Date().toISOString(),
-   //          pac_id: carregaPaciente.id,
-   //       });
-   //       console.log("Resposta da API:", response);
+   const handleSave = async () => {
+      if (!conteudo || !carregaPaciente?.id) {
+         console.error("Conteúdo da anotação ou paciente não definido.");
+         return;
+      }
 
-   //       const novaAnotacao = {
-   //          pan_id: response.pan_anotacao_data.pan_id,
-   //          titulo,
-   //          psi_id: 1,
-   //          pan_anotacao: conteudo,
-   //          pan_anotacao_data: new Date().toISOString(),
-   //          pac_id: carregaPaciente.id,
-   //       };
-
-   //       setAnotacoes([...anotacoes, novaAnotacao]);
-   //       setTitulo("");
-   //       setConteudo("");
-   //       console.log(anotacoes);
-   //    } catch (error) {
-   //       console.error("Erro ao salvar anotação:", error);
-   //    }
-   // };
-
-   const handleSave = async (conteudo) => {
-    
       try {
-         const response = await api.post("/psi_anotacao", conteudo);
-         console.log(response.data.dados);
+         const response = await api.post("/psi_anotacao", {
+            psi_id: 1, // ID do psicólogo (ajuste conforme necessário)
+            pan_anotacao: conteudo,
+            pan_anotacao_data: new Date().toISOString(),
+            pac_id: carregaPaciente.id, // ID do paciente selecionado
+         });
+
+         const novaAnotacao = {
+            pan_id: response.data.dados.pan_id,
+            pan_anotacao: conteudo,
+            pan_anotacao_data: new Date().toISOString(),
+            pac_id: carregaPaciente.id,
+         };
+
+         setAnotacoes([...anotacoes, novaAnotacao]);
+         setConteudo(""); // Limpa o campo após o salvamento
       } catch (error) {
-         console.log("N funcionou");
+         console.error("Erro ao salvar anotação:", error);
       }
    };
 
@@ -86,25 +80,21 @@ export default function PsicologoAnotacao(carregaPaciente) {
             <ul className={styles.anotacoesLista}>
                {anotacoes.length > 0 ? (
                   anotacoes.map((anotacao) => (
-                     <li key={anotacao.pan_id}>
+                     <li
+                        key={anotacao.pan_id}
+                        onClick={() => openModal(anotacao)}
+                     >
                         <p>{anotacao.pan_anotacao}</p>
-                        <p>{anotacao.pan_anotacao_data}</p>
+                        <p>
+                           {new Date(
+                              anotacao.pan_anotacao_data
+                           ).toLocaleDateString("pt-BR")}
+                        </p>
                      </li>
                   ))
                ) : (
                   <></>
                )}
-               {/* 
-               {Array.isArray(anotacoes) && anotacoes.length > 0 ? (
-                  anotacoes.map((anotacao) => (
-                     <li key={anotacao.pan_id}>
-                        <strong> {new Date(anotacao.pan_anotacao_data).toLocaleDateString("pt-BR")}</strong>{" "}
-                        <p>{anotacao.titulo}</p>
-                     </li>
-                  ))
-               ) : (
-                  <li>Nenhuma anotação disponível</li>
-               )} */}
             </ul>
          </aside>
          <main className={styles.mainContent}>
@@ -115,23 +105,37 @@ export default function PsicologoAnotacao(carregaPaciente) {
                   value={conteudo}
                   onChange={(e) => setConteudo(e.target.value)}
                />
-
                <div className={styles.botoes}>
                   <button className={styles.salvarButton} onClick={handleSave}>
                      Salvar
                   </button>
                   <button
                      className={styles.cancelarButton}
-                     onClick={() => {
-                        // setTitulo("");
-                        setConteudo("");
-                     }}
+                     onClick={() => setConteudo("")}
                   >
                      Cancelar
                   </button>
                </div>
             </div>
          </main>
+
+         {/* Modal */}
+         {isModalOpen && (
+            <div className={styles.modalOverlay}>
+               <div className={styles.modalContent}>
+                  <h3>Anotação</h3>
+                  <p>{selectedAnotacao?.pan_anotacao}</p>
+                  <p>
+                     {new Date(
+                        selectedAnotacao?.pan_anotacao_data
+                     ).toLocaleDateString("pt-BR")}
+                  </p>
+                  <button className={styles.closeButton} onClick={closeModal}>
+                     Fechar
+                  </button>
+               </div>
+            </div>
+         )}
       </div>
    );
 }

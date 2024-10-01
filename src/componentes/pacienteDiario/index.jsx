@@ -17,9 +17,9 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
    useEffect(() => {
       async function fetchNotas() {
          try {
-            const response = await api.get(`/diario/2`);
+            const response = await api.get(`/diario/11`);
             // Garante que sempre será um array, mesmo que a resposta não seja
-            setNotas(Array.isArray(response.data) ? response.data : []);
+            setNotas(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar notas:", error);
             setNotas([]); // Caso ocorra erro, mantém como array vazio
@@ -28,8 +28,8 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
 
       async function fetchPaciente() {
          try {
-            const response = await api.get(`/paciente/5`);
-            setPaciente(response.data);
+            const response = await api.get(`/paciente/11`);
+            setPaciente(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar paciente:", error);
          }
@@ -52,8 +52,12 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                         onClick={() => setNotaSelecionada(nota)}
                         className={styles.notaItem}
                      >
-                        <p>{new Date(nota.dia_data).toLocaleDateString()}</p>
-                        <p>{nota.conteudo.slice(0, 20)}...</p>
+                        {console.log(nota, "teste nota")}
+                        <p>{nota.dia_relato}</p>
+                        <p>
+                           {new Date(nota.dia_data).toLocaleDateString("pt-BR")}
+                        </p>
+                        {/* <p>{nota.conteudo.slice(0, 20)}...</p> */}
                      </li>
                   ))
                ) : (
@@ -78,7 +82,11 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                            />
                            <div className={styles.informacoesPaciente}>
                               <h2>{paciente.usu_nome}</h2>
-                              <p>{new Date(notaSelecionada.dia_data).toLocaleDateString()}</p>
+                              <p>
+                                 {new Date(
+                                    notaSelecionada.dia_data
+                                 ).toLocaleDateString()}
+                              </p>
                            </div>
                         </>
                      )}
@@ -88,7 +96,9 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                   </div>
                </div>
             ) : (
-               <p className={styles.avisoNota}>Selecione uma nota para visualizar</p>
+               <p className={styles.avisoNota}>
+                  Selecione uma nota para visualizar
+               </p>
             )}
          </section>
       </div>

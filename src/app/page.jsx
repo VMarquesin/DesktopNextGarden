@@ -26,7 +26,7 @@ export default function Home() {
    function carregaPaciente(id) {
       setPacienteSel(id);
    }
-   console.log(pacienteSel);
+   console.log(pacienteSel,"test");
    return (
       <div className={styles.containerGlobal}>
          <Head>
