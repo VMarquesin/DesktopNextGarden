@@ -14,7 +14,8 @@ export default function PsicologoAnotacao(carregaPaciente) {
    useEffect(() => {
       async function fetchAnotacoes() {
          try {
-            const response = await api.get(`/psi_anotacao/${carregaPaciente}`);
+            // ${carregaPaciente}
+            const response = await api.get(`/psi_anotacao/11`);
             setAnotacoes(response.data.dados);
             console.log(carregaPaciente,"i don't know")
          } catch (error) {

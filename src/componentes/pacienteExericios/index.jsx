@@ -18,16 +18,17 @@ export default function PacienteExercicios(carregaPaciente) {
       async function fetchExercicios() {
          try {
             const response = await api.get("/atividade");
-            setExercicios(response.ati_data);
+            setExercicios(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar atividades:", error);
+            // console.log("testExercicio", setExercicios);
          }
       }
 
       async function fetchPacientes() {
          try {
             const response = await api.get("/pacientes");
-            setPacientes(response.data);
+            setPacientes(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar pacientes:", error);
          }
@@ -77,10 +78,11 @@ export default function PacienteExercicios(carregaPaciente) {
          <aside className={styles.sidebar} onScroll={handleScroll}>
             <h3>Exercícios</h3>
             <ul className={styles.anotacoesLista}>
-               {exercicios && Array.isArray(exercicios) ? (
+               {exercicios.length > 0 ? (
                   exercicios.map((exercicio) => (
                      <li key={exercicio.ati_id}>
-                        <strong>{exercicio.ati_data}</strong>
+                        <p>{exercicio.ati_descricao.slice(0,17)}...</p>
+                        <strong>{new Date(exercicio.ati_data).toLocaleDateString("pt-BR")}</strong>
                         {/* <p>{exercicio.titulo}</p> */}
                      </li>
                   ))
@@ -132,8 +134,8 @@ export default function PacienteExercicios(carregaPaciente) {
                <div className={styles.modalContent}>
                   <h2>Selecione os pacientes</h2>
                   <ul className={styles.pacientesLista}>
-                     {pacientes.dados && Array.isArray(pacientes.dados) ? (
-                        pacientes.dados.map((paciente) => (
+                     {pacientes.length > 0 ? (
+                        pacientes.map((paciente) => (
                            <li key={paciente.pac_id}>
                               <Image
                                  src={paciente.foto || "/profileDefault.jpg"}
