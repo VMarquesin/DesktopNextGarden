@@ -40,7 +40,8 @@
 }
 .header nav ul li a:hover {
    color: #fff;
-   background-color: rgb(3, 161, 24);
+   background-color: rgb(6, 97, 18);
+   border-radius: 10px;
 }
 
 .hero {
@@ -102,18 +103,28 @@
 }
 
 .pacienteIntro p {
+   background: linear-gradient(to bottom, #0c7a08, #002621);
+   padding: 20px;
+   margin: 5rem auto;
    display: flex;
+   justify-content: center;
    align-items: center;
-   margin-left: 18rem;
-   width: 68rem;
-   font-size: 2rem;
-   line-height: 2.8rem;
-   font-family: Arial, sans-serif;
-   transition: transform 1s ease;
+   width: 90rem;
+   height: 28rem;
+   border-radius: 10px 0 10px 0;
+   color: white;
+   transition: transform 0.5s ease;
 }
 
 .pacienteIntro:hover {
    transform: scale(1.03);
+}
+
+.pacienteIntro p {
+   align-items: center;
+   width: 80rem;
+   line-height: 2.8rem;
+   font-size: 2rem;
 }
 
 .pacienteCards {
