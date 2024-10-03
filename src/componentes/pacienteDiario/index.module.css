@@ -1,43 +1,5 @@
 /* .container {
    display: grid;
-   grid-template-areas: "sidebar main";
-   grid-template-columns: 200px 1fr;
-   width: 100%;
-   height: 100%;
-}
-
-.sidebar {
-   grid-area: sidebar;
-   background-color: #ffffff;
-   border-radius: 7px;
-   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.5);
-   margin: 0.2rem;
-}
-
-.diarioLista {
-   display: flex;
-   flex-direction: column;
-   width: 100%;
-   list-style-type: none;
- 
-}
-
-.diarioLista li {
- 
-   padding: 1rem;
-   cursor: pointer;
-   transition: 0.3s;
-}
-
-.diarioLista li:hover {
-   background-color: #ddd;
-} */
-
-/* border-radius: 7px; */
-/* box-shadow: 0px 13px 25px rgba(0, 0, 0, 0.4); */
-
-.container {
-   display: grid;
    grid-template-columns: 1fr 3fr;
    height: 100%;
 }
@@ -74,7 +36,6 @@
 }
 
 .visualizacaoNota {
-   /* background-color: #074a05; */
    display: flex;
    justify-content: center;
    align-items: center;
@@ -111,4 +72,74 @@
    display: flex;
    align-items: center;
    justify-content: center;
+} */
+
+.container {
+   display: flex;
+   height: 100%;
+   overflow: hidden;
+}
+
+.sidebar {
+   width: 14%;
+   background-color: #f4f4f4;
+   padding: 20px;
+   border-right: 1px solid #ddd;
+   overflow-y: auto;
+}
+
+.sidebar h3 {
+   font-size: 1.3em;
+   margin-bottom: 20px;
+}
+
+.notaItem {
+   padding: 15px;
+   margin-bottom: 10px;
+   background-color: #fff;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.notaItem:hover {
+   background-color: #e8f4e8;
+}
+
+.visualizacaoNota {
+   flex: 1;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #e9f5ec;
+   overflow: hidden;
+}
+
+.notaDetalhada {
+   width: 100%;
+   /* max-width: 800px; */
+   background-color: #fff;
+   border-radius: 12px;
+   padding: 30px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+   overflow-y: auto;
+   max-height: 100%;
+   display: flex;
+   flex-direction: column;
+}
+
+.conteudoNota {
+   font-size: 1.2em;
+   color: #333;
+   line-height: 1.6;
+   margin-top: 20px;
+   overflow-y: hidden;
+}
+
+.avisoNota {
+   font-size: 1.5em;
+   color: #666;
+   text-align: center;
 }

@@ -1,11 +1,8 @@
-"use client";
+"use client"; 
 
 import { useState, useEffect } from "react";
-import axios from "axios"; // para chamadas à API
-
 import Image from "next/image";
 import styles from "./index.module.css";
-
 import api from "../../../services/api";
 
 export default function DiarioPaciente({ dia_id, pac_id }) {
@@ -17,9 +14,9 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
    useEffect(() => {
       async function fetchNotas() {
          try {
-            const response = await api.get(`/diario/11`);
-            // Garante que sempre será um array, mesmo que a resposta não seja
-            setNotas(response.data.dados);
+            const response = await api.get(`/diario/5`);
+            console.log(response.data.dados); // Verifique os dados da API
+            setNotas(response.data.dados || []); // Garante que sempre será um array
          } catch (error) {
             console.error("Erro ao buscar notas:", error);
             setNotas([]); // Caso ocorra erro, mantém como array vazio
@@ -28,8 +25,9 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
 
       async function fetchPaciente() {
          try {
-            const response = await api.get(`/paciente/11`);
-            setPaciente(response.data.dados);
+            const response = await api.get(`/pacientes`);
+            console.log(response.data.dados); // Verifique os dados do paciente
+            setPaciente(response.data.dados || null);
          } catch (error) {
             console.error("Erro ao buscar paciente:", error);
          }
@@ -52,12 +50,10 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                         onClick={() => setNotaSelecionada(nota)}
                         className={styles.notaItem}
                      >
-                        {console.log(nota, "teste nota")}
-                        <p>{nota.dia_relato}</p>
+                        <p>{nota.dia_relato.slice(0, 17)}...</p>
                         <p>
                            {new Date(nota.dia_data).toLocaleDateString("pt-BR")}
                         </p>
-                        {/* <p>{nota.conteudo.slice(0, 20)}...</p> */}
                      </li>
                   ))
                ) : (
@@ -70,8 +66,8 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
          <section className={styles.visualizacaoNota}>
             {notaSelecionada ? (
                <div className={styles.notaDetalhada}>
-                  <header className={styles.notaHeader}>
-                     {paciente && (
+                  {/* <header className={styles.notaHeader}>
+                     {paciente && paciente.foto && (
                         <>
                            <Image
                               src={paciente.foto}
@@ -90,9 +86,13 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                            </div>
                         </>
                      )}
-                  </header>
+                  </header> */}
                   <div className={styles.conteudoNota}>
-                     <p>{notaSelecionada.conteudo}</p>
+                     {notaSelecionada.dia_relato ? (
+                        <p>{notaSelecionada.dia_relato}</p>
+                     ) : (
+                        <p>Sem conteúdo disponível para esta nota.</p>
+                     )}
                   </div>
                </div>
             ) : (
