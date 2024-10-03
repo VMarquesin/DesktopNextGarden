@@ -48,14 +48,14 @@ export default function PsicologoAnotacao({ pacienteId }) {
             pac_id: pacienteId,
          });
 
-         const novaAnotacao = {
-            pan_id: response.data.dados.pan_id,
-            pan_anotacao: conteudo,
-            pan_anotacao_data: new Date().toISOString().split('T')[0],
-            pac_id: pacienteId,
-         };
+         // const novaAnotacao = {
+         //    pan_id: response.data.dados.pan_id,
+         //    pan_anotacao: conteudo,
+         //    pan_anotacao_data: new Date().toISOString().split('T')[0],
+         //    pac_id: pacienteId,
+         // };
 
-         setAnotacoes([...anotacoes, novaAnotacao]);
+         // setAnotacoes([...anotacoes, novaAnotacao]);
          setConteudo("");
       } catch (error) {
          console.error("Erro ao salvar anotação:", error);

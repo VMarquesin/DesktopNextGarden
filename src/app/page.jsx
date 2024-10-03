@@ -170,13 +170,13 @@ export default function Home() {
                {Tela === 1 ? (
                   <PsicologoAnotacao pacienteId={pacienteSel} />
                ) : Tela === 2 ? (
-                  <PacienteDiario />
+                  <PacienteDiario pacienteId={pacienteSel} />
                ) : Tela === 3 ? (
-                  <PacienteExercicios />
+                  <PacienteExercicios pacienteId={pacienteSel} />
                ) : Tela === 4 ? (
-                  <LembreteSessao />
+                  <LembreteSessao pacienteId={pacienteSel} />
                ) : Tela === 5 ? (
-                  <Dashboard />
+                  <Dashboard pacienteId={pacienteSel} />
                ) : null}
             </main>
          </div>

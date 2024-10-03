@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
-export default function DiarioPaciente({ dia_id, pac_id }) {
+export default function DiarioPaciente({ pacienteId }) {
    const [notas, setNotas] = useState([]); // Inicializa como array vazio
    const [notaSelecionada, setNotaSelecionada] = useState(null);
    const [paciente, setPaciente] = useState(null);
@@ -14,7 +14,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
    useEffect(() => {
       async function fetchNotas() {
          try {
-            const response = await api.get(`/diario/5`);
+            const response = await api.get(`/diario/${pacienteId}`);
             console.log(response.data.dados); // Verifique os dados da API
             setNotas(response.data.dados || []); // Garante que sempre será um array
          } catch (error) {
@@ -35,7 +35,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
 
       fetchNotas();
       fetchPaciente();
-   }, [dia_id, pac_id]);
+   }, [pacienteId]);
 
    return (
       <div className={styles.container}>
@@ -66,7 +66,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
          <section className={styles.visualizacaoNota}>
             {notaSelecionada ? (
                <div className={styles.notaDetalhada}>
-                  {/* <header className={styles.notaHeader}>
+                  <header className={styles.notaHeader}>
                      {paciente && paciente.foto && (
                         <>
                            <Image
@@ -86,7 +86,7 @@ export default function DiarioPaciente({ dia_id, pac_id }) {
                            </div>
                         </>
                      )}
-                  </header> */}
+                  </header>
                   <div className={styles.conteudoNota}>
                      {notaSelecionada.dia_relato ? (
                         <p>{notaSelecionada.dia_relato}</p>

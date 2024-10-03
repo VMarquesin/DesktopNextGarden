@@ -6,7 +6,7 @@ import Image from "next/image";
 import styles from "./index.module.css";
 import api from "../../../services/api";
 
-export default function PacienteExercicios(carregaPaciente) {
+export default function PacienteExercicios(pacienteId) {
    const [exercicios, setExercicios] = useState([]);
    // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
@@ -36,14 +36,15 @@ export default function PacienteExercicios(carregaPaciente) {
 
       fetchExercicios();
       fetchPacientes();
-   }, []);
+   }, [pacienteId]);
 
    const handleSalvarExercicio = async () => {
       try {
          const response = await api.post("/atividade", {
-            // titulo,
-            conteudo,
-            pacientes: setPacienteSel,
+            psi_id: 1,
+            ati_descricao: conteudo,
+            ati_data: new Date().toISOString().split('T')[0],
+            pacientes: atividade.pac_id,
          });
          setExercicios([...atividade, response.ati_data]);
          // setTitulo("");
@@ -150,7 +151,7 @@ export default function PacienteExercicios(carregaPaciente) {
                                     paciente.pac_id
                                  )}
                                  onChange={() =>
-                                    togglePacienteSelecionado(paciente.pac_id)
+                                    togglePacienteSelecionado(pac_id)
                                  }
                               />
                            </li>
