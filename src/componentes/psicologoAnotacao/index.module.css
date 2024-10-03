@@ -167,7 +167,7 @@
 
 .textoArea {
    width: 100%;
-   height: 55rem;
+   height: 70%;
    padding: 15px;
    font-size: 1em;
    border-radius: 8px;
@@ -192,10 +192,15 @@
    cursor: pointer;
    transition: background-color 0.3s ease;
 }
+.cancelarButton{
+   background-color: #cc0000;
+}
 
-.salvarButton:hover,
-.cancelarButton:hover {
+.salvarButton:hover{
    background-color: #066004;
+}
+.cancelarButton:hover {
+   background-color: rgb(240, 28, 28);
 }
 
 .modalOverlay {
