@@ -43,7 +43,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
          const response = await api.post("/psi_anotacao", {
             psi_id: 1,
             pan_anotacao: conteudo,
-            pan_anotacao_data: new Date().toISOString().split('T')[0],
+            pan_anotacao_data: new Date().toISOString().split("T")[0],
             pac_id: pacienteId,
          });
 
@@ -81,7 +81,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
                      </li>
                   ))
                ) : (
-                  <></>
+                  <p>Selecione um paciente</p>
                )}
             </ul>
          </aside>

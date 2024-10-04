@@ -57,7 +57,7 @@ export default function DiarioPaciente({ pacienteId }) {
                      </li>
                   ))
                ) : (
-                  <li>Nenhuma nota encontrada</li>
+                  <li>Selecione um paciente</li>
                )}
             </ul>
          </aside>

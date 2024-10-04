@@ -25,14 +25,13 @@ ChartJS.register(
 );
 
 export default function GraficoEmocoes({ pac_id }) {
-   const [dadosEmocoes, setDadosEmocoes] = useState(null); // Estado para armazenar os dados das emoções
+   const [dadosEmocoes, setDadosEmocoes] = useState(null); 
    const [loading, setLoading] = useState(true);
 
-   // Função para buscar as emoções do paciente pela API
    useEffect(() => {
       async function fetchEmocoes() {
          try {
-            const response = await api.get(`/emocao_paciente/${pac_id}`); // API para buscar as emoções do paciente
+            const response = await api.get(`/emocao_paciente/${pac_id}`); 
             setDadosEmocoes(response.data);
             setLoading(false);
          } catch (error) {
