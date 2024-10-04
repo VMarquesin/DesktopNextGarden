@@ -10,7 +10,7 @@
    background-position: center;
    background-repeat: no-repeat;
    width: 100%;
-   height: 2227px;
+   height: 154.188rem;
    /* position: relative; */
    /* margin-top: -20rem; */
    z-index: 20;
@@ -22,7 +22,7 @@
    padding: 20px 30px;
    justify-content: space-between;
    align-items: center;
-   min-height: 75px;
+   min-height: 25px;
 }
 .header nav ul {
    display: flex;
@@ -35,7 +35,7 @@
    font-size: 2.5rem;
    color: #fff;
    text-decoration: none;
-   padding: 10px 30px;
+   padding: 20px 30px;
    transition: 0.2s;
 }
 .header nav ul li a:hover {
@@ -45,7 +45,7 @@
 }
 
 .hero {
-   margin-top: 50rem;
+   margin-top: 30rem;
    color: white;
    font-size: 5rem;
    width: 45rem;
@@ -206,6 +206,7 @@
    justify-content: center;
    align-items: center;
    width: 90rem;
+   font-weight: bolder;
    height: 28rem;
    border-radius: 10px 0 10px 0;
    color: white;
@@ -467,3 +468,964 @@
    padding: 5rem;
    height: max-content;
 }
+
+/* Responsivo para 1366x768 */
+
+
+@media (max-width: 1366px){
+
+   .container {
+      font-family: Arial, sans-serif;
+      color: #333;
+      max-width: 100%;
+      overflow-x: hidden;
+   }
+   
+   .BackgroundHeader {
+      background-image: url("/images/BackgroundHeader.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 139.188rem;
+      /* position: relative; */
+      /* margin-top: -20rem; */
+      z-index: 20;
+   }
+   
+   .header .topBar {
+      display: flex;
+      /* margin-top: -6rem; */
+      padding: 5px;
+      justify-content: end;
+      align-items: center;
+      min-height: 25px;
+   }
+   .header nav ul {
+      display: flex;
+   }
+   .topBar {
+      display: flex;
+      z-index: 10;
+   }
+   .header nav ul li a {
+      font-size: 2.5rem;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px 30px;
+      transition: 0.2s;
+   }
+   .header nav ul li a:hover {
+      color: #fff;
+      background-color: rgb(6, 97, 18);
+      border-radius: 10px;
+   }
+   
+   .hero {
+      margin-top: 30rem;
+      color: white;
+      font-size: 5rem;
+      width: 45rem;
+      margin-left: 20rem;
+      transition: transform 0.5s ease;
+   }
+   
+   .hero:hover {
+      transform: scale(1.07);
+   }
+   
+   .saibaMais {
+      width: 25rem;
+      padding: 1.6rem;
+      font-size: 2rem;
+      color: #fff;
+      background: linear-gradient(40deg, #2b8a0e, #1c351b);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      align-items: center;
+      margin-top: 20%;
+   }
+   
+   /* seção paciente */
+   
+   .BackgroundPaciente {
+      background-image: url("/images/BackgroundPaciente.png");
+      background-position: right;
+      background-repeat: no-repeat;
+      /* width: 100%; */
+      height: 2260px;
+      margin-top: -4.3rem;
+      /* margin-left: 60%; */
+      /* margin-top: -45.5rem; */
+   }
+   
+   /* .pacienteSection {
+      padding: 50px 20px;
+   } */
+   
+   .pacienteIntro {
+      background-color: #ffffff00;
+      color: black;
+      padding: 1rem;
+      display: flex;
+      position: relative;
+      top: 45rem;
+      left: 15%;
+      border-radius: 10px;
+      width: 85rem;
+      height: 25rem;
+      align-items: start;
+   }
+   
+   .pacienteIntro p {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 5rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .pacienteIntro:hover {
+      transform: scale(1.03);
+   }
+   
+   .pacienteIntro p {
+      align-items: center;
+      width: 80rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   .pacienteCards {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 85rem;
+   }
+   
+   .card {
+      text-align: center;
+      transition: transform 0.5s ease;
+   }
+   .card:hover {
+      transform: scale(1.02);
+   }
+   
+   .segurancaSection {
+      background-image: url("/background-image.png");
+      background-size: cover;
+      padding: 50px 30px;
+      color: white;
+   }
+   
+   /* seção segurança */
+   
+   .segurancaImage {
+      background-image: url("/images/BackgroundHeader.jpg");
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 1080px;
+      display: flex;
+      flex-direction: row;
+      margin-top: -5.5rem;
+   }
+   .telemovel {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+   }
+   .segurancaContent {
+      max-width: 100%;
+      color: black;
+   }
+   
+   .textContent {
+      width: 59.5rem;
+      height: 30rem;
+      color: #fff;
+      margin-top: 29rem;
+      margin-right: 10rem;
+      transition: transform 0.5s ease;
+   }
+   
+   .textContent:hover {
+      transform: scale(1.09);
+   }
+   
+   .textContent .primeiro {
+      color: #fff;
+   }
+   .textContent h2 {
+      color: #30dd5b;
+      font-size: 70px;
+      font-weight: bolder;
+   }
+   .textContent p {
+      margin-top: 2rem;
+      font-size: 26px;
+   }
+   
+   /* conteudo gradiente */
+   
+   .divGradient {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 20rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .divGradient:hover {
+      transform: scale(1.07);
+   }
+   
+   .divGradient p {
+      align-items: center;
+      width: 60rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   /* seção psicólogo */
+   
+   .backgroundPsicologo {
+      background-image: url("/images/fundoPsi2.jpg");
+      background-color: #333;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 2000px;
+      /* position: relative; */
+      /* margin-top: -20rem; */
+      z-index: 20;
+   }
+   
+   .containerPsi {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Duas colunas com tamanhos iguais */
+      grid-template-rows: 1fr 1fr; /* Duas linhas com tamanhos iguais */
+      gap: 10px; /* Espaço entre os itens */
+      width: 100%;
+      height: 400px;
+   }
+   
+   .featureCard {
+      background-color: #00000091;
+      padding: 1vw;
+      width: 16vw;
+      height: 8vw;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+      display: flex;
+      gap: 2vw;
+      font-size: 2.5rem;
+      font-weight: bolder;
+      word-break: normal;
+      box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.418);
+      transition: transform 0.5s ease;
+   }
+   
+   .featureCard:hover {
+      transform: scale(1.02);
+   }
+   
+   .TituloBorder {
+      border: #0c7a08 solid;
+      border-width: medium;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      /* align-self: end;
+      display: flex; */
+      background-color: #000000af;
+   }
+   
+   .TituloPsicologos {
+      font-size: 4rem;
+      color: #0c7a08;
+      margin-left: 10rem;
+      margin-right: 10rem;
+      flex-direction: column;
+      margin-top: 0%;
+   }
+   
+   .SubtituloPsicologos {
+      font-size: 4rem;
+      margin-bottom: 5rem;
+      flex-direction: column;
+      width: 60rem;
+   }
+   
+   .TextoPsicologos {
+      font-size: 2.5rem;
+      /* font-weight: bolder; */
+      text-align: start;
+      width: 30vw;
+   }
+   
+   .textAnimacao {
+      transition: transform 0.5s ease;
+   }
+   
+   .textAnimacao:hover {
+      transform: scale(1.02);
+   }
+   
+   .ContainerTextoRight {
+      width: 30vw;
+   }
+   
+   .ContainerTextoLeft {
+      /* width: 30vw; */
+      flex-direction: row;
+      display: flex;
+   }
+   
+   .psicologoCenter {
+      color: #fff;
+      flex-direction: row;
+      justify-content: center;
+      display: flex;
+      padding: 20rem;
+      gap: 7rem;
+   }
+   
+   .psicologoRight {
+      color: #fff;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+   }
+   
+   .psicologoLeft {
+      color: #fff;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+   }
+   
+   .iconDiario {
+      object-fit: url("/icones/DiarioPsicologo.svg");
+      background-color: #00000000;
+      transition: transform 0.5s ease;
+   }
+   
+   .iconAtividade {
+      object-fit: url("/icones/AtividadePsicologo.svg");
+      background-color: #00000000;
+   }
+   
+   .iconLembrete {
+      object-fit: url("/icones/LembretePsicologo.svg");
+      background-color: #00000000;
+   }
+   
+   .ImagePc {
+      object-fit: url("/images/PcPsicologo.png");
+      background-color: #00000000;
+      flex-direction: row;
+      display: flex;
+   }
+   
+   /* rodapé */
+   
+   .footer {
+      background-color: #bdecb6;
+      padding: 1rem;
+      text-align: center;
+      gap: 5rem;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-top: 50px; */
+   }
+   
+   .footerAnimation {
+      background-color: #bdecb6;
+      padding: 1rem;
+      text-align: center;
+      gap: 5rem;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-top: 50px; */
+   }
+   
+   .footerAnimation nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #fa0505;
+      padding: 1rem;
+      margin-top: 5rem;
+      scroll-behavior: smooth;
+   }
+   
+   .footer nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #000000;
+      padding: 1rem;
+      margin-top: 5rem;
+      scroll-behavior: smooth;
+   }
+   
+   .devs {
+      margin-top: 1rem;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+   }
+   
+   .devsTitulo {
+      font-size: 5rem;
+      font-weight: bolder;
+      border: solid;
+      border-width: medium;
+      border-radius: 20px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      margin-top: 5rem;
+      margin-bottom: 10rem;
+   }
+   
+   .devsCards {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+   }
+   
+   .rodape {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 10rem auto;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .rodape:hover {
+      transform: scale(1.07);
+   }
+   
+   .rodape p {
+      align-items: center;
+      width: 60rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   .sobreNos {
+      background-color: #bdecb6;
+      padding: 5rem;
+      gap: 10rem;
+      height: max-content;
+   }
+
+}
+
+@media (max-width: 728px){
+
+   .container {
+      font-family: Arial, sans-serif;
+      color: #333;
+      max-width: 100%;
+      overflow-x: hidden;
+   }
+   
+   .BackgroundHeader {
+      background-image: url("/images/BackgroundHeader.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 139.188rem;
+      /* position: relative; */
+      /* margin-top: -20rem; */
+      z-index: 20;
+   }
+   
+   .header .topBar {
+      display: flex;
+      /* margin-top: -6rem; */
+      padding: 5px;
+      justify-content: end;
+      align-items: center;
+      min-height: 25px;
+   }
+   
+   .header nav ul {
+      display: flex;
+   }
+   .topBar {
+      display: flex;
+      z-index: 10;
+   }
+   .header nav ul li a {
+      font-size: 2.5rem;
+      color: #fff;
+      text-decoration: none;
+      padding: 20px 30px;
+      transition: 0.2s;
+   }
+   .header nav ul li a:hover {
+      color: #fff;
+      background-color: rgb(6, 97, 18);
+      border-radius: 10px;
+   }
+   
+   .hero {
+      margin-top: 30rem;
+      color: white;
+      font-size: 5rem;
+      width: 45rem;
+      margin-left: 20rem;
+      transition: transform 0.5s ease;
+   }
+   
+   .hero:hover {
+      transform: scale(1.07);
+   }
+   
+   .saibaMais {
+      width: 25rem;
+      padding: 1.6rem;
+      font-size: 2rem;
+      color: #fff;
+      background: linear-gradient(40deg, #2b8a0e, #1c351b);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      align-items: center;
+      margin-top: 20%;
+   }
+   
+   /* seção paciente */
+   
+   .BackgroundPaciente {
+      background-image: url("/images/BackgroundPaciente.png");
+      background-position: right;
+      background-repeat: no-repeat;
+      /* width: 100%; */
+      height: 2260px;
+      margin-top: -4.3rem;
+      /* margin-left: 60%; */
+      /* margin-top: -45.5rem; */
+   }
+   
+   /* .pacienteSection {
+      padding: 50px 20px;
+   } */
+   
+   .pacienteIntro {
+      background-color: #ffffff00;
+      color: black;
+      padding: 1rem;
+      display: flex;
+      position: relative;
+      top: 45rem;
+      left: 15%;
+      border-radius: 10px;
+      width: 85rem;
+      height: 25rem;
+      align-items: start;
+   }
+   
+   .pacienteIntro p {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 5rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .pacienteIntro:hover {
+      transform: scale(1.03);
+   }
+   
+   .pacienteIntro p {
+      align-items: center;
+      width: 80rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   .pacienteCards {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 85rem;
+   }
+   
+   .card {
+      text-align: center;
+      transition: transform 0.5s ease;
+   }
+   .card:hover {
+      transform: scale(1.02);
+   }
+   
+   .segurancaSection {
+      background-image: url("/background-image.png");
+      background-size: cover;
+      padding: 50px 30px;
+      color: white;
+   }
+   
+   /* seção segurança */
+   
+   .segurancaImage {
+      background-image: url("/images/BackgroundHeader.jpg");
+      background-size: cover;
+      background-position: top;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 1080px;
+      display: flex;
+      flex-direction: row;
+      margin-top: -5.5rem;
+   }
+   .telemovel {
+      display: flex;
+      align-items: center;
+      margin-left: 1rem;
+   }
+   .segurancaContent {
+      max-width: 100%;
+      color: black;
+   }
+   
+   .textContent {
+      width: 59.5rem;
+      height: 30rem;
+      color: #fff;
+      margin-top: 29rem;
+      margin-right: 10rem;
+      transition: transform 0.5s ease;
+   }
+   
+   .textContent:hover {
+      transform: scale(1.09);
+   }
+   
+   .textContent .primeiro {
+      color: #fff;
+   }
+   .textContent h2 {
+      color: #30dd5b;
+      font-size: 70px;
+      font-weight: bolder;
+   }
+   .textContent p {
+      margin-top: 2rem;
+      font-size: 26px;
+   }
+   
+   /* conteudo gradiente */
+   
+   .divGradient {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 20rem auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .divGradient:hover {
+      transform: scale(1.07);
+   }
+   
+   .divGradient p {
+      align-items: center;
+      width: 60rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   /* seção psicólogo */
+   
+   .backgroundPsicologo {
+      background-image: url("/images/fundoPsi2.jpg");
+      background-color: #333;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 2000px;
+      /* position: relative; */
+      /* margin-top: -20rem; */
+      z-index: 20;
+   }
+   
+   .containerPsi {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Duas colunas com tamanhos iguais */
+      grid-template-rows: 1fr 1fr; /* Duas linhas com tamanhos iguais */
+      gap: 10px; /* Espaço entre os itens */
+      width: 100%;
+      height: 400px;
+   }
+   
+   .featureCard {
+      background-color: #00000091;
+      padding: 1vw;
+      width: 16vw;
+      height: 8vw;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      align-items: center;
+      display: flex;
+      gap: 2vw;
+      font-size: 2.5rem;
+      font-weight: bolder;
+      word-break: normal;
+      box-shadow: 0px 0px 10px 10px rgba(255, 255, 255, 0.418);
+      transition: transform 0.5s ease;
+   }
+   
+   .featureCard:hover {
+      transform: scale(1.02);
+   }
+   
+   .TituloBorder {
+      border: #0c7a08 solid;
+      border-width: medium;
+      margin-bottom: 3rem;
+      border-radius: 10px;
+      /* align-self: end;
+      display: flex; */
+      background-color: #000000af;
+   }
+   
+   .TituloPsicologos {
+      font-size: 4rem;
+      color: #0c7a08;
+      margin-left: 10rem;
+      margin-right: 10rem;
+      flex-direction: column;
+      margin-top: 0%;
+   }
+   
+   .SubtituloPsicologos {
+      font-size: 4rem;
+      margin-bottom: 5rem;
+      flex-direction: column;
+      width: 60rem;
+   }
+   
+   .TextoPsicologos {
+      font-size: 2.5rem;
+      /* font-weight: bolder; */
+      text-align: start;
+      width: 30vw;
+   }
+   
+   .textAnimacao {
+      transition: transform 0.5s ease;
+   }
+   
+   .textAnimacao:hover {
+      transform: scale(1.02);
+   }
+   
+   .ContainerTextoRight {
+      width: 30vw;
+   }
+   
+   .ContainerTextoLeft {
+      /* width: 30vw; */
+      flex-direction: row;
+      display: flex;
+   }
+   
+   .psicologoCenter {
+      color: #fff;
+      flex-direction: row;
+      justify-content: center;
+      display: flex;
+      padding: 20rem;
+      gap: 7rem;
+   }
+   
+   .psicologoRight {
+      color: #fff;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+   }
+   
+   .psicologoLeft {
+      color: #fff;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+   }
+   
+   .iconDiario {
+      object-fit: url("/icones/DiarioPsicologo.svg");
+      background-color: #00000000;
+      transition: transform 0.5s ease;
+   }
+   
+   .iconAtividade {
+      object-fit: url("/icones/AtividadePsicologo.svg");
+      background-color: #00000000;
+   }
+   
+   .iconLembrete {
+      object-fit: url("/icones/LembretePsicologo.svg");
+      background-color: #00000000;
+   }
+   
+   .ImagePc {
+      object-fit: url("/images/PcPsicologo.png");
+      background-color: #00000000;
+      flex-direction: row;
+      display: flex;
+   }
+   
+   /* rodapé */
+   
+   .footer {
+      background-color: #bdecb6;
+      padding: 1rem;
+      text-align: center;
+      gap: 5rem;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-top: 50px; */
+   }
+   
+   .footerAnimation {
+      background-color: #bdecb6;
+      padding: 1rem;
+      text-align: center;
+      gap: 5rem;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* margin-top: 50px; */
+   }
+   
+   .footerAnimation nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #fa0505;
+      padding: 1rem;
+      margin-top: 5rem;
+      scroll-behavior: smooth;
+   }
+   
+   .footer nav a {
+      margin-right: 10px;
+      text-decoration: none;
+      color: #000000;
+      padding: 1rem;
+      margin-top: 5rem;
+      scroll-behavior: smooth;
+   }
+   
+   .devs {
+      margin-top: 1rem;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+   }
+   
+   .devsTitulo {
+      font-size: 5rem;
+      font-weight: bolder;
+      border: solid;
+      border-width: medium;
+      border-radius: 20px;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      margin-top: 5rem;
+      margin-bottom: 10rem;
+   }
+   
+   .devsCards {
+      display: flex;
+      justify-content: center;
+      gap: 5rem;
+   }
+   
+   .rodape {
+      background: linear-gradient(to bottom, #0c7a08, #002621);
+      padding: 20px;
+      margin: 10rem auto;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90rem;
+      height: 28rem;
+      border-radius: 10px 0 10px 0;
+      color: white;
+      transition: transform 0.5s ease;
+   }
+   
+   .rodape:hover {
+      transform: scale(1.07);
+   }
+   
+   .rodape p {
+      align-items: center;
+      width: 60rem;
+      line-height: 2.8rem;
+      font-size: 2rem;
+   }
+   
+   .sobreNos {
+      background-color: #bdecb6;
+      padding: 5rem;
+      gap: 10rem;
+      height: max-content;
+   }
+
+}
+
