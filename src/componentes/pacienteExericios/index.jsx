@@ -40,30 +40,43 @@ export default function PacienteExercicios(pacienteId) {
 
    const handleSalvarExercicio = async () => {
       try {
+         // Primeiro, cadastrar a atividade
          const response = await api.post("/atividade", {
             psi_id: 1,
             ati_descricao: conteudo,
             ati_data: new Date().toISOString().split('T')[0],
-            pacientes: atividade.pac_id,
          });
-         setExercicios([...atividade, response.ati_data]);
-         // setTitulo("");
+         
+         const ati_id = response.data.dados;
+   
+         // Agora, associar a atividade aos pacientes selecionados
+         for (const pac_id of pacientesSelecionados) {
+            await api.post("/atividade_paciente", {
+               ati_id: ati_id,
+               pac_id: pac_id,
+            });
+         }
+   
+         // Atualizar a lista de exercícios e limpar o formulário
+         setExercicios([...exercicios, { ati_id, ati_descricao: conteudo, ati_data: new Date().toISOString().split('T')[0] }]);
          setConteudo("");
+         setPacientesSelecionados([]);
          setShowModal(false);
       } catch (error) {
          console.error("Erro ao salvar exercício:", error);
       }
    };
+   
 
    // Função para liberar scroll ao faltar 200px no final da lista
-   const handleScroll = (event) => {
-      const { scrollTop, scrollHeight, clientHeight } = event.target;
-      if (scrollHeight - scrollTop <= clientHeight + 200) {
-         event.target.style.overflowY = "scroll";
-      } else {
-         event.target.style.overflowY = "hidden";
-      }
-   };
+   // const handleScroll = (event) => {
+   //    const { scrollTop, scrollHeight, clientHeight } = event.target;
+   //    if (scrollHeight - scrollTop <= clientHeight + 200) {
+   //       event.target.style.overflowY = "scroll";
+   //    } else {
+   //       event.target.style.overflowY = "hidden";
+   //    }
+   // };
 
    const togglePacienteSelecionado = (pac_id) => {
       if (pacientesSelecionados.includes(pac_id)) {
@@ -76,7 +89,8 @@ export default function PacienteExercicios(pacienteId) {
    };
    return (
       <div className={styles.container}>
-         <aside className={styles.sidebar} onScroll={handleScroll}>
+         {/* onScroll={handleScroll} */}
+         <aside className={styles.sidebar}>
             <h3>Exercícios</h3>
             <ul className={styles.anotacoesLista}>
                {exercicios.length > 0 ? (
@@ -151,7 +165,7 @@ export default function PacienteExercicios(pacienteId) {
                                     paciente.pac_id
                                  )}
                                  onChange={() =>
-                                    togglePacienteSelecionado(pac_id)
+                                    togglePacienteSelecionado(paciente.pac_id)
                                  }
                               />
                            </li>

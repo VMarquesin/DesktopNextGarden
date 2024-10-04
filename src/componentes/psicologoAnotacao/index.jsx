@@ -40,7 +40,6 @@ export default function PsicologoAnotacao({ pacienteId }) {
       }
 
       try {
-         console.log(new Date().toISOString());
          const response = await api.post("/psi_anotacao", {
             psi_id: 1,
             pan_anotacao: conteudo,
