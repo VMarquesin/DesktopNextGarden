@@ -57,13 +57,15 @@ export default function Page() {
          <div className={styles.BackgroundHeader}>
             <div className={styles.header}>
                <div className={styles.topBar}>
-                  <Image
-                     className={styles.logo}
-                     src="/images/LogoGardenWhite.png"
-                     width={700}
-                     height={300}
-                     alt="Picture of the author"
-                  />
+                  <div className={styles.ImageLogo}>
+                     <Image
+                        className={styles.logo}
+                        src="/images/LogoGardenWhite.png"
+                        width={700}
+                        height={300}
+                        alt="Picture of the author"
+                     />
+                  </div>
                   <nav className={styles.nav}>
                      <ul>
                         <li>
