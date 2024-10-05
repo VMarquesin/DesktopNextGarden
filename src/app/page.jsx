@@ -15,6 +15,8 @@ import PacienteExercicios from "../componentes/pacienteExericios";
 import LembreteSessao from "../componentes/lembreteSessao";
 import Dashboard from "../componentes/dashboard";
 
+import api from "../../services/api";
+
 import Notifications from "../componentes/notificacao";
 // import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
@@ -48,11 +50,11 @@ export default function Home() {
                   </div>
                   <nav>
                      <ul>
-                        <li>
+                        {/* <li>
                            <div className={styles.notifications}>
                               <Notifications />
                            </div>
-                        </li>
+                        </li> */}
                         <li>
                            <span className={styles.profileName}>Dr. Silva</span>
                         </li>

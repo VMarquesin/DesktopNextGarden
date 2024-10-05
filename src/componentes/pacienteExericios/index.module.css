@@ -208,7 +208,7 @@
    display: grid;
    grid-template-columns: 1fr 3fr;
    height: 100%;
-   background-color: #f0f8ff; /* Fundo azul claro */
+   background-color: #f0f8ff;
  }
  
  .sidebar {

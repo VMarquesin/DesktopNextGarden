@@ -13,6 +13,7 @@ export default function PacienteExercicios(pacienteId) {
    const [pacientes, setPacientes] = useState([]);
    const [pacientesSelecionados, setPacientesSelecionados] = useState([]);
    const [showModal, setShowModal] = useState(false);
+   const [showModalExercicio, setShowModalExercicio] = useState(false);
 
    useEffect(() => {
       async function fetchExercicios() {
