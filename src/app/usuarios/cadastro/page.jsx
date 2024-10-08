@@ -15,7 +15,7 @@ export default function Cadastro() {
    const [cidades, setCidades] = useState([]);
 
    // info
-   const [usuario, setUsuario] = useState({
+   const [psicologo, setPsicologo] = useState({
       usu_nome: "",
       usu_nick: "",
       usu_email: "",
@@ -40,12 +40,12 @@ export default function Cadastro() {
 
    useEffect(() => {
       listaCidades();
-      setUsuario((prev) => ({ ...prev, cid_id: "0" }));
-   }, [usuario.uf]);
+      setPsicologo((prev) => ({ ...prev, cid_id: "0" }));
+   }, [estado.est_id]);
 
    async function listaUfs() {
       try {
-         const response = await api.get("/ufs");
+         const response = await api.get("/estado");
          setUfs(response.data.dados);
       } catch (error) {
          if (error.response) {
@@ -59,9 +59,9 @@ export default function Cadastro() {
    }
 
    async function listaCidades() {
-      if (usuario.uf) {
+      if (estado.est_id) {
          const dados = {
-            cid_uf: usuario.uf,
+            cid_uf: estado.est_id,
          };
          try {
             const response = await api.post("/cidades", dados);
@@ -133,7 +133,7 @@ export default function Cadastro() {
    });
 
    const handleChange = (e) => {
-      setUsuario((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      setPsicologo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
    };
 
    function validaNome() {
@@ -295,7 +295,7 @@ export default function Cadastro() {
          mensagem: [],
       };
 
-      if (usuario.uf == 0) {
+      if (estado.est_id == 0) {
          objTemp.validado = valErro;
          objTemp.mensagem.push("Selecione o estado");
       }
@@ -315,7 +315,7 @@ export default function Cadastro() {
          mensagem: [],
       };
 
-      if (usuario.cid_id == 0) {
+      if (cidades.cid_id == 0) {
          objTemp.validado = valErro;
          objTemp.mensagem.push("Selecione a cidade");
       }
@@ -335,7 +335,7 @@ export default function Cadastro() {
          mensagem: [],
       };
 
-      if (usuario.end_logradouro === "") {
+      if (psicologo.psi_endereco === "") {
          objTemp.validado = valErro;
          objTemp.mensagem.push("O endereço é um campo obrigatório");
       } else if (usuario.end_logradouro.length < 5) {
@@ -358,7 +358,7 @@ export default function Cadastro() {
          mensagem: [],
       };
 
-      if (usuario.end_num === "") {
+      if (endereco_usuario.end_numero === "") {
          objTemp.validado = valErro;
          objTemp.mensagem.push("O número do imóvel é um campo obrigatório");
       }
@@ -378,7 +378,7 @@ export default function Cadastro() {
          mensagem: [],
       };
 
-      if (usuario.end_bairro === "") {
+      if (endereco_usuario.bai_id === "") {
          objTemp.validado = valErro;
          objTemp.mensagem.push("É necessário inserir o nome do bairro");
       } else if (usuario.end_bairro.length < 4) {
@@ -504,10 +504,10 @@ export default function Cadastro() {
 
          try {
             let confirmaCad;
-            const response = await api.post("/clientes", usuario);
+            const response = await api.post("/usuarios", usuario);
+
             confirmaCad = response.data.sucesso;
-            // const idUsu = confirmaCad;
-            // alert(idUsu);
+
             if (confirmaCad) {
                router.push("/");
             }
