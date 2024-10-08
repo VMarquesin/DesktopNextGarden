@@ -3,7 +3,7 @@
 import Head from "next/head";
 import styles from "./page.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import PacienteButton from "../componentes/pacienteButton";
@@ -24,11 +24,52 @@ import Notifications from "../componentes/notificacao";
 export default function Home() {
    const [Tela, setTela] = useState(0);
    const [pacienteSel, setPacienteSel] = useState(0);
+   const [isProfileOpen, setIsProfileOpen] = useState(false);
+   const [psicologoInfo, setPsicologoInfo] = useState(null);
+   const [editMode, setEditMode] = useState(false);
+
+   const fetchPsicologoInfo = async () => {
+      try {
+         const psi_id = 1;
+         const usuarioResponse = await api.get(`/usuarios/${psi_id}`);
+         const psicologoResponse = await api.get(`psicologo${psi_id}`);
+
+         setPsicologoInfo({
+            ...usuarioResponse.data.dados[0],
+            ...psicologoResponse.data.dados[0],
+         });
+      } catch (error) {
+         console.error("Erro ao buscar informações do psicólogo:", error);
+      }
+   };
+
+   const handleProfileClick = () => {
+      setIsProfileOpen(!isProfileOpen);
+      if (!psicologoInfo) {
+         fetchPsicologoInfo();
+      }
+   };
+
+   const handleSaveChanges = async () => {
+      try {
+         await axios.put(`/psicologo/${psicologoInfo.usu_id}`, {
+            usu_nome: psicologoInfo.usu_nome,
+            usu_nick: psicologoInfo.usu_nick,
+            usu_email: psicologoInfo.usu_email,
+            psi_endereco: psicologoInfo.psi_endereco,
+            psi_cnpj: psicologoInfo.psi_cnpj,
+         });
+         setEditMode(false);
+      } catch (error) {
+         console.error("Erro ao salvar alterações:", error);
+      }
+   };
 
    function carregaPaciente(id) {
       setPacienteSel(id);
    }
    console.log(pacienteSel, "test");
+
    return (
       <div className={styles.containerGlobal}>
          <Head>
@@ -63,13 +104,86 @@ export default function Home() {
                               src="https://photos.psychologytoday.com/467daa31-46cd-11ea-a6ad-06142c356176/3/320x400.jpeg"
                               alt="Profile"
                               className={styles.profileImage}
+                              onclick={handleProfileClick}
                            />
                         </li>
                      </ul>
                   </nav>
                </div>
             </header>
-
+            {isProfileOpen && psicologoInfo && (
+               <div className={styles.profileDropdown}>
+                  {editMode ? (
+                     <>
+                        <input
+                           type="text"
+                           value={psicologoInfo.usu_nome}
+                           onChange={(e) =>
+                              setPsicologoInfo({
+                                 ...psicologoInfo,
+                                 usu_nome: e.target.value,
+                              })
+                           }
+                        />
+                        <input
+                           type="text"
+                           value={psicologoInfo.usu_nick}
+                           onChange={(e) =>
+                              setPsicologoInfo({
+                                 ...psicologoInfo,
+                                 usu_nick: e.target.value,
+                              })
+                           }
+                        />
+                        <input
+                           type="email"
+                           value={psicologoInfo.usu_email}
+                           onChange={(e) =>
+                              setPsicologoInfo({
+                                 ...psicologoInfo,
+                                 usu_email: e.target.value,
+                              })
+                           }
+                        />
+                        <input
+                           type="text"
+                           value={psicologoInfo.psi_endereco}
+                           onChange={(e) =>
+                              setPsicologoInfo({
+                                 ...psicologoInfo,
+                                 psi_endereco: e.target.value,
+                              })
+                           }
+                        />
+                        <input
+                           type="text"
+                           value={psicologoInfo.psi_cnpj}
+                           onChange={(e) =>
+                              setPsicologoInfo({
+                                 ...psicologoInfo,
+                                 psi_cnpj: e.target.value,
+                              })
+                           }
+                        />
+                        <button onClick={handleSaveChanges}>Salvar</button>
+                        <button onClick={() => setEditMode(false)}>
+                           Cancelar
+                        </button>
+                     </>
+                  ) : (
+                     <>
+                        <p>Nome: {psicologoInfo.usu_nome}</p>
+                        <p>Nick: {psicologoInfo.usu_nick}</p>
+                        <p>Email: {psicologoInfo.usu_email}</p>
+                        <p>Endereço: {psicologoInfo.psi_endereco}</p>
+                        <p>CNPJ: {psicologoInfo.psi_cnpj}</p>
+                        <button onClick={() => setEditMode(true)}>
+                           Editar
+                        </button>
+                     </>
+                  )}
+               </div>
+            )}
             {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>

@@ -13,6 +13,7 @@ export default function PacienteExercicios(pacienteId) {
    const [pacientes, setPacientes] = useState([]);
    const [pacientesSelecionados, setPacientesSelecionados] = useState([]);
    const [showModal, setShowModal] = useState(false);
+   const [selectedExercicio, setSelectedExercicio] = useState(null);
    const [showModalExercicio, setShowModalExercicio] = useState(false);
 
    useEffect(() => {
@@ -38,6 +39,16 @@ export default function PacienteExercicios(pacienteId) {
       fetchExercicios();
       fetchPacientes();
    }, [pacienteId]);
+
+   const openModal = (exercicio) => {
+      setSelectedExercicio(exercicio);
+      setShowModalExercicio(true);
+   };
+
+   const closeModal = () => {
+      setShowModalExercicio(false);
+      setSelectedExercicio(null);
+   };
 
    const handleSalvarExercicio = async () => {
       try {
@@ -102,7 +113,10 @@ export default function PacienteExercicios(pacienteId) {
             <ul className={styles.anotacoesLista}>
                {exercicios.length > 0 ? (
                   exercicios.map((exercicio) => (
-                     <li key={exercicio.ati_id}>
+                     <li
+                        key={exercicio.ati_id}
+                        onClick={() => openModal(exercicio)}
+                     >
                         <p>{exercicio.ati_descricao.slice(0, 17)}...</p>
                         <strong>
                            {new Date(exercicio.ati_data).toLocaleDateString(
@@ -199,6 +213,23 @@ export default function PacienteExercicios(pacienteId) {
                         Cancelar
                      </button>
                   </div>
+               </div>
+            </div>
+         )}
+
+         {showModalExercicio && (
+            <div className={styles.modalOverlay}>
+               <div className={styles.modalContent}>
+                  <h3>Exercicio</h3>
+                  <p>{selectedExercicio?.ati_descricao}</p>
+                  <p>
+                     {new Date(selectedExercicio?.ati_data).toLocaleDateString(
+                        "pt-BR"
+                     )}
+                  </p>
+                  <button className={styles.closeButton} onClick={closeModal}>
+                     Fechar
+                  </button>
                </div>
             </div>
          )}
