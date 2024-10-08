@@ -45,11 +45,11 @@ export default function PacienteExercicios(pacienteId) {
          const response = await api.post("/atividade", {
             psi_id: 1,
             ati_descricao: conteudo,
-            ati_data: new Date().toISOString().split('T')[0],
+            ati_data: new Date().toISOString().split("T")[0],
          });
-         
+
          const ati_id = response.data.dados;
-   
+
          // Agora, associar a atividade aos pacientes selecionados
          for (const pac_id of pacientesSelecionados) {
             await api.post("/atividade_paciente", {
@@ -57,9 +57,16 @@ export default function PacienteExercicios(pacienteId) {
                pac_id: pac_id,
             });
          }
-   
+
          // Atualizar a lista de exercícios e limpar o formulário
-         setExercicios([...exercicios, { ati_id, ati_descricao: conteudo, ati_data: new Date().toISOString().split('T')[0] }]);
+         setExercicios([
+            ...exercicios,
+            {
+               ati_id,
+               ati_descricao: conteudo,
+               ati_data: new Date().toISOString().split("T")[0],
+            },
+         ]);
          setConteudo("");
          setPacientesSelecionados([]);
          setShowModal(false);
@@ -67,7 +74,6 @@ export default function PacienteExercicios(pacienteId) {
          console.error("Erro ao salvar exercício:", error);
       }
    };
-   
 
    // Função para liberar scroll ao faltar 200px no final da lista
    // const handleScroll = (event) => {
@@ -92,13 +98,17 @@ export default function PacienteExercicios(pacienteId) {
       <div className={styles.container}>
          {/* onScroll={handleScroll} */}
          <aside className={styles.sidebar}>
-            <h3>Exercícios</h3>
+            <h3>EXERCÍCIOS</h3>
             <ul className={styles.anotacoesLista}>
                {exercicios.length > 0 ? (
                   exercicios.map((exercicio) => (
                      <li key={exercicio.ati_id}>
-                        <p>{exercicio.ati_descricao.slice(0,17)}...</p>
-                        <strong>{new Date(exercicio.ati_data).toLocaleDateString("pt-BR")}</strong>
+                        <p>{exercicio.ati_descricao.slice(0, 17)}...</p>
+                        <strong>
+                           {new Date(exercicio.ati_data).toLocaleDateString(
+                              "pt-BR"
+                           )}
+                        </strong>
                         {/* <p>{exercicio.titulo}</p> */}
                      </li>
                   ))
@@ -148,7 +158,7 @@ export default function PacienteExercicios(pacienteId) {
          {showModal && (
             <div className={styles.modal}>
                <div className={styles.modalContent}>
-                  <h2>Selecione os pacientes</h2>
+                  <h2>SELECIONE OS PACIENTES: </h2>
                   <ul className={styles.pacientesLista}>
                      {pacientes.length > 0 ? (
                         pacientes.map((paciente) => (

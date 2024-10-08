@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -41,7 +41,7 @@ export default function DiarioPaciente({ pacienteId }) {
       <div className={styles.container}>
          {/* Sidebar */}
          <aside className={styles.sidebar}>
-            <h3>Notas do Diário</h3>
+            <h3>NOTAS DO DÍARIO</h3>
             <ul>
                {notas.length > 0 ? (
                   notas.map((nota) => (

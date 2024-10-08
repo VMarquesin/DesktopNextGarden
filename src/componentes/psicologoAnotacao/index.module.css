@@ -154,6 +154,7 @@
    align-items: center;
    justify-content: center;
    position: relative;
+   background-color: #e8f4e8;
 }
 
 .anotacao {
@@ -166,14 +167,15 @@
 }
 
 .textoArea {
-   width: 100%;
-   height: 70%;
-   padding: 15px;
+   width: 98%;
+   height: 100px;
+   padding: 10px;
    font-size: 1em;
    border-radius: 8px;
    border: 0.4px solid #ddd;
    resize: none;
    margin-bottom: 2rem;
+   margin-right: 5px;
 }
 
 .botoes {
@@ -192,11 +194,11 @@
    cursor: pointer;
    transition: background-color 0.3s ease;
 }
-.cancelarButton{
+.cancelarButton {
    background-color: #cc0000;
 }
 
-.salvarButton:hover{
+.salvarButton:hover {
    background-color: #066004;
 }
 .cancelarButton:hover {

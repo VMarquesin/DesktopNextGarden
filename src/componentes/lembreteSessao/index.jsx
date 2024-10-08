@@ -23,7 +23,9 @@ export default function Calendario({ pacienteId }) {
                   id: evento.dse_id,
                   psi_id: evento.psi_id,
                   pac_id: evento.pac_id,
-                  date: new Date(evento.dse_sessao_data).toISOString().split("T")[0], // Garantindo que a data seja formatada
+                  date: new Date(evento.dse_sessao_data)
+                     .toISOString()
+                     .split("T")[0], // Garantindo que a data seja formatada
                }))
             );
          } catch (error) {
@@ -36,7 +38,9 @@ export default function Calendario({ pacienteId }) {
 
    const handleDateClick = async (info) => {
       const psi_id = 1; // Substitua conforme necessário
-      const dse_sessao_data = new Date(info.dateStr).toISOString().split("T")[0];
+      const dse_sessao_data = new Date(info.dateStr)
+         .toISOString()
+         .split("T")[0];
 
       console.log("Data clicada:", dse_sessao_data);
       console.log("Paciente ID:", pacienteId);
@@ -54,12 +58,19 @@ export default function Calendario({ pacienteId }) {
 
       if (eventoExistente) {
          try {
-            console.log("ID do evento existente a ser removido:", eventoExistente.id);
-            const response = await api.delete(`/data_sessao/${eventoExistente.id}`);
+            console.log(
+               "ID do evento existente a ser removido:",
+               eventoExistente.id
+            );
+            const response = await api.delete(
+               `/data_sessao/${eventoExistente.id}`
+            );
             const data = response.data;
 
             if (data.sucesso) {
-               setEventos(eventos.filter((evento) => evento.id !== eventoExistente.id));
+               setEventos(
+                  eventos.filter((evento) => evento.id !== eventoExistente.id)
+               );
                alert("Sessão removida com sucesso!");
             } else {
                alert("Erro ao remover a sessão: " + data.mensagem);
@@ -91,7 +102,10 @@ export default function Calendario({ pacienteId }) {
                ]);
                alert("Data da sessão cadastrada com sucesso!");
             } else {
-               alert("Erro ao cadastrar data da sessão: " + (data.mensagem || "Erro desconhecido."));
+               alert(
+                  "Erro ao cadastrar data da sessão: " +
+                     (data.mensagem || "Erro desconhecido.")
+               );
             }
          } catch (error) {
             console.error("Erro na requisição de cadastro:", error.message);

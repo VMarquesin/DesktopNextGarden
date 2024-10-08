@@ -64,7 +64,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
    return (
       <div className={styles.container}>
          <aside className={styles.sidebar}>
-            <h3>Suas Notas</h3>
+            <h3>SUAS NOTAS</h3>
             <ul className={styles.anotacoesLista}>
                {anotacoes.length > 0 ? (
                   anotacoes.map((anotacao) => (

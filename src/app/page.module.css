@@ -44,8 +44,6 @@
    padding-right: 5rem;
 }
 
-
-
 /* Define a animação swing */
 /* Começa em 0 graus */
 /* Gira 10 graus */
@@ -55,7 +53,6 @@
 
 /* Aplica a animação ao passar o mouse */
 
-
 .header nav ul li .profileImage {
    border-radius: 50%;
    width: 4rem;
@@ -63,7 +60,7 @@
 }
 
 .header nav ul li .profileName {
-   font-size: 1.2rem;
+   font-size: 2rem;
 }
 
 /* Pesquisa do paciente */
