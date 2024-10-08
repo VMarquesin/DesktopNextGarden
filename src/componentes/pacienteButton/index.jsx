@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./index.module.css";
 
 import Image from "next/image";
@@ -15,6 +15,8 @@ export default function PacienteButton({ carregaPaciente }) {
    const [showPerfil, setShowPerfil] = useState(false);
    const [pacientes, setPacientes] = useState([]);
    const [usuarios, setUsuarios] = useState([]);
+   const perfilRef = useRef(false);
+   const botaoRef = useRef();
 
    useEffect(() => {
       async function fetchPacientes() {
@@ -58,9 +60,41 @@ export default function PacienteButton({ carregaPaciente }) {
    }
    console.log(selecionarPaciente);
 
+   useEffect(() => {
+      // Verifica se clicou fora de notificações
+      const handleClickOutside = (event) => {
+         if (perfilRef.current && !perfilRef.current.contains(event.target)) {
+            setShowPerfil(false);
+         }
+      };
+
+      // Ouvinte para cliques no documento
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
+
+   // useEffect(() => {
+   //    // Verifica se clicou fora de notificações
+   //    const handleClickOutside = (event) => {
+   //       if (botaoRef.current && !botaoRef.current.contains(event.target)) {
+   //          setPacienteSelecionado();
+   //       }
+   //    };
+
+   //    // Ouvinte para cliques no documento
+
+   //    document.addEventListener("mousedown", handleClickOutside);
+   //    return () => {
+   //       document.removeEventListener("mousedown", handleClickOutside);
+   //    };
+   // }, []);
    return (
       <div>
-         <div className={styles.pacienteContainer}>
+         {/* ref={botaoRef} */}
+         <div  className={styles.pacienteContainer}>
             <button
                id="pacienteButton"
                className={styles.botaoPaciente}
@@ -98,7 +132,7 @@ export default function PacienteButton({ carregaPaciente }) {
          </div>
 
          {showPerfil && pacienteSelecionado && (
-            <main>
+            <main ref={perfilRef}>
                <PacientePerfil paciente={pacienteSelecionado} />
             </main>
          )}

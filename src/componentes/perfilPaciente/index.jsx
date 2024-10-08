@@ -6,10 +6,9 @@ import styles from "./index.module.css";
 import api from "../../../services/api";
 
 export default function PacientePerfil({ paciente, onSaveNote }) {
-   const [nota, setNota] = useState(""); 
-   const [statusMensagem, setStatusMensagem] = useState(""); 
-   const [usuario, setUsuario] = useState(null); 
-
+   const [nota, setNota] = useState("");
+   const [statusMensagem, setStatusMensagem] = useState("");
+   const [usuario, setUsuario] = useState(null);
 
    const handleNoteChange = (e) => {
       setNota(e.target.value);
@@ -18,21 +17,23 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
    useEffect(() => {
       async function fetchUsuario() {
          try {
-   
             console.log("ID do usuário:", usuario.usu_id);
             const response = await api.get(`/usuarios/${usuario.usu_id}`);
             console.log("Resposta da API para o usuário:", response.data);
-   
+
             if (response.data && response.data.dados) {
                setUsuario(response.data.dados);
             } else {
                console.error("Dados do usuário não encontrados na resposta.");
             }
          } catch (error) {
-            console.error("Erro ao buscar o usuário:", error.response ? error.response.data : error.message);
+            console.error(
+               "Erro ao buscar o usuário:",
+               error.response ? error.response.data : error.message
+            );
          }
       }
-   
+
       fetchUsuario();
    }, []);
 
@@ -63,15 +64,14 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
    //    fetchUsuario();
    // }, [paciente.usu_id]);
 
-
    const handleSaveNote = async () => {
       try {
          const response = await api.post("/psi_anotacao", {
-            pacienteId: paciente.pac_id, 
-            conteudo: nota, 
+            pacienteId: paciente.pac_id,
+            conteudo: nota,
          });
          setStatusMensagem("Nota salva com sucesso!");
-         setNota(""); 
+         setNota("");
       } catch (error) {
          setStatusMensagem("Erro ao salvar a nota.");
          console.error("Erro ao salvar a nota:", error);
@@ -124,7 +124,7 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
                {/* Botão de salvar a nota */}
                <div className={styles.containerButton}>
                   <button
-                     onClick={handleSaveNote} 
+                     onClick={handleSaveNote}
                      className={styles.saveButton}
                   >
                      Salvar Nota
@@ -133,41 +133,36 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
             </div>
 
             {/* Feedback sobre o status da operação */}
-            {statusMensagem && <p className={styles.statusMensagem}>{statusMensagem}</p>}
+            {statusMensagem && (
+               <p className={styles.statusMensagem}>{statusMensagem}</p>
+            )}
          </div>
       </div>
    );
 }
-
-
-
-
-
 
 // "use client";
 
 // import { useState, useEffect } from "react";
 // import styles from "./index.module.css";
 
-// import api from "../../../services/api"; 
+// import api from "../../../services/api";
 
 // export default function PacientePerfil({ paciente }) {
-//    const [nota, setNota] = useState(""); 
-//    const [statusMensagem, setStatusMensagem] = useState(""); 
-//    const [usuario, setUsuario] = useState(null); 
+//    const [nota, setNota] = useState("");
+//    const [statusMensagem, setStatusMensagem] = useState("");
+//    const [usuario, setUsuario] = useState(null);
 
-   
 //    const handleNoteChange = (e) => {
 //       setNota(e.target.value);
 //    };
 
- 
 //    useEffect(() => {
 //       async function fetchUsuario() {
 //          try {
-           
+
 //             const response = await api.get(`/usuarios/${paciente.usu_id}`);
-//             setUsuario(response.data.dados); 
+//             setUsuario(response.data.dados);
 //          } catch (error) {
 //             console.error("Erro ao buscar o usuário:", error);
 //          }
@@ -206,8 +201,8 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
 //                <div className={styles.nome}>
 //                   {usuario ? (
 //                      <>
-//                         <h2>{usuario.usu_nome}</h2> 
-//                         <h3>{usuario.usu_nick}</h3> 
+//                         <h2>{usuario.usu_nome}</h2>
+//                         <h3>{usuario.usu_nick}</h3>
 //                      </>
 //                   ) : (
 //                      <p>Carregando informações do paciente...</p>
