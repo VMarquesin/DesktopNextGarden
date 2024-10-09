@@ -30,9 +30,10 @@ export default function Home() {
 
    const fetchPsicologoInfo = async () => {
       try {
+         const usu_id = 10;
          const psi_id = 1;
-         const usuarioResponse = await api.get(`/usuarios/${psi_id}`);
-         const psicologoResponse = await api.get(`psicologo${psi_id}`);
+         const usuarioResponse = await api.get(`/usuarios/${usu_id}`);
+         const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
 
          setPsicologoInfo({
             ...usuarioResponse.data.dados[0],
@@ -49,10 +50,11 @@ export default function Home() {
          fetchPsicologoInfo();
       }
    };
+   // console.log=handleProfileClick, "error"
 
    const handleSaveChanges = async () => {
       try {
-         await axios.put(`/psicologo/${psicologoInfo.usu_id}`, {
+         await api.patch(`/psicologo/${psicologoInfo.psi_id}`, {
             usu_nome: psicologoInfo.usu_nome,
             usu_nick: psicologoInfo.usu_nick,
             usu_email: psicologoInfo.usu_email,
@@ -104,8 +106,9 @@ export default function Home() {
                               src="https://photos.psychologytoday.com/467daa31-46cd-11ea-a6ad-06142c356176/3/320x400.jpeg"
                               alt="Profile"
                               className={styles.profileImage}
-                              onclick={handleProfileClick}
+                              onClick={handleProfileClick}
                            />
+                           {/* {console.log={handleProfileClick}} */}
                         </li>
                      </ul>
                   </nav>
