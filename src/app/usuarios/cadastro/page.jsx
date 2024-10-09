@@ -38,10 +38,10 @@ export default function Cadastro() {
       listaUfs();
    }, []);
 
-   useEffect(() => {
-      listaCidades();
-      setPsicologo((prev) => ({ ...prev, cid_id: "0" }));
-   }, [estado.est_id]);
+   // useEffect(() => {
+   //    listaCidades();
+   //    setPsicologo((prev) => ({ ...prev, cid_id: "0" }));
+   // }, [estado.est_id]);
 
    async function listaUfs() {
       try {
