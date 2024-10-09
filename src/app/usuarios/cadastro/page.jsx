@@ -134,6 +134,7 @@ export default function Cadastro() {
 
    const handleChange = (e) => {
       setPsicologo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      console.log(psicologo);
    };
 
    function validaNome() {
@@ -644,12 +645,32 @@ export default function Cadastro() {
                   </div>
 
                   <div className={styles.FormGroup}>
+                     <select
+                        id="Estado"
+                        name="Estado"
+                        className={styles.InputFieldUF}
+                     >
+                        <option value="" disabled selected>
+                           Selecione seu Estado
+                        </option>
+                     </select>
+                     {/* <Image
+                        src="/icones/IconeEstado.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Estado"
+                        className={styles.IconsUF}
+                     /> */}
+                  </div>
+
+                  <div className={styles.FormGroup}>
                      <input
                         type="CEP"
                         id="CEP"
                         name="CEP"
                         placeholder="Digite seu CEP"
                         className={styles.InputField}
+                        onChange={handleChange}
                      />
                      <Image
                         src="/icones/IconeCEP.svg"
@@ -724,23 +745,6 @@ export default function Cadastro() {
                         width={25}
                         height={25}
                         alt="Icone Cidade"
-                        className={styles.Icons}
-                     />
-                  </div>
-
-                  <div className={styles.FormGroup}>
-                     <input
-                        type="Estado"
-                        id="Estado"
-                        name="Estado"
-                        placeholder="Digite seu Estado"
-                        className={styles.InputField}
-                     />
-                     <Image
-                        src="/icones/IconeEstado.svg"
-                        width={25}
-                        height={25}
-                        alt="Icone Estado"
                         className={styles.Icons}
                      />
                   </div>

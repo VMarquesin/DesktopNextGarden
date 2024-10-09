@@ -71,6 +71,17 @@
    flex-direction: column;
 }
 
+.InputFieldUF {
+   width: 52rem;
+   padding: 1rem;
+   font-size: 2rem;
+   border: none;
+   border-bottom: 0.2rem solid #00000054;
+   display: flex;
+   flex-direction: column;
+   color: #000000af;
+}
+
 .Endereço {
    width: 10rem; /* Ajuste baseado na largura do contêiner pai */
    max-width: 50rem; /* Limita a largura máxima */
@@ -150,7 +161,7 @@
    display: flex;
    align-items: flex-end;
    margin-top: 1rem; /* Ajustado para melhor espaçamento */
-   margin-left: -2rem;
+   margin-left: -3rem;
    margin-bottom: 0.5rem;
 }
 
@@ -216,6 +227,16 @@
    .InputField {
       width: 30rem; /* Ajusta a largura dos campos de entrada para ocupar toda a largura disponível */
       font-size: 1rem;
+   }
+
+   .InputFieldUF {
+      width: 32rem;
+      padding: 1rem;
+      font-size: 1rem;
+      border: none;
+      border-bottom: 0.2rem solid #00000054;
+      display: flex;
+      flex-direction: column;
    }
 
    .SubmitButton {
