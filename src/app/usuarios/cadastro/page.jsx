@@ -9,11 +9,10 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import api from "@/services/api";
 import axios from "axios";
+import { handleClientScriptLoad } from "next/script";
 
 export default function Cadastro() {
    const router = useRouter();
-   const [ufs, setUfs] = useState([]);
-   const [cidades, setCidades] = useState([]);
 
    // info
    const [psicologo, setPsicologo] = useState({
@@ -35,9 +34,6 @@ export default function Cadastro() {
    const valSucesso = styles.formControl + " " + styles.success;
    const valErro = styles.formControl + " " + styles.error;
 
-   useEffect(() => {
-      listaUfs();
-   }, []);
 
    const getCepInfo = async () => {
       console.log(psicologo.CEP);
@@ -55,47 +51,6 @@ export default function Cadastro() {
       }));
    };
 
-   // useEffect(() => {
-   //    listaCidades();
-   //    setPsicologo((prev) => ({ ...prev, cid_id: "0" }));
-   // }, [estado.est_id]);
-
-   async function listaUfs() {
-      try {
-         const response = await api.get("/estado");
-         setUfs(response.data.dados);
-      } catch (error) {
-         if (error.response) {
-            alert(
-               error.response.data.mensagem + "\n" + error.response.data.dados
-            );
-         } else {
-            alert("Erro no front-end" + "\n" + error);
-         }
-      }
-   }
-
-   async function listaCidades() {
-      if (estado.est_id) {
-         const dados = {
-            cid_uf: estado.est_id,
-         };
-         try {
-            const response = await api.post("/cidades", dados);
-            setCidades(response.data.dados);
-         } catch (error) {
-            if (error.response) {
-               alert(
-                  error.response.data.mensagem +
-                     "\n" +
-                     error.response.data.dados
-               );
-            } else {
-               alert("Erro no front-end" + "\n" + error);
-            }
-         }
-      }
-   }
 
    // validação
    const [valida, setValida] = useState({
@@ -103,7 +58,7 @@ export default function Cadastro() {
          validado: valDefault,
          mensagem: [],
       },
-      apelido: {
+      nick: {
          validado: valDefault,
          mensagem: [],
       },
@@ -177,48 +132,30 @@ export default function Cadastro() {
       return testeResult;
    }
 
-   // function validaNascimento() {  //CONFIRMAR SE IRA USAR!!!!!!!!!!!!!!!
-   //    // Obtém a data atual
-   //    const hoje = new Date();
-   //    const anoAtual = hoje.getFullYear();
+      function validaNick() {
+         let objTemp = {
+            validado: valSucesso, // css referente ao estado de validação
+            mensagem: [], // array de mensagens de validação
+         };
+   
+         if (usuario.usu_nick=== "") {
+            objTemp.validado = valErro;
+            objTemp.mensagem.push("O apelido do usuário é obrigatório");
+         } else if (usuario.usu_nick.length < 5) {
+            objTemp.validado = valErro;
+            objTemp.mensagem.push("Insira o apelido do usuário");
+         }
+   
+         setValida((prevState) => ({
+            ...prevState, // mantém os valores anteriores
+            nick: objTemp, // atualiza apenas o campo 'nick'
+         }));
 
-   //    // Converte a data de nascimento para um objeto Date
-   //    const dataNascimentoObj = new Date(usuario.usu_dt_nasc);
+      const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+      return testeResult;
+   }
 
-   //    let objTemp = {
-   //       validado: valSucesso, // css referente ao estado de validação
-   //       mensagem: [], // array de mensagens de validação
-   //    };
-
-   //    if (usuario.usu_dt_nasc === "") {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("O preenchimento da data é obrigatório");
-   //    } else if (dataNascimentoObj > hoje) {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("A data de nascimento não pode ser futura");
-   //    } else {
-   //       // Calcula a idade
-   //       const anoNascimento = dataNascimentoObj.getFullYear();
-   //       const idade = anoAtual - anoNascimento;
-   //       if (idade > 100) {
-   //          objTemp.validado = valErro;
-   //          objTemp.mensagem.push("A idade não pode ser superior a 100 anos");
-   //       }
-   //       if (idade < 14) {
-   //          objTemp.validado = valErro;
-   //          objTemp.mensagem.push("A idade não pode ser inferior a 14 anos");
-   //       }
-   //    }
-
-   //    setValida((prevState) => ({
-   //       ...prevState, // mantém os valores anteriores
-   //       nascimento: objTemp, // atualiza apenas o campo 'nome'
-   //    }));
-
-   //    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
-   //    return testeResult;
-   // }
-
+   
    function checkEmail(email) {
       return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
          email
@@ -241,106 +178,95 @@ export default function Cadastro() {
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         email: objTemp, // atualiza apenas o campo 'nome'
+         email: objTemp, // atualiza apenas o campo 'email'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
 
-   // function validaCpf() {
-   //    let objTemp = {
-   //       validado: valSucesso,
-   //       mensagem: [],
-   //    };
+   
 
-   //    // Remove todos os caracteres não numéricos
-   //    const cpf = usuario.usu_cpf.replace(/\D/g, "");
-
-   //    if (cpf.length < 11) {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("O CPF precisa ter 11 dígitos");
-   //    } else if (/^(\d)\1{10}$/.test(cpf)) {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("O CPF digitado é inválido");
-   //    } else if (validaDigitosCPF(cpf) === false) {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("O CPF digitado é inválido");
-   //    }
-
-   //    setValida((prevState) => ({
-   //       ...prevState, // mantém os valores anteriores
-   //       cpf: objTemp, // atualiza apenas o campo 'nome'
-   //    }));
-
-   //    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
-   //    return testeResult;
-   // }
-
-   // function validaDigitosCPF(cpf) {
-   //    // Valida os dígitos verificadores
-   //    let soma = 0;
-   //    let resto;
-   //    for (let i = 1; i <= 9; i++) {
-   //       soma += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-   //    }
-   //    resto = (soma * 10) % 11;
-   //    if (resto === 10 || resto === 11) {
-   //       resto = 0;
-   //    }
-   //    if (resto !== parseInt(cpf.substring(9, 10))) {
-   //       return false;
-   //    }
-
-   //    soma = 0;
-   //    for (let i = 1; i <= 10; i++) {
-   //       soma += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-   //    }
-   //    resto = (soma * 10) % 11;
-   //    if (resto === 10 || resto === 11) {
-   //       resto = 0;
-   //    }
-   //    if (resto !== parseInt(cpf.substring(10, 11))) {
-   //       return false;
-   //    }
-
-   //    return true;
-   // }
-
-   function validaEstado() {
+   function validaSenha() {
       let objTemp = {
          validado: valSucesso,
          mensagem: [],
       };
 
-      if (estado.est_id == 0) {
+      if (usuario.usu_senha === "") {
          objTemp.validado = valErro;
-         objTemp.mensagem.push("Selecione o estado");
+         objTemp.mensagem.push("O preenchimento da senha é obrigatório");
+      } else if (usuario.usu_senha < 3) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("A senha deve ter pelo menos 3 caracteres");
       }
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         uf: objTemp, // atualiza apenas o campo 'nome'
+         senha: objTemp, // atualiza apenas o campo 'senha'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
 
-   function validaCidade() {
+   function validaConfSenha() {
       let objTemp = {
          validado: valSucesso,
          mensagem: [],
       };
 
-      if (cidades.cid_id == 0) {
+      if (usuario.confSenha === "") {
          objTemp.validado = valErro;
-         objTemp.mensagem.push("Selecione a cidade");
+         objTemp.mensagem.push("A confirmação da senha é obrigatória");
+      } else if (usuario.confSenha !== usuario.usu_senha) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("A senha e a confirmação devem ser iguais");
       }
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         cidade: objTemp, // atualiza apenas o campo 'nome'
+         confSenha: objTemp, // atualiza apenas o campo 'Confirma senha'
+      }));
+
+      const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+      return testeResult;
+   }
+
+   function validaCnpj() {
+      let objTemp = {
+         validado: valSucesso,
+         mensagem: [],
+      };
+
+      if (estado.psi_cnpj == 0) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("Insira o CNPJ da empresa");
+      }
+
+      setValida((prevState) => ({
+         ...prevState, // mantém os valores anteriores
+         cnpj: objTemp, // atualiza apenas o campo 'cnpj'
+      }));
+
+      const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+      return testeResult;
+   }
+
+   function validaCep() {
+      let objTemp = {
+         validado: valSucesso,
+         mensagem: [],
+      };
+
+      if (cidades.end_cep == 0) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("Selecione o CEP");
+      }
+
+      setValida((prevState) => ({
+         ...prevState, // mantém os valores anteriores
+         cep: objTemp, // atualiza apenas o campo 'cep'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -370,26 +296,6 @@ export default function Cadastro() {
       return testeResult;
    }
 
-   function validaNumero() {
-      let objTemp = {
-         validado: valSucesso,
-         mensagem: [],
-      };
-
-      if (endereco_usuario.end_numero === "") {
-         objTemp.validado = valErro;
-         objTemp.mensagem.push("O número do imóvel é um campo obrigatório");
-      }
-
-      setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         numero: objTemp, // atualiza apenas o campo 'nome'
-      }));
-
-      const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
-      return testeResult;
-   }
-
    function validaBairro() {
       let objTemp = {
          validado: valSucesso,
@@ -406,104 +312,80 @@ export default function Cadastro() {
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         bairro: objTemp, // atualiza apenas o campo 'nome'
+         bairro: objTemp, // atualiza apenas o campo 'bairro'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
 
-   // function validaComplemento() {
-   //    let objTemp = {
-   //       validado: valSucesso,
-   //       mensagem: [],
-   //    };
 
-   //    setValida((prevState) => ({
-   //       ...prevState, // mantém os valores anteriores
-   //       complemento: objTemp, // atualiza apenas o campo 'nome'
-   //    }));
-
-   //    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
-   //    return testeResult;
-   // }
-
-   // function validaCelular() {
-   //    let objTemp = {
-   //       validado: valSucesso,
-   //       mensagem: [],
-   //    };
-
-   //    if (usuario.cli_cel === "") {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push("O nº do celular é obrigatório");
-   //    } else if (usuario.cli_cel.length < 11) {
-   //       objTemp.validado = valErro;
-   //       objTemp.mensagem.push(
-   //          "O número do celular deve ter pelo menos 11 dígitos"
-   //       );
-   //    }
-
-   //    setValida((prevState) => ({
-   //       ...prevState, // mantém os valores anteriores
-   //       celular: objTemp, // atualiza apenas o campo 'nome'
-   //    }));
-
-   //    const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
-   //    return testeResult;
-   // }
-
-   function validaSenha() {
+   function validaNumero() {
       let objTemp = {
          validado: valSucesso,
          mensagem: [],
       };
 
-      if (usuario.usu_senha === "") {
+      if (endereco_usuario.end_numero === "") {
          objTemp.validado = valErro;
-         objTemp.mensagem.push("O preenchimento da senha é obrigatório");
-      } else if (usuario.usu_senha < 3) {
-         objTemp.validado = valErro;
-         objTemp.mensagem.push("A senha deve ter pelo menos 3 caracteres");
+         objTemp.mensagem.push("O número do imóvel é um campo obrigatório");
       }
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         senha: objTemp, // atualiza apenas o campo 'nome'
+         numero: objTemp, // atualiza apenas o campo 'numero'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
 
-   function validaConfSenha() {
+   function validaCidade() {
       let objTemp = {
          validado: valSucesso,
          mensagem: [],
       };
 
-      if (usuario.confSenha === "") {
+      if (cidades.cid_id == 0) {
          objTemp.validado = valErro;
-         objTemp.mensagem.push("A confirmação da senha é obrigatória");
-      } else if (usuario.confSenha !== usuario.usu_senha) {
-         objTemp.validado = valErro;
-         objTemp.mensagem.push("A senha e a confirmação devem ser iguais");
+         objTemp.mensagem.push("Selecione a cidade");
       }
 
       setValida((prevState) => ({
          ...prevState, // mantém os valores anteriores
-         confSenha: objTemp, // atualiza apenas o campo 'nome'
+         cidade: objTemp, // atualiza apenas o campo 'nome'
+      }));
+
+      const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
+      return testeResult;
+   }
+ 
+   function validaEstado() {
+      let objTemp = {
+         validado: valSucesso,
+         mensagem: [],
+      };
+
+      if (estado.est_id == 0) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("Selecione o estado");
+      }
+
+      setValida((prevState) => ({
+         ...prevState, // mantém os valores anteriores
+         estado: objTemp, // atualiza apenas o campo 'estado'
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
 
+   
    async function handleSubmit(event) {
       event.preventDefault();
       let itensValidados = 0;
       itensValidados += validaNome();
-      itensValidados += validaApelido();
+      itensValidados += validaNick();
       itensValidados += validaEmail();
       itensValidados += validaSenha();
       itensValidados += validaConfSenha();
@@ -522,7 +404,7 @@ export default function Cadastro() {
 
          try {
             let confirmaCad;
-            const response = await api.post("/usuarios", usuario);
+            const response = await api.post("/pacientes", paciente);
 
             confirmaCad = response.data.sucesso;
 
@@ -663,23 +545,6 @@ export default function Cadastro() {
 
                   <div className={styles.FormGroup}>
                      <input
-                        id="Estado"
-                        name="estado"
-                        className={styles.InputFieldUF}
-                        onChange={handleChange}
-                        value={psicologo.estado}
-                     />
-                     <Image
-                        src="/icones/IconeEstado.svg"
-                        width={25}
-                        height={25}
-                        alt="Icone Estado"
-                        className={styles.IconsUF}
-                     />
-                  </div>
-
-                  <div className={styles.FormGroup}>
-                     <input
                         type="CEP"
                         id="CEP"
                         name="CEP"
@@ -695,6 +560,24 @@ export default function Cadastro() {
                         height={25}
                         alt="Icone CEP"
                         className={styles.Icons}
+                     />
+                  </div>
+
+                  <div className={styles.FormGroup}>
+                     <input
+                        id="Estado"
+                        name="estado"
+                        placeholder="Digite seu Estado"
+                        className={styles.InputFieldUF}
+                        onChange={handleChange}
+                        value={psicologo.estado}
+                     />
+                     <Image
+                        src="/icones/IconeEstado.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Estado"
+                        className={styles.IconsUF}
                      />
                   </div>
 
@@ -772,7 +655,7 @@ export default function Cadastro() {
                      />
                   </div>
 
-                  <button type="submit" className={styles.SubmitButton}>
+                  <button type="submit" className={styles.SubmitButton} onChange={handleSubmit}>
                      CADASTRAR
                   </button>
                </form>

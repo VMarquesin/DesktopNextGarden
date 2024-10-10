@@ -177,6 +177,7 @@
    .CadastroForm {
       font-size: 3vw;
    }
+   
 
    .InputField {
       width: 50rem;
@@ -193,7 +194,7 @@
    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1080px) {
    .CadastroContainer {
       display: grid;
       grid-template-areas: "form";
@@ -205,6 +206,11 @@
 
    .BackgroundImageCadastro {
       display: none; /* Oculta a imagem em telas menores */
+   }
+   
+   .Retornar {
+      font-size: 3rem;
+      font-weight: bolder;
    }
 
    .CadastroAcess {
@@ -226,13 +232,13 @@
 
    .InputField {
       width: 30rem; /* Ajusta a largura dos campos de entrada para ocupar toda a largura disponível */
-      font-size: 1rem;
+      font-size: 2rem;
    }
 
    .InputFieldUF {
       width: 32rem;
       padding: 1rem;
-      font-size: 1rem;
+      font-size: 2rem;
       border: none;
       border-bottom: 0.2rem solid #00000054;
       display: flex;
@@ -241,7 +247,7 @@
 
    .SubmitButton {
       width: 50%; /* Ajusta a largura do botão para ocupar toda a largura disponível */
-      font-size: 1rem;
+      font-size: 2rem;
       padding: 0.8rem;
    }
 
