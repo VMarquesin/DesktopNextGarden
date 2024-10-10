@@ -8,6 +8,7 @@ import Image from "next/image";
 
 import styles from "./page.module.css";
 import api from "@/services/api";
+import axios from "axios";
 
 export default function Cadastro() {
    const router = useRouter();
@@ -23,11 +24,11 @@ export default function Cadastro() {
       confSenha: "",
       psi_cnpj: "",
       end_cep: "",
-      end_logradouro: "",
-      end_num: "",
-      end_bairro: "",
-      cid_id: "0",
-      uf: "0",
+      endereco: "",
+      numero: "",
+      bairro: "",
+      cidade: "0",
+      estado: "0",
    });
 
    const valDefault = styles.formControl;
@@ -37,6 +38,22 @@ export default function Cadastro() {
    useEffect(() => {
       listaUfs();
    }, []);
+
+   const getCepInfo = async () => {
+      console.log(psicologo.CEP);
+      const url = "https://viacep.com.br/ws/" + psicologo.CEP + "/json/";
+      console.log(url);
+      const response = await axios.get(url);
+      const { data } = response;
+      console.log(data);
+      setPsicologo((prev) => ({
+         ...prev,
+         cidade: data.localidade || "",
+         estado: data.estado || "",
+         bairro: data.bairro || "",
+         endereco: data.logradouro || "",
+      }));
+   };
 
    // useEffect(() => {
    //    listaCidades();
@@ -645,15 +662,12 @@ export default function Cadastro() {
                   </div>
 
                   <div className={styles.FormGroup}>
-                     <select
+                     <input
                         id="Estado"
-                        name="Estado"
+                        name="estado"
                         className={styles.InputFieldUF}
-                     >
-                        <option value="" disabled selected>
-                           Selecione seu Estado
-                        </option>
-                     </select>
+                        value={psicologo.estado}
+                     />
                      {/* <Image
                         src="/icones/IconeEstado.svg"
                         width={25}
@@ -671,6 +685,8 @@ export default function Cadastro() {
                         placeholder="Digite seu CEP"
                         className={styles.InputField}
                         onChange={handleChange}
+                        onBlur={getCepInfo}
+                        value={psicologo.CEP}
                      />
                      <Image
                         src="/icones/IconeCEP.svg"
@@ -685,9 +701,10 @@ export default function Cadastro() {
                      <input
                         type="Endereco"
                         id="Endereco"
-                        name="Endereco"
+                        name="endereco"
                         placeholder="Digite seu Endereço"
                         className={styles.InputField}
+                        value={psicologo.endereco}
                      />
                      <Image
                         src="/icones/IconeEndereco.svg"
@@ -702,7 +719,7 @@ export default function Cadastro() {
                      <input
                         type="Numero"
                         id="Numero"
-                        name="Numero"
+                        name="numero"
                         placeholder="Digite seu Número"
                         className={styles.InputField}
                      />
@@ -719,9 +736,10 @@ export default function Cadastro() {
                      <input
                         type="Bairro"
                         id="Bairro"
-                        name="Bairro"
+                        name="bairro"
                         placeholder="Digite seu Bairro"
                         className={styles.InputField}
+                        value={psicologo.bairro}
                      />
                      <Image
                         src="/icones/IconeEndereco.svg"
@@ -736,9 +754,10 @@ export default function Cadastro() {
                      <input
                         type="Cidada"
                         id="Cidade"
-                        name="Cidade"
+                        name="cidade"
                         placeholder="Digite sua Cidade"
                         className={styles.InputField}
+                        value={psicologo.cidade}
                      />
                      <Image
                         src="/icones/IconeCidade.svg"
