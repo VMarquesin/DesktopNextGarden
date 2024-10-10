@@ -3,7 +3,7 @@
 import Head from "next/head";
 import styles from "./page.module.css";
 
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 
 import PacienteButton from "../componentes/pacienteButton";
@@ -27,12 +27,15 @@ export default function Home() {
    const [isProfileOpen, setIsProfileOpen] = useState(false);
    const [psicologoInfo, setPsicologoInfo] = useState(null);
    const [editMode, setEditMode] = useState(false);
+   const [searchTerm, setSearchTerm] = useState("");
+   const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
+   const perfilRef = useRef();
 
    const fetchPsicologoInfo = async () => {
       try {
          const usu_id = 10;
          const psi_id = 1;
-         const usuarioResponse = await api.get(`/usuarios/${usu_id}`);
+         const usuarioResponse = await api.get(`/usuario/${usu_id}`);
          const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
 
          setPsicologoInfo({
@@ -44,12 +47,49 @@ export default function Home() {
       }
    };
 
+   useEffect(() => {
+      if (searchTerm.length > 0) {
+        // Chama a API para buscar pacientes
+        const fetchPacientes = async () => {
+          try {
+            const response = await api.get(`/usuarios/pacientes?nome=${searchTerm}`);
+            setPacientesFiltrados(response.data.dados); // Ajuste para o retorno da API
+          } catch (error) {
+            console.error("Erro ao buscar pacientes:", error);
+          }
+        };
+  
+        fetchPacientes();
+      } else {
+        setPacientesFiltrados([]); // Limpa a lista se não houver termo de busca
+      }
+    }, [searchTerm]);
+
    const handleProfileClick = () => {
       setIsProfileOpen(!isProfileOpen);
       if (!psicologoInfo) {
          fetchPsicologoInfo();
       }
    };
+
+   useEffect(() => {
+      // Verifica se clicou fora de notificações
+      const handleClickOutside = (event) => {
+         if (
+            perfilRef.current &&
+            !perfilRef.current.contains(event.target)
+         ) {
+            setIsProfileOpen(false);
+         }
+      };
+
+      // Ouvinte para cliques no documento
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
    // console.log=handleProfileClick, "error"
 
    const handleSaveChanges = async () => {
@@ -99,14 +139,15 @@ export default function Home() {
                            </div>
                         </li> */}
                         <li>
-                           <span className={styles.profileName}>Dr. Silva</span>
+                           <span className={styles.profileName}>{psicologoInfo ? psicologoInfo.usu_nome : "Erro na busca"}</span>
                         </li>
-                        <li>
+                        <li >
                            <img
                               src="https://photos.psychologytoday.com/467daa31-46cd-11ea-a6ad-06142c356176/3/320x400.jpeg"
                               alt="Profile"
                               className={styles.profileImage}
                               onClick={handleProfileClick}
+                              ref={perfilRef}
                            />
                            {/* {console.log={handleProfileClick}} */}
                         </li>
@@ -115,7 +156,7 @@ export default function Home() {
                </div>
             </header>
             {isProfileOpen && psicologoInfo && (
-               <div className={styles.profileDropdown}>
+               <div ref={perfilRef} className={styles.profileDropdown}>
                   {editMode ? (
                      <>
                         <input
@@ -190,12 +231,26 @@ export default function Home() {
             {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>
-               <PacienteButton carregaPaciente={carregaPaciente} />
-               <div className={styles.searchBar}>
-                  <input type="text" placeholder="Pesquisar paciente..." />
-               </div>
-            </section>
-
+          <PacienteButton carregaPaciente={carregaPaciente} />
+          <div className={styles.searchBar}>
+            <input
+              type="text"
+              placeholder="Pesquisar paciente..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {pacientesFiltrados.length > 0 && (
+              <ul className={styles.pacientesList}>
+                {pacientesFiltrados.map((paciente) => (
+                  <li key={paciente.usu_id} onClick={() => carregaPaciente(paciente.usu_id)}>
+                    {paciente.usu_nome}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+        
             {/* barra lateral */}
 
             <aside className={styles.sidebar}>
