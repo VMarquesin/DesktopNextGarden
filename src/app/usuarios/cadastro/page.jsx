@@ -27,8 +27,8 @@ export default function Cadastro() {
       endereco: "",
       numero: "",
       bairro: "",
-      cidade: "0",
-      estado: "0",
+      cidade: "",
+      estado: "",
    });
 
    const valDefault = styles.formControl;
@@ -666,15 +666,16 @@ export default function Cadastro() {
                         id="Estado"
                         name="estado"
                         className={styles.InputFieldUF}
+                        onChange={handleChange}
                         value={psicologo.estado}
                      />
-                     {/* <Image
+                     <Image
                         src="/icones/IconeEstado.svg"
                         width={25}
                         height={25}
                         alt="Icone Estado"
                         className={styles.IconsUF}
-                     /> */}
+                     />
                   </div>
 
                   <div className={styles.FormGroup}>
@@ -705,6 +706,7 @@ export default function Cadastro() {
                         placeholder="Digite seu Endereço"
                         className={styles.InputField}
                         value={psicologo.endereco}
+                        onChange={handleChange}
                      />
                      <Image
                         src="/icones/IconeEndereco.svg"
@@ -739,6 +741,7 @@ export default function Cadastro() {
                         name="bairro"
                         placeholder="Digite seu Bairro"
                         className={styles.InputField}
+                        onChange={handleChange}
                         value={psicologo.bairro}
                      />
                      <Image
@@ -757,6 +760,7 @@ export default function Cadastro() {
                         name="cidade"
                         placeholder="Digite sua Cidade"
                         className={styles.InputField}
+                        onChange={handleChange}
                         value={psicologo.cidade}
                      />
                      <Image
