@@ -127,7 +127,7 @@ export default function PacienteExercicios(pacienteId) {
                      </li>
                   ))
                ) : (
-                  <li>Nenhum exercício feito</li>
+                  <p>Nenhum exercício feito</p>
                )}
             </ul>
          </aside>
