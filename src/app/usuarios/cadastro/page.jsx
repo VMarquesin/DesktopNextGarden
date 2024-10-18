@@ -35,7 +35,99 @@ export default function Cadastro() {
    const valErro = styles.formControl + " " + styles.error;
 
 
-  
+   const getCepInfo = async () => {
+      console.log(psicologo.CEP);
+      const url = "https://viacep.com.br/ws/" + psicologo.CEP + "/json/";
+      console.log(url);
+      const response = await axios.get(url);
+      const { data } = response;
+      console.log(data);
+      setPsicologo((prev) => ({
+         ...prev,
+         cidade: data.localidade || "",
+         estado: data.estado || "",
+         bairro: data.bairro || "",
+         endereco: data.logradouro || "",
+      }));
+   };
+
+
+   // validação
+   const [valida, setValida] = useState({
+      nome: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      nick: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      email: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      senha: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      confSenha: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      cnpj: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      cep: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      logradouro: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      numero: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      bairro: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      cidade: {
+         validado: valDefault,
+         mensagem: [],
+      },
+      estado: {
+         validado: valDefault,
+         mensagem: [],
+      },
+   });
+
+   const handleChange = (e) => {
+      setPsicologo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+      console.log(psicologo);
+   };
+
+   function validaNome() {
+      let objTemp = {
+         validado: valSucesso, // css referente ao estado de validação
+         mensagem: [], // array de mensagens de validação
+      };
+
+      if (usuario.usu_nome === "") {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("O nome do usuário é obrigatório");
+      } else if (usuario.usu_nome.length < 5) {
+         objTemp.validado = valErro;
+         objTemp.mensagem.push("Insira o nome completo do usuário");
+      }
+
+      setValida((prevState) => ({
+         ...prevState, // mantém os valores anteriores
+         nome: objTemp, // atualiza apenas o campo 'nome'
+      }));
+
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
       return testeResult;
    }
