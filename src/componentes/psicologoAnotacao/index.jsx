@@ -186,7 +186,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
         },
         {
           pan_id: 3,
-          pan_anotacao: "Terceira anotação de exemplo para visualização",
+          pan_anotacao: "Terceira anotação de exemplo para visualização, Terceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualizaçãoTerceira anotação de exemplo para visualização",
           pan_anotacao_data: "2024-10-15",
           psi_id: 1,
           pac_id: pacienteId,
@@ -301,7 +301,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
             ) : (
               <p>{selectedAnotacao?.pan_anotacao}</p>
             )}
-            <p>
+            <p className={styles.modalData}>
               {new Date(selectedAnotacao?.pan_anotacao_data).toLocaleDateString(
                 "pt-BR"
               )}

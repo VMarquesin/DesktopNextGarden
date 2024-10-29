@@ -89,6 +89,7 @@
 .salvarButton:hover {
    background-color: #066004;
 }
+
 .cancelarButton:hover {
    background-color: rgb(240, 28, 28);
 }
@@ -119,7 +120,7 @@
 }
 
 .modalContent h3 {
-   margin-bottom: 20px;
+   margin-bottom: 6rem;
    font-size: 1.8em;
 }
 
@@ -127,7 +128,27 @@
    margin-bottom: 20px;
 }
 
+.modalData{
+   margin-top: 5rem;
+}
+
+.editarButton {
+   padding: 10px 20px;
+   font-size: 1em;
+   border: none;
+   border-radius: 8px;
+   background-color: #074a05;
+   color: white;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+.editarButton:hover {
+   background-color: #066004;
+}
+
 .closeButton {
+   margin-top: 2rem;
+   margin-left: 4rem;
    padding: 10px 20px;
    font-size: 1em;
    border: none;
