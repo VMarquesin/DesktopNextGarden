@@ -48,6 +48,7 @@
 .anotacao {
    width: 100%;
    max-width: 80%;
+   height: 70%;
    background-color: #fff;
    border-radius: 10px;
    padding: 30px;
@@ -56,7 +57,7 @@
 
 .textoArea {
    width: 98%;
-   height: 100px;
+   height: 80%;
    padding: 10px;
    font-size: 1em;
    border-radius: 8px;
@@ -68,7 +69,9 @@
 
 .botoes {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
+   gap: 6rem;
+   /* justify-content: space-between; */
 }
 
 .salvarButton,
@@ -107,8 +110,12 @@
 }
 
 .modalContent {
+   display: flex;
+   justify-content: center;
+   align-content: center;
    width: 100%;
    max-width: 600px;
+   height: 65%;
    background-color: #ffffff;
    border-radius: 12px;
    padding: 30px;
@@ -125,11 +132,27 @@
 }
 
 .modalContent p {
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
+   text-align: justify;
    margin-bottom: 20px;
+}
+
+.modalTextoArea {
+   width: 98%;
+   height: 80%;
+   padding: 10px;
+   font-size: 1em;
+   border-radius: 8px;
+   border: 0.4px solid #ddd;
+   resize: none;
+   margin-bottom: 2rem;
+   margin-right: 5px;
 }
 
 .modalData{
    margin-top: 5rem;
+   font-size: 1.5rem;
 }
 
 .editarButton {
@@ -153,12 +176,12 @@
    font-size: 1em;
    border: none;
    border-radius: 8px;
-   background-color: #074a05;
+   background-color: #cc0000;
    color: white;
    cursor: pointer;
    transition: background-color 0.3s ease;
 }
 
 .closeButton:hover {
-   background-color: #066004;
+   background-color: rgb(240, 28, 28);
 }
