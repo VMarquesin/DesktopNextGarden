@@ -80,9 +80,11 @@ export default function Page() {
                         <li>
                            <a href="#psicologo">PSICÓLOGO</a>
                         </li>
+                        <li>
                         <Link href={'/usuarios/login'} className={styles.ButtonLogin}>
-                            Login
+                            LOGIN
                         </Link>
+                        </li>
                      </ul>
                   </nav>
                </div>
@@ -94,7 +96,6 @@ export default function Page() {
                   Seu bem estar está em suas mãos e o Garden está aqui para te
                   ajudar
                </p>
-               <button className={styles.saibaMais}>Saiba Mais</button>
             </div>
          </div>
 
