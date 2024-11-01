@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const apiPorta = process.env.NEXT_PUBLIC_API_PORTA;
+
 const api = axios.create({
-    baseURL: 'http://10.67.23.33:3306' // ip e porta do servidor
-    // lab6 10.67.22.146
-    // lab4 10.67.22.144
+    baseURL: `${apiUrl}:${apiPorta}` // ip e porta do servidor
 });
+// console.log(`${apiUrl}:${apiPorta}`);
 
 export default api;
