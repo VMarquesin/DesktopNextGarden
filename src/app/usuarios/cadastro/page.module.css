@@ -118,6 +118,7 @@
 }
 
 .ButtonRetornar {
+   text-decoration: none;
    padding: 2rem;
    font-size: 2rem;
    color: #fff;

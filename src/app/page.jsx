@@ -1,389 +1,379 @@
 "use client";
 
-import Head from "next/head";
-import styles from "./page.module.css";
-
-import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import styles from "./page.module.css";
+import { useEffect } from "react";
+import Link from "next/link";
 
-import PacienteButton from "../componentes/pacienteButton";
-import PsicologoAnotacao from "../componentes/psicologoAnotacao";
-
-import PacienteDiario from "../componentes/pacienteDiario";
-import PacienteExercicios from "../componentes/pacienteExericios";
-
-import LembreteSessao from "../componentes/lembreteSessao";
-import Dashboard from "../componentes/dashboard";
-
-import api from "../../services/api";
-
-import Notifications from "../componentes/notificacao";
-// import { PacienteProvider } from "../componentes/pacienteContext";
-// import { Feather } from "react-icons/fa";
-
-export default function Home() {
-   const [Tela, setTela] = useState(0);
-   const [pacienteSel, setPacienteSel] = useState(0);
-   const [isProfileOpen, setIsProfileOpen] = useState(false);
-   const [psicologoInfo, setPsicologoInfo] = useState(null);
-   const [editMode, setEditMode] = useState(false);
-   const [searchTerm, setSearchTerm] = useState("");
-   const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
-   const perfilRef = useRef();
-
-   const fetchPsicologoInfo = async () => {
-      try {
-         const usu_id = 10;
-         const psi_id = 1;
-         const usuarioResponse = await api.get(`/usuario/${usu_id}`);
-         const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
-
-         setPsicologoInfo({
-            ...usuarioResponse.data.dados[0],
-            ...psicologoResponse.data.dados[0],
-         });
-      } catch (error) {
-         console.error("Erro ao buscar informações do psicólogo:", error);
-      }
-   };
-
-   useEffect(() => {
-      if (searchTerm.length > 0) {
-        // Chama a API para buscar pacientes
-        const fetchPacientes = async () => {
-          try {
-            const response = await api.get(`/usuarios/pacientes?nome=${searchTerm}`);
-            setPacientesFiltrados(response.data.dados); // Ajuste para o retorno da API
-          } catch (error) {
-            console.error("Erro ao buscar pacientes:", error);
-          }
-        };
-  
-        fetchPacientes();
-      } else {
-        setPacientesFiltrados([]); // Limpa a lista se não houver termo de busca
-      }
-    }, [searchTerm]);
-
-   const handleProfileClick = () => {
-      setIsProfileOpen(!isProfileOpen);
-      if (!psicologoInfo) {
-         fetchPsicologoInfo();
-      }
-   };
-
-   useEffect(() => {
-      // Verifica se clicou fora de notificações
-      const handleClickOutside = (event) => {
-         if (
-            perfilRef.current &&
-            !perfilRef.current.contains(event.target)
-         ) {
-            setIsProfileOpen(false);
-         }
-      };
-
-      // Ouvinte para cliques no documento
-
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-         document.removeEventListener("mousedown", handleClickOutside);
-      };
-   }, []);
-   // console.log=handleProfileClick, "error"
-
-   const handleSaveChanges = async () => {
-      try {
-         await api.patch(`/psicologo/${psicologoInfo.psi_id}`, {
-            usu_nome: psicologoInfo.usu_nome,
-            usu_nick: psicologoInfo.usu_nick,
-            usu_email: psicologoInfo.usu_email,
-            psi_endereco: psicologoInfo.psi_endereco,
-            psi_cnpj: psicologoInfo.psi_cnpj,
-         });
-         setEditMode(false);
-      } catch (error) {
-         console.error("Erro ao salvar alterações:", error);
-      }
-   };
-
-   function carregaPaciente(id) {
-      setPacienteSel(id);
-   }
-   console.log(pacienteSel, "test");
-
+const Footer = () => {
    return (
-      <div className={styles.containerGlobal}>
-         <Head>
-            <title>Área de Trabalho - Psicólogo</title>
-         </Head>
-         <div className={styles.container}>
-            {/* Topbar */}
+      <nav className={styles.footerAnimation}>
+         <div className={styles.footerAnimation}>
+            <a href="#paciente">Paciente</a>
+         </div>
 
-            <header className={styles.header}>
-               <div className={styles.headercontainer}>
-                  <div className={styles.logo}>
+         <div>
+            <a href="#seguranca">Segurança</a>
+         </div>
+
+         <div>
+            <a href="#psicologo">Psicólogo</a>
+         </div>
+
+         <div>
+            <a href="#login">Login</a>
+         </div>
+      </nav>
+   );
+};
+
+export default function Page() {
+   //Efeito de REDIRECIONAMENTO do RODAPÉ da página
+   useEffect(() => {
+      const links = document.querySelectorAll("nav a");
+  
+      const handleScroll = (e) => {
+          const targetId = e.currentTarget.getAttribute("href");
+          if (targetId.startsWith("#")) {
+              e.preventDefault();
+              const targetElement = document.querySelector(targetId);
+              if (targetElement) {
+                  targetElement.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                  });
+              }
+          }
+      };
+  
+      links.forEach((link) => link.addEventListener("click", handleScroll));
+  
+      return () => {
+          links.forEach((link) =>
+              link.removeEventListener("click", handleScroll)
+          );
+      };
+  }, []);
+  
+   return (
+      <div className={styles.container}>
+         <div className={styles.BackgroundHeader}>
+            <div className={styles.header}>
+               <div className={styles.topBar}>
+                  <div className={styles.ImageLogo}>
                      <Image
-                        src="/images/logoGarden.png"
-                        alt="logo Garden"
-                        width={140}
-                        height={50}
-                        // className={styles.icone}
+                        className={styles.logo}
+                        src="/images/LogoGardenWhite.png"
+                        width={700}
+                        height={300}
+                        alt="Picture of the author"
                      />
                   </div>
-                  <nav>
+                  <nav className={styles.nav}>
                      <ul>
-                        {/* <li>
-                           <div className={styles.notifications}>
-                              <Notifications />
-                           </div>
-                        </li> */}
                         <li>
-                           <span className={styles.profileName}>{psicologoInfo ? psicologoInfo.usu_nome : "Erro na busca"}</span>
+                           <a href="#paciente">PACIENTE</a>
                         </li>
-                        <li >
-                           <img
-                              src="https://photos.psychologytoday.com/467daa31-46cd-11ea-a6ad-06142c356176/3/320x400.jpeg"
-                              alt="Profile"
-                              className={styles.profileImage}
-                              onClick={handleProfileClick}
-                              ref={perfilRef}
-                           />
-                           {/* {console.log={handleProfileClick}} */}
+                        <li>
+                           <a href="#seguranca">SEGURANÇA</a>
                         </li>
+                        <li>
+                           <a href="#psicologo">PSICÓLOGO</a>
+                        </li>
+                        <Link href={'/usuarios/login'} className={styles.ButtonLogin}>
+                            Login
+                        </Link>
                      </ul>
                   </nav>
                </div>
-            </header>
-            {isProfileOpen && psicologoInfo && (
-               <div ref={perfilRef} className={styles.profileDropdown}>
-                  {editMode ? (
-                     <>
-                        <input
-                           type="text"
-                           value={psicologoInfo.usu_nome}
-                           onChange={(e) =>
-                              setPsicologoInfo({
-                                 ...psicologoInfo,
-                                 usu_nome: e.target.value,
-                              })
-                           }
-                        />
-                        <input
-                           type="text"
-                           value={psicologoInfo.usu_nick}
-                           onChange={(e) =>
-                              setPsicologoInfo({
-                                 ...psicologoInfo,
-                                 usu_nick: e.target.value,
-                              })
-                           }
-                        />
-                        <input
-                           type="email"
-                           value={psicologoInfo.usu_email}
-                           onChange={(e) =>
-                              setPsicologoInfo({
-                                 ...psicologoInfo,
-                                 usu_email: e.target.value,
-                              })
-                           }
-                        />
-                        <input
-                           type="text"
-                           value={psicologoInfo.psi_endereco}
-                           onChange={(e) =>
-                              setPsicologoInfo({
-                                 ...psicologoInfo,
-                                 psi_endereco: e.target.value,
-                              })
-                           }
-                        />
-                        <input
-                           type="text"
-                           value={psicologoInfo.psi_cnpj}
-                           onChange={(e) =>
-                              setPsicologoInfo({
-                                 ...psicologoInfo,
-                                 psi_cnpj: e.target.value,
-                              })
-                           }
-                        />
-                        <button onClick={handleSaveChanges}>Salvar</button>
-                        <button onClick={() => setEditMode(false)}>
-                           Cancelar
-                        </button>
-                     </>
-                  ) : (
-                     <>
-                        <p>Nome: {psicologoInfo.usu_nome}</p>
-                        <p>Nick: {psicologoInfo.usu_nick}</p>
-                        <p>Email: {psicologoInfo.usu_email}</p>
-                        <p>Endereço: {psicologoInfo.psi_endereco}</p>
-                        <p>CNPJ: {psicologoInfo.psi_cnpj}</p>
-                        <button onClick={() => setEditMode(true)}>
-                           Editar
-                        </button>
-                     </>
-                  )}
-               </div>
-            )}
-            {/* Pesquisa de paciente */}
+            </div>
 
-            <section className={styles.patientSelect}>
-          <PacienteButton carregaPaciente={carregaPaciente} />
-          <div className={styles.searchBar}>
-            <input
-              type="text"
-              placeholder="Pesquisar paciente..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            {pacientesFiltrados.length > 0 && (
-              <ul className={styles.pacientesList}>
-                {pacientesFiltrados.map((paciente) => (
-                  <li key={paciente.usu_id} onClick={() => carregaPaciente(paciente.usu_id)}>
-                    {paciente.usu_nome}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-        
-            {/* barra lateral */}
-
-            <aside className={styles.sidebar}>
-               <ul>
-                  <li>
-                     <button
-                        data-target="#anotacoes"
-                        onClick={() => setTela(1)}
-                        className={Tela === 1 ? styles.activeButton : " "}
-                     >
-                        <Image
-                           src="/icones/Note.svg"
-                           alt="Note"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        />
-                        <p>Anotações</p>
-                     </button>
-                  </li>
-                  <li>
-                     <button
-                        data-target="#diario"
-                        onClick={() => setTela(2)}
-                        className={Tela === 2 ? styles.activeButton : " "}
-                     >
-                        <Image
-                           src="/icones/diario.svg"
-                           alt="Diario"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        />
-                        <book-open />
-                        <p>Diário</p>
-                     </button>
-                  </li>
-                  <li>
-                     <button
-                        data-target="#Exercícios"
-                        onClick={() => setTela(3)}
-                        className={Tela === 3 ? styles.activeButton : " "}
-                     >
-                        <Image
-                           src="/icones/exercicios.svg"
-                           alt="Exercícios"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        />
-                        <p>Exercícios</p>
-                     </button>
-                  </li>
-                  <li>
-                     <button
-                        data-target="#lembrete"
-                        onClick={() => setTela(4)}
-                        className={Tela === 4 ? styles.activeButton : " "}
-                     >
-                        <Image
-                           src="/icones/lembrete.svg"
-                           alt="tiktok"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        />
-
-                        <p>Lembrete</p>
-                     </button>
-                  </li>
-                  <li>
-                     <button
-                        data-target="#dashboard"
-                        onClick={() => setTela(5)}
-                        className={Tela === 5 ? styles.activeButton : " "}
-                     >
-                        <Image
-                           src="/icones/dashboard.svg"
-                           alt="Dashboard"
-                           width={20}
-                           height={20}
-                           className={styles.icone}
-                        />
-                        <p>Dashboard</p>
-                     </button>
-                  </li>
-               </ul>
-            </aside>
-
-            <main className={styles.mainContent}>
-               {Tela === 1 ? (
-                  <PsicologoAnotacao pacienteId={pacienteSel} />
-               ) : Tela === 2 ? (
-                  <PacienteDiario pacienteId={pacienteSel} />
-               ) : Tela === 3 ? (
-                  <PacienteExercicios pacienteId={pacienteSel} />
-               ) : Tela === 4 ? (
-                  <LembreteSessao pacienteId={pacienteSel} />
-               ) : Tela === 5 ? (
-                  <Dashboard pacienteId={pacienteSel} />
-               ) : null}
-            </main>
+            <div className={styles.hero}>
+               <p>
+                  {" "}
+                  Seu bem estar está em suas mãos e o Garden está aqui para te
+                  ajudar
+               </p>
+               <button className={styles.saibaMais}>Saiba Mais</button>
+            </div>
          </div>
+
+         {/* Seção paciente */}
+         <section id="paciente" className={styles.pacienteSection}>
+            <div className={styles.BackgroundPaciente}>
+               <div className={styles.pacienteIntro}>
+                  <p>
+                     No aplicativo Garden, você tem a oportunidade excepcional
+                     de elevar seu autoconhecimento a níveis inimagináveis,
+                     embarcando em uma jornada única de exploração dos seus
+                     pensamentos, emoções e convicções mais profundas. Através
+                     de uma colaboração verdadeira, ajudamos você a acessar suas
+                     crenças mais arraigadas e a trabalhar de forma consciente
+                     para impulsionar sua evolução pessoal, espiritual e
+                     profissional.
+                  </p>
+               </div>
+
+               {/* <Image
+                  src="/images/BackgroundPaciente.png" //Imagem de fundo parte PACIENTE
+                  alt="Escada das emoções"
+                  width={743}
+                  height={2389}
+               /> */}
+
+               <div className={styles.pacienteCards}>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/diario.svg"
+                        alt="Imagem 1"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/emocao.svg"
+                        alt="Imagem 2"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/conhecimento.svg"
+                        alt="Imagem 3"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section id="seguranca">
+            <div className={styles.segurancaContent}>
+               <div className={styles.segurancaImage}>
+                  <div className={styles.telemovel}>
+                     <Image
+                        src="/images/telemovel.svg"
+                        alt="Imagem 3"
+                        width={750}
+                        height={750}
+                     />
+                  </div>
+                  <div className={styles.textContent}>
+                     <h2 className={styles.primeiro}>Expresse</h2>
+                     <h2>sem medo</h2>
+                     <p>
+                        Com criptografia de ponta a ponta todas mensagens e
+                        aúdios estão protegidos. Utilizamos tecnologias
+                        avançadas de segurança para proteger seus dados
+                        pessoais. Sua privacidade é nossa prioridade máxima, e
+                        nunca compartilharemos suas informações sem sua
+                        permissão. Fique tranquilo enquanto você se concentra em
+                        sua jornada de bem-estar e autoconhecimento com nosso
+                        aplicativo.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section className={styles.divGradient}>
+            <p>
+               Integrando o Garden em sua prática, você estará oferecendo uma
+               ferramenta adicional de apoio aos seus pacientes, complementando
+               seu trabalho terapêutico. Com recursos práticos e conteúdos
+               complementares, o Garden é um recurso valioso para ajudar seus
+               pacientes a alcançarem seus objetivos de saúde mental.
+            </p>
+         </section>
+
+         <section id="psicologo">
+            <div className={styles.contianerPsi}>
+               <div className={styles.backgroundPsicologo}>
+                  {/* <Image
+                  src="/images/fundoPsi.svg"
+                  alt="Imagem 3"
+                  width={1440}
+                  height={2242}
+                  className={styles.backgroundPsicologo}
+               /> */}
+
+                  <div className={styles.psicologoCenter}>
+                     <div className={styles.psicologoLeft}>
+                        <div className={styles.featureCard}>
+                           <div>
+                              <Image
+                                 src="/icones/DiarioPsicologo.svg"
+                                 alt="Imagem 3"
+                                 width={40}
+                                 height={40}
+                                 className={styles.iconDiario}
+                              />
+                           </div>
+                           <p>Diário</p>
+                        </div>
+
+                        <div className={styles.featureCard}>
+                           <div>
+                              <Image
+                                 src="/icones/AtividadePsicologo.svg"
+                                 alt="Imagem 3"
+                                 width={40}
+                                 height={40}
+                                 className={styles.iconAtividade}
+                              />
+                           </div>
+                           <p>Atividade</p>
+                        </div>
+
+                        <div className={styles.featureCard}>
+                           <Image
+                              src="/icones/LembretePsicologo.svg"
+                              alt="Imagem 3"
+                              width={40}
+                              height={40}
+                              className={styles.iconLembrete}
+                           />
+                           <p>Lembretes</p>
+                        </div>
+                     </div>
+
+                     <div className={styles.psicologoRight}>
+                        <div className={styles.TituloBorder}>
+                           <h2 className={styles.TituloPsicologos}>Garden</h2>
+                        </div>
+                        <div className={styles.textAnimacao}>
+                           <h3 className={styles.SubtituloPsicologos}>
+                              O primeiro passo para exponenciar seus resultados
+                           </h3>
+                           <p className={styles.TextoPsicologos}>
+                              Acompanhe de perto o progresso e a evolução
+                              emocional de seus pacientes através da
+                              visualização do diário integrado ao Garden. Esta
+                              funcionalidade permite que você acesse facilmente
+                              os registros diários de seus pacientes, explorando
+                              suas experiências, emoções e pensamentos ao longo
+                              do tempo. Com insights valiosos fornecidos pelo
+                              diário do paciente, você pode adaptar sua
+                              abordagem terapêutica, identificar padrões
+                              comportamentais e fornecer orientação
+                              personalizada para promover o bem-estar emocional
+                              de seus pacientes.
+                           </p>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div className={styles.psicologoLeft}>
+                     <div className={styles.TituloBorder}>
+                        <h2 className={styles.TituloPsicologos}>Dashboard</h2>
+                     </div>
+
+                     <div className={styles.ContainerTextoLeft}>
+                        <div className={styles.textAnimacao}>
+                           <h3 className={styles.SubtituloPsicologos}>
+                              Grafíco detalhado de emoções e acontecimentos
+                           </h3>
+                           <p className={styles.TextoPsicologos}>
+                              Tenha uma visão abrangente do estado emocional de
+                              seus pacientes com o Dashboard baseado no diário
+                              integrado ao Garden. Esta ferramenta poderosa
+                              oferece uma análise visual dos dados coletados nos
+                              registros diários dos pacientes, destacando
+                              tendências, padrões emocionais e marcos de
+                              progresso. Com o Dashboard, você pode monitorar o
+                              bem-estar emocional de seus pacientes de forma
+                              eficaz, identificando áreas de preocupação e
+                              oportunidades de intervenção terapêutica para
+                              apoiar seu crescimento pessoal e emocional.
+                           </p>
+                        </div>
+                        <div>
+                           <Image
+                              src="/images/PcPsicologo.png"
+                              alt="Imagem 3"
+                              width={517}
+                              height={450}
+                              className={styles.ImagePc}
+                           />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <div className={styles.devs}>
+            <div className={styles.devsTitulo}>
+               <h1>Sobre nós:</h1>
+            </div>
+
+            <div>
+               <div className={styles.rodape}>
+                  <div>
+                     <p>
+                        Estamos aqui para ser o solo fértil onde suas aspirações
+                        podem florescer. Venha mergulhar nas maravilhas do seu
+                        jardim interior.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+            <div className={styles.sobreNos}>
+               <div className={styles.devsCards}>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/diario.svg"
+                        alt="Imagem 1"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/emocao.svg"
+                        alt="Imagem 2"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/conhecimento.svg"
+                        alt="Imagem 3"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+                  <div className={styles.card}>
+                     <Image
+                        src="/images/conhecimento.svg"
+                        alt="Imagem 3"
+                        width={450}
+                        height={450}
+                     />
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <Footer />
+         <div className={styles.footer}>
+            <p>© 2024 Garden.</p>
+         </div>
+         <div className={styles.footer}>
+            <p> Todos os direitos reservados.</p>
+         </div>
+
+         {/* <div>
+            <section id="paciente">Conteúdo do Paciente</section>
+            <section id="seguranca">Conteúdo da Segurança</section>
+            <section id="psicologo">Conteúdo do Psicólogo</section>
+            <section id="login">Conteúdo do Login</section>
+         </div> */}
       </div>
    );
-}
-
-//  const [modalAberto, setModalAberto] = useState(false);
-
-//  const abrirModal = () => setModalAberto(true);
-//  const fecharModal = () => setModalAberto(false);
-
-{
-   /* opção abrir modal */
-}
-{
-   /* <button
-                        data-target="#exercicios"
-                        onClick={abrirModal}
-                     ></button>
-                     {modalAberto && (
-                        <div className={styles.modal}>
-                           <div className={styles.modalContent}>
-                              <span
-                                 className={styles.closeButton}
-                                 onClick={fecharModal}
-                              >
-                                 &times;
-                              </span>
-
-                              <h2>Conteudo</h2>
-                              <p>conteudo modal</p>
-                           </div>
-                        </div>
-                     )} */
 }

@@ -66,9 +66,9 @@ function Login() {
 
          <div className={styles.LoginAcess}>
             <div className={styles.LoginForm}>
-               <button type="submit" className={styles.ButtonCadastro}>
+               <Link href={'/usuarios/cadastro'} className={styles.ButtonCadastro}>
                   CRIAR CONTA
-               </button>
+               </Link>
 
                <div className={styles.Titulo}>
                   <label htmlFor="nomeProjeto">GARDEN</label>

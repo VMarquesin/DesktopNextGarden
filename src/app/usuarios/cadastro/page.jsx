@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; 
+import Link from "next/link";
 
 // import InputMask from 'react-input-mask';
 import Image from "next/image";
@@ -398,10 +399,10 @@ export default function Cadastro() {
     <div className={styles.CadastroContainer}>
       <div className={styles.CadastroAcess}>
         <div className={styles.CadastroForm}>
-          <button type="submit" className={styles.ButtonRetornar}>
-            RETORNAR
-          </button>
-
+          <Link href={'/usuarios/login'} className={styles.ButtonRetornar}>
+          RETORNAR
+          </Link>
+          
           <div className={styles.Titulo}>
             <label htmlFor="nomeProjeto">GARDEN</label>
             <label htmlFor="Acesse" className={styles.CriarConta}>
