@@ -1,71 +1,100 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "./index.module.css";
 
 import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
-export default function PacienteButton() {
-   const [nomePaciente, setNomePaciente] = useState("Paciente");
-   const [pacienteSelecionado, setPacienteSelecionado] = useState(null);
-   const [showPerfil, setShowPerfil] = useState(false);
+import api from "../../../services/api";
+// import { usePaciente } from "../pacienteContext";
 
-   const pacientes = [
-      {
-         nome: "Paciente 1",
-         nickname: "P1",
-         telefone: "123456789",
-         dataNascimento: "01/01/1980",
-         cpf: "000.000.000-00",
-         filhos: "2",
-         escolaridade: "Ensino Médio",
-         trabalho: "Desenvolvedor",
-         estadoCivil: "Casado",
-         status: "Ativo",
-         foto: "/path/to/foto1.jpg",
-      },
-      {
-         nome: "Paciente 2",
-         nickname: "P2",
-         telefone: "987654321",
-         dataNascimento: "02/02/1990",
-         cpf: "111.111.111-11",
-         filhos: "1",
-         escolaridade: "Ensino Superior",
-         trabalho: "Designer",
-         estadoCivil: "Solteiro",
-         status: "Inativo",
-         foto: "/path/to/foto2.jpg",
-      },
-      {
-         nome: "Paciente 3",
-         nickname: "P3",
-         telefone: "555555555",
-         dataNascimento: "03/03/1985",
-         cpf: "222.222.222-22",
-         filhos: "3",
-         escolaridade: "Mestrado",
-         trabalho: "Professor",
-         estadoCivil: "Divorciado",
-         status: "Ativo",
-         foto: "/path/to/foto3.jpg",
-      },
-   ];
+export default function PacienteButton({ carregaPaciente }) {
+   const [pacienteSelecionado, setPacienteSelecionado] = useState();
+   const [nomePaciente, setNomePaciente] = useState("Paciente");
+   const [showPerfil, setShowPerfil] = useState(false);
+   const [pacientes, setPacientes] = useState([]);
+   const [usuarios, setUsuarios] = useState([]);
+   const perfilRef = useRef(false);
+   const botaoRef = useRef();
+
+   useEffect(() => {
+      async function fetchPacientes() {
+         try {
+            const response = await api.get("/pacientes");
+            setPacientes(response.data.dados);
+         } catch (error) {
+            console.error("Erro ao buscar pacientes:", error);
+         }
+      }
+
+      async function fetchUsuarios() {
+         try {
+            const response = await api.get("/usuarios");
+            setUsuarios(response.data.dados);
+         } catch (error) {
+            console.error("Erro ao buscar usuários:", error);
+         }
+      }
+
+      fetchPacientes();
+      fetchUsuarios();
+   }, []);
+
+   console.log("meus pacientes: ", pacientes);
+
    function selecionarPaciente(paciente) {
-      setNomePaciente(paciente.nome);
+      const usuarioRelacionado = usuarios.find(
+         (user) => user.usu_id === paciente.usu_id
+      );
+      // console.log(user.usu_id, "a", paciente.usu_id, "b");
+      if (usuarioRelacionado) {
+         setNomePaciente(usuarioRelacionado.usu_nome);
+      } else {
+         setNomePaciente("Paciente");
+      }
+
       setPacienteSelecionado(paciente);
       setShowPerfil(true);
+      carregaPaciente(paciente.pac_id);
    }
+   console.log(selecionarPaciente);
 
-   const handleSaveNote = (nota) => {
-      console.log(`Nota salva para ${pacienteSelecionado.nome}: ${nota}`);
-      // Lógica para salvar a nota na API
-   };
+   useEffect(() => {
+      // Verifica se clicou fora de notificações
+      const handleClickOutside = (event) => {
+         if (perfilRef.current && !perfilRef.current.contains(event.target)) {
+            setShowPerfil(false);
+         }
+      };
 
+      // Ouvinte para cliques no documento
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
+
+   // useEffect(() => {
+   //    // Verifica se clicou fora de notificações
+   //    const handleClickOutside = (event) => {
+   //       if (botaoRef.current && !botaoRef.current.contains(event.target)) {
+   //          setPacienteSelecionado();
+   //       }
+   //    };
+
+   //    // Ouvinte para cliques no documento
+
+   //    document.addEventListener("mousedown", handleClickOutside);
+   //    return () => {
+   //       document.removeEventListener("mousedown", handleClickOutside);
+   //    };
+   // }, []);
    return (
       <div>
-         <div className={styles.pacienteContainer}>
+         {/* ref={botaoRef} */}
+         <div  className={styles.pacienteContainer}>
             <button
                id="pacienteButton"
                className={styles.botaoPaciente}
@@ -91,22 +120,20 @@ export default function PacienteButton() {
             <div id="listaPacientes" className={styles.listaPacientes}>
                {pacientes.map((paciente) => (
                   <p
-                     key={paciente.nome}
+                     key={paciente.pac_id}
                      className={styles.pacienteItem}
                      onClick={() => selecionarPaciente(paciente)}
                   >
-                     {paciente.nome}
+                     {usuarios.find((user) => user.usu_id === paciente.usu_id)
+                        ?.usu_nome || "Paciente"}
                   </p>
                ))}
             </div>
          </div>
 
          {showPerfil && pacienteSelecionado && (
-            <main>
-               <PacientePerfil
-                  paciente={pacienteSelecionado}
-                  onSaveNote={handleSaveNote}
-               />
+            <main ref={perfilRef}>
+               <PacientePerfil paciente={pacienteSelecionado} />
             </main>
          )}
       </div>

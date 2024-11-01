@@ -10,14 +10,7 @@
 }
 .logo {
    grid-area: header;
-   /* display: flex;
-   align-items: center;
-   justify-content: center; */
-   padding: 3rem;
-   /* height: 100px; */
-   font-size: 1.5rem;
-   font-weight: bold;
-   background-color: #f4f4f4;
+   padding: 4rem;
 }
 .header {
    grid-area: header;
@@ -51,11 +44,14 @@
    padding-right: 5rem;
 }
 
-.header nav ul li .notifications {
-   font-size: 1.5rem;
-   cursor: pointer;
-   /* margin-right: 2rem; */
-}
+/* Define a animação swing */
+/* Começa em 0 graus */
+/* Gira 10 graus */
+/* Volta para 0 graus */
+/* Gira -10 graus */
+/* Volta para 0 graus */
+
+/* Aplica a animação ao passar o mouse */
 
 .header nav ul li .profileImage {
    border-radius: 50%;
@@ -64,8 +60,47 @@
 }
 
 .header nav ul li .profileName {
-   font-size: 1.2rem;
+   font-size: 2rem;
 }
+
+.profileDropdown {
+   position: absolute;
+   right: 20px;
+   top: 80px;
+   background-color: white;
+   border: 1px solid #ccc;
+   padding: 15px;
+   border-radius: 10px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   z-index: 1000;
+}
+
+.profileDropdown p {
+   margin: 10px 0;
+}
+
+.profileDropdown input {
+   display: block;
+   margin: 10px 0;
+   padding: 8px;
+   width: 100%;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+
+.profileDropdown button {
+   margin-right: 10px;
+   padding: 8px 12px;
+   border: none;
+   background-color: #074a05;
+   color: white;
+   border-radius: 5px;
+   cursor: pointer;
+}
+
+/* .profileDropdown button:last-child {
+   background-color: #ccc;
+} */
 
 /* Pesquisa do paciente */
 
@@ -114,30 +149,81 @@
    list-style-type: none;
    padding: 0;
 }
-/* .sidebar ul li p {
-   margin-left: 0.5rem;
-} */
-.sidebar ul li {
+.sidebar ul li button {
    display: flex;
-   margin-left: 1rem;
+   width: 100%;
+   align-items: center;
+   border: none; /* Remove as bordas */
+   background: none; /* Remove o fundo */
+   font: inherit; /* Herda a fonte do elemento pai */
+   cursor: pointer; /* Adiciona o cursor de "mãozinha" */
    padding: 1.6rem;
-   font-size: 1.2rem;
-   cursor: pointer;
    transition: 0.4s;
 }
 
-.sidebar ul li:hover {
+.sidebar ul li button:hover {
+   border-radius: 7px;
    background-color: #ddd;
 }
+.activeButton {
+   /* color: white; */
+   background-color: #ddd !important;
+   border-radius: 7px;
+}
+/* .icone {
+   color: #e2e7e2 !important;
+}
+.activeIcone {
+   color: white;
+} */
+.sidebar ul li button p {
+   font-size: 1.6rem;
+   margin-left: 1rem;
+}
+
+/* Modal Exercicios */
+
+/* .backgroundBlur {
+   filter: blur(5px);
+   transition: filter 0.3s ease;
+}
+
+.modal {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 1000;
+   background-color: #ffffff;
+   padding: 200px;
+   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+   border-radius: 8px;
+}
+
+.modalContent {
+   position: relative;
+}
+
+.closeButton {
+   position: absolute;
+   top: 10px;
+   right: 10px;
+   font-size: 20px;
+}
+
+.modalBackground {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.5);
+   z-index: 999;
+} */
 
 /* area de visualização */
 
 .mainContent {
    background-color: #f4f4f4;
    grid-area: main;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   padding: 20px;
 }
