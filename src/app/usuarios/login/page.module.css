@@ -1,0 +1,214 @@
+.LoginContainer {
+   display: grid;
+   grid-template-areas:
+      "form image"
+      "form image";
+   grid-template-columns: 1fr 1fr;
+   grid-template-rows: 30px 1fr;
+   height: 100vh; /* Altura total da tela */
+   overflow: hidden; /* Evita rolagem */
+}
+
+.LoginAcess {
+   grid-area: form;
+   font-size: 8rem;
+   display: flex;
+   flex-direction: column;
+}
+
+.Titulo {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding: 5vw; /* Usando vw para responsividade */
+   font-size: 5vw;
+   font-weight: bold;
+   margin-left: 2vw; /* Ajustado para evitar estouramento */
+   margin-top: 0.5vw; /* Ajustado para evitar estouramento */
+}
+
+.AcesseSuaConta {
+   font-size: 2rem;
+   font-weight: bolder;
+}
+
+.EsqueceuSuaSenha {
+   font-size: 1.5rem;
+   font-weight: bolder;
+   align-content: start;
+   display: flex;
+   margin-top: -2rem;
+}
+
+.LoginForm {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   padding: 0;
+   font-size: 4vw; /* Usando vw para melhor responsividade */
+   margin: 0;
+   height: auto; /* Ajuste para se adaptar ao conteúdo */
+}
+
+.InputField {
+   width: 80rem; /* Ajuste baseado na largura do contêiner pai */
+   max-width: 50rem; /* Limita a largura máxima */
+   padding: 2rem;
+   font-size: 2rem;
+   border: none;
+   border-bottom: 0.2rem solid #00000054;
+   display: flex;
+   flex-direction: column;
+}
+
+.SubmitButton {
+   width: 30rem;
+   padding: 0.9rem;
+   font-size: 2rem;
+   color: #fff;
+   background-color: #074a05;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   margin-left: 20%;
+   margin-top: 7rem;
+   transition: 0.3s;
+}
+
+.SubmitButton:hover {
+   background-color: #088d03;
+}
+
+.containerButton {
+   grid-area: button;
+}
+
+.ButtonCadastro {
+   padding: 2rem;
+   font-size: 2rem;
+   color: #fff;
+   background: linear-gradient(40deg, #2b8a0e, #1c351b);
+   border: none;
+   cursor: pointer;
+   transition: 0.3s;
+   align-self: end;
+   display: flex;
+   margin-right: -1rem;
+   margin-top: -1rem;
+}
+
+.ButtonCadastro:hover {
+   background: linear-gradient(40deg, #1c351b, #2b8a0e);
+}
+
+.FormGroup {
+   display: flex; /* Usa flexbox para alinhar o conteúdo */
+   justify-content: space-between; /* Espaça o conteúdo ao longo do eixo principal */
+   align-items: s; /* Alinha o conteúdo no final do eixo cruzado (verticalmente) */
+   margin-bottom: 4rem;
+   font-size: 2rem;
+   flex-direction: row;
+}
+
+.inputIcone {
+   flex-direction: column;
+   display: flex;
+}
+
+.BackgroundImageLogin {
+   grid: image;
+   background-image: url("/public/images/ImageLogin.png");
+   object-fit: cover;
+   object-position: right /*Escolhe qual parte da imagem ira aparecer */;
+   background-position: center; /* Centraliza a imagem */
+   background-repeat: no-repeat; /* Evita repetição da imagem */
+   width: 100%; /* Ajusta a largura do contêiner */
+   height: 100vh; /* Ajusta a altura do contêiner (ou use a altura desejada) */
+}
+
+.Icons {
+   display: flex;
+   align-items: flex-end; /* Alinha o ícone no final da div FormGroup vertical e horizontalmente */
+   margin-top: 2rem;
+   margin-left: -3rem;
+   margin-bottom: 0.5rem;
+}
+
+@media (max-width: 1280px) {
+   .LoginContainer {
+      grid-template-areas:
+         "form"
+         "form";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto; /* Ajusta as linhas para se adaptarem ao conteúdo */
+   }
+
+   .BackgroundImageLogin {
+      display: none; /* Esconde a imagem */
+   }
+}
+
+@media (max-width: 480px) {
+   .LoginContainer {
+      grid-template-areas:
+         "form"
+         "form";
+      grid-template-columns: 1fr;
+      grid-template-rows: auto; /* Ajusta as linhas para se adaptarem ao conteúdo */
+   }
+
+   .BackgroundImageLogin {
+      display: none; /* Esconde a imagem */
+   }
+
+   .LoginForm {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      font-size: 4vw; /* Usando vw para melhor responsividade */
+      margin: 0;
+      height: auto; /* Ajuste para se adaptar ao conteúdo */
+   }
+
+   .InputField {
+      width: 30rem; /* Ajuste baseado na largura do contêiner pai */
+      max-width: 30rem; /* Limita a largura máxima */
+      padding: 2rem;
+      font-size: 2rem;
+      border: none;
+      border-bottom: 0.2rem solid #00000054;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .SubmitButton {
+      width: 30rem;
+      padding: 0.9rem;
+      font-size: 2rem;
+      color: #fff;
+      background-color: #074a05;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      margin-left: 10%;
+      margin-top: 8rem;
+      transition: 0.3s;
+   }
+
+   .Titulo {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 5vw; /* Usando vw para responsividade */
+      font-size: 15vw;
+      font-weight: bold;
+      margin-left: 2vw; /* Ajustado para evitar estouramento */
+      margin-top: 10vw; /* Ajustado para evitar estouramento */
+      margin-bottom: 10vw;
+   }
+}
