@@ -36,9 +36,8 @@ export default function Cadastro() {
   const valErro = styles.formControl + " " + styles.error;
 
   const getCepInfo = async () => {
-    console.log(psicologo.CEP);
-    const url = "https://viacep.com.br/ws/" + psicologo.CEP + "/json/";
-    console.log(url);
+    const url = "https://viacep.com.br/ws/" + psicologo.end_cep + "/json/";
+    console.log(url)
     const response = await axios.get(url);
     const { data } = response;
     console.log(data);
@@ -528,7 +527,7 @@ export default function Cadastro() {
                 className={styles.InputField}
                 onChange={handleChange}
                 onBlur={getCepInfo}
-                value={psicologo.CEP}
+                value={psicologo.end_cep}
               />
               <Image
                 src="/icones/IconeCEP.svg"

@@ -2,27 +2,30 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-
 import styles from "./page.module.css";
 import api from "../../../services/api";
 
-// import { login } from "../../../../mocks";
-
 function Login() {
    const router = useRouter();
-
    const [login, setLogin] = useState("");
    const [senha, setSenha] = useState("");
 
    function handleSubmit(event) {
       event.preventDefault();
+
+      // Verificação se os campos estão preenchidos
+      if (!login || !senha) {
+         alert("Por favor, preencha todos os campos.");
+         return;
+      }
+
+      // Chama a função para realizar o login
       logar();
    }
 
-   async function logar(event) {
+   async function logar() {
       try {
          const dados = {
             usu_email: login,
@@ -31,24 +34,19 @@ function Login() {
 
          const response = await api.post("/usuarios/login", dados);
 
-         if (response.data.sucesso == true) {
+         if (response.data.sucesso === true) {
             const usuario = response.data.dados;
             const objLogado = {
                id: usuario.usu_id,
                nome: usuario.usu_nome,
                acesso: usuario.usu_adm,
             };
-            // signin(JSON.stringify(objLogado));
+
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(objLogado));
-            router.push("/"); // é possível direcionar de acordo com a situação
+            router.push('/system'); // Direciona para a página inicial
          } else {
-            alert(
-               "Erro: " +
-                  error.response.data.mensagem +
-                  "\n" +
-                  error.response.data.dados
-            );
+            alert("Erro: " + response.data.mensagem);
          }
       } catch (error) {
          if (error.response) {
@@ -56,17 +54,16 @@ function Login() {
                error.response.data.mensagem + "\n" + error.response.data.dados
             );
          } else {
-            alert(error);
+            alert("Erro inesperado. Tente novamente mais tarde.");
          }
       }
    }
+
    return (
       <div className={styles.LoginContainer}>
-         {/* <div className={styles.LoginContent}> */}
-
          <div className={styles.LoginAcess}>
             <div className={styles.LoginForm}>
-               <Link href={'/usuarios/cadastro'} className={styles.ButtonCadastro}>
+               <Link href="/usuarios/cadastro" className={styles.ButtonCadastro}>
                   CRIAR CONTA
                </Link>
 
@@ -135,7 +132,7 @@ function Login() {
          <div>
             <Image
                src="/images/ImageLogin.png"
-               width={2880}
+               width={2880}   
                height={2048}
                alt="Imagem"
                className={styles.BackgroundImageLogin}
@@ -144,6 +141,5 @@ function Login() {
       </div>
    );
 }
-export default Login;
 
-// trocar botão criar conta por um link
+export default Login;

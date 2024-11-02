@@ -18,6 +18,11 @@ import Dashboard from "../../componentes/dashboard";
 import api from "../../../services/api";
 
 import Notifications from "../../componentes/notificacao";
+
+import { useContext } from "react";
+
+import { UserContext } from "../../../context/userContext";
+
 // import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
 
@@ -25,27 +30,30 @@ export default function Home() {
    const [Tela, setTela] = useState(0);
    const [pacienteSel, setPacienteSel] = useState(0);
    const [isProfileOpen, setIsProfileOpen] = useState(false);
-   const [psicologoInfo, setPsicologoInfo] = useState(null);
+   // const [psicologoInfo, setPsicologoInfo] = useState(null);
    const [editMode, setEditMode] = useState(false);
    const [searchTerm, setSearchTerm] = useState("");
    const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
    const perfilRef = useRef();
 
-   const fetchPsicologoInfo = async () => {
-      try {
-         const usu_id = 10;
-         const psi_id = 1;
-         const usuarioResponse = await api.get(`/usuario/${usu_id}`);
-         const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
+   const { psicologoInfo } = useContext(UserContext)
 
-         setPsicologoInfo({
-            ...usuarioResponse.data.dados[0],
-            ...psicologoResponse.data.dados[0],
-         });
-      } catch (error) {
-         console.error("Erro ao buscar informações do psicólogo:", error);
-      }
-   };
+   console.log("aaaa",psicologoInfo)
+   // const fetchPsicologoInfo = async () => {
+   //    try {
+   //       const usu_id = 10;
+   //       const psi_id = 1;
+   //       const usuarioResponse = await api.get(`/usuario/${usu_id}`);
+   //       const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
+
+   //       setPsicologoInfo({
+   //          ...usuarioResponse.data.dados[0],
+   //          ...psicologoResponse.data.dados[0],
+   //       });
+   //    } catch (error) {
+   //       console.error("Erro ao buscar informações do psicólogo:", error);
+   //    }
+   // };
 
    useEffect(() => {
       if (searchTerm.length > 0) {
@@ -130,6 +138,7 @@ export default function Home() {
                         height={50}
                         // className={styles.icone}
                      />
+                     <p></p>
                   </div>
                   <nav>
                      <ul>
