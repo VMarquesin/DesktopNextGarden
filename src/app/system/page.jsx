@@ -346,6 +346,22 @@ export default function Home() {
                         <p>Dashboard</p>
                      </button>
                   </li>
+                  <li>
+                     <button
+                        data-taget="#CadastroPaciente"
+                        onClick={() => setTela(6)}
+                        className={Tela === 6 ? styles.activeButton : " "}
+                     >
+                        <Image
+                           src="/icones/NomeUsuario.svg"
+                           alt="Dashboard"
+                           width={20}
+                           height={20}
+                           className={styles.icone}
+                           />
+                           <p>Cadastro de Paciente</p>
+                     </button>
+                  </li>
                </ul>
             </aside>
 
@@ -360,7 +376,9 @@ export default function Home() {
                   <LembreteSessao pacienteId={pacienteSel} />
                ) : Tela === 5 ? (
                   <Dashboard pacienteId={pacienteSel} />
-               ) : null}
+               ) : Tela === 6 ?
+                  <cadastroPaciente pacienteId={pacienteSel} />
+               : null}
             </main>
          </div>
       </div>
