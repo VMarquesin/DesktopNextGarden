@@ -181,6 +181,19 @@
    margin-left: 1rem;
 }
 
+.cadastroButton {
+   margin-top: 53.4vh;
+   border-radius: 0 0 7px 0;
+   background-color: #074a05 !important;
+   color: #fff;
+}
+.cadastroButton:hover {
+   background-color: #056403 !important;
+}
+.iconeCad {
+   color: #fff;
+}
+
 /* Modal Exercicios */
 
 /* .backgroundBlur {

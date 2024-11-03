@@ -15,30 +15,38 @@ import PacienteExercicios from "../../componentes/pacienteExericios";
 import LembreteSessao from "../../componentes/lembreteSessao";
 import Dashboard from "../../componentes/dashboard";
 
-import api from "../../../services/api";
+// import CadastroPaciente from "../../componentes/cadastroPaciente";
 
+import api from "../../../services/api";
 import Notifications from "../../componentes/notificacao";
 
-import { useContext } from "react";
+import CadastroPaciente from "../../componentes/cadastroPaciente";
 
+import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
 // import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
 
 export default function Home() {
+   const [isModalOpen, setIsModalOpen] = useState(false);
+
+   const openModal = () => setIsModalOpen(true);
+   const closeModal = () => setIsModalOpen(false);
+
    const [Tela, setTela] = useState(0);
    const [pacienteSel, setPacienteSel] = useState(0);
    const [isProfileOpen, setIsProfileOpen] = useState(false);
+   // const [isModalOpen, setIsModalOpen] = useState(false);
    // const [psicologoInfo, setPsicologoInfo] = useState(null);
    const [editMode, setEditMode] = useState(false);
    const [searchTerm, setSearchTerm] = useState("");
    const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
    const perfilRef = useRef();
 
-   const { psicologoInfo } = useContext(UserContext)
+   const { psicologoInfo } = useContext(UserContext);
 
-   console.log("aaaa",psicologoInfo)
+   console.log("aaaa", psicologoInfo);
    // const fetchPsicologoInfo = async () => {
    //    try {
    //       const usu_id = 10;
@@ -57,21 +65,23 @@ export default function Home() {
 
    useEffect(() => {
       if (searchTerm.length > 0) {
-        // Chama a API para buscar pacientes
-        const fetchPacientes = async () => {
-          try {
-            const response = await api.get(`/usuarios/pacientes?nome=${searchTerm}`);
-            setPacientesFiltrados(response.data.dados); // Ajuste para o retorno da API
-          } catch (error) {
-            console.error("Erro ao buscar pacientes:", error);
-          }
-        };
-  
-        fetchPacientes();
+         // Chama a API para buscar pacientes
+         const fetchPacientes = async () => {
+            try {
+               const response = await api.get(
+                  `/usuarios/pacientes?nome=${searchTerm}`
+               );
+               setPacientesFiltrados(response.data.dados); // Ajuste para o retorno da API
+            } catch (error) {
+               console.error("Erro ao buscar pacientes:", error);
+            }
+         };
+
+         fetchPacientes();
       } else {
-        setPacientesFiltrados([]); // Limpa a lista se não houver termo de busca
+         setPacientesFiltrados([]); // Limpa a lista se não houver termo de busca
       }
-    }, [searchTerm]);
+   }, [searchTerm]);
 
    const handleProfileClick = () => {
       setIsProfileOpen(!isProfileOpen);
@@ -83,10 +93,7 @@ export default function Home() {
    useEffect(() => {
       // Verifica se clicou fora de notificações
       const handleClickOutside = (event) => {
-         if (
-            perfilRef.current &&
-            !perfilRef.current.contains(event.target)
-         ) {
+         if (perfilRef.current && !perfilRef.current.contains(event.target)) {
             setIsProfileOpen(false);
          }
       };
@@ -148,9 +155,13 @@ export default function Home() {
                            </div>
                         </li> */}
                         <li>
-                           <span className={styles.profileName}>{psicologoInfo ? psicologoInfo.usu_nome : "Erro na busca"}</span>
+                           <span className={styles.profileName}>
+                              {psicologoInfo
+                                 ? psicologoInfo.usu_nome
+                                 : "Erro na busca"}
+                           </span>
                         </li>
-                        <li >
+                        <li>
                            <img
                               src="https://photos.psychologytoday.com/467daa31-46cd-11ea-a6ad-06142c356176/3/320x400.jpeg"
                               alt="Profile"
@@ -240,26 +251,29 @@ export default function Home() {
             {/* Pesquisa de paciente */}
 
             <section className={styles.patientSelect}>
-          <PacienteButton carregaPaciente={carregaPaciente} />
-          <div className={styles.searchBar}>
-            <input
-              type="text"
-              placeholder="Pesquisar paciente..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            {pacientesFiltrados.length > 0 && (
-              <ul className={styles.pacientesList}>
-                {pacientesFiltrados.map((paciente) => (
-                  <li key={paciente.usu_id} onClick={() => carregaPaciente(paciente.usu_id)}>
-                    {paciente.usu_nome}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-        
+               <PacienteButton carregaPaciente={carregaPaciente} />
+               <div className={styles.searchBar}>
+                  <input
+                     type="text"
+                     placeholder="Pesquisar paciente..."
+                     value={searchTerm}
+                     onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  {pacientesFiltrados.length > 0 && (
+                     <ul className={styles.pacientesList}>
+                        {pacientesFiltrados.map((paciente) => (
+                           <li
+                              key={paciente.usu_id}
+                              onClick={() => carregaPaciente(paciente.usu_id)}
+                           >
+                              {paciente.usu_nome}
+                           </li>
+                        ))}
+                     </ul>
+                  )}
+               </div>
+            </section>
+
             {/* barra lateral */}
 
             <aside className={styles.sidebar}>
@@ -313,7 +327,7 @@ export default function Home() {
                         <p>Exercícios</p>
                      </button>
                   </li>
-                  <li>
+                  {/* <li>
                      <button
                         data-target="#lembrete"
                         onClick={() => setTela(4)}
@@ -329,11 +343,11 @@ export default function Home() {
 
                         <p>Lembrete</p>
                      </button>
-                  </li>
+                  </li> */}
                   <li>
                      <button
                         data-target="#dashboard"
-                        onClick={() => setTela(5)}
+                        onClick={() => setTela(4)}
                         className={Tela === 5 ? styles.activeButton : " "}
                      >
                         <Image
@@ -348,19 +362,19 @@ export default function Home() {
                   </li>
                   <li>
                      <button
-                        data-taget="#CadastroPaciente"
-                        onClick={() => setTela(6)}
-                        className={Tela === 6 ? styles.activeButton : " "}
+                        onClick={openModal}
+                        className={styles.cadastroButton}
                      >
                         <Image
-                           src="/icones/NomeUsuario.svg"
+                           src="/icones/NomeUsuarioWhite.svg"
                            alt="Dashboard"
                            width={20}
                            height={20}
-                           className={styles.icone}
-                           />
-                           <p>Cadastro de Paciente</p>
+                           className={styles.iconeCad}
+                        />
+                        <p>Novo Paciente</p>
                      </button>
+                     {isModalOpen && <CadastroPaciente onClose={closeModal} />}
                   </li>
                </ul>
             </aside>
@@ -372,13 +386,24 @@ export default function Home() {
                   <PacienteDiario pacienteId={pacienteSel} />
                ) : Tela === 3 ? (
                   <PacienteExercicios pacienteId={pacienteSel} />
-               ) : Tela === 4 ? (
-                  <LembreteSessao pacienteId={pacienteSel} />
-               ) : Tela === 5 ? (
+               ) : // ) : Tela === 4 ? (
+               //    <LembreteSessao pacienteId={pacienteSel} />
+               Tela === 4 ? (
                   <Dashboard pacienteId={pacienteSel} />
-               ) : Tela === 6 ?
-                  <cadastroPaciente pacienteId={pacienteSel} />
-               : null}
+               ) : //  Tela === 6 ?
+               //    <CadastroPaciente/> :
+               null}
+               {/* return (
+               <div>
+                  <button onClick={() => setIsModalOpen(true)}>
+                     Cadastrar Paciente
+                  </button>
+                  <CadastroPacienteModal
+                     isOpen={isModalOpen}
+                     onClose={() => setIsModalOpen(false)}
+                  />
+               </div>
+               ); */}
             </main>
          </div>
       </div>

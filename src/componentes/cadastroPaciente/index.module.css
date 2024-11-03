@@ -1,0 +1,141 @@
+.modalOverlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5); /* Fundo em desfoque */
+   backdrop-filter: blur(5px);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+.modalContent {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: #ffffff;
+   padding: 3rem;
+   border-radius: 16px 10px 10px 16px;
+   width: 60rem;
+   max-height: 80%;
+   overflow-y: auto;
+   overflow-x: hidden;
+   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Estiliza a barra de rolagem no Chrome, Edge e Safari */
+.modalContent::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.modalContent::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.modalContent::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.modalContent::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
+}
+
+.titulo {
+   margin-bottom: 20px;
+   text-align: center;
+   font-size: 24px;
+   color: #333;
+}
+
+.closeButton {
+   position: absolute;
+   top: 0px;
+   margin-right: 5rem;
+   padding: 1rem 2rem !important;
+   right: 0px;
+   width: 2rem !important;
+   /* height: 2rem; */
+   background: transparent;
+   border: none;
+   font-size: 20px;
+   cursor: pointer;
+   color: #333;
+   font-weight: bold;
+}
+
+.formGroup {
+   margin-bottom: 20px;
+}
+
+.formGroup label {
+   display: block;
+   margin-bottom: 8px;
+   font-weight: 600;
+   color: #074a05;
+}
+
+.formGroup input {
+   width: 100%;
+   padding: 10px;
+   border-radius: 8px;
+   border: 1px solid #ccc;
+   outline: none;
+   transition: border-color 0.3s;
+}
+
+.formGroup input:focus {
+   border-color: #074a05;
+}
+
+.formActions {
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 3.3rem;
+}
+
+.submitButton {
+   width: 12rem !important;
+   height: 4.5rem;
+   border-radius: 8px;
+   border: none;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 600;
+   transition: background-color 0.3s;
+   background-color: #074a05 !important;
+   color: #fff;
+}
+
+.submitButton:hover {
+   background-color: #066004;
+}
+
+.cancelButton {
+   width: 12rem !important;
+   height: 4.5rem;
+   border-radius: 8px;
+   border: none;
+   text-align: center;
+   cursor: pointer;
+   font-weight: 600;
+   transition: background-color 0.3s;
+   background-color: #cc0000 !important;
+   color: #fff;
+}
+
+.cancelButton:hover {
+   background-color: rgb(240, 28, 28);
+}
