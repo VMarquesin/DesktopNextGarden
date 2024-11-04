@@ -17,7 +17,7 @@ import Dashboard from "../../componentes/dashboard";
 
 // import CadastroPaciente from "../../componentes/cadastroPaciente";
 
-import api from "../../../services/api";
+import api from "../../services/api";
 import Notifications from "../../componentes/notificacao";
 
 import CadastroPaciente from "../../componentes/cadastroPaciente";

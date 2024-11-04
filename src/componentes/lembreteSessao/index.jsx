@@ -5,7 +5,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import styles from "./index.module.css";
-import api from "../../../services/api";
+import api from "../../services/api";
 
 export default function Calendario({ pacienteId }) {
    const [eventos, setEventos] = useState([]);

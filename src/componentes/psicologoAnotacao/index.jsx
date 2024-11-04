@@ -337,7 +337,7 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
-import api from "../../../services/api";
+import api from "../../services/api";
 
 export default function PsicologoAnotacao({ pacienteId }) {
   const [anotacoes, setAnotacoes] = useState([]);

@@ -45,11 +45,12 @@ function Login() {
 
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(objLogado));
-            router.push('/system'); // Direciona para a página inicial
+            router.push('/system');
          } else {
             alert("Erro: " + response.data.mensagem);
          }
       } catch (error) {
+         console.log(error);
          if (error.response) {
             alert(
                error.response.data.mensagem + "\n" + error.response.data.dados

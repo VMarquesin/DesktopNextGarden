@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./index.module.css";
 
 import Image from "next/image";
-import api from "../../../services/api";
+import api from "../../services/api";
 
 export default function Notificacoes({ dia_id }) {
    const [mostrarNotificacoes, setMostrarNotificacoes] = useState(false); // Se a lista de notificações está visível

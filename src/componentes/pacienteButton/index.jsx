@@ -6,7 +6,7 @@ import styles from "./index.module.css";
 import Image from "next/image";
 import PacientePerfil from "../perfilPaciente";
 
-import api from "../../../services/api";
+import api from "../../services/api";
 // import { usePaciente } from "../pacienteContext";
 
 export default function PacienteButton({ carregaPaciente }) {

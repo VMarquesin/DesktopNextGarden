@@ -127,7 +127,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from "./index.module.css";
-import api from "../../../services/api";
+import api from "../../services/api";
 
 export default function DiarioPaciente({ pacienteId }) {
    const [notas, setNotas] = useState([]); // Inicializa como array vazio
