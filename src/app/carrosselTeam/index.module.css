@@ -1,0 +1,46 @@
+/* components/TeamCarousel.module.css */
+.carouselContainer {
+    background-color: #f0f9f4; /* Um verde claro de fundo */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .swiperSlide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .memberImage {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #34a853; /* Verde acentuado */
+    margin-bottom: 15px;
+  }
+  
+  .memberName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2c6e49; /* Verde mais escuro */
+    margin: 10px 0 5px;
+  }
+  
+  .memberRole {
+    font-size: 1.1rem;
+    color: #57a773; /* Verde intermediário */
+    margin-bottom: 10px;
+  }
+  
+  .memberDescription {
+    font-size: 0.95rem;
+    color: #5b8c5a; /* Tom de verde suave */
+    max-width: 500px;
+    line-height: 1.5;
+  }
+  

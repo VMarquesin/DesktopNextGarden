@@ -2,8 +2,11 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+
 import { useEffect } from "react";
 import Link from "next/link";
+
+// import TeamCarousel from "./carrosselTeam/index";
 
 const Footer = () => {
    return (
@@ -306,6 +309,8 @@ export default function Page() {
             </div>
          </section>
 
+         {/* <TeamCarousel /> */}
+         
          <div className={styles.devs}>
             <div className={styles.devsTitulo}>
                <h1>Sobre nós:</h1>
