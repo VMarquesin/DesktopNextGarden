@@ -335,7 +335,7 @@
 
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Image } from "react";
 import styles from "./index.module.css";
 import api from "../../services/api";
 
@@ -387,14 +387,18 @@ export default function PsicologoAnotacao({ pacienteId }) {
         pac_id: pacienteId,
       });
 
+      const novaAnotacao = response.data.dados;
       // Atualiza a lista de anotações após salvar
       setAnotacoes((prevAnotacoes) =>
-        prevAnotacoes.map((anotacao) =>
-          anotacao.pan_id === selectedAnotacao.pan_id
-            ? { ...anotacao, pan_anotacao: conteudo }
-            : anotacao
-        )
-      );
+        [novaAnotacao, selectedAnotacao
+          ? prevAnotacoes.map((anotacao) =>
+              anotacao.pan_id === selectedAnotacao.pan_id
+                ? { ...anotacao, pan_anotacao: conteudo }
+                : anotacao
+            )
+          : prevAnotacoes
+      ]);
+
       closeModal(); // Fecha o modal após salvar
     } catch (error) {
       console.error("Erro ao salvar anotação:", error);
@@ -409,13 +413,22 @@ export default function PsicologoAnotacao({ pacienteId }) {
           {anotacoes.length > 0 ? (
             anotacoes.map((anotacao) => (
               <li key={anotacao.pan_id} onClick={() => openModal(anotacao)}>
+                
                 <p>{anotacao.pan_anotacao.slice(0, 17)}...</p>
                 <p>
                   {new Date(anotacao.pan_anotacao_data).toLocaleDateString(
                     "pt-BR"
                   )}
                 </p>
+                {/* <Image
+                        src="/Icones/Usuario.svg"
+                        width={25}
+                        height={25}
+                        alt="Icone Usuário"
+                        className={styles.Icons}
+                     /> */}
               </li>
+              
             ))
           ) : (
             <p>Selecione um paciente</p>

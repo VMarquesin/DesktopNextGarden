@@ -46,7 +46,9 @@ export default function Home() {
 
    const { psicologoInfo } = useContext(UserContext);
 
-   console.log("aaaa", psicologoInfo);
+
+      console.log("psicologoInfo :", psicologoInfo);
+
    // const fetchPsicologoInfo = async () => {
    //    try {
    //       const usu_id = 10;
@@ -90,22 +92,6 @@ export default function Home() {
       }
    };
 
-   useEffect(() => {
-      // Verifica se clicou fora de notificações
-      const handleClickOutside = (event) => {
-         if (perfilRef.current && !perfilRef.current.contains(event.target)) {
-            setIsProfileOpen(false);
-         }
-      };
-
-      // Ouvinte para cliques no documento
-
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-         document.removeEventListener("mousedown", handleClickOutside);
-      };
-   }, []);
-   // console.log=handleProfileClick, "error"
 
    const handleSaveChanges = async () => {
       try {
@@ -390,20 +376,7 @@ export default function Home() {
                //    <LembreteSessao pacienteId={pacienteSel} />
                Tela === 4 ? (
                   <Dashboard pacienteId={pacienteSel} />
-               ) : //  Tela === 6 ?
-               //    <CadastroPaciente/> :
-               null}
-               {/* return (
-               <div>
-                  <button onClick={() => setIsModalOpen(true)}>
-                     Cadastrar Paciente
-                  </button>
-                  <CadastroPacienteModal
-                     isOpen={isModalOpen}
-                     onClose={() => setIsModalOpen(false)}
-                  />
-               </div>
-               ); */}
+               ) : null}
             </main>
          </div>
       </div>

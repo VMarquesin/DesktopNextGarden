@@ -2,16 +2,29 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 import styles from "./page.module.css";
 import api from "../../../services/api";  
 
 
 function Login() {
    const router = useRouter();
+
    const [login, setLogin] = useState("");
    const [senha, setSenha] = useState("");
+
+   // const objLogado = {
+   //    id: usuario.usu_id,
+   //    nome: usuario.usu_nome,
+   //    acesso: usuario.usu_adm,
+   //    psi_id: usuario.psi_id, // Certifique-se de que psi_id está incluído
+   // };
+   
+   // localStorage.clear();
+   // localStorage.setItem("user", JSON.stringify(objLogado));
 
    function handleSubmit(event) {
       event.preventDefault();
@@ -31,7 +44,7 @@ function Login() {
          const dados = {
             usu_email: login,
             usu_senha: senha,
-         };
+         }
 
          const response = await api.post("/usuarios/login", dados);
 
@@ -50,7 +63,6 @@ function Login() {
             alert("Erro: " + response.data.mensagem);
          }
       } catch (error) {
-         console.log(error);
          if (error.response) {
             alert(
                error.response.data.mensagem + "\n" + error.response.data.dados
