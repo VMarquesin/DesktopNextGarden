@@ -7,6 +7,7 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
   const [psicologoInfo, setPsicologoInfo] = useState(null);
+  const [error, setError] = useState(null)
 
   const fetchPsicologoInfo = async () => {
     try {
@@ -33,12 +34,28 @@ const UserProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    fetchPsicologoInfo();
-  }, []);
+  const login_psicologo = async (email, password) => {
+    try{
+      const response = await api.post('/usuarios/login', {usu_email: email, usu_senha: password})
+      const [psiDados] = response.data.dados
+
+      setPsicologoInfo({
+        psi_id: psiDados.psi_id,
+        usu_id: psiDados.usu_id,
+        usu_nome: psiDados.usu_nome
+      })
+
+      setError(null)
+      return true
+    } catch(error){
+      setError("Login e/ou senha errados!")
+      return false
+    }
+      
+  }
 
   return (
-    <UserContext.Provider value={{ psicologoInfo }}>
+    <UserContext.Provider value={{ psicologoInfo, login_psicologo, error }}>
       {children}
     </UserContext.Provider>
   );

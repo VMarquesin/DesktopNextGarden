@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
 
 import { useRouter } from "next/navigation";
@@ -8,9 +8,11 @@ import Link from "next/link";
 
 import styles from "./page.module.css";
 import api from "../../../services/api";  
+import { UserContext } from "../../../../context/userContext";
 
 
 function Login() {
+   const { login_psicologo, error } = useContext(UserContext)
    const router = useRouter();
 
    const [login, setLogin] = useState("");
@@ -26,7 +28,7 @@ function Login() {
    // localStorage.clear();
    // localStorage.setItem("user", JSON.stringify(objLogado));
 
-   function handleSubmit(event) {
+   async function handleSubmit(event) {
       event.preventDefault();
 
       // Verificação se os campos estão preenchidos
@@ -36,7 +38,8 @@ function Login() {
       }
 
       // Chama a função para realizar o login
-      logar();
+      const is_loggin = await login_psicologo(login, senha)
+      if (is_loggin) router.push('/system')
    }
 
    async function logar() {
@@ -138,6 +141,7 @@ function Login() {
                      ENTRAR
                   </button>
                </form>
+               {error && <p>{error}</p>}
             </div>
          </div>
 
