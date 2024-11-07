@@ -5,6 +5,7 @@ import styles from "./page.module.css";
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import PacienteButton from "../../componentes/pacienteButton";
 import PsicologoAnotacao from "../../componentes/psicologoAnotacao";
@@ -25,17 +26,21 @@ import CadastroPaciente from "../../componentes/cadastroPaciente";
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
 
+// import { useRouter } from "next/router";
+
 // import { PacienteProvider } from "../componentes/pacienteContext";
 // import { Feather } from "react-icons/fa";
 
 export default function Home() {
    const [isModalOpen, setIsModalOpen] = useState(false);
+   // const router = useRouter()
 
    const openModal = () => setIsModalOpen(true);
    const closeModal = () => setIsModalOpen(false);
 
    const [Tela, setTela] = useState(0);
-   const [pacienteSel, setPacienteSel] = useState(0);
+   const [pacienteSel, setPacienteSel] = useState(null);
+   const [pacientes, setPacientes] = useState([]);
    const [isProfileOpen, setIsProfileOpen] = useState(false);
    // const [isModalOpen, setIsModalOpen] = useState(false);
    // const [psicologoInfo, setPsicologoInfo] = useState(null);
@@ -44,11 +49,7 @@ export default function Home() {
    const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
    const perfilRef = useRef();
 
-   const { psicologoInfo } = useContext(UserContext);
-
-
-      console.log("psicologoInfo :", psicologoInfo);
-
+   const { psicologoInfo, logout } = useContext(UserContext);
    // const fetchPsicologoInfo = async () => {
    //    try {
    //       const usu_id = 10;
@@ -66,14 +67,14 @@ export default function Home() {
    // };
 
    useEffect(() => {
-      get_pacientes(psicologoInfo.psi_id)
+      get_pacientes(psicologoInfo?.psi_id)
    }, []); 
 
    const get_pacientes = async psi_id => {
       const response = await api.get(`/paciente_psi_relacao/${psi_id}`)
       const dados = response.data.dados
-
-      setPacienteSel(dados)
+      
+      setPacientes(dados)
    }
 
    useEffect(() => {
@@ -139,9 +140,6 @@ export default function Home() {
       }
    };
 
-   function carregaPaciente(id) {
-      setPacienteSel(id);
-   }
 
    return (
       psicologoInfo ? (<div className={styles.containerGlobal}>
@@ -150,7 +148,17 @@ export default function Home() {
       </Head>
       <div className={styles.container}>
          {/* Topbar */}
+         <Link href={"/usuarios/login"} onClick={()=> {
+            logout()
+           
+         }}>logout</Link>
 
+          {/* <Link href="/usuarios/cadastro" className={styles.ButtonCadastro}>
+                  CRIAR CONTA
+               </Link> */}
+
+
+         
          <header className={styles.header}>
             <div className={styles.headercontainer}>
                <div className={styles.logo}>
@@ -267,7 +275,7 @@ export default function Home() {
          {/* Pesquisa de paciente */}
 
          <section className={styles.patientSelect}>
-            <PacienteButton  carregaPaciente={carregaPaciente} />
+            <PacienteButton pacienteSel={pacienteSel} setPacienteSelecionado={setPacienteSel} pacientes={pacientes} />
             <div className={styles.searchBar}>
                <input
                   type="text"
@@ -397,9 +405,9 @@ export default function Home() {
 
          <main className={styles.mainContent}>
             {Tela === 1 ? (
-               <PsicologoAnotacao pacienteId={pacienteSel} />
+               <PsicologoAnotacao paciente={pacienteSel} />
             ) : Tela === 2 ? (
-               <PacienteDiario pacienteId={pacienteSel} />
+               <PacienteDiario pacienteId={pacienteSel?.pac_id} />
             ) : Tela === 3 ? (
                <PacienteExercicios pacienteId={pacienteSel} />
             ) : // ) : Tela === 4 ? (

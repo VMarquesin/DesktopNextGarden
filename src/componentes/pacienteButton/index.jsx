@@ -9,46 +9,15 @@ import PacientePerfil from "../perfilPaciente";
 import api from "../../services/api";
 // import { usePaciente } from "../pacienteContext";
 
-export default function PacienteButton({ carregaPaciente, pacientes = [] }) {
-   const [pacienteSelecionado, setPacienteSelecionado] = useState();
-   const [nomePaciente, setNomePaciente] = useState("Paciente");
+export default function PacienteButton({ pacienteSel, setPacienteSelecionado, pacientes = [] }) {
    const [showPerfil, setShowPerfil] = useState(false);
   
-   const [usuarios, setUsuarios] = useState([]);
    const perfilRef = useRef(false);
-   const botaoRef = useRef();
-
-   useEffect(() => {
-      async function fetchUsuarios() {
-         try {
-            const response = await api.get("/usuarios");
-            setUsuarios(response.data.dados);
-         } catch (error) {
-            console.error("Erro ao buscar usuários:", error);
-         }
-      }
-
-      fetchUsuarios();
-   }, []);
-
-   console.log("meus pacientes: ", pacientes);
 
    function selecionarPaciente(paciente) {
-      const usuarioRelacionado = usuarios.find(
-         (user) => user.usu_id === paciente.usu_id
-      );
-      // console.log(user.usu_id, "a", paciente.usu_id, "b");
-      if (usuarioRelacionado) {
-         setNomePaciente(usuarioRelacionado.usu_nome);
-      } else {
-         setNomePaciente("Paciente");
-      }
-
       setPacienteSelecionado(paciente);
       setShowPerfil(true);
-      carregaPaciente(paciente.pac_id);
    }
-   console.log(selecionarPaciente);
 
    useEffect(() => {
       // Verifica se clicou fora de notificações
@@ -66,21 +35,6 @@ export default function PacienteButton({ carregaPaciente, pacientes = [] }) {
       };
    }, []);
 
-   // useEffect(() => {
-   //    // Verifica se clicou fora de notificações
-   //    const handleClickOutside = (event) => {
-   //       if (botaoRef.current && !botaoRef.current.contains(event.target)) {
-   //          setPacienteSelecionado();
-   //       }
-   //    };
-
-   //    // Ouvinte para cliques no documento
-
-   //    document.addEventListener("mousedown", handleClickOutside);
-   //    return () => {
-   //       document.removeEventListener("mousedown", handleClickOutside);
-   //    };
-   // }, []);
    return (
       <div>
          {/* ref={botaoRef} */}
@@ -90,7 +44,7 @@ export default function PacienteButton({ carregaPaciente, pacientes = [] }) {
                className={styles.botaoPaciente}
                onClick={() => setShowPerfil(!showPerfil)}
             >
-               {nomePaciente}
+               {pacienteSel ? pacienteSel.usu_nome : "Paciente"}
             </button>
             <input
                type="checkbox"
@@ -114,16 +68,15 @@ export default function PacienteButton({ carregaPaciente, pacientes = [] }) {
                      className={styles.pacienteItem}
                      onClick={() => selecionarPaciente(paciente)}
                   >
-                     {usuarios.find((user) => user.usu_id === paciente.usu_id)
-                        ?.usu_nome || "Paciente"}
+                     {paciente.usu_nome}
                   </p>
                ))}
             </div>
          </div>
 
-         {showPerfil && pacienteSelecionado && (
+         {showPerfil && pacienteSel && (
             <main ref={perfilRef}>
-               <PacientePerfil paciente={pacienteSelecionado} />
+               <PacientePerfil paciente={pacienteSel} />
             </main>
          )}
       </div>

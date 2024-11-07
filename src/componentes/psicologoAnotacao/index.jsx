@@ -339,7 +339,7 @@ import React, { useEffect, useState, Image } from "react";
 import styles from "./index.module.css";
 import api from "../../services/api";
 
-export default function PsicologoAnotacao({ pacienteId }) {
+export default function PsicologoAnotacao({ paciente }) {
   const [anotacoes, setAnotacoes] = useState([]);
   const [conteudo, setConteudo] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -349,7 +349,9 @@ export default function PsicologoAnotacao({ pacienteId }) {
   useEffect(() => {
     async function fetchAnotacoes() {
       try {
-        const response = await api.get(`/psi_anotacao/${pacienteId}`);
+        console.log(paciente)
+        console.log('pac_id ', paciente.pac_id)
+        const response = await api.get(`/psi_anotacao/${paciente.pac_id}}`);
         setAnotacoes(response.data.dados);
       } catch (error) {
         console.error("Erro ao buscar anotações:", error);
@@ -357,7 +359,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
     }
 
     fetchAnotacoes();
-  }, [pacienteId]);
+  }, [paciente]);
 
   const openModal = (anotacao) => {
     setSelectedAnotacao(anotacao);
@@ -374,7 +376,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
   };
 
   const handleSave = async () => {
-    if (!conteudo || !pacienteId) {
+    if (!conteudo || !paciente.pac_id) {
       console.error("Conteúdo da anotação ou paciente não definido.");
       return;
     }
@@ -384,7 +386,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
         psi_id: 1, // Esse id pode ser ajustado para o psicólogo correto
         pan_anotacao: conteudo,
         pan_anotacao_data: new Date().toISOString().split("T")[0],
-        pac_id: pacienteId,
+        pac_id: paciente.pac_id,
       });
 
       const novaAnotacao = response.data.dados;

@@ -9,6 +9,23 @@ const UserProvider = ({ children }) => {
   const [psicologoInfo, setPsicologoInfo] = useState(null);
   const [error, setError] = useState(null)
 
+
+  const logout = () =>{
+    window.localStorage.setItem("user", null)
+    setPsicologoInfo(null)
+  }
+
+  const saveUserLocalStorage  = user => {
+    window.localStorage.setItem("user", JSON.stringify(user))
+  }
+
+  useEffect(()=>{
+    const psiInfo = window.localStorage.getItem("user")
+
+    if(psiInfo) setPsicologoInfo(JSON.parse(psiInfo))
+
+  }, [])
+
   const fetchPsicologoInfo = async () => {
     try {
       // Recupera o usuário logado do localStorage
@@ -46,6 +63,7 @@ const UserProvider = ({ children }) => {
       })
 
       setError(null)
+      saveUserLocalStorage(psiDados)
       return true
     } catch(error){
       setError("Login e/ou senha errados!")
@@ -55,7 +73,7 @@ const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ psicologoInfo, login_psicologo, error }}>
+    <UserContext.Provider value={{ psicologoInfo, login_psicologo, error, logout }}>
       {children}
     </UserContext.Provider>
   );
