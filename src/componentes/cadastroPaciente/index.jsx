@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import styles from "./index.module.css";
 
@@ -21,9 +23,19 @@ export default function CadastroPaciente({ onClose }) {
       setFormData({ ...formData, [name]: value });
    };
 
-   const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log("Dados do paciente:", formData);
+      try {
+         console.log("Dados do paciente:", formData);
+         // Substitua 'api.post' pelo endpoint correto para enviar os dados
+         const response = await api.post("/paciente", formData);
+         if (response.data.sucesso) {
+            alert("Cadastro realizado com sucesso!");
+            onClose();
+         }
+      } catch (error) {
+         alert("Erro ao cadastrar paciente: " + error.message);
+      }
    };
 
    const handleOutsideClick = (e) => {
@@ -63,6 +75,8 @@ export default function CadastroPaciente({ onClose }) {
                               ? "email"
                               : field.includes("senha")
                               ? "password"
+                              : field === "pac_data_nasc"
+                              ? "date"
                               : "text"
                         }
                         id={field}

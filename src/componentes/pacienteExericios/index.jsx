@@ -179,6 +179,7 @@ export default function PacienteExercicios(pacienteId) {
    const [showModal, setShowModal] = useState(false);
    const [selectedExercicio, setSelectedExercicio] = useState(null);
    const [showModalExercicio, setShowModalExercicio] = useState(false);
+   const [deletarExercicio, setdeletarExercicio] = useState(false)
 
    useEffect(() => {
       async function fetchExercicios() {
@@ -188,6 +189,27 @@ export default function PacienteExercicios(pacienteId) {
          } catch (error) {
             console.error("Erro ao buscar atividades:", error);
             // console.log("testExercicio", setExercicios);
+         }
+      }
+
+      // async function fetchDeleteExercicios() {
+      //    try {
+      //       const response = await api.delete("atividade/ati_id");
+      //       setdeletarExercicio(response.data.dados);
+      //    } catch (error){
+      //       console.log("Houve um problema:", error );
+      //    }
+      // }
+
+      async function fetchDeleteExercicios(ati_id) {
+         try {
+            await api.delete(`/atividade/${ati_id}`);
+            setExercicios((prevExercicios) =>
+               prevExercicios.filter((exercicio) => exercicio.ati_id !== ati_id)
+            );
+            setShowModalExercicio(false); // Fechar o modal após deletar
+         } catch (error) {
+            console.error("Houve um problema ao deletar o exercício:", error);
          }
       }
 
@@ -276,13 +298,6 @@ export default function PacienteExercicios(pacienteId) {
                            {new Date(exercicio.ati_data).toLocaleDateString(
                               "pt-BR"
                            )}
-                              <Image
-                        src="/Icones/Usuario.svg"
-                        width={25}
-                        height={25}
-                        alt="Icone Usuário"
-                        className={styles.Icons}
-                     />
                         </strong>
                         {/* <p>{exercicio.titulo}</p> */}
                      </li>
@@ -294,13 +309,6 @@ export default function PacienteExercicios(pacienteId) {
          </aside>
          <main className={styles.mainContent}>
             <div className={styles.anotacao}>
-               {/* <input
-                  type="text"
-                  placeholder="Título"
-                  value={titulo}
-                  onChange={(e) => setTitulo(e.target.value)}
-                  className={styles.tituloInput}
-               /> */}
                <textarea
                   placeholder="Escreva a Atividade aqui..."
                   value={conteudo}
@@ -391,6 +399,9 @@ export default function PacienteExercicios(pacienteId) {
                   <button className={styles.closeButton} onClick={closeModal}>
                      Fechar
                   </button>
+                  <button className={styles.closeButton} onClick={() => fetchDeleteExercicios(selectedExercicio.ati_id)}>
+   Apagar
+</button>
                </div>
             </div>
          )}
