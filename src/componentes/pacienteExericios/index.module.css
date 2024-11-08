@@ -42,7 +42,7 @@
    padding: 20px;
    display: flex;
    flex-direction: column;
-   justify-content: center;
+   /* justify-content: center; */
    align-items: center;
 }
 
@@ -50,6 +50,7 @@
    background-color: #fff;
    padding: 20px;
    border-radius: 10px;
+   margin-top: 20%;
    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
    width: 100%;
    max-width: 800px;

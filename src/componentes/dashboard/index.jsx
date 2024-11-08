@@ -24,24 +24,48 @@ ChartJS.register(
    Legend
 );
 
-export default function GraficoEmocoes({ pac_id }) {
+export default function GraficoEmocoes({ pac_id: initialPacId }) {
    const [dadosEmocoes, setDadosEmocoes] = useState(null); 
    const [loading, setLoading] = useState(true);
+   const [data_inicial, setDataInicial] = useState("");
+   const [data_final, setDataFinal] = useState("");
+   const [pac_id, setPacienteId] = useState(initialPacId); // Aqui definimos o pac_id com o valor inicial
 
    useEffect(() => {
       async function fetchEmocoes() {
          try {
-            const response = await api.get(`/emocao_paciente/${pac_id}`); 
-            setDadosEmocoes(response.data);
-            setLoading(false);
+            const dados = { 
+                     emo_data_inicial: data_inicial, 
+                     emo_data_final: data_final, 
+                     pac_id: pac_id
+                  };
+            const response = await api.get("/emocao_paciente_periodo", { params: dados }); // Usando params para passar os dados para o GET
+
+            if (response.data.sucesso === true) {
+               const emocao_paciente = response.data.dados;
+               const emocao_paciente_periodo = {
+                  emo_id: emocao_paciente.emo_id,
+                  emo_descricao: emocao_paciente.emo_descricao,
+                  emo_data: emocao_paciente.emo_data,
+                  total: emocao_paciente.Total,
+               };
+               setDadosEmocoes(response.data);
+               setLoading(false);
+               localStorage.clear();
+               localStorage.setItem("emocao_paciente", JSON.stringify(emocao_paciente_periodo));
+            } else {
+               alert("Erro: " + response.data.mensagem);
+            }
          } catch (error) {
             console.error("Erro ao buscar emoções:", error);
             setLoading(false);
          }
       }
 
-      fetchEmocoes();
-   }, [pac_id]);
+      if (pac_id) {
+         fetchEmocoes();
+      }
+   }, [pac_id, data_inicial, data_final]); // A dependência pac_id agora pode ser alterada sem erro
 
    // Dados para o gráfico
    const data = {

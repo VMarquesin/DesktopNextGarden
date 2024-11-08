@@ -1,19 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 import styles from "./page.module.css";
 import api from "../../../services/api";  
+import { UserContext } from "../../../../context/userContext";
 
 
 function Login() {
+   const { login_psicologo, error } = useContext(UserContext)
    const router = useRouter();
+
    const [login, setLogin] = useState("");
    const [senha, setSenha] = useState("");
 
-   function handleSubmit(event) {
+   // const objLogado = {
+   //    id: usuario.usu_id,
+   //    nome: usuario.usu_nome,
+   //    acesso: usuario.usu_adm,
+   //    psi_id: usuario.psi_id, // Certifique-se de que psi_id está incluído
+   // };
+   
+   // localStorage.clear();
+   // localStorage.setItem("user", JSON.stringify(objLogado));
+
+   async function handleSubmit(event) {
       event.preventDefault();
 
       // Verificação se os campos estão preenchidos
@@ -23,7 +38,8 @@ function Login() {
       }
 
       // Chama a função para realizar o login
-      logar();
+      const is_loggin = await login_psicologo(login, senha)
+      if (is_loggin) router.push('/system')
    }
 
    async function logar() {
@@ -31,7 +47,7 @@ function Login() {
          const dados = {
             usu_email: login,
             usu_senha: senha,
-         };
+         }
 
          const response = await api.post("/usuarios/login", dados);
 
@@ -50,7 +66,6 @@ function Login() {
             alert("Erro: " + response.data.mensagem);
          }
       } catch (error) {
-         console.log(error);
          if (error.response) {
             alert(
                error.response.data.mensagem + "\n" + error.response.data.dados
@@ -126,6 +141,7 @@ function Login() {
                      ENTRAR
                   </button>
                </form>
+               {error && <p>{error}</p>}
             </div>
          </div>
 

@@ -1,54 +1,27 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./index.module.css";
 
 import api from "../../services/api";
+import { UserContext } from "../../../context/userContext";
+
 
 export default function PacientePerfil({ paciente, onSaveNote }) {
    const [nota, setNota] = useState("");
    const [statusMensagem, setStatusMensagem] = useState("");
    const [usuario, setUsuario] = useState(null);
+   const { psicologoInfo } = useContext (UserContext);
 
    const handleNoteChange = (e) => {
       setNota(e.target.value);
    };
 
-   useEffect(() => {
-      async function fetchUsuario() {
-         try {
-            console.log("ID do usuário:", usuario.usu_id);
-            const response = await api.get(`/usuarios/${usuario.usu_id}`);
-            console.log("Resposta da API para o usuário:", response.data);
-
-            if (response.data && response.data.dados) {
-               setUsuario(response.data.dados);
-            } else {
-               console.error("Dados do usuário não encontrados na resposta.");
-            }
-         } catch (error) {
-            console.error(
-               "Erro ao buscar o usuário:",
-               error.response ? error.response.data : error.message
-            );
-         }
-      }
-
-      fetchUsuario();
-   }, []);
-
    // useEffect(() => {
    //    async function fetchUsuario() {
    //       try {
-   //          console.log("ID do usuário:", paciente.usu_id);
-
-   //          console.log("ID do usuário:", paciente.usu_id);
-   //          if (!paciente.usu_id) {
-   //             console.error("ID do usuário não está disponível.");
-   //             return;
-   //          }
-
-   //          const response = await api.get(`/usuarios/${paciente.usu_id}`);
+   //          console.log("ID do usuário:", usuario.usu_id);
+   //          const response = await api.get(`/usuarios/${usuario.usu_id}`);
    //          console.log("Resposta da API para o usuário:", response.data);
 
    //          if (response.data && response.data.dados) {
@@ -57,18 +30,23 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
    //             console.error("Dados do usuário não encontrados na resposta.");
    //          }
    //       } catch (error) {
-   //          console.error("Erro ao buscar o usuário:", error);
+   //          console.error(
+   //             "Erro ao buscar o usuário:",
+   //             error.response ? error.response.data : error.message
+   //          );
    //       }
    //    }
 
    //    fetchUsuario();
-   // }, [paciente.usu_id]);
+   // }, []);
 
    const handleSaveNote = async () => {
       try {
          const response = await api.post("/psi_anotacao", {
-            pacienteId: paciente.pac_id,
-            conteudo: nota,
+            psi_id: psicologoInfo.psi_id,
+            pan_anotacao: nota,
+            pan_anotacao_data:"1964-02-16",
+            pac_id: paciente.pac_id
          });
          setStatusMensagem("Nota salva com sucesso!");
          setNota("");
@@ -83,16 +61,11 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
          <div className={styles.perfilContainer}>
             <div className={styles.containerNome}>
                {/* Imagem e informações do paciente */}
-               <img
-                  src={paciente.foto}
-                  alt={`Foto de ${paciente.nome}`}
-                  className={styles.fotoPerfil}
-               />
                <div className={styles.nome}>
-                  {usuario ? (
+                  {paciente ? (
                      <>
-                        <h2>{usuario.usu_nome}</h2> {/* Nome do usuário */}
-                        <h3>{usuario.usu_nick}</h3> {/* Nickname do usuário */}
+                        <h2>{paciente.usu_nome}</h2> {/* Nome do usuário */}
+                        <h3>{paciente.usu_nick}</h3> {/* Nickname do usuário */}
                      </>
                   ) : (
                      <p>Carregando informações do paciente...</p>
@@ -109,7 +82,6 @@ export default function PacientePerfil({ paciente, onSaveNote }) {
                <p>Escolaridade: {paciente.pac_escolaridade}</p>
                <p>Trabalho: {paciente.pac_trabalho}</p>
                <p>Estado Civil: {paciente.pac_estado_civil}</p>
-               <p>Status: {paciente.pac_status}</p>
             </div>
 
             <div className={styles.containerNotaSave}>
