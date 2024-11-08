@@ -53,7 +53,6 @@ export default function CadastroPaciente({ onClose }) {
             <h2 className={styles.titulo}>Cadastro de Paciente</h2>
             <form onSubmit={handleSubmit}>
                {[
-                  "usu_nome",
                   "usu_nick",
                   "usu_email",
                   "usu_senha",
