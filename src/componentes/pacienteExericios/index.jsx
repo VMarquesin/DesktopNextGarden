@@ -166,20 +166,30 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-
 import styles from "./index.module.css";
 import api from "../../services/api";
 
 export default function PacienteExercicios(pacienteId) {
    const [exercicios, setExercicios] = useState([]);
-   // const [titulo, setTitulo] = useState("");
    const [conteudo, setConteudo] = useState("");
    const [pacientes, setPacientes] = useState([]);
    const [pacientesSelecionados, setPacientesSelecionados] = useState([]);
    const [showModal, setShowModal] = useState(false);
    const [selectedExercicio, setSelectedExercicio] = useState(null);
    const [showModalExercicio, setShowModalExercicio] = useState(false);
-   const [deletarExercicio, setdeletarExercicio] = useState(false)
+
+   // Mover fetchDeleteExercicios para fora do useEffect
+   async function fetchDeleteExercicios(ati_id) {
+      try {
+         await api.delete(`/atividade/${ati_id}`);
+         setExercicios((prevExercicios) =>
+            prevExercicios.filter((exercicio) => exercicio.ati_id !== ati_id)
+         );
+         setShowModalExercicio(false); // Fechar o modal após deletar
+      } catch (error) {
+         console.error("Houve um problema ao deletar o exercício:", error);
+      }
+   }
 
    useEffect(() => {
       async function fetchExercicios() {
@@ -188,28 +198,6 @@ export default function PacienteExercicios(pacienteId) {
             setExercicios(response.data.dados);
          } catch (error) {
             console.error("Erro ao buscar atividades:", error);
-            // console.log("testExercicio", setExercicios);
-         }
-      }
-
-      // async function fetchDeleteExercicios() {
-      //    try {
-      //       const response = await api.delete("atividade/ati_id");
-      //       setdeletarExercicio(response.data.dados);
-      //    } catch (error){
-      //       console.log("Houve um problema:", error );
-      //    }
-      // }
-
-      async function fetchDeleteExercicios(ati_id) {
-         try {
-            await api.delete(`/atividade/${ati_id}`);
-            setExercicios((prevExercicios) =>
-               prevExercicios.filter((exercicio) => exercicio.ati_id !== ati_id)
-            );
-            setShowModalExercicio(false); // Fechar o modal após deletar
-         } catch (error) {
-            console.error("Houve um problema ao deletar o exercício:", error);
          }
       }
 
@@ -238,7 +226,6 @@ export default function PacienteExercicios(pacienteId) {
 
    const handleSalvarExercicio = async () => {
       try {
-         // Primeiro, cadastrar a atividade
          const response = await api.post("/atividade", {
             psi_id: 1,
             ati_descricao: conteudo,
@@ -247,7 +234,6 @@ export default function PacienteExercicios(pacienteId) {
 
          const ati_id = response.data.dados;
 
-         // Agora, associar a atividade aos pacientes selecionados
          for (const pac_id of pacientesSelecionados) {
             await api.post("/atividade_paciente", {
                ati_id: ati_id,
@@ -255,7 +241,6 @@ export default function PacienteExercicios(pacienteId) {
             });
          }
 
-         // Atualizar a lista de exercícios e limpar o formulário
          setExercicios([
             ...exercicios,
             {
@@ -281,9 +266,9 @@ export default function PacienteExercicios(pacienteId) {
          setPacientesSelecionados([...pacientesSelecionados, pac_id]);
       }
    };
+
    return (
       <div className={styles.container}>
-         {/* onScroll={handleScroll} */}
          <aside className={styles.sidebar}>
             <h3>EXERCÍCIOS</h3>
             <ul className={styles.anotacoesLista}>
@@ -299,7 +284,6 @@ export default function PacienteExercicios(pacienteId) {
                               "pt-BR"
                            )}
                         </strong>
-                        {/* <p>{exercicio.titulo}</p> */}
                      </li>
                   ))
                ) : (
@@ -325,18 +309,13 @@ export default function PacienteExercicios(pacienteId) {
                   </button>
                   <button
                      className={styles.cancelarButton}
-                     onClick={() => {
-                        // setTitulo("");
-                        setConteudo("");
-                     }}
+                     onClick={() => setConteudo("")}
                   >
                      Cancelar
                   </button>
                </div>
             </div>
          </main>
-
-         {/* Modal para selecionar pacientes */}
 
          {showModal && (
             <div className={styles.modal}>
@@ -399,12 +378,18 @@ export default function PacienteExercicios(pacienteId) {
                   <button className={styles.closeButton} onClick={closeModal}>
                      Fechar
                   </button>
-                  <button className={styles.closeButton} onClick={() => fetchDeleteExercicios(selectedExercicio.ati_id)}>
-   Apagar
-</button>
+                  <button
+                     className={styles.closeButton}
+                     onClick={() =>
+                        fetchDeleteExercicios(selectedExercicio.ati_id)
+                     }
+                  >
+                     Apagar
+                  </button>
                </div>
             </div>
          )}
       </div>
    );
 }
+

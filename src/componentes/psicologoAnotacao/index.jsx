@@ -346,6 +346,18 @@ export default function PsicologoAnotacao({ paciente }) {
   const [selectedAnotacao, setSelectedAnotacao] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false); // Controle de modo de edição
 
+  async function fetchDeetarAnotacoes(pan_id) {
+    try{
+      await api.delete(`/psi_anotacao/${pan_id}`);
+      setAnotacoes((prevAnotacoes) =>
+      prevAnotacoes.filter((anotacoes) => anotacoes.pan_id !== pan_id)
+    );
+    setIsModalOpen(false);
+    } catch (error) {
+      console.error("Houve um problema ao deletar a anotação", error);
+    }
+  }
+
   useEffect(() => {
     async function fetchAnotacoes() {
       try {

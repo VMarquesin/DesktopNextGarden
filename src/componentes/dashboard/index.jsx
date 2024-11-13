@@ -128,64 +128,65 @@
 //    );
 // }
 
-import { useState, useEffect } from 'react';
-import { Chart } from "react-google-charts"; 
 
-const dadosTemp = [
-   {
-       "emo_id": 14,
-       "emo_descricao": "Muito feliz"
-   },
-   {
-       "emo_id": 15,
-       "emo_descricao": "Feliz"
-   },
-   {
-       "emo_id": 16,
-       "emo_descricao": "Neutro"
-   },
-   {
-       "emo_id": 17,
-       "emo_descricao": "Triste"
-   },
-   {
-       "emo_id": 18,
-       "emo_descricao": "Muito triste"
-   },
-   {
-       "emo_id": 19,
-       "emo_descricao": "Raiva"
-   }
-];
+// import { useState, useEffect } from 'react';
+// import { Chart } from "react-google-charts"; 
 
-// const [emocoes, setEmocoes] = useState([]); 
+// const dadosTemp = [
+//    {
+//        "emo_id": 14,
+//        "emo_descricao": "Muito feliz"
+//    },
+//    {
+//        "emo_id": 15,
+//        "emo_descricao": "Feliz"
+//    },
+//    {
+//        "emo_id": 16,
+//        "emo_descricao": "Neutro"
+//    },
+//    {
+//        "emo_id": 17,
+//        "emo_descricao": "Triste"
+//    },
+//    {
+//        "emo_id": 18,
+//        "emo_descricao": "Muito triste"
+//    },
+//    {
+//        "emo_id": 19,
+//        "emo_descricao": "Raiva"
+//    }
+// ];
+
+// // const [emocoes, setEmocoes] = useState([]); 
 
 
-const data = [
-  ["Dia", "Emoção"],
-  ["1", 1],
-  ["2", 2],
-  ["3", 4],
-  ["4", 6],
-];
+// const data = [
+//   ["Dia", "Emoção"],
+//   ["1", 1],
+//   ["2", 2],
+//   ["3", 4],
+//   ["4", 6],
+// ];
 
-const options = {
-  chart: {
-    title: "Grafico de emoções",
-    subtitle: "Acompenhe diario",
-  },
-};
+// const options = {
+//   chart: {
+//     title: "Grafico de emoções",
+//     subtitle: "Acompenhe diario",
+//   },
+// };
 
-function App() {
-  return (
-    <Chart
-      chartType="Line"
-      width="100%"
-      height="400px"
-      data={data}
-      options={options}
-    />
-  );
-}
+// function App() {
+//   return (
+//     <Chart
+//       chartType="Line"
+//       width="100%"
+//       height="400px"
+//       data={data}
+//       options={options}
+//     />
+//   );
+// }
 
-export default App;
+// export default App;
