@@ -7,6 +7,7 @@
    grid-template-columns: 250px 1fr;
    grid-template-rows: 50px 50px 1fr;
    height: 100vh;
+   overflow: hidden;
 }
 .logo {
    grid-area: header;
@@ -182,7 +183,7 @@
 }
 
 .cadastroButton {
-   margin-top: 53.4vh;
+   margin-top: 50vh;
    border-radius: 0 0 7px 0;
    background-color: #074a05 !important;
    color: #fff;

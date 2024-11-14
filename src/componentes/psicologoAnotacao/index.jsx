@@ -335,7 +335,7 @@
 
 "use client";
 
-import React, { useEffect, useState, Image } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.css";
 import api from "../../services/api";
 
@@ -346,7 +346,7 @@ export default function PsicologoAnotacao({ paciente }) {
   const [selectedAnotacao, setSelectedAnotacao] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false); // Controle de modo de edição
 
-  async function fetchDeetarAnotacoes(pan_id) {
+  async function fetchDeletarAnotacoes(pan_id) {
     try{
       await api.delete(`/psi_anotacao/${pan_id}`);
       setAnotacoes((prevAnotacoes) =>
@@ -505,6 +505,14 @@ export default function PsicologoAnotacao({ paciente }) {
               <button className={styles.closeButton} onClick={closeModal}>
                 Fechar
               </button>
+              <button
+                     className={styles.closeButton}
+                     onClick={() =>
+                      fetchDeletarAnotacoes(selectedAnotacao.pan_id)
+                     }
+                  >
+                     Apagar
+                  </button>
             </div>
           </div>
         </div>

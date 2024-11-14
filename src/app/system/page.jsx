@@ -146,19 +146,7 @@ export default function Home() {
       <Head>
          <title>Área de Trabalho - Psicólogo</title>
       </Head>
-      <div className={styles.container}>
-         {/* Topbar */}
-         <Link href={"/usuarios/login"} onClick={()=> {
-            logout()
-           
-         }}>logout</Link>
-
-          {/* <Link href="/usuarios/cadastro" className={styles.ButtonCadastro}>
-                  CRIAR CONTA
-               </Link> */}
-
-
-         
+      <div className={styles.container}>         
          <header className={styles.header}>
             <div className={styles.headercontainer}>
                <div className={styles.logo}>
@@ -268,6 +256,10 @@ export default function Home() {
                      <button onClick={() => setEditMode(true)}>
                         Editar
                      </button>
+                     <Link href={"/usuarios/login"} onClick={()=> {
+            logout()
+           
+         }}>logout</Link>
                   </>
                )}
             </div>
