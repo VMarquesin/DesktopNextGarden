@@ -52,9 +52,6 @@ export default function CadastroPaciente({ onClose }) {
    return (
       <div className={styles.modalOverlay} onClick={handleOutsideClick}>
          <div className={styles.modalContent}>
-            <button className={styles.closeButton} onClick={onClose}>
-               x
-            </button>
             <h2 className={styles.titulo}>Cadastro de Paciente</h2>
             <form onSubmit={handleSubmit}>
                
