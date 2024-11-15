@@ -14,7 +14,7 @@ export default function CadastroPaciente({ onClose }) {
       pac_cpf: "",
       pac_filho: "",
       pac_escolaridade: "",
-      pac_data_nasc: "1990-05-15",
+      pac_data_nasc: "",
       pac_trabalho: "",
       pac_estado_civil: "",
    });
