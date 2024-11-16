@@ -190,6 +190,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
                   <button className={styles.salvarButton} onClick={handleSave}>
                      Salvar
                   </button>
+
                   <button
                      className={styles.cancelarButton}
                      onClick={() => setConteudo("")}
@@ -223,7 +224,7 @@ export default function PsicologoAnotacao({ pacienteId }) {
                   <div className={styles.modalButtons}>
                      {isEditMode ? (
                         <button
-                           className={styles.salvarButton}
+                           className={styles.modalSalvarButton}
                            onClick={handleSave}
                         >
                            Salvar

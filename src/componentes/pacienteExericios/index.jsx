@@ -25,6 +25,52 @@ export default function PacienteExercicios(pacienteId) {
          ati_descricao: "Diário de emoções: Escreva sobre seu dia",
          ati_data: "2024-10-15",
       },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
+      {
+         ati_id: 2,
+         ati_descricao: "Prática de meditação guiada",
+         ati_data: "2024-10-12",
+      },
    ]);
 
    const [conteudo, setConteudo] = useState("");
@@ -129,9 +175,22 @@ export default function PacienteExercicios(pacienteId) {
                         "pt-BR"
                      )}
                   </p>
-                  <button className={styles.closeButton} onClick={closeModal}>
-                     Fechar
-                  </button>
+                  <div className={styles.botoes}>
+                     <button
+                        className={styles.apagarButton}
+                        onClick={() =>
+                           fetchDeleteExercicios(selectedExercicio.ati_id)
+                        }
+                     >
+                        Apagar
+                     </button>
+                     <button
+                        className={styles.closeButton}
+                        onClick={closeModal}
+                     >
+                        Fechar
+                     </button>
+                  </div>
                </div>
             </div>
          )}
@@ -352,17 +411,17 @@ export default function PacienteExercicios(pacienteId) {
 //                         "pt-BR"
 //                      )}
 //                   </p>
-//                   <button className={styles.closeButton} onClick={closeModal}>
-//                      Fechar
-//                   </button>
-//                   <button
-//                      className={styles.closeButton}
-//                      onClick={() =>
-//                         fetchDeleteExercicios(selectedExercicio.ati_id)
-//                      }
-//                   >
-//                      Apagar
-//                   </button>
+{/* <button
+   className={styles.closeButton}
+   onClick={() =>
+      fetchDeleteExercicios(selectedExercicio.ati_id)
+   }
+>
+   Apagar
+</button>
+                  <button className={styles.closeButton} onClick={closeModal}>
+                     Fechar
+                  </button> */}
 //                </div>
 //             </div>
 //          )}

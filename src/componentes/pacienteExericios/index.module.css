@@ -1,59 +1,47 @@
-/* .container {
-   display: grid;
-   grid-template-columns: 1fr 5fr;
-   height: 100vh;
-   
-} */
-/* background-color: #f0f8ff; */
-
 .container {
    display: grid;
    grid-template-columns: 1fr 3fr;
    height: 100vh;
-   background-color: #f9fafb; /* Suave e neutro */
-   gap: 20px; /* Espaçamento entre sidebar e conteúdo */
+   background-color: #f9fafb;
+   gap: 20px;
    padding: 10px;
 }
 
 /* sidebar */
-/* 
-.sidebar {
-   padding: 20px;
-   overflow-y: auto !important;
-   border-right: 2px solid #ddd;
-}
-
-.sidebar h3 {
-   font-size: 1.3em;
-   margin-bottom: 20px;
-}
-
-.anotacoesLista {
-   list-style: none;
-   padding: 0;
-   margin: 0;
-}
-
-.anotacoesLista li {
-   padding: 15px;
-   margin-bottom: 10px;
-   background-color: #fff;
-   border-radius: 8px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.anotacoesLista li:hover {
-   background-color: #e8f4e8;
-} */
 
 .sidebar {
    background-color: #ffffff;
    padding: 20px;
+   max-height: 80%;
+   overflow-x: hidden;
    overflow-y: auto;
    border-right: 2px solid #e6e6e6;
    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.sidebar::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.sidebar::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.sidebar::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
 }
 
 .sidebar h3 {
@@ -78,7 +66,7 @@
 }
 
 .anotacoesLista li:hover {
-   background-color: #e8f4e8;
+   background-color: #ddd;
    color: #000;
    transform: translateY(-2px);
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -97,38 +85,6 @@
 }
 
 /* maincontent */
-
-/* .mainContent {
-   background-color: #e8f4e8;
-   padding: 20px;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-}
-
-.anotacao {
-   background-color: #fff;
-   padding: 20px;
-   border-radius: 10px;
-   margin-top: 20%;
-   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-   width: 100%;
-   max-width: 800px;
-}
-
-.textoArea {
-   width: 100%;
-   height: 200px;
-   padding: 1px;
-   border-radius: 5px;
-   border: 1px solid #ddd;
-   resize: none;
-   margin-bottom: 20px;
-}
-.botoes {
-   display: flex;
-   justify-content: space-between;
-} */
 
 .mainContent {
    display: flex;
@@ -153,7 +109,6 @@
 .textoArea {
    width: 100%;
    height: 30rem;
-   /* padding: 2rem; */
    border-radius: 8px;
    border: 1px solid #ddd;
    resize: none;
@@ -175,34 +130,6 @@
 }
 
 /* botoes */
-
-/* .salvarButton {
-   background-color: #074a05;
-   color: #fff;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: background-color 0.2s ease-in-out;
-}
-
-.salvarButton:hover {
-   background-color: #066004;
-}
-
-.cancelarButton {
-   background-color: #cc0000;
-   color: #fff;
-   padding: 10px 20px;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: background-color 0.2s ease-in-out;
-}
-
-.cancelarButton:hover {
-   background-color: rgb(240, 28, 28);
-} */
 
 .salvarButton,
 .cancelarButton {
@@ -238,26 +165,6 @@
 
 /* modal exercicio */
 
-/* .modal {
-   position: fixed;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background: rgba(0, 0, 0, 0.5);
-}
-
-.modalContent {
-   background-color: #fff;
-   padding: 30px;
-   border-radius: 12px;
-   max-width: 600px;
-   width: 100%;
-   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-} */
 .modal {
    position: fixed;
    top: 0;
@@ -283,8 +190,6 @@
    flex-direction: column;
    gap: 15px;
 }
-
-
 
 .salvarButton,
 .cancelarButton {
@@ -318,8 +223,6 @@
    transform: translateY(-2px);
 }
 
-
-
 .pacientesLista {
    list-style: none;
    padding: 0;
@@ -346,14 +249,14 @@
 
 .salvarButton:hover {
    background-color: #066504;
- }
+}
 
 .modalBotoes .cancelarButton {
    background-color: #c62828;
 }
 .cancelarButton:hover {
    background-color: #a61717;
- }
+}
 
 /* Fundo escurecido */
 .modalOverlay {
@@ -382,8 +285,6 @@
    align-items: flex-start;
    position: relative;
 }
-
-
 
 /* Título do modal */
 .modalTitulo {
@@ -446,10 +347,35 @@
 }
 
 /* Botão de fechar */
+.botoes {
+   display: flex;
+   width: 100%;
+   flex-direction: row;
+   align-items: center;
+   text-align: center;
+   justify-content: flex-end;
+   gap: 15px;
+}
 .closeButton {
-   align-self: center;
-   padding: 10px 16px;
-   font-size: 1rem;
+   /* align-self: center; */
+   padding: 1rem 2.5rem;
+   font-size: 1.2rem;
+   border: none;
+   border-radius: 8px;
+   background-color: #074a05;
+   color: #ffffff;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+   margin-top: 1.5rem;
+}
+
+.closeButton:hover {
+   background-color: #066504;
+}
+
+.apagarButton {
+   padding: 10px 25px;
+   font-size: 1.2rem;
    border: none;
    border-radius: 8px;
    background-color: #cc0000;
@@ -458,7 +384,6 @@
    transition: background-color 0.3s ease;
    margin-top: 1.5rem;
 }
-
-.closeButton:hover {
+.apagarButton:hover {
    background-color: #a80000;
 }

@@ -1,19 +1,54 @@
 .container {
-   display: flex;
-   height: 100%;
+   display: grid;
+   grid-template-columns: 1fr 3fr;
+   height: 100vh;
+   gap: 20px;
+   padding: 10px;
+   background-color: #f9fafb;
 }
 
 .sidebar {
-   width: 14%;
-   background-color: #f4f4f4;
+   /* width: 14%; */
+   background-color: #ffffff;
    padding: 20px;
-   border-right: 1px solid #ddd;
+   max-height: 80%;
+   overflow-x: hidden;
    overflow-y: auto;
+   border-right: 2px solid #e6e6e6;
+   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.sidebar::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.sidebar::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.sidebar::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
 }
 
 .sidebar h3 {
-   font-size: 1.3em;
+   font-size: 1.5em;
+   color: #074a05;
    margin-bottom: 20px;
+   border-bottom: 2px solid #ddd;
+   padding-bottom: 10px;
 }
 
 .anotacoesLista {
@@ -22,173 +57,91 @@
 }
 
 .anotacoesLista li {
-   padding: 10px 15px;
+   padding: 15px;
    margin-bottom: 10px;
-   background-color: #fff;
+   background-color: #f8f9fa;
    border-radius: 8px;
    cursor: pointer;
-   transition: background-color 0.3s ease;
+   transition: all 0.3s ease;
    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
 
 .anotacoesLista li:hover {
-   background-color: #e8f4e8;
+   background-color: #ddd;
+   color: #000;
+   transform: translateY(-2px);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.anotacoesLista li p {
+   font-size: 1em;
+   color: #252424;
+   margin: 0;
+   flex-grow: 1;
+}
+
+.anotacoesLista li strong {
+   font-size: 0.9em;
+   color: #252424;
 }
 
 .mainContent {
-   flex: 1;
-   padding: 20px;
    display: flex;
+   flex-direction: column;
    align-items: center;
-   justify-content: center;
-   position: relative;
-   background-color: #e8f4e8;
+   padding: 20px;
 }
 
 .anotacao {
+   background-color: #ffffff;
+   padding: 20px;
+   border-radius: 12px;
+   margin-top: 50px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
    width: 100%;
-   max-width: 80%;
-   height: 70%;
-   background-color: #fff;
-   border-radius: 10px;
-   padding: 30px;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+   max-width: 800px;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
 }
 
 .textoArea {
-   width: 98%;
-   height: 80%;
-   padding: 10px;
-   font-size: 1em;
+   width: 100%;
+   height: 30rem;
    border-radius: 8px;
-   border: 0.4px solid #ddd;
+   border: 1px solid #ddd;
    resize: none;
-   margin-bottom: 2rem;
-   margin-right: 5px;
+   background-color: #f8f9fa;
+   font-size: 1em;
+   transition: border-color 0.3s ease;
+}
+.textoArea:focus {
+   border-color: #074a05;
+   outline: none;
+   background-color: #ffffff;
 }
 
 .botoes {
    display: flex;
-   justify-content: center;
-   gap: 6rem;
-   /* justify-content: space-between; */
+   margin-left: 1rem;
+   gap: 15px;
 }
+
+/* botoes */
 
 .salvarButton,
 .cancelarButton {
-   padding: 10px 20px;
-   font-size: 1em;
-   border: none;
-   border-radius: 8px;
-   background-color: #074a05;
-   color: white;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-}
-.cancelarButton {
-   background-color: #cc0000;
-}
-
-.salvarButton:hover {
-   background-color: #066004;
-}
-
-.cancelarButton:hover {
-   background-color: rgb(240, 28, 28);
-}
-
-/* Fundo escurecido */
-.modalOverlay {
-   position: fixed;
-   top: 0;
-   left: 0;
-   width: 100vw;
-   height: 100vh;
-   background-color: rgba(0, 0, 0, 0.6);
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   z-index: 1000;
-}
-
-/* Container do modal */
-.modalContent {
-   width: 90%;
-   max-width: 600px;
-   background-color: #ffffff;
-   border-radius: 16px;
-   padding: 2rem;
-   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-   display: flex;
-   flex-direction: column;
-   align-items: flex-start;
-}
-
-/* Título do modal */
-.modalTitulo {
-   font-size: 1.8rem;
+   flex: 1;
+   padding: 12px 20px;
+   font-size: 1em !important;
    font-weight: bold;
-   color: #074a05;
-   margin-bottom: 1rem;
-   width: 100%;
-   text-align: center;
-}
-
-/* Texto da anotação */
-.modalTexto {
-   font-size: 1rem;
-   line-height: 1.6;
-   text-align: justify;
-   color: #333333;
-   max-height: 200px;
-   overflow-y: auto;
-   padding-right: 1rem;
-   margin-bottom: 1.5rem;
-   width: 100%;
-   border-left: 4px solid #074a05;
-   padding-left: 1rem;
-   background-color: #f9f9f9;
-   border-radius: 4px;
-}
-
-/* Data */
-.modalData {
-   font-size: 0.9rem;
-   color: #666666;
-   margin-top: 1rem;
-   align-self: flex-end;
-}
-
-/* Textarea para edição */
-.modalTextoArea {
-   width: 100%;
-   height: 120px;
-   font-size: 1rem;
-   border-radius: 8px;
-   border: 1px solid #ddd;
-   padding: 10px;
-   margin-bottom: 1.5rem;
-   resize: none;
-   background-color: #f9f9f9;
-}
-
-/* Botões */
-.modalButtons {
-   display: flex;
-   gap: 1rem;
-   width: 100%;
-   justify-content: flex-end;
-}
-
-.salvarButton,
-.editarButton,
-.closeButton {
-   padding: 10px 16px;
-   font-size: 1rem;
-   border-radius: 8px;
    border: none;
+   border-radius: 8px;
    cursor: pointer;
-   transition: background-color 0.3s ease;
+   transition: all 0.3s ease !important;
 }
 
 .salvarButton {
@@ -198,15 +151,182 @@
 
 .salvarButton:hover {
    background-color: #066004;
+   transform: translateY(-2px);
+}
+
+.cancelarButton {
+   background-color: #cc0000;
+   color: #ffffff;
+}
+
+.cancelarButton:hover {
+   background-color: #b30000;
+   transform: translateY(-2px);
+}
+/* Fundo escurecido */
+.modalOverlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.6); /* Escurecido levemente mais intenso */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+/* Container do modal */
+.modalContent {
+   width: 80%;
+   max-width: 900px;
+   background-color: #ffffff;
+   border-radius: 16px;
+   padding: 2rem;
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   position: relative;
+}
+
+/* Título do modal */
+.modalTitulo {
+   font-size: 2.3rem;
+   font-weight: bold;
+   color: #074a05;
+   margin-bottom: 1rem;
+   width: 100%;
+   text-align: center;
+}
+
+/* Texto da anotação */
+/* Fundo escurecido */
+.modalOverlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(0, 0, 0, 0.6); /* Fundo escuro */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   z-index: 1000;
+}
+
+/* Container do modal */
+.modalContent {
+   width: 90%;
+   max-width: 700px; /* Limita a largura máxima */
+   background-color: #ffffff;
+   border-radius: 16px;
+   padding: 2rem;
+   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+   display: flex;
+   flex-direction: column;
+   align-items: stretch; /* Garante que os elementos ocupem a largura total */
+   position: relative;
+   gap: 1rem;
+}
+
+/* Título do modal */
+.modalTitulo {
+   font-size: 1.8rem;
+   font-weight: bold;
+   color: #074a05;
+   text-align: center;
+   margin-bottom: 1rem;
+}
+
+/* Texto da anotação */
+.modalTexto,
+.modalTextoArea {
+   font-size: 1.2rem;
+   line-height: 1.6;
+   color: #333333;
+   padding: 1rem;
+   border-radius: 8px;
+   background-color: #f9f9f9;
+   border: 1px solid #ddd;
+   max-height: 250px;
+   overflow-y: auto;
+   width: 97%; /* Ocupa toda a largura disponível */
+}
+
+.modalTexto {
+   border-left: 4px solid #074a05; /* Destaque na borda */
+}
+
+.modalTextoArea {
+   max-height: 700px;
+   resize: none;
+}
+
+/* Estilo da barra de rolagem */
+.modalTexto::-webkit-scrollbar,
+.modalTextoArea::-webkit-scrollbar {
+   width: 8px;
+}
+
+.modalTexto::-webkit-scrollbar-thumb,
+.modalTextoArea::-webkit-scrollbar-thumb {
+   background: #bbb;
+   border-radius: 4px;
+}
+
+.modalTexto::-webkit-scrollbar-thumb:hover,
+.modalTextoArea::-webkit-scrollbar-thumb:hover {
+   background: #074a05;
+}
+
+/* Data */
+.modalData {
+   font-size: 1.3rem;
+   color: #666666;
+   margin-top: 1rem;
+   align-self: flex-end;
+}
+
+/* Botões */
+.modalButtons {
+   display: flex;
+   width: 100%;
+   flex-direction: row;
+   align-items: center;
+   text-align: center;
+   justify-content: flex-end;
+   gap: 15px;
+}
+.modalSalvarButton,
+.editarButton,
+.closeButton {
+   padding: 1rem 2.5rem;
+   font-size: 1.2rem;
+   margin-top: 1.5rem;
+   border-radius: 8px;
+   border: none;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.modalSalvarButton {
+   background-color: #074a05;
+   color: #ffffff;
+}
+
+.modalSalvarButton:hover {
+   background-color: #066004;
 }
 
 .editarButton {
-   background-color: #007acc;
+   background-color: #074a05;
    color: #ffffff;
 }
 
 .editarButton:hover {
-   background-color: #005ea6;
+   background-color: #066004;
 }
 
 .closeButton {

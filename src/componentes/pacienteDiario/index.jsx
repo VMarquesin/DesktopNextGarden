@@ -14,7 +14,7 @@ export default function DiarioPaciente({ pacienteId }) {
       {
          dia_id: 1,
          dia_relato:
-            "Hoje foi um dia difícil no trabalho. Hoje foi um dia difícil no trabalhoHoje foi um dia difícil no trabalho",
+            "Hoje foi um dia difoje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no tHoje foi um dia difícil no oje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no toje foi um dia difHoje foi um dia difícil no t trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um ícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um Hoje foi um dia difícil no trabalho. Hoje foi um dia difícil no trabalhoHoje foi um dia difícil no trabalho",
          dia_data: "2024-09-15",
       },
       {
@@ -22,6 +22,64 @@ export default function DiarioPaciente({ pacienteId }) {
          dia_relato: "Me senti mais animado após a sessão de terapia.",
          dia_data: "2024-09-16",
       },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+      {
+         dia_id: 2,
+         dia_relato: "Me senti mais animado após a sessão de terapia.",
+         dia_data: "2024-09-16",
+      },
+
       {
          dia_id: 3,
          dia_relato: "Fiz uma caminhada no parque e foi relaxante.",
@@ -55,13 +113,14 @@ export default function DiarioPaciente({ pacienteId }) {
          {/* Sidebar */}
          <aside className={styles.sidebar}>
             <h3>NOTAS DO DIÁRIO</h3>
-            <ul>
+            <ul className={styles.diarioLista}>
                {notas.length > 0 ? (
                   notas.map((nota) => (
                      <li
                         key={nota.dia_id}
                         onClick={() => setNotaSelecionada(nota)}
-                        className={styles.notaItem}
+                        className={nota ? styles.activeDiario : " "}
+                        // className={styles.notaItem}
                      >
                         <p>{nota.dia_relato.slice(0, 17)}...</p>
                         <p>
@@ -78,6 +137,7 @@ export default function DiarioPaciente({ pacienteId }) {
          {/* Área de visualização */}
          <section className={styles.visualizacaoNota}>
             {notaSelecionada ? (
+               // <div className={styles.teste}>
                <div className={styles.notaDetalhada}>
                   <header className={styles.notaHeader}>
                      {paciente && paciente.foto && (
@@ -99,6 +159,7 @@ export default function DiarioPaciente({ pacienteId }) {
                      ) : (
                         <p>Sem conteúdo disponível para esta nota.</p>
                      )}
+                     {/* </div> */}
                   </div>
                </div>
             ) : (
