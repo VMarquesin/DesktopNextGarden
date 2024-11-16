@@ -11,7 +11,8 @@ export default function PacienteExercicios(pacienteId) {
       // Mock dos exercícios
       {
          ati_id: 1,
-         ati_descricao: "Exercício de respiração profunda",
+         ati_descricao:
+            "Exercício de respiração asdfaasdsdasdfprofundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profunda Exercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaExercício de respiração profundaa",
          ati_data: "2024-10-10",
       },
       {
@@ -93,7 +94,7 @@ export default function PacienteExercicios(pacienteId) {
          <main className={styles.mainContent}>
             <div className={styles.anotacao}>
                <textarea
-                  placeholder="Escreva a Atividade aqui..."
+                  placeholder="Escreva o exercício aqui..."
                   value={conteudo}
                   onChange={(e) => setConteudo(e.target.value)}
                   className={styles.textoArea}
