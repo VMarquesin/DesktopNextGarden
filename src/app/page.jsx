@@ -332,15 +332,21 @@ export default function Page() {
                <div className={styles.devsCards}>
                   <div className={styles.card}>
                      <Image
-                        src="/images/diario.svg"
+                        src="/images/CardGava.svg"
                         alt="Imagem 1"
                         width={450}
                         height={450}
                      />
                   </div>
-                  <div className={styles.card}>
+                  <div className={styles.CardMarquesin}>
+                     <Image 
+                         src="/images/Coroa.svg"
+                         alt="Imagem 2"
+                         width={50}
+                         height={50}
+                     />
                      <Image
-                        src="/images/emocao.svg"
+                        src="/images/CardMarquesin.svg"
                         alt="Imagem 2"
                         width={450}
                         height={450}
@@ -348,7 +354,7 @@ export default function Page() {
                   </div>
                   <div className={styles.card}>
                      <Image
-                        src="/images/conhecimento.svg"
+                        src="/images/CardMatheusAraujo.svg"
                         alt="Imagem 3"
                         width={450}
                         height={450}
@@ -356,7 +362,7 @@ export default function Page() {
                   </div>
                   <div className={styles.card}>
                      <Image
-                        src="/images/conhecimento.svg"
+                        src="/images/CardMateusRodrigues.svg"
                         alt="Imagem 3"
                         width={450}
                         height={450}
