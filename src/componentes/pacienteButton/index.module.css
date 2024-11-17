@@ -8,15 +8,19 @@
    background-color: #074a05;
    color: white;
    border: none;
-   padding: 1rem 6rem;
+   width: 25.1rem;
+   padding: 1rem 1rem;
    border-radius: 7px 0 0 7px;
    cursor: pointer;
    transition: background-color 0.3s;
    margin-left: 1.9rem;
-   transition: 0.3s;
+   transition: background-color 0.3s, transform 0.2s;
+   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-.botaoPaciente:hover{
-   background-color: #056403;
+
+.botaoPaciente:hover {
+   background-color: #1f5a29; /* Tom mais escuro no hover */
+   transform: translateY(-2px); /* Efeito sutil ao passar o mouse */
 }
 
 .checkboxPaciente {
@@ -33,35 +37,60 @@
    cursor: pointer;
    display: flex;
    align-items: center;
-   transition: 0.3s;
+   transition: transform 0.2s;
 }
 
-.labelCheckbox:hover {
-   background-color: #056403;
+.labelCheckbox img {
+   transform: rotate(0deg);
+   transition: transform 0.3s ease-in-out;
+}
+
+.checkboxPaciente:checked + .labelCheckbox img {
+   transform: rotate(180deg); /* Animação ao abrir a lista */
 }
 
 .listaPacientes {
    display: none;
    z-index: 10;
    position: absolute;
-   top: 9.5rem;
+   top: 11.5rem;
    left: 2rem;
    background-color: #f4f4f4;
    border: 1px solid #ccc;
-   border-radius: 0px 0px 7px 7px;
-   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-   width: 21rem;
+   border-radius: 7px;
+   box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.1);
+   width: 28.8rem;
 }
 
 .checkboxPaciente:checked + .labelCheckbox + .listaPacientes {
    display: block;
+   animation: fadeIn 0.3s ease-in-out;
 }
 
 .pacienteItem {
-   padding: 1.4rem;
+   padding: 1rem;
+   font-size: 1.5rem;
+   color: #333;
    cursor: pointer;
+   border-bottom: 1px solid #dfdcdcc5;
+   transition: background-color 0.2s;
+}
+
+.pacienteItem:last-child {
+   border-bottom: none;
 }
 
 .pacienteItem:hover {
-   background-color: #e4e4e4;
+   background-color: #ddd;
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+      transform: translateY(-10px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
 }

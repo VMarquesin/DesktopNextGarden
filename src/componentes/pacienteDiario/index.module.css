@@ -148,7 +148,7 @@
 
 /* Polegar da barra de rolagem */
 .notaDetalhada::-webkit-scrollbar-thumb {
-   background: #bbb; /* Cor do polegar */
+   background: #074a05; /* Cor do polegar */
    border-radius: 10px; /* Cantos arredondados */
    min-height: 30px;
    max-height: 50px !important;

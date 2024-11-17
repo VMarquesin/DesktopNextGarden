@@ -88,28 +88,56 @@
    color: #252424;
 }
 
+/* Main Container */
 .mainContent {
    display: flex;
    flex-direction: column;
    align-items: center;
    padding: 20px;
+   background-color: #f3f4f6;
+   min-height: 100vh;
 }
 
+/* Annotation Section */
 .anotacao {
    background-color: #ffffff;
    padding: 20px;
    border-radius: 12px;
-   margin-top: 50px;
+   margin-top: 30px;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
    width: 100%;
    max-width: 800px;
    display: flex;
    flex-direction: column;
    gap: 20px;
+   position: relative;
 }
 
+/* Header */
+.header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 2px solid #f1f1f1;
+   padding-bottom: 10px;
+   margin-bottom: 20px;
+}
+
+.header h2 {
+   font-size: 2.5rem;
+   color: #074a05;
+   margin: 0;
+}
+
+.header p {
+   font-size: 1.2rem;
+   color: #6c757d;
+   margin: 0;
+}
+
+/* Textarea */
 .textoArea {
-   width: 100%;
+   width: 96%;
    height: 30rem;
    border-radius: 8px;
    border: 1px solid #ddd;
@@ -117,14 +145,8 @@
    background-color: #f8f9fa;
    font-size: 1em;
    transition: border-color 0.3s ease;
+   padding: 15px;
    overflow-y: auto;
-   overflow-x: hidden;
-}
-
-.textoArea:focus {
-   border-color: #074a05;
-   outline: none;
-   background-color: #ffffff;
 }
 
 .textoArea::-webkit-scrollbar {
@@ -133,7 +155,7 @@
 }
 
 /* Trilho da barra de rolagem */
-.sidetextoAreabar::-webkit-scrollbar-track {
+.textoArea::-webkit-scrollbar-track {
    background: #f1f1f1; /* Cor de fundo da trilha */
    border-radius: 0 16px 16px 0; /* Cantos arredondados */
 }
@@ -152,24 +174,31 @@
    background: #074a05; /* Cor do polegar ao passar o mouse */
 }
 
+.textoArea:focus {
+   border-color: #074a05;
+   outline: none;
+   background-color: #ffffff;
+}
+
+/* Buttons */
 .botoes {
    display: flex;
-   margin-left: 1rem;
+   justify-content: flex-end;
    gap: 15px;
 }
 
-/* botoes */
-
 .salvarButton,
 .cancelarButton {
-   flex: 1;
+   display: flex;
+   align-items: center;
+   gap: 8px;
    padding: 12px 20px;
-   font-size: 1em !important;
+   font-size: 1em;
    font-weight: bold;
    border: none;
    border-radius: 8px;
    cursor: pointer;
-   transition: all 0.3s ease !important;
+   transition: all 0.3s ease;
 }
 
 .salvarButton {
@@ -191,6 +220,7 @@
    background-color: #b30000;
    transform: translateY(-2px);
 }
+
 /* Fundo escurecido */
 .modalOverlay {
    position: fixed;
@@ -288,7 +318,8 @@
 }
 
 .modalTextoArea {
-   max-height: 700px;
+   height: 700px !important;
+   min-height: 250px !important;
    resize: none;
 }
 

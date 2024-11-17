@@ -86,35 +86,94 @@
 
 /* maincontent */
 
+/* Main Container */
 .mainContent {
    display: flex;
    flex-direction: column;
    align-items: center;
    padding: 20px;
+   background-color: #f3f4f6;
+   min-height: 100vh;
 }
 
+/* Annotation Section */
 .anotacao {
    background-color: #ffffff;
    padding: 20px;
    border-radius: 12px;
-   margin-top: 50px;
+   margin-top: 30px;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
    width: 100%;
    max-width: 800px;
    display: flex;
    flex-direction: column;
    gap: 20px;
+   position: relative;
 }
 
+/* Header */
+.header {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 5px;
+   border-bottom: 2px solid #f1f1f1;
+   padding-bottom: 10px;
+   margin-bottom: 20px;
+}
+
+.header h2 {
+   font-size: 2.5rem;
+   color: #074a05;
+   margin: 0;
+}
+
+.header p {
+   font-size: 1.2rem;
+   color: #6c757d;
+   margin: 0;
+}
+
+/* Textarea */
 .textoArea {
-   width: 100%;
-   height: 30rem;
+   width: 96%;
+   height: 25rem;
    border-radius: 8px;
    border: 1px solid #ddd;
    resize: none;
+   overflow-x: hidden;
+   overflow-y: auto;
    background-color: #f8f9fa;
    font-size: 1em;
    transition: border-color 0.3s ease;
+   padding: 15px;
+   margin-bottom: 0.8rem;
+}
+
+
+.textoArea::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.textoArea::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.textoArea::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.textoArea::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
 }
 
 .textoArea:focus {
@@ -123,17 +182,18 @@
    background-color: #ffffff;
 }
 
-.botoes {
+/* Buttons */
+.criarBotoes {
    display: flex;
-   justify-content: space-between;
-   gap: 10px;
+   justify-content: flex-end;
+   gap: 15px;
 }
 
-/* botoes */
-
-.salvarButton,
-.cancelarButton {
-   flex: 1;
+.criarSalvarButton,
+.criarCancelarButton {
+   display: flex;
+   align-items: center;
+   gap: 8px;
    padding: 12px 20px;
    font-size: 1em;
    font-weight: bold;
@@ -143,25 +203,27 @@
    transition: all 0.3s ease;
 }
 
-.salvarButton {
+.criarSalvarButton {
    background-color: #074a05;
    color: #ffffff;
 }
 
-.salvarButton:hover {
+.criarSalvarButton:hover {
    background-color: #066004;
    transform: translateY(-2px);
 }
 
-.cancelarButton {
+.criarCancelarButton {
    background-color: #cc0000;
    color: #ffffff;
 }
 
-.cancelarButton:hover {
+.criarCancelarButton:hover {
    background-color: #b30000;
    transform: translateY(-2px);
 }
+
+/* Icons */
 
 /* modal exercicio */
 
@@ -347,7 +409,7 @@
 }
 
 /* Botão de fechar */
-.botoes {
+.listaBotoes {
    display: flex;
    width: 100%;
    flex-direction: row;
@@ -356,7 +418,7 @@
    justify-content: flex-end;
    gap: 15px;
 }
-.closeButton {
+.listaCloseButton {
    /* align-self: center; */
    padding: 1rem 2.5rem;
    font-size: 1.2rem;
@@ -369,11 +431,11 @@
    margin-top: 1.5rem;
 }
 
-.closeButton:hover {
+.listaCloseButton:hover {
    background-color: #066504;
 }
 
-.apagarButton {
+.listaApagarButton {
    padding: 10px 25px;
    font-size: 1.2rem;
    border: none;
@@ -384,6 +446,6 @@
    transition: background-color 0.3s ease;
    margin-top: 1.5rem;
 }
-.apagarButton:hover {
+.listaApagarButton:hover {
    background-color: #a80000;
 }

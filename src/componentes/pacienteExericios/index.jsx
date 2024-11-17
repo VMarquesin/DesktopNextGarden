@@ -113,6 +113,17 @@ export default function PacienteExercicios(pacienteId) {
       }
    };
 
+   const [files, setFiles] = useState([]);
+
+   const handleFileChange = (event) => {
+      const newFiles = Array.from(event.target.files);
+      setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+   };
+
+   const handleRemoveFile = (index) => {
+      setFiles((prevFiles) => prevFiles.filter((_, i) => i !== index));
+   };
+
    return (
       <div className={styles.container}>
          <aside className={styles.sidebar}>
@@ -139,6 +150,13 @@ export default function PacienteExercicios(pacienteId) {
          </aside>
          <main className={styles.mainContent}>
             <div className={styles.anotacao}>
+               <header className={styles.header}>
+                  <h2>Criar Novo Exercício</h2>
+                  <p>
+                     Adicione aqui as instruções ou tarefas para o paciente
+                     realizar.
+                  </p>
+               </header>
                <textarea
                   placeholder="Escreva o exercício aqui..."
                   value={conteudo}
@@ -146,15 +164,15 @@ export default function PacienteExercicios(pacienteId) {
                   className={styles.textoArea}
                />
 
-               <div className={styles.botoes}>
+               <div className={styles.criarBotoes}>
                   <button
-                     className={styles.salvarButton}
+                     className={styles.criarSalvarButton}
                      onClick={() => setShowModal(true)}
                   >
                      Confirmar
                   </button>
                   <button
-                     className={styles.cancelarButton}
+                     className={styles.criarCancelarButton}
                      onClick={() => setConteudo("")}
                   >
                      Cancelar
@@ -175,9 +193,9 @@ export default function PacienteExercicios(pacienteId) {
                         "pt-BR"
                      )}
                   </p>
-                  <div className={styles.botoes}>
+                  <div className={styles.listaBotoes}>
                      <button
-                        className={styles.apagarButton}
+                        className={styles.listaApagarButton}
                         onClick={() =>
                            fetchDeleteExercicios(selectedExercicio.ati_id)
                         }
@@ -185,7 +203,7 @@ export default function PacienteExercicios(pacienteId) {
                         Apagar
                      </button>
                      <button
-                        className={styles.closeButton}
+                        className={styles.listaCloseButton}
                         onClick={closeModal}
                      >
                         Fechar
@@ -306,7 +324,10 @@ export default function PacienteExercicios(pacienteId) {
 //    return (
 //       <div className={styles.container}>
 //          <aside className={styles.sidebar}>
-//             <h3>EXERCÍCIOS</h3>
+{/* <header className={styles.header}>
+   <h2>Criar Novo Exercício</h2>
+   <p>Adicione aqui as instruções ou tarefas para o paciente realizar.</p>
+</header>; */}
 //             <ul className={styles.anotacoesLista}>
 //                {exercicios.length > 0 ? (
 //                   exercicios.map((exercicio) => (
@@ -411,7 +432,8 @@ export default function PacienteExercicios(pacienteId) {
 //                         "pt-BR"
 //                      )}
 //                   </p>
-{/* <button
+{
+   /* <button
    className={styles.closeButton}
    onClick={() =>
       fetchDeleteExercicios(selectedExercicio.ati_id)
@@ -421,7 +443,8 @@ export default function PacienteExercicios(pacienteId) {
 </button>
                   <button className={styles.closeButton} onClick={closeModal}>
                      Fechar
-                  </button> */}
+                  </button> */
+}
 //                </div>
 //             </div>
 //          )}

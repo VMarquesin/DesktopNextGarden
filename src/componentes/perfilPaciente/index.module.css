@@ -1,84 +1,183 @@
-/* .refContainer {
+/* Estilo do contêiner principal */
+.refContainer {
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 100%;
-   width: 100%;
-} */
-
-.perfilContainer {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-30%, -50%);
-   /* padding: 2rem; */
-   background-color: #f9f9f9;
-   border: 1px solid #ddd;
-   border-radius: 7px;
-   width: 60rem;
-   height: 75rem;
-   z-index: 20;
-   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+   position: fixed; /* Garante que fique fixo na tela */
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+   ); /* Fundo semitransparente para destaque */
+   z-index: 1000; /* Garante que fique à frente de outros elementos */
+   padding: 2rem;
+   box-sizing: border-box;
 }
+
+/* Contêiner do perfil */
+.perfilContainer {
+   position: relative;
+   background-color: #ffffff;
+   border: 1px solid #e0e0e0;
+   border-radius: 12px;
+   width: 60rem;
+   padding: 2rem;
+   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+   transition: transform 0.3s, box-shadow 0.3s;
+   z-index: 1010; /* Garante que o conteúdo também esteja acima */
+   max-height: 90vh; /* Limita a altura em telas menores */
+   overflow-y: auto; /* Adiciona rolagem se o conteúdo exceder a altura */
+}
+
+.perfilContainer:hover {
+   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho do perfil */
 .containerNome {
    display: flex;
-   /* justify-content: space-evenly; */
    align-items: center;
-   margin-bottom: 3rem;
-   margin-left: 12rem;
+   margin-bottom: 2rem;
+   margin-left: 3rem;
+   gap: 2rem;
 }
 
-.containerNome .nome {
-   margin-left: 10rem;
+.containerNome .nome h2 {
+   font-size: 2.6rem;
+   color: #333333;
+   margin: 0;
 }
-.fotoPerfil {
-   width: 5rem;
-   height: 5rem;
-   border-radius: 50%;
+
+.containerNome .nome h3 {
+   font-size: 1.5rem;
+   color: #777777;
+   margin: 0;
+   font-weight: 400;
 }
+
+/* Atributos do paciente */
 .atributos {
-   margin-left: 11rem;
-   margin-bottom: 3rem;
+   margin-bottom: 2.5rem;
+   margin-left: 2.5rem;
 }
+
 .atributos p {
-   margin-bottom: 1.2rem;
+   font-size: 1.5rem;
+   color: #555555;
+   line-height: 1.5;
+   margin: 0.8rem 0;
+   padding-left: 1rem;
+   border-left: 3px solid #074a05;
+   transition: color 0.2s;
 }
+
+.atributos p:hover {
+   color: #074a05;
+}
+
+/* Área de adicionar notas */
 .containerNotaSave {
    display: flex;
    flex-direction: column;
+   align-items: center;
+   gap: 1.5rem;
 }
+
 .notaTextarea {
-   display: flex;
-   align-self: center;
-   justify-content: space-between;
-   padding: 2rem;
+   width: 100%;
+   height: 10rem;
+   padding: 1.5rem;
    font-size: 1.2rem;
-   border-radius: 4px;
-   border: 1px solid #ccc;
-   margin-bottom: 2rem;
-   width: 90%;
-   height: 30rem;
-   resize: none; /* Desativa a capacidade de redimensionar manualmente */
-   overflow-y: auto; /* Ativa a rolagem vertical */
-   overflow-x: hidden; /* Oculta a rolagem horizontal */
-   box-sizing: border-box;
+   border-radius: 6px;
+   border: 1px solid #cccccc;
+   background-color: #fafafa;
+   resize: none;
+   overflow-y: auto;
+   color: #333333;
+   box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+   transition: border-color 0.2s, box-shadow 0.2s;
 }
+
+.notaTextarea::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.notaTextarea::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.notaTextarea::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.notaTextarea::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
+}
+
+.notaTextarea:focus {
+   border-color: #074a05;
+   box-shadow: inset 0px 2px 8px rgba(7, 74, 5, 0.2);
+   outline: none;
+}
+
+/* Botão de salvar */
 .containerButton {
    display: flex;
    justify-content: center;
+   width: 100%;
 }
+
 .saveButton {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   padding: 10px 20px;
+   padding: 12px 24px;
+   font-size: 1.2rem;
+   font-weight: bold;
+   color: #ffffff;
    background-color: #074a05;
-   color: white;
    border: none;
-   border-radius: 7px;
+   border-radius: 6px;
    cursor: pointer;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+   transition: background-color 0.3s, transform 0.2s;
 }
 
 .saveButton:hover {
    background-color: #056403;
+   transform: translateY(-2px);
+}
+
+.saveButton:active {
+   background-color: #045002;
+   transform: translateY(0);
+}
+
+/* Feedback de status */
+.statusMensagem {
+   font-size: 1rem;
+   color: #074a05;
+   text-align: center;
+   margin-top: 1.5rem;
+   animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
 }

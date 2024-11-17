@@ -180,6 +180,16 @@ export default function PsicologoAnotacao({ pacienteId }) {
          </aside>
          <main className={styles.mainContent}>
             <div className={styles.anotacao}>
+               <header className={styles.header}>
+                  <h2>Anotações</h2>
+                  <p>
+                     {new Date().toLocaleDateString("pt-BR", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                     })}
+                  </p>
+               </header>
                <textarea
                   placeholder="Escreva suas anotações aqui..."
                   className={styles.textoArea}
@@ -190,7 +200,6 @@ export default function PsicologoAnotacao({ pacienteId }) {
                   <button className={styles.salvarButton} onClick={handleSave}>
                      Salvar
                   </button>
-
                   <button
                      className={styles.cancelarButton}
                      onClick={() => setConteudo("")}
@@ -340,7 +349,16 @@ export default function PsicologoAnotacao({ pacienteId }) {
 //   return (
 //     <div className={styles.container}>
 //       <aside className={styles.sidebar}>
-//         <h3>SUAS NOTAS</h3>
+{/* <header className={styles.header}>
+<h2>Anotações</h2>
+<p>
+   {new Date().toLocaleDateString("pt-BR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+   })}
+</p>
+</header> */}
 //         <ul className={styles.anotacoesLista}>
 //           {anotacoes.length > 0 ? (
 //             anotacoes.map((anotacao) => (
