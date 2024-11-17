@@ -120,7 +120,7 @@ export default function Home() {
    // };
 
    return (
-      // psicologoInfo ? (
+      psicologoInfo ? (
       <div className={styles.containerGlobal}>
          <Head>
             <title>Área de Trabalho - Psicólogo</title>
@@ -386,6 +386,6 @@ export default function Home() {
             </main>
          </div>
       </div>
-      // ) : <p>Você não tem autorização</p>
+      ) : <p>Você não tem autorização</p>
    );
 }
