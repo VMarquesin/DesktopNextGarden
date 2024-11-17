@@ -117,11 +117,39 @@
    background-color: #f8f9fa;
    font-size: 1em;
    transition: border-color 0.3s ease;
+   overflow-y: auto;
+   overflow-x: hidden;
 }
+
 .textoArea:focus {
    border-color: #074a05;
    outline: none;
    background-color: #ffffff;
+}
+
+.textoArea::-webkit-scrollbar {
+   width: 8px; /* Largura da barra de rolagem */
+   height: 88px; /* Altura da barra de rolagem horizontal, se houver */
+}
+
+/* Trilho da barra de rolagem */
+.sidetextoAreabar::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Cor de fundo da trilha */
+   border-radius: 0 16px 16px 0; /* Cantos arredondados */
+}
+
+/* Polegar da barra de rolagem */
+.textoArea::-webkit-scrollbar-thumb {
+   background: #bbb; /* Cor do polegar */
+   border-radius: 10px; /* Cantos arredondados */
+   min-height: 30px;
+   max-height: 50px !important;
+   transition: background 0.6s; /* Transição suave para a cor */
+}
+
+/* Polegar da barra de rolagem ao passar o mouse */
+.textoArea::-webkit-scrollbar-thumb:hover {
+   background: #074a05; /* Cor do polegar ao passar o mouse */
 }
 
 .botoes {

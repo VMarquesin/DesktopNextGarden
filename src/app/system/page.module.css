@@ -15,14 +15,11 @@
 }
 .header {
    grid-area: header;
+   display: flex;
+   padding: 0 20px;
    background-color: #f4f4f4;
-   /* border: solid 2px black; */
-   /* align-items: center;
-   justify-content: space-between;
-   background-color: #4caf50;
-   color: white;
-   padding: 20px 40px; */
-   /* min-height: 75px; */
+   color: rgb(0, 0, 0);
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .header .headercontainer {
    width: 100%;
@@ -43,6 +40,8 @@
 
 .header nav ul li {
    padding-right: 5rem;
+   font-weight: 500;
+   cursor: pointer;
 }
 
 /* Define a animação swing */
@@ -60,9 +59,13 @@
    height: 4rem;
 }
 
-.header nav ul li .profileName {
-   font-size: 2rem;
+.exitSystem {
+   text-decoration: none;
 }
+
+/* .header nav ul li .profileName {
+   
+} */
 
 .profileDropdown {
    position: absolute;
@@ -141,55 +144,69 @@
 .sidebar {
    grid-area: sidebar;
    background-color: #ffffff;
-   border-radius: 7px;
-   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.5);
-   margin: 0.2rem;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
+   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar ul {
    list-style-type: none;
-   padding: 0;
+   padding: 20px 10px 0px 10px;
+   display: flex;
+   flex-direction: column;
+   height: 100%;
 }
 .sidebar ul li button {
    display: flex;
    width: 100%;
    align-items: center;
-   border: none; /* Remove as bordas */
-   background: none; /* Remove o fundo */
-   font: inherit; /* Herda a fonte do elemento pai */
-   cursor: pointer; /* Adiciona o cursor de "mãozinha" */
+   border: none;
+   background: none;
+   background-color: #f8f9fa;
+   font: inherit;
+   cursor: pointer;
    padding: 1.6rem;
-   transition: 0.4s;
+   transition: all 0.4s ease;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+   margin-bottom: 0.8rem;
 }
 
 .sidebar ul li button:hover {
    border-radius: 7px;
    background-color: #ddd;
+   transform: translateX(5px);
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .activeButton {
    /* color: white; */
    background-color: #ddd !important;
    border-radius: 7px;
+   transform: translateX(5px);
+   transition: 0.1s !important;
+   border-left: 4px solid #074a05 !important;
 }
-/* .icone {
-   color: #e2e7e2 !important;
-}
-.activeIcone {
-   color: white;
-} */
+
 .sidebar ul li button p {
    font-size: 1.6rem;
    margin-left: 1rem;
 }
 
+.spacer {
+   flex: 1;
+}
+
 .cadastroButton {
-   margin-top: 50vh;
+   margin-top: 0px;
+   width: 100%;
    border-radius: 0 0 7px 0;
    background-color: #074a05 !important;
    color: #fff;
 }
 .cadastroButton:hover {
    background-color: #056403 !important;
+   transform: translateY(-5px) !important;
 }
 .iconeCad {
    color: #fff;
@@ -238,6 +255,6 @@
 /* area de visualização */
 
 .mainContent {
-   background-color: #f4f4f4;
    grid-area: main;
+   background-color: #f4f4f4;
 }

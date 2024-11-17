@@ -119,7 +119,7 @@ export default function DiarioPaciente({ pacienteId }) {
                      <li
                         key={nota.dia_id}
                         onClick={() => setNotaSelecionada(nota)}
-                        className={nota ? styles.activeDiario : " "}
+                        className={notaSelecionada?.dia_id === nota.dia_id ? styles.activeDiario : " "}
                         // className={styles.notaItem}
                      >
                         <p>{nota.dia_relato.slice(0, 17)}...</p>
@@ -222,6 +222,7 @@ export default function DiarioPaciente({ pacienteId }) {
 //                      <li
 //                         key={nota.dia_id}
 //                         onClick={() => setNotaSelecionada(nota)}
+// className={notaSelecionada?.dia_id === nota.dia_id ? styles.activeDiario : " "}
 //                         className={styles.notaItem}
 //                      >
 //                         <p>{nota.dia_relato.slice(0, 17)}...</p>

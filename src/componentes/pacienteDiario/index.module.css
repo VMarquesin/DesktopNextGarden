@@ -16,7 +16,6 @@
    overflow-y: auto;
    border-right: 2px solid #e6e6e6;
    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-   overflow-y: auto;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -68,7 +67,7 @@
    background-color: #ddd;
    color: #000;
    transform: translateY(-2px);
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .activeDiario {

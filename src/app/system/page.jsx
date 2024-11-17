@@ -161,6 +161,7 @@ export default function Home() {
                            <div>
                               <Link
                                  href={"/usuarios/login"}
+                                 className={styles.exitSystem}
                                  onClick={() => {
                                     logout();
                                  }}
@@ -351,6 +352,8 @@ export default function Home() {
                         <p>Dashboard</p>
                      </button>
                   </li>
+                  
+                  <div className={styles.spacer}></div>
                   <li>
                      <button
                         onClick={openModal}
@@ -367,7 +370,7 @@ export default function Home() {
                      </button>
                      {isModalOpen && <CadastroPaciente onClose={closeModal} />}
                   </li>
-               </ul>
+               </ul>              
             </aside>
 
             <main className={styles.mainContent}>
