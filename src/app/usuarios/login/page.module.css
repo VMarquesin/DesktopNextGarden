@@ -117,6 +117,19 @@
    flex-direction: column;
    display: flex;
 }
+/* .iconeButton {
+   background: none;
+   border: none;
+   padding: 0;
+   cursor: pointer;
+   position: absolute;
+   right: 10px;
+   top: 50%;
+   transform: translateY(-50%);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+} */
 
 .BackgroundImageLogin {
    grid: image;
@@ -135,6 +148,8 @@
    margin-top: 2rem;
    margin-left: -3rem;
    margin-bottom: 0.5rem;
+   width: 25px;
+   height: 25px;
 }
 
 @media (max-width: 1280px) {
@@ -212,13 +227,4 @@
       margin-top: 10vw; /* Ajustado para evitar estouramento */
       margin-bottom: 10vw;
    }
-   /* .iconeButton {
-      background: none;
-      border: none;
-      cursor: pointer;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-   } */
 }

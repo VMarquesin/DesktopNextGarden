@@ -3,7 +3,7 @@
    grid-template-columns: 1fr 3fr;
    height: 100vh;
    gap: 20px;
-   padding: 10px;
+   /* padding: 10px; */
    background-color: #f9fafb;
 }
 
@@ -305,6 +305,7 @@
    line-height: 1.6;
    color: #333333;
    padding: 1rem;
+   text-align: left;
    border-radius: 8px;
    background-color: #f9f9f9;
    border: 1px solid #ddd;

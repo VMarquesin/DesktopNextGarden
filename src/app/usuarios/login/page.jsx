@@ -127,18 +127,15 @@ function Login() {
                         value={senha}
                         className={styles.InputField}
                      />
-                     <button
+
+                     <Image
+                        src="/Icones/OcultaSenha.svg"
+                        width={25}
+                        height={25}
                         onClick={toggleSenhaVisivel}
-                        className={styles.iconButton}
-                     >
-                        <Image
-                           src="/Icones/OcultaSenha.svg"
-                           width={25}
-                           height={25}
-                           alt="Icone Senha"
-                           className={styles.Icons}
-                        />
-                     </button>
+                        alt="Icone Senha"
+                        className={styles.Icons}
+                     />
                   </div>
 
                   <label

@@ -370,3 +370,43 @@
    color: #555;
    line-height: 1.5;
 }
+
+.redirectContainer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   height: 100vh;
+   background: linear-gradient(135deg, #074a05, #46a049);
+   color: #ffffff;
+   text-align: center;
+   font-family: 'Arial', sans-serif;
+   padding: 20px;
+}
+
+.redirectContainer p {
+   font-size: 1.5rem;
+   margin-bottom: 20px;
+   line-height: 1.6;
+   letter-spacing: 0.5px;
+}
+
+.loginLink {
+   display: inline-block;
+   padding: 10px 20px;
+   background-color: #ffffff;
+   color: #074a05;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 1rem;
+   border-radius: 30px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+   transition: all 0.3s ease-in-out;
+}
+
+.loginLink:hover {
+   background-color: #e0e0e0;
+   color: #046c04;
+   transform: scale(1.05);
+   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}

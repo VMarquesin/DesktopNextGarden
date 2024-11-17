@@ -20,6 +20,7 @@ import CadastroPaciente from "../../componentes/cadastroPaciente";
 
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
+// import { link } from "fs";
 
 export default function Home() {
    const [isModalOpen, setIsModalOpen] = useState(false);
@@ -54,8 +55,7 @@ export default function Home() {
       setPacientes(dados);
    };
 
-   return (
-      // psicologoInfo ? (
+   return psicologoInfo ? (
       <div className={styles.containerGlobal}>
          <Head>
             <title>Área de Trabalho - Psicólogo</title>
@@ -214,8 +214,8 @@ export default function Home() {
                   <div className={styles.featureCards}>
                      <h1>Bem-vindo(a) ao Garden!</h1>
                      <p>
-                        Selecione seu paciente e uma funcionalidade no menu lateral para
-                        começar.
+                        Selecione seu paciente e uma funcionalidade no menu
+                        lateral para começar.
                      </p>
                      <div className={styles.cardsContainer}>
                         <div className={styles.cardsColunaUm}>
@@ -259,7 +259,17 @@ export default function Home() {
             </main>
          </div>
       </div>
-      // ) : <p>Você não tem autorização</p>
+   ) : (
+      <div className={styles.redirectContainer}>
+         <p>
+            Você não está autorizado a acessar o sistema. Por favor, faça login.
+         </p>
+         <Link href="https://i.ytimg.com/vi/FfgrV7i5jrA/maxresdefault.jpg">
+            <href className={styles.loginLink}>
+               Voltar para a tela de login
+            </href>
+         </Link>
+      </div>
    );
 }
 
