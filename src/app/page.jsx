@@ -34,30 +34,30 @@ export default function Page() {
    //Efeito de REDIRECIONAMENTO do RODAPÉ da página
    useEffect(() => {
       const links = document.querySelectorAll("nav a");
-  
+
       const handleScroll = (e) => {
-          const targetId = e.currentTarget.getAttribute("href");
-          if (targetId.startsWith("#")) {
-              e.preventDefault();
-              const targetElement = document.querySelector(targetId);
-              if (targetElement) {
-                  targetElement.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                  });
-              }
-          }
+         const targetId = e.currentTarget.getAttribute("href");
+         if (targetId.startsWith("#")) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+               targetElement.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+               });
+            }
+         }
       };
-  
+
       links.forEach((link) => link.addEventListener("click", handleScroll));
-  
+
       return () => {
-          links.forEach((link) =>
-              link.removeEventListener("click", handleScroll)
-          );
+         links.forEach((link) =>
+            link.removeEventListener("click", handleScroll)
+         );
       };
-  }, []);
-  
+   }, []);
+
    return (
       <div className={styles.container}>
          <div className={styles.BackgroundHeader}>
@@ -84,9 +84,12 @@ export default function Page() {
                            <a href="#psicologo">PSICÓLOGO</a>
                         </li>
                         <li>
-                        <Link href={'/usuarios/login'} className={styles.ButtonLogin}>
-                            LOGIN
-                        </Link>
+                           <Link
+                              href={"/usuarios/login"}
+                              className={styles.ButtonLogin}
+                           >
+                              LOGIN
+                           </Link>
                         </li>
                      </ul>
                   </nav>
@@ -310,7 +313,7 @@ export default function Page() {
          </section>
 
          {/* <TeamCarousel /> */}
-         
+
          <div className={styles.devs}>
             <div className={styles.devsTitulo}>
                <h1>Sobre nós:</h1>
@@ -339,11 +342,11 @@ export default function Page() {
                      />
                   </div>
                   <div className={styles.CardMarquesin}>
-                     <Image 
-                         src="/images/Coroa.svg"
-                         alt="Imagem 2"
-                         width={50}
-                         height={50}
+                     <Image
+                        src="/images/Coroa.svg"
+                        alt="Imagem 2"
+                        width={50}
+                        height={50}
                      />
                      <Image
                         src="/images/CardMarquesin.svg"
@@ -379,13 +382,6 @@ export default function Page() {
          <div className={styles.footer}>
             <p> Todos os direitos reservados.</p>
          </div>
-
-         {/* <div>
-            <section id="paciente">Conteúdo do Paciente</section>
-            <section id="seguranca">Conteúdo da Segurança</section>
-            <section id="psicologo">Conteúdo do Psicólogo</section>
-            <section id="login">Conteúdo do Login</section>
-         </div> */}
       </div>
    );
 }

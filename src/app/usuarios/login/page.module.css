@@ -212,4 +212,13 @@
       margin-top: 10vw; /* Ajustado para evitar estouramento */
       margin-bottom: 10vw;
    }
+   /* .iconeButton {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+   } */
 }

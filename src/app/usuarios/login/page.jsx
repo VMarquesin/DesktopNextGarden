@@ -7,24 +7,27 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import styles from "./page.module.css";
-import api from "../../../services/api";  
+import api from "../../../services/api";
 import { UserContext } from "../../../../context/userContext";
 
-
 function Login() {
-   const { login_psicologo, error } = useContext(UserContext)
+   const { login_psicologo, error } = useContext(UserContext);
    const router = useRouter();
 
    const [login, setLogin] = useState("");
    const [senha, setSenha] = useState("");
+   const [senhaVisivel, setSenhaVisivel] = useState(false);
 
+   const toggleSenhaVisivel = () => {
+      setSenhaVisivel((prevState) => !prevState);
+   };
    // const objLogado = {
    //    id: usuario.usu_id,
    //    nome: usuario.usu_nome,
    //    acesso: usuario.usu_adm,
    //    psi_id: usuario.psi_id, // Certifique-se de que psi_id está incluído
    // };
-   
+
    // localStorage.clear();
    // localStorage.setItem("user", JSON.stringify(objLogado));
 
@@ -38,8 +41,8 @@ function Login() {
       }
 
       // Chama a função para realizar o login
-      const is_loggin = await login_psicologo(login, senha)
-      if (is_loggin) router.push('/system')
+      const is_loggin = await login_psicologo(login, senha);
+      if (is_loggin) router.push("/system");
    }
 
    async function logar() {
@@ -47,7 +50,7 @@ function Login() {
          const dados = {
             usu_email: login,
             usu_senha: senha,
-         }
+         };
 
          const response = await api.post("/usuarios/login", dados);
 
@@ -61,7 +64,7 @@ function Login() {
 
             localStorage.clear();
             localStorage.setItem("user", JSON.stringify(objLogado));
-            router.push('/system');
+            router.push("/system");
          } else {
             alert("Erro: " + response.data.mensagem);
          }
@@ -80,7 +83,10 @@ function Login() {
       <div className={styles.LoginContainer}>
          <div className={styles.LoginAcess}>
             <div className={styles.LoginForm}>
-               <Link href="/usuarios/cadastro" className={styles.ButtonCadastro}>
+               <Link
+                  href="/usuarios/cadastro"
+                  className={styles.ButtonCadastro}
+               >
                   CRIAR CONTA
                </Link>
 
@@ -113,7 +119,7 @@ function Login() {
 
                   <div className={styles.FormGroup}>
                      <input
-                        type="password"
+                        type={senhaVisivel ? "text" : "password"}
                         id="password"
                         name="password"
                         placeholder="Senha"
@@ -121,13 +127,18 @@ function Login() {
                         value={senha}
                         className={styles.InputField}
                      />
-                     <Image
-                        src="/Icones/OcultaSenha.svg"
-                        width={25}
-                        height={25}
-                        alt="Icone Senha"
-                        className={styles.Icons}
-                     />
+                     <button
+                        onClick={toggleSenhaVisivel}
+                        className={styles.iconButton}
+                     >
+                        <Image
+                           src="/Icones/OcultaSenha.svg"
+                           width={25}
+                           height={25}
+                           alt="Icone Senha"
+                           className={styles.Icons}
+                        />
+                     </button>
                   </div>
 
                   <label
@@ -150,7 +161,7 @@ function Login() {
          <div>
             <Image
                src="/images/ImageLogin.png"
-               width={2880}   
+               width={2880}
                height={2048}
                alt="Imagem"
                className={styles.BackgroundImageLogin}
@@ -161,5 +172,3 @@ function Login() {
 }
 
 export default Login;
-
-
