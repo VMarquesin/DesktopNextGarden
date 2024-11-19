@@ -3,15 +3,14 @@
    grid-template-columns: 1fr 3fr;
    height: 100vh;
    gap: 20px;
-   /* padding: 10px; */
    background-color: #f9fafb;
+   overflow: hidden;
 }
 
 .sidebar {
-   /* width: 14%; */
    background-color: #ffffff;
    padding: 20px;
-   max-height: 80%;
+   height: 100%;
    overflow-x: hidden;
    overflow-y: auto;
    border-right: 2px solid #e6e6e6;

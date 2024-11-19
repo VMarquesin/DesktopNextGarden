@@ -222,7 +222,6 @@
    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 .activeButton {
-   /* color: white; */
    background-color: #ddd !important;
    border-radius: 7px;
    transform: translateX(5px);
@@ -235,20 +234,20 @@
    margin-left: 1rem;
 }
 
-.spacer {
+/* .spacer {
    flex: 1;
-}
+} */
 
 .cadastroButton {
    margin-top: 0px;
    width: 100%;
-   border-radius: 0 0 7px 0;
+   /* border-radius: 0 0 7px 0; */
    background-color: #074a05 !important;
    color: #fff;
 }
 .cadastroButton:hover {
    background-color: #056403 !important;
-   transform: translateY(-5px) !important;
+   transform: translateY(5px) !important;
 }
 .iconeCad {
    color: #fff;
@@ -380,7 +379,7 @@
    background: linear-gradient(135deg, #074a05, #46a049);
    color: #ffffff;
    text-align: center;
-   font-family: 'Arial', sans-serif;
+   font-family: "Arial", sans-serif;
    padding: 20px;
 }
 

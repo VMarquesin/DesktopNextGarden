@@ -53,7 +53,6 @@ const UserProvider = ({ children }) => {
             usu_senha: password,
          });
          const [psiDados] = response.data.dados;
-
          setPsicologoInfo({
             psi_id: psiDados.psi_id,
             usu_id: psiDados.usu_id,

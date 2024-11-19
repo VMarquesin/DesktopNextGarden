@@ -14,7 +14,7 @@ export default function CadastroPaciente({ onClose }) {
       pac_cpf: "",
       pac_filho: "",
       pac_escolaridade: "",
-      pac_data_nasc: "",
+      pac_data_nasc: "2003-02-10",
       pac_trabalho: "",
       pac_estado_civil: "",
    });
@@ -29,16 +29,15 @@ export default function CadastroPaciente({ onClose }) {
       try {
          console.log("Dados do paciente:", formData);
          // Substitua 'api.post' pelo endpoint correto para enviar os dados
-         
-        
-         const response = await  api.post("/paciente", formData);
+
+         const response = await api.post("/paciente", formData);
 
          if (response.data.sucesso) {
             alert("Cadastro realizado com sucesso!");
             onClose();
          }
       } catch (error) {
-         console.log(error)
+         console.log(error);
          alert("Erro ao cadastrar paciente: " + error.message);
       }
    };
@@ -54,57 +53,56 @@ export default function CadastroPaciente({ onClose }) {
          <div className={styles.modalContent}>
             <h2 className={styles.titulo}>Cadastro de Paciente</h2>
             <form onSubmit={handleSubmit}>
-               
-               <InputCadastro 
+               <InputCadastro
                   label="Nome"
                   inputType="text"
                   name="usu_nome"
                   value={formData.usu_nome}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Nick"
                   inputType="text"
                   name="usu_nick"
                   value={formData.usu_nick}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="E-mail"
                   inputType="text"
                   name="usu_email"
                   value={formData.usu_email}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Senha"
                   inputType="text"
                   name="usu_senha"
                   value={formData.usu_senha}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Telefone"
                   inputType="text"
                   name="pac_telefone"
                   value={formData.pac_telefone}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="CPF"
                   inputType="text"
                   name="pac_cpf"
                   value={formData.pac_cpf}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Filhos"
                   inputType="text"
                   name="pac_filho"
                   value={formData.pac_filho}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Escolaridade"
                   inputType="text"
                   name="pac_escolaridade"
@@ -118,14 +116,14 @@ export default function CadastroPaciente({ onClose }) {
                   value={formData.pac_data_nasce}
                   handleChange={handleChange}
                /> */}
-               <InputCadastro 
+               <InputCadastro
                   label="Profissão"
                   inputType="text"
                   name="pac_trabalho"
                   value={formData.pac_trabalho}
                   handleChange={handleChange}
                />
-               <InputCadastro 
+               <InputCadastro
                   label="Estado Civil"
                   inputType="text"
                   name="pac_estado_civil"
@@ -150,21 +148,18 @@ export default function CadastroPaciente({ onClose }) {
    );
 }
 
-
-function InputCadastro ({ label, inputType, name, value, handleChange}){
+function InputCadastro({ label, inputType, name, value, handleChange }) {
    return (
-       <div className={styles.formGroup}>
-           <label htmlFor={name}>
-               {label}
-           </label>
-           <input
-               type={inputType}
-               id={name}
-               name={name}
-               value={value}
-               onChange={handleChange}
-               required
-           />
-       </div>
-   )
+      <div className={styles.formGroup}>
+         <label htmlFor={name}>{label}</label>
+         <input
+            type={inputType}
+            id={name}
+            name={name}
+            value={value}
+            onChange={handleChange}
+            required
+         />
+      </div>
+   );
 }
