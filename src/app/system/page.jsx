@@ -20,23 +20,34 @@ import CadastroPaciente from "../../componentes/cadastroPaciente";
 
 import { useContext } from "react";
 import { UserContext } from "../../../context/userContext";
-// import { link } from "fs";
 
 export default function Home() {
+   //modal cadastro paciente
    const [isModalOpen, setIsModalOpen] = useState(false);
    const openModal = () => setIsModalOpen(true);
    const closeModal = () => setIsModalOpen(false);
+
+   //selecionar tela na sidebar (0 = senhuma)
    const [Tela, setTela] = useState(0);
+
+   //guardar paciente selecionado
    const [pacienteSel, setPacienteSel] = useState(null);
+
+   //lista dos pacientes
    const [pacientes, setPacientes] = useState([]);
 
-   const perfilRef = useRef();
-
+   //informações do psicologo e função logout
    const { psicologoInfo, logout } = useContext(UserContext);
 
+   // useEffect(() => {
+   //    get_pacientes(psicologoInfo?.psi_id);
+   // }, []);
+   //verificação do id do psi disponivel e busca pacientes relacionados ao psi
    useEffect(() => {
-      get_pacientes(psicologoInfo?.psi_id);
-   }, []);
+      if (psicologoInfo?.psi_id) {
+         get_pacientes(psicologoInfo.psi_id);
+      }
+   }, [psicologoInfo?.psi_id]);
 
    const get_pacientes = async (psi_id) => {
       const response = await api.get(`/paciente_psi_relacao/${psi_id}`);
@@ -46,7 +57,7 @@ export default function Home() {
    };
 
    return (
-      // psicologoInfo ? (
+   // psicologoInfo ? (
       <div className={styles.containerGlobal}>
          <Head>
             <title>Área de Trabalho - Psicólogo</title>
@@ -78,13 +89,11 @@ export default function Home() {
                               src="../../images/profile.svg"
                               alt="Profile"
                               className={styles.profileImage}
-                              // onClick={handleProfileClick}
-                              ref={perfilRef}
                            />
-                           {/* {console.log={handleProfileClick}} */}
                         </li>
                         <li>
                            <div>
+                              {/* botão logout */}
                               <Link
                                  href={"/usuarios/login"}
                                  className={styles.exitSystem}
@@ -101,7 +110,6 @@ export default function Home() {
                </div>
             </header>
             {/* Pesquisa de paciente */}
-
             <section className={styles.patientSelect}>
                <PacienteButton
                   pacienteSel={pacienteSel}
@@ -250,17 +258,17 @@ export default function Home() {
             </main>
          </div>
       </div>
-      // ) : (
-      //    <div className={styles.redirectContainer}>
-      //       <p>
-      //          Você não está autorizado a acessar o sistema. Por favor, faça login.
-      //       </p>
-      //       <Link href="https://i.ytimg.com/vi/FfgrV7i5jrA/maxresdefault.jpg">
-      //          <href className={styles.loginLink}>
-      //             Voltar para a tela de login
-      //          </href>
-      //       </Link>
-      //    </div>
+   // ) : (
+   //    <div className={styles.redirectContainer}>
+   //       <p>
+   //          Você não está autorizado a acessar o sistema. Por favor, faça login.
+   //       </p>
+   //       <Link href="/usuarios/login">
+   //          <href className={styles.loginLink}>
+   //             Voltar para a tela de login
+   //          </href>
+   //       </Link>
+   //    </div>
    );
 }
 

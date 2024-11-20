@@ -9,30 +9,27 @@ const UserProvider = ({ children }) => {
    const [psicologoInfo, setPsicologoInfo] = useState(null);
    const [error, setError] = useState(null);
 
+   // limpa as informações do psi
    const logout = () => {
       window.localStorage.setItem("user", null);
       setPsicologoInfo(null);
    };
 
+   //salva info do usu no localStorage como string JSON
    const saveUserLocalStorage = (user) => {
       window.localStorage.setItem("user", JSON.stringify(user));
    };
 
+   //verifica o localStorage para salvar as informações em psiInfo
    useEffect(() => {
       const psiInfo = window.localStorage.getItem("user");
-
       if (psiInfo) setPsicologoInfo(JSON.parse(psiInfo));
    }, []);
 
+   // atualizar ou puxar dados do psicologo após o login
    const fetchPsicologoInfo = async () => {
       try {
-         // Recupera o usuário logado do localStorage
-         // const storedUser = localStorage.getItem("user");
-         // if (!storedUser) return;
-
-         // const { id: usu_id, psi_id } = JSON.parse(storedUser);
-
-         // Faz a requisição com o id do usuário logado
+         // Faz a requisição de acordo o login feito
          const usuarioResponse = await api.get(`/usuario/${usu_id}`);
          const psicologoResponse = await api.get(`/psicologo/${psi_id}`);
 
@@ -46,12 +43,15 @@ const UserProvider = ({ children }) => {
       }
    };
 
+   // post na rota de login
    const login_psicologo = async (email, password) => {
       try {
          const response = await api.post("/usuarios/login", {
             usu_email: email,
             usu_senha: password,
          });
+
+         // salva no localStorage as informações do usu
          const [psiDados] = response.data.dados;
          setPsicologoInfo({
             psi_id: psiDados.psi_id,
@@ -68,6 +68,7 @@ const UserProvider = ({ children }) => {
       }
    };
 
+   // torna acessivel aos componentes filhos
    return (
       <UserContext.Provider
          value={{ psicologoInfo, login_psicologo, error, logout }}
