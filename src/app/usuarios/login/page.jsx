@@ -21,15 +21,6 @@ function Login() {
    const toggleSenhaVisivel = () => {
       setSenhaVisivel((prevState) => !prevState);
    };
-   // const objLogado = {
-   //    id: usuario.usu_id,
-   //    nome: usuario.usu_nome,
-   //    acesso: usuario.usu_adm,
-   //    psi_id: usuario.psi_id, // Certifique-se de que psi_id está incluído
-   // };
-
-   // localStorage.clear();
-   // localStorage.setItem("user", JSON.stringify(objLogado));
 
    async function handleSubmit(event) {
       event.preventDefault();

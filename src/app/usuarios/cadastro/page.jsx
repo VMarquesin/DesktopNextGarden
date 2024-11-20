@@ -44,6 +44,8 @@ export default function Cadastro() {
    const valSucesso = styles.formControl + " " + styles.success;
    const valErro = styles.formControl + " " + styles.error;
 
+   //consulta na viacep
+
    const getCepInfo = async () => {
       const url = "https://viacep.com.br/ws/" + psicologo.end_cep + "/json/";
       console.log(url);
@@ -118,8 +120,8 @@ export default function Cadastro() {
 
    function validaNome() {
       let objTemp = {
-         validado: valSucesso, // css referente ao estado de validação
-         mensagem: [], // array de mensagens de validação
+         validado: valSucesso,
+         mensagem: [],
       };
 
       if (psicologo.usu_nome === "") {
@@ -154,8 +156,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         nick: objTemp, // atualiza apenas o campo 'nick'
+         ...prevState, 
+         nick: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -183,8 +185,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         email: objTemp, // atualiza apenas o campo 'email'
+         ...prevState, 
+         email: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -206,8 +208,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         senha: objTemp, // atualiza apenas o campo 'senha'
+         ...prevState, 
+         senha: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -229,8 +231,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         confSenha: objTemp, // atualiza apenas o campo 'Confirma senha'
+         ...prevState, 
+         confSenha: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -249,8 +251,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         cnpj: objTemp, // atualiza apenas o campo 'cnpj'
+         ...prevState, 
+         cnpj: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -269,8 +271,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         cep: objTemp, // atualiza apenas o campo 'cep'
+         ...prevState,
+         cep: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -289,8 +291,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         logradouro: objTemp, // atualiza apenas o campo 'nome'
+         ...prevState, 
+         logradouro: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -312,8 +314,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         bairro: objTemp, // atualiza apenas o campo 'bairro'
+         ...prevState, 
+         bairro: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -332,8 +334,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         numero: objTemp, // atualiza apenas o campo 'numero'
+         ...prevState, 
+         numero: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -352,8 +354,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         cidade: objTemp, // atualiza apenas o campo 'nome'
+         ...prevState, // 
+         cidade: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -372,8 +374,8 @@ export default function Cadastro() {
       }
 
       setValida((prevState) => ({
-         ...prevState, // mantém os valores anteriores
-         estado: objTemp, // atualiza apenas o campo 'estado'
+         ...prevState, 
+         estado: objTemp, 
       }));
 
       const testeResult = objTemp.mensagem.length === 0 ? 1 : 0;
@@ -382,8 +384,6 @@ export default function Cadastro() {
 
    async function handleSubmit(event) {
       event.preventDefault();
-      // alert('chama api');
-
       try {
          let confirmaCad;
          console.log(psicologo);
