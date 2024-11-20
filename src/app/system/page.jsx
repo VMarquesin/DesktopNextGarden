@@ -30,16 +30,6 @@ export default function Home() {
    const [pacienteSel, setPacienteSel] = useState(null);
    const [pacientes, setPacientes] = useState([]);
 
-   // profile
-
-   // const [isProfileOpen, setIsProfileOpen] = useState(false);
-   // const [editMode, setEditMode] = useState(false);
-
-   // barra de pesquisa
-
-   // const [searchTerm, setSearchTerm] = useState("");
-   // const [pacientesFiltrados, setPacientesFiltrados] = useState([]);
-
    const perfilRef = useRef();
 
    const { psicologoInfo, logout } = useContext(UserContext);
@@ -55,7 +45,8 @@ export default function Home() {
       setPacientes(dados);
    };
 
-   return psicologoInfo ? (
+   return (
+      // psicologoInfo ? (
       <div className={styles.containerGlobal}>
          <Head>
             <title>Área de Trabalho - Psicólogo</title>
@@ -176,7 +167,7 @@ export default function Home() {
                      <button
                         data-target="#dashboard"
                         onClick={() => setTela(4)}
-                        className={Tela === 5 ? styles.activeButton : " "}
+                        className={Tela === 4 ? styles.activeButton : " "}
                      >
                         <Image
                            src="/icones/dashboard.svg"
@@ -259,17 +250,17 @@ export default function Home() {
             </main>
          </div>
       </div>
-   ) : (
-      <div className={styles.redirectContainer}>
-         <p>
-            Você não está autorizado a acessar o sistema. Por favor, faça login.
-         </p>
-         <Link href="https://i.ytimg.com/vi/FfgrV7i5jrA/maxresdefault.jpg">
-            <href className={styles.loginLink}>
-               Voltar para a tela de login
-            </href>
-         </Link>
-      </div>
+      // ) : (
+      //    <div className={styles.redirectContainer}>
+      //       <p>
+      //          Você não está autorizado a acessar o sistema. Por favor, faça login.
+      //       </p>
+      //       <Link href="https://i.ytimg.com/vi/FfgrV7i5jrA/maxresdefault.jpg">
+      //          <href className={styles.loginLink}>
+      //             Voltar para a tela de login
+      //          </href>
+      //       </Link>
+      //    </div>
    );
 }
 

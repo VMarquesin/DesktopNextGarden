@@ -89,12 +89,14 @@
 
 .formGroup input {
    width: 100%;
-   padding: 10px;
+   padding: 10px;  /* Mantendo o padding uniformemente para todos os campos */
    border-radius: 8px;
    border: 1px solid #ccc;
    outline: none;
    transition: border-color 0.3s;
+   box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura total */
 }
+
 
 .formGroup input:focus {
    border-color: #074a05;
@@ -138,4 +140,42 @@
 
 .cancelButton:hover {
    background-color: rgb(240, 28, 28);
+}
+.passwordWrapper {
+   position: relative;
+   width: 100%;
+}
+
+.passwordWrapper input {
+   width: 100%;
+   padding: 10px 40px 10px 10px; /* Padding à direita para acomodar o ícone */
+   border-radius: 8px;
+   border: 1px solid #ccc;
+   outline: none;
+   transition: border-color 0.3s;
+   box-sizing: border-box; /* Inclui o padding e a borda no cálculo da largura total */
+}
+
+.passwordWrapper input:focus {
+   border-color: #074a05;
+}
+
+.passwordToggle {
+   position: absolute;
+   right: 10px; /* Alinha o ícone à direita do campo */
+   top: 50%;
+   transform: translateY(-50%); /* Centraliza verticalmente */
+   cursor: pointer;
+   transition: opacity 0.2s;
+}
+
+.passwordToggle:hover {
+   opacity: 0.8;
+}
+
+/* Estiliza a exibição da mensagem de erro */
+.error {
+   color: red;
+   font-size: 0.875rem;
+   margin-top: 0.25rem;
 }
