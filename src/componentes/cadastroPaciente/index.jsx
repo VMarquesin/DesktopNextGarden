@@ -8,8 +8,10 @@ import api from "@/services/api";
 import { UserContext } from "../../../context/userContext";
 
 export default function CadastroPaciente({ onClose }) {
+   //busca as informado psicologo no context
    const { psicologoInfo } = useContext(UserContext);
 
+   //definição do estado para armazenar os dados do formulário
    const [formData, setFormData] = useState({
       usu_nome: "",
       usu_nick: "",
@@ -24,19 +26,20 @@ export default function CadastroPaciente({ onClose }) {
       pac_estado_civil: "",
       psi_id: "",
    });
-
+   //armazenar erros de validadação nos campos
    const [errors, setErrors] = useState({});
+   //visibilidade do campo senha
    const [passwordVisible, setPasswordVisible] = useState(false);
-
+   //função para alterar o valor de um campo do formulario
    const handleChange = (e) => {
       const { name, value } = e.target;
       setFormData({ ...formData, [name]: value });
    };
-
+   //função para alterar a visibilidade da senha
    const handleTogglePassword = () => {
       setPasswordVisible(!passwordVisible);
    };
-
+   //envia o formulario
    const handleSubmit = async (e) => {
       e.preventDefault();
       const newErrors = {};
@@ -48,13 +51,14 @@ export default function CadastroPaciente({ onClose }) {
          }
       });
 
-      // Caso tenha erros, atualiza o estado e não continua
+      // Caso tenha erros atualiza o estado e não continua
       if (Object.keys(newErrors).length > 0) {
          setErrors(newErrors);
          return;
       }
 
       try {
+         //envia os dados para api
          console.log("Dados do paciente:", formData);
          const response = await api.post("/paciente", formData);
 
@@ -67,13 +71,13 @@ export default function CadastroPaciente({ onClose }) {
          alert("Erro ao cadastrar paciente: " + error.message);
       }
    };
-
+   //fecha o modal se clicar fora
    const handleOutsideClick = (e) => {
       if (e.target.classList.contains(styles.modalOverlay)) {
          onClose();
       }
    };
-
+   //dados do psicologo
    useEffect(() => {
       if (psicologoInfo?.psi_id) {
          setFormData((prevFormData) => ({
@@ -84,6 +88,7 @@ export default function CadastroPaciente({ onClose }) {
    }, [psicologoInfo]);
 
    return (
+      // close modal
       <div className={styles.modalOverlay} onClick={handleOutsideClick}>
          <div className={styles.modalContent}>
             <h2 className={styles.titulo}>Cadastro de Paciente</h2>
