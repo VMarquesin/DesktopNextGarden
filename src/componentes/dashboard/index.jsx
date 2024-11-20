@@ -25,7 +25,7 @@
 // );
 
 // export default function GraficoEmocoes({ pac_id: initialPacId }) {
-//    const [dadosEmocoes, setDadosEmocoes] = useState(null); 
+//    const [dadosEmocoes, setDadosEmocoes] = useState(null);
 //    const [loading, setLoading] = useState(true);
 //    const [data_inicial, setDataInicial] = useState("");
 //    const [data_final, setDataFinal] = useState("");
@@ -34,9 +34,9 @@
 //    useEffect(() => {
 //       async function fetchEmocoes() {
 //          try {
-//             const dados = { 
-//                      emo_data_inicial: data_inicial, 
-//                      emo_data_final: data_final, 
+//             const dados = {
+//                      emo_data_inicial: data_inicial,
+//                      emo_data_final: data_final,
 //                      pac_id: pac_id
 //                   };
 //             const response = await api.get("/emocao_paciente_periodo", { params: dados }); // Usando params para passar os dados para o GET
@@ -128,65 +128,200 @@
 //    );
 // }
 
+// import { useState, useEffect } from "react";
+// import { Chart } from "react-google-charts";
+// import api from "../../services/api";
 
-// import { useState, useEffect } from 'react';
-// import { Chart } from "react-google-charts"; 
+// export default function DashboardPaciente({ pacienteId }) {
+//    const [dashboard, setDashboard] = useState([]);
+//    const [paciente, setPaciente] = useState(null);
 
-// const dadosTemp = [
-//    {
-//        "emo_id": 14,
-//        "emo_descricao": "Muito feliz"
-//    },
-//    {
-//        "emo_id": 15,
-//        "emo_descricao": "Feliz"
-//    },
-//    {
-//        "emo_id": 16,
-//        "emo_descricao": "Neutro"
-//    },
-//    {
-//        "emo_id": 17,
-//        "emo_descricao": "Triste"
-//    },
-//    {
-//        "emo_id": 18,
-//        "emo_descricao": "Muito triste"
-//    },
-//    {
-//        "emo_id": 19,
-//        "emo_descricao": "Raiva"
-//    }
-// ];
+//    useEffect(() => {
+//       async function fetchDashboard() {
+//          try {
+//             const response = await api.get(`/emocao_paciente/${pacienteId}`);
+//             console.log(response.data.dados);
+//             setDashboard;
+//          } catch (error) {
+//             console.error("Erro ao buscar notas:", error);
+//             setDashboard([]);
+//          }
+//       }
+//       async function fetchPaciente() {
+//          try {
+//             const response = await api.get(`/pacientes`);
+//             console.log(response.data.dados);
+//             setPaciente(response.data.dados || null);
+//          } catch (error) {
+//             console.error("Erro ao buscar paciente:", error);
+//             setPaciente(null);
+//          }
+//       }
+//       fetchDashboard();
+//       fetchPaciente();
+//    }, [pacienteId]);
 
-// // const [emocoes, setEmocoes] = useState([]); 
+//    const dadosTemp = [
+//       {
+//          emo_id: 14,
+//          emo_descricao: "Muito feliz",
+//       },
+//       {
+//          emo_id: 15,
+//          emo_descricao: "Feliz",
+//       },
+//       {
+//          emo_id: 16,
+//          emo_descricao: "Neutro",
+//       },
+//       {
+//          emo_id: 17,
+//          emo_descricao: "Triste",
+//       },
+//       {
+//          emo_id: 18,
+//          emo_descricao: "Muito triste",
+//       },
+//       {
+//          emo_id: 19,
+//          emo_descricao: "Raiva",
+//       },
+//    ];
 
+//    const [emocoes, setEmocoes] = useState([]);
 
-// const data = [
-//   ["Dia", "Emoção"],
-//   ["1", 1],
-//   ["2", 2],
-//   ["3", 4],
-//   ["4", 6],
-// ];
+//    const data = [
+//       ["Dia", "Emoção"],
+//       ["1", 1],
+//       ["2", 2],
+//       ["3", 4],
+//       ["4", 6],
+//    ];
 
-// const options = {
-//   chart: {
-//     title: "Grafico de emoções",
-//     subtitle: "Acompenhe diario",
-//   },
-// };
+//    //    const formattedData = [
+//    //       ["Dia", "Emoção"],
+//    //       ...dashboard.map((item) => [item.data, item.emo_id]), // Exemplo de transformação
+//    //    ];
 
-// function App() {
-//   return (
-//     <Chart
-//       chartType="Line"
-//       width="100%"
-//       height="400px"
-//       data={data}
-//       options={options}
-//     />
-//   );
+//    const options = {
+//       chart: {
+//          title: "Gráfico de Emoções",
+//          subtitle: "Acompanhe as emoções diárias",
+//       },
+//    };
+
+//    return (
+//       <div>
+//          {/* <h1>Dashboard do Paciente</h1>
+//          {paciente ? (
+//             <div>
+//                <h2>Paciente: {paciente.nome}</h2>
+//             </div>
+//          ) : (
+//             <p>Carregando informações do paciente...</p>
+//          )} */}
+//          {dashboard.length > 0 ? (
+//             <Chart
+//                chartType="Line"
+//                width="100%"
+//                height="400px"
+//                data={formattedData}
+//                options={options}
+//             />
+//          ) : (
+//             <p>Carregando dados do gráfico...</p>
+//          )}
+//       </div>
+//    );
 // }
+import { useState, useEffect } from "react";
+import { Chart } from "react-google-charts";
+import api from "../../services/api";
 
-// export default App;
+export default function DashboardPaciente({ pacienteId }) {
+   const [dashboard, setDashboard] = useState([]);
+   const [paciente, setPaciente] = useState(null);
+
+   useEffect(() => {
+      async function fetchDashboard() {
+         try {
+            const response = await api.get(
+               `/emocao_paciente/${pacienteId.pac_id}`
+            );
+            console.log("Dados da API:", response.data.dados); // Debug
+            setDashboard(response.data.dados || []); // Salvar os dados no estado
+         } catch (error) {
+            console.error("Erro ao buscar dados de emoções:", error);
+            setDashboard([]);
+         }
+      }
+
+      console.log(pacienteId);
+
+      async function fetchPaciente() {
+         try {
+            const response = await api.get(`/pacientes`);
+            console.log("Paciente:", response.data.dados); // Debug
+            setPaciente(response.data.dados || null);
+         } catch (error) {
+            console.error("Erro ao buscar paciente:", error);
+            setPaciente(null);
+         }
+      }
+
+      fetchDashboard();
+      fetchPaciente();
+   }, [pacienteId]);
+
+   // Mapeamento de emoções para números
+   const emocaoMap = {
+      "Muito feliz": 1,
+      Feliz: 2,
+      Neutro: 3,
+      Triste: 4,
+      "Muito triste": 5,
+      Raiva: 6,
+   };
+
+   // Formatar dados para Google Charts
+   const formattedData = [
+      ["Data", "Emoção"], // Cabeçalhos
+      ...dashboard.map((item) => [
+         new Date(item.emo_data).toLocaleDateString("pt-BR"), // Formatando data
+         emocaoMap[item.emo_descricao] || 0, // Mapeando emoções para números
+      ]),
+   ];
+
+   const options = {
+      title: "Gráfico de Emoções",
+      subtitle: "Acompanhe as emoções diárias",
+      hAxis: { title: "Data" },
+      vAxis: { title: "Nível de Emoção" },
+      curveType: "function",
+      legend: { position: "bottom" },
+   };
+
+   return (
+      <div>
+         <h1>Dashboard do Paciente</h1>
+         {paciente ? (
+            <div>
+               <h2>Paciente: {paciente.nome}</h2>
+            </div>
+         ) : (
+            <p>Carregando informações do paciente...</p>
+         )}
+         {dashboard.length > 0 ? (
+            <Chart
+               chartType="LineChart"
+               width="100%"
+               height="100%"
+               data={formattedData}
+               options={options}
+            />
+         ) : (
+            <p>Carregando dados do gráfico...</p>
+         )}
+      </div>
+   );
+}

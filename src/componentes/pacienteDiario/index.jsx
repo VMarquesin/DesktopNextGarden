@@ -175,7 +175,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import styles from "./index.module.css";
 import api from "../../services/api";
 
