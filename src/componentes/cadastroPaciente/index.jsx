@@ -1,10 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./index.module.css";
 import api from "@/services/api";
+import { UserContext } from "../../../context/userContext";
+
 
 export default function CadastroPaciente({ onClose }) {
+
+   const {psicologoInfo} = useContext(UserContext)}
+
    const [formData, setFormData] = useState({
       usu_nome: "",
       usu_nick: "",
@@ -17,7 +22,17 @@ export default function CadastroPaciente({ onClose }) {
       pac_data_nasc: "2003-02-10",
       pac_trabalho: "",
       pac_estado_civil: "",
+      psi_id: ""
    });
+
+   useEffect(() => {
+      if (psicologoInfo?.psi_id) {
+         setFormData((prevFormData) => ({
+            ...prevFormData,
+            psi_id: psicologoInfo.psi_id
+         }));
+      }
+   }, [psicologoInfo]);
 
    const handleChange = (e) => {
       const { name, value } = e.target;

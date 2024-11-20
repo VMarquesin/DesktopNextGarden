@@ -237,6 +237,7 @@
 import { useState, useEffect } from "react";
 import { Chart } from "react-google-charts";
 import api from "../../services/api";
+import styles from "./index.module.css"
 
 export default function DashboardPaciente({ pacienteId }) {
    const [dashboard, setDashboard] = useState([]);
@@ -275,17 +276,17 @@ export default function DashboardPaciente({ pacienteId }) {
 
    // Mapeamento de emoções para números
    const emocaoMap = {
-      "Muito feliz": 1,
-      Feliz: 2,
-      Neutro: 3,
-      Triste: 4,
-      "Muito triste": 5,
-      Raiva: 6,
+      "Muito feliz": 6,
+      Feliz: 5,
+      Neutro: 4,
+      Triste: 3,
+      "Muito triste": 2,
+      Raiva: 1,
    };
 
    // Formatar dados para Google Charts
    const formattedData = [
-      ["Data", "Emoção"], // Cabeçalhos
+      ["Data", "Emoção"], 
       ...dashboard.map((item) => [
          new Date(item.emo_data).toLocaleDateString("pt-BR"), // Formatando data
          emocaoMap[item.emo_descricao] || 0, // Mapeando emoções para números
@@ -302,7 +303,7 @@ export default function DashboardPaciente({ pacienteId }) {
    };
 
    return (
-      <div>
+      <div className={styles.grafico}>
          <h1>Dashboard do Paciente</h1>
          {paciente ? (
             <div>
