@@ -64,7 +64,7 @@ export default function DiarioPaciente({ pacienteId }) {
                      </li>
                   ))
                ) : (
-                  <li>Selecione um paciente</li>
+                  <p>Selecione um paciente</p>
                )}
             </ul>
          </aside>

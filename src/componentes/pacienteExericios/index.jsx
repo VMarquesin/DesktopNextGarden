@@ -194,8 +194,8 @@ export default function PacienteExercicios(pacienteId) {
          </main>
          {/* modal para selecionar os pacientes */}
          {showModal && (
-            <div className={styles.modal}>
-               <div className={styles.modalContent}>
+            <div className={styles.listaModal}>
+               <div className={styles.listaModalContent}>
                   <h2>SELECIONE OS PACIENTES: </h2>
                   <ul className={styles.pacientesLista}>
                      {pacientes.length > 0 ? (

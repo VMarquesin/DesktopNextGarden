@@ -2,7 +2,7 @@
    display: grid;
    grid-template-columns: 1fr 3fr;
    height: 100vh;
-   gap: 20px;
+   /* gap: 20px; */
    background-color: #f9fafb;
    overflow: hidden;
 }
@@ -90,6 +90,7 @@
 /* Main Container */
 .mainContent {
    display: flex;
+   /* width: 100%; */
    flex-direction: column;
    align-items: center;
    padding: 20px;
@@ -102,10 +103,10 @@
    background-color: #ffffff;
    padding: 20px;
    border-radius: 12px;
-   margin-top: 30px;
    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-   width: 100%;
-   max-width: 800px;
+   width: 95%;
+   height: 70%;
+   /* max-width: 800px; */
    display: flex;
    flex-direction: column;
    gap: 20px;
@@ -137,7 +138,7 @@
 /* Textarea */
 .textoArea {
    width: 96%;
-   height: 30rem;
+   height: 36rem;
    border-radius: 8px;
    border: 1px solid #ddd;
    resize: none;
