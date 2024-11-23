@@ -1,8 +1,7 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useState, useContext } from "react";
 import Image from "next/image";
-
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -11,64 +10,44 @@ import api from "../../../services/api";
 import { UserContext } from "../../../../context/userContext";
 
 function Login() {
-   const { login_psicologo, error } = useContext(UserContext);
+   const { login_psicologo } = useContext(UserContext);
    const router = useRouter();
 
    const [login, setLogin] = useState("");
    const [senha, setSenha] = useState("");
    const [senhaVisivel, setSenhaVisivel] = useState(false);
+   const [error, setError] = useState(""); // Estado para mensagens de erro
+   const [loading, setLoading] = useState(false); // Estado para controlar o carregamento
 
    const toggleSenhaVisivel = () => {
       setSenhaVisivel((prevState) => !prevState);
    };
 
-   async function handleSubmit(event) {
+   const handleSubmit = async (event) => {
       event.preventDefault();
 
-      // Verificação se os campos estão preenchidos
       if (!login || !senha) {
-         alert("Por favor, preencha todos os campos.");
+         setError("Por favor, preencha todos os campos.");
          return;
       }
 
-      // Chama a função para realizar o login
-      const is_loggin = await login_psicologo(login, senha);
-      if (is_loggin) router.push("/system");
-   }
+      setLoading(true); // Inicia o carregamento
+      setError(""); // Limpa mensagens de erro anteriores
 
-   async function logar() {
       try {
-         const dados = {
-            usu_email: login,
-            usu_senha: senha,
-         };
-
-         const response = await api.post("/usuarios/login", dados);
-
-         if (response.data.sucesso === true) {
-            const usuario = response.data.dados;
-            const objLogado = {
-               id: usuario.usu_id,
-               nome: usuario.usu_nome,
-               acesso: usuario.usu_adm,
-            };
-
-            localStorage.clear();
-            localStorage.setItem("user", JSON.stringify(objLogado));
+         const isLogged = await login_psicologo(login, senha);
+         if (isLogged) {
             router.push("/system");
          } else {
-            alert("Erro: " + response.data.mensagem);
+            setError("Usuário ou senha incorretos.");
          }
       } catch (error) {
-         if (error.response) {
-            alert(
-               error.response.data.mensagem + "\n" + error.response.data.dados
-            );
-         } else {
-            alert("Erro inesperado. Tente novamente mais tarde.");
-         }
+         console.error("Erro ao realizar login:", error);
+         setError("Erro inesperado. Tente novamente mais tarde.");
+      } finally {
+         setLoading(false); // Finaliza o carregamento
       }
-   }
+   };
 
    return (
       <div className={styles.LoginContainer}>
@@ -88,7 +67,7 @@ function Login() {
                   </label>
                </div>
 
-               <form id="form" className={styles.form} onSubmit={handleSubmit}>
+               <form className={styles.form} onSubmit={handleSubmit}>
                   <div className={styles.FormGroup}>
                      <input
                         type="text"
@@ -107,7 +86,6 @@ function Login() {
                         className={styles.Icons}
                      />
                   </div>
-
                   <div className={styles.FormGroup}>
                      <input
                         type={senhaVisivel ? "text" : "password"}
@@ -118,7 +96,6 @@ function Login() {
                         value={senha}
                         className={styles.InputField}
                      />
-
                      <Image
                         src="/Icones/OcultaSenha.svg"
                         width={25}
@@ -128,23 +105,29 @@ function Login() {
                         className={styles.Icons}
                      />
                   </div>
-
-                  <label
-                     htmlFor="Esqueceu sua senha?"
-                     className={styles.EsqueceuSuaSenha}
+                  {/* Exibe erros */}
+                  {/* Indicador de carregamento */}
+                  <button
+                     type="submit"
+                     className={styles.SubmitButton}
+                     disabled={loading} // Desativa o botão enquanto carrega
                   >
-                     Esqueceu sua senha?
-                  </label>
-
-                  <button type="submit" className={styles.SubmitButton}>
-                     ENTRAR
+                     {loading ? "Carregando..." : "ENTRAR"}
                   </button>
+                  {error && <p className={styles.ErrorMessage}>{error}</p>}{" "}
+                  {loading && (
+                     <p className={styles.LoadingMessage}>Entrando...</p>
+                  )}{" "}
                </form>
-               {error && <p>{error}</p>}
+
+               <label
+                  htmlFor="Esqueceu sua senha?"
+                  className={styles.EsqueceuSuaSenha}
+               >
+                  Esqueceu sua senha?
+               </label>
             </div>
          </div>
-
-         <div className={styles.containerButton}></div>
 
          <div>
             <Image

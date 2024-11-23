@@ -56,8 +56,7 @@ export default function Home() {
       setPacientes(dados);
    };
 
-   return (
-      // psicologoInfo ? (
+   return psicologoInfo ? (
       <div className={styles.containerGlobal}>
          <Head>
             <title>Área de Trabalho - Psicólogo</title>
@@ -259,17 +258,17 @@ export default function Home() {
             </main>
          </div>
       </div>
-      // ) : (
-      //    <div className={styles.redirectContainer}>
-      //       <p>
-      //          Você não está autorizado a acessar o sistema. Por favor, faça login.
-      //       </p>
-      //       <Link href="/usuarios/login">
-      //          <href className={styles.loginLink}>
-      //             Voltar para a tela de login
-      //          </href>
-      //       </Link>
-      //    </div>
+   ) : (
+      <div className={styles.redirectContainer}>
+         <p>
+            Você não está autorizado a acessar o sistema. Por favor, faça login.
+         </p>
+         <Link href="/usuarios/login">
+            <href className={styles.loginLink}>
+               Voltar para a tela de login
+            </href>
+         </Link>
+      </div>
    );
 }
 

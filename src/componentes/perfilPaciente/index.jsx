@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styles from "./index.module.css";
+
 import api from "../../services/api";
+import { UserContext } from "../../../context/userContext";
 
 export default function PacientePerfil({ paciente }) {
    //texto da nota
@@ -13,6 +15,8 @@ export default function PacientePerfil({ paciente }) {
    const [usuario, setUsuario] = useState(null);
    //exibição do componente
    const [visivel, setVisivel] = useState(true);
+   //buscando informações do psicologo
+   const { psicologoInfo } = useContext(UserContext);
 
    //requisição das informações do paciente
    useEffect(() => {
@@ -39,6 +43,7 @@ export default function PacientePerfil({ paciente }) {
    const handleSaveNote = async () => {
       try {
          const response = await api.post("/psi_anotacao", {
+            psicolgoId: psicologoInfo.psi_id,
             pacienteId: paciente.pac_id,
             conteudo: nota,
          });
@@ -69,8 +74,8 @@ export default function PacientePerfil({ paciente }) {
                <div className={styles.nome}>
                   {usuario ? (
                      <>
-                        <h2>{paciente.usu_nome}</h2>
-                        <h3>{paciente.usu_nick}</h3>
+                        <h2>{usuario.usu_nome}</h2>
+                        <h3>{usuario.usu_nick}</h3>
                      </>
                   ) : (
                      <p>Carregando informações do paciente...</p>

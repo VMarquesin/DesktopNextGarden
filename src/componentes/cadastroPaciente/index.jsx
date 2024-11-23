@@ -24,7 +24,8 @@ export default function CadastroPaciente({ onClose }) {
       pac_data_nasc: "2003-02-10",
       pac_trabalho: "",
       pac_estado_civil: "",
-      psi_id: "",
+      //spac_id: "",
+      psi_id: ""
    });
    //armazenar erros de validadação nos campos
    const [errors, setErrors] = useState({});
@@ -46,11 +47,12 @@ export default function CadastroPaciente({ onClose }) {
 
       // Validação dos campos obrigatórios
       Object.entries(formData).forEach(([key, value]) => {
-         if (!value.trim()) {
+         if (typeof value === "string" && !value.trim()) {
+            newErrors[key] = "Este campo é obrigatório.";
+         } else if (!value) {
             newErrors[key] = "Este campo é obrigatório.";
          }
       });
-
       // Caso tenha erros atualiza o estado e não continua
       if (Object.keys(newErrors).length > 0) {
          setErrors(newErrors);
