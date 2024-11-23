@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useContext, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import styles from "./index.module.css";
 import Image from "next/image";
 
@@ -10,6 +11,8 @@ import { UserContext } from "../../../context/userContext";
 export default function CadastroPaciente({ onClose }) {
    //busca as informado psicologo no context
    const { psicologoInfo } = useContext(UserContext);
+
+   const router = useRouter();
 
    //definição do estado para armazenar os dados do formulário
    const [formData, setFormData] = useState({
@@ -24,8 +27,7 @@ export default function CadastroPaciente({ onClose }) {
       pac_data_nasc: "2003-02-10",
       pac_trabalho: "",
       pac_estado_civil: "",
-      //spac_id: "",
-      psi_id: ""
+      psi_id: "",
    });
    //armazenar erros de validadação nos campos
    const [errors, setErrors] = useState({});
@@ -53,26 +55,28 @@ export default function CadastroPaciente({ onClose }) {
             newErrors[key] = "Este campo é obrigatório.";
          }
       });
-      // Caso tenha erros atualiza o estado e não continua
+
+      // Caso tenha erros, atualiza o estado e não continua
       if (Object.keys(newErrors).length > 0) {
          setErrors(newErrors);
          return;
       }
 
       try {
-         //envia os dados para api
+         // Envia os dados para API
          console.log("Dados do paciente:", formData);
          const response = await api.post("/paciente", formData);
 
          if (response.data.sucesso) {
             alert("Cadastro realizado com sucesso!");
-            onClose();
+            router.push("/system"); // Redireciona após o sucesso
          }
       } catch (error) {
-         console.log(error);
+         console.error(error);
          alert("Erro ao cadastrar paciente: " + error.message);
       }
    };
+
    //fecha o modal se clicar fora
    const handleOutsideClick = (e) => {
       if (e.target.classList.contains(styles.modalOverlay)) {

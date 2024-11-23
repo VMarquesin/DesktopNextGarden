@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./index.module.css";
 import api from "../../services/api";
+import { UserContext } from "../../../context/userContext";
 
 //compoenente recebe paciente como prop, sendo o paciente selecionado
 export default function PsicologoAnotacao({ paciente }) {
@@ -16,6 +17,8 @@ export default function PsicologoAnotacao({ paciente }) {
    const [selectedAnotacao, setSelectedAnotacao] = useState(null);
    //modal no modo edição
    const [isEditMode, setIsEditMode] = useState(false);
+   //buscando informações do psicologo
+   const { psicologoInfo } = useContext(UserContext);
 
    // função para deletar anotações feitas
    async function fetchDeletarAnotacoes(pan_id) {
@@ -29,19 +32,18 @@ export default function PsicologoAnotacao({ paciente }) {
          console.error("Houve um problema ao deletar a anotação", error);
       }
    }
+   async function fetchAnotacoes() {
+      try {
+         console.log(paciente);
+         console.log("pac_id ", paciente.pac_id);
+         const response = await api.get(`/psi_anotacao/${paciente.pac_id}`);
+         setAnotacoes(response.data.dados);
+      } catch (error) {
+         console.error("Erro ao buscar anotações:", error);
+      }
+   }
    //carregar as anotações
    useEffect(() => {
-      async function fetchAnotacoes() {
-         try {
-            console.log(paciente);
-            console.log("pac_id ", paciente.pac_id);
-            const response = await api.get(`/psi_anotacao/${paciente.pac_id}`);
-            setAnotacoes(response.data.dados);
-         } catch (error) {
-            console.error("Erro ao buscar anotações:", error);
-         }
-      }
-
       fetchAnotacoes();
    }, [paciente]);
    //abrir a anotação
@@ -67,7 +69,7 @@ export default function PsicologoAnotacao({ paciente }) {
       //post para criar nova anotação
       try {
          const response = await api.post("/psi_anotacao", {
-            psi_id: 1,
+            psi_id: psicologoInfo.psi_id,
             pan_anotacao: conteudo,
             pan_anotacao_data: new Date().toISOString().split("T")[0],
             pac_id: paciente.pac_id,
@@ -85,7 +87,7 @@ export default function PsicologoAnotacao({ paciente }) {
                  )
                : prevAnotacoes,
          ]);
-
+         fetchAnotacoes();
          closeModal(); // Fecha o modal após salvar
       } catch (error) {
          console.error("Erro ao salvar anotação:", error);
@@ -104,7 +106,11 @@ export default function PsicologoAnotacao({ paciente }) {
                         key={anotacao.pan_id}
                         onClick={() => openModal(anotacao)}
                      >
-                        <p>{anotacao.pan_anotacao.slice(0, 17)}...</p>
+                        <p>
+                           {anotacao?.pan_anotacao?.slice(0, 22) ||
+                              "Sem anotação"}
+                        </p>
+
                         <p>
                            {new Date(
                               anotacao.pan_anotacao_data

@@ -145,7 +145,10 @@ export default function PacienteExercicios(pacienteId) {
                         key={exercicio.ati_id}
                         onClick={() => openModal(exercicio)}
                      >
-                        <p>{exercicio.ati_descricao.slice(0, 17)}...</p>
+                        <p>
+                           {exercicio?.ati_descricao?.slice(0, 22) ||
+                              "Sem anotação"}
+                        </p>
                         <strong>
                            {new Date(exercicio.ati_data).toLocaleDateString(
                               "pt-BR"
