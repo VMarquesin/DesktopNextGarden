@@ -32,6 +32,8 @@ export default function PsicologoAnotacao({ paciente }) {
          console.error("Houve um problema ao deletar a anotação", error);
       }
    }
+
+   //carregar as anotações
    async function fetchAnotacoes() {
       try {
          console.log(paciente);
@@ -42,10 +44,10 @@ export default function PsicologoAnotacao({ paciente }) {
          console.error("Erro ao buscar anotações:", error);
       }
    }
-   //carregar as anotações
    useEffect(() => {
       fetchAnotacoes();
    }, [paciente]);
+   
    //abrir a anotação
    const openModal = (anotacao) => {
       setSelectedAnotacao(anotacao);
