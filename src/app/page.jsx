@@ -10,8 +10,8 @@ import Link from "next/link";
 
 const Footer = () => {
    return (
-      <nav className={styles.footerAnimation}>
-         <div className={styles.footerAnimation}>
+      <div className={styles.Footer}>
+         <div>
             <a href="#paciente">Paciente</a>
          </div>
 
@@ -26,7 +26,7 @@ const Footer = () => {
          <div>
             <a href="#login">Login</a>
          </div>
-      </nav>
+      </div>
    );
 };
 

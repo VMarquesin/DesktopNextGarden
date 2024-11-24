@@ -2,6 +2,7 @@
    font-family: Arial, sans-serif;
    color: #333;
    max-width: 100%;
+   overflow-y: auto !important;
 }
 
 .BackgroundHeader {
@@ -121,6 +122,7 @@
    border-radius: 10px 0 10px 0;
    color: white;
    transition: transform 1.5s ease;
+   text-align: center;
 }
 
 .pacienteIntro:hover {
@@ -306,7 +308,7 @@
 .TextoPsicologos {
    font-size: 2.9rem;
    /* font-weight: bolder; */
-   text-align: start;
+   text-align: center;
    width: 30vw;
 }
 
@@ -378,8 +380,8 @@
 
 /* rodapé */
 
-.footer {
-   background-color: #bdecb6;
+.Footer {
+   background-color: #ffffff;
    padding: 1rem;
    text-align: center;
    gap: 5rem;
@@ -387,6 +389,8 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   text-decoration: none !important;
+   color: inherit !important;
    /* margin-top: 50px; */
 }
 
@@ -399,6 +403,7 @@
    display: flex;
    align-items: center;
    justify-content: center;
+   text-decoration: none;
    /* margin-top: 50px; */
 }
 
@@ -863,7 +868,7 @@
    /* rodapé */
 
    .footer {
-      background-color: #bdecb6;
+      background-color: #ffffff;
       padding: 1rem;
       text-align: center;
       gap: 5rem;

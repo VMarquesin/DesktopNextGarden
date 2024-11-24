@@ -107,6 +107,12 @@ function Login() {
                   </div>
                   {/* Exibe erros */}
                   {/* Indicador de carregamento */}
+                 
+                  {error && <p className={styles.ErrorMessage}>{error}</p>}{" "}
+                  {loading && (
+                     <p className={styles.LoadingMessage}>Entrando...</p>
+                  )}{" "}
+                 
                   <button
                      type="submit"
                      className={styles.SubmitButton}
@@ -114,18 +120,14 @@ function Login() {
                   >
                      {loading ? "Carregando..." : "ENTRAR"}
                   </button>
-                  {error && <p className={styles.ErrorMessage}>{error}</p>}{" "}
-                  {loading && (
-                     <p className={styles.LoadingMessage}>Entrando...</p>
-                  )}{" "}
                </form>
 
-               <label
+               {/* <label
                   htmlFor="Esqueceu sua senha?"
                   className={styles.EsqueceuSuaSenha}
                >
                   Esqueceu sua senha?
-               </label>
+               </label> */}
             </div>
          </div>
 
