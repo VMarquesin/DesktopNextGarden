@@ -24,7 +24,7 @@ const Footer = () => {
          </div>
 
          <div>
-            <a href="#login">Login</a>
+            <a href="/usuarios/login">Login</a>
          </div>
       </div>
    );
@@ -314,63 +314,46 @@ export default function Page() {
 
          {/* <TeamCarousel /> */}
 
-         <div className={styles.devs}>
-            <div className={styles.devsTitulo}>
-               <h1>Sobre nós:</h1>
+         <div className={styles.sobreNos}>
+            <h1 className={styles.sobreNosTitulo}>Sobre nós:</h1>
+            <div className={styles.sobreNosMensagem}>
+               <p>
+                  Estamos aqui para ser o solo fértil onde suas aspirações podem
+                  florescer. Venha mergulhar no seu jardim interior.
+               </p>
             </div>
-
-            <div>
-               <div className={styles.rodape}>
-                  <div>
-                     <p>
-                        Estamos aqui para ser o solo fértil onde suas aspirações
-                        podem florescer. Venha mergulhar nas maravilhas do seu
-                        jardim interior.
-                     </p>
-                  </div>
+            <div className={styles.devsCards}>
+               <div className={styles.card}>
+                  <Image
+                     src="/images/CardGava.svg"
+                     alt="Imagem 1"
+                     width={450}
+                     height={450}
+                  />
                </div>
-            </div>
-
-            <div className={styles.sobreNos}>
-               <div className={styles.devsCards}>
-                  <div className={styles.card}>
-                     <Image
-                        src="/images/CardGava.svg"
-                        alt="Imagem 1"
-                        width={450}
-                        height={450}
-                     />
-                  </div>
-                  <div className={styles.CardMarquesin}>
-                     <Image
-                        src="/images/Coroa.svg"
-                        alt="Imagem 2"
-                        width={50}
-                        height={50}
-                     />
-                     <Image
-                        src="/images/CardMarquesin.svg"
-                        alt="Imagem 2"
-                        width={450}
-                        height={450}
-                     />
-                  </div>
-                  <div className={styles.card}>
-                     <Image
-                        src="/images/CardMatheusAraujo.svg"
-                        alt="Imagem 3"
-                        width={450}
-                        height={450}
-                     />
-                  </div>
-                  <div className={styles.card}>
-                     <Image
-                        src="/images/CardMateusRodrigues.svg"
-                        alt="Imagem 3"
-                        width={450}
-                        height={450}
-                     />
-                  </div>
+               <div className={styles.card}>
+                  <Image
+                     src="/images/CardMarquesin.svg"
+                     alt="Imagem 2"
+                     width={450}
+                     height={450}
+                  />
+               </div>
+               <div className={styles.card}>
+                  <Image
+                     src="/images/CardMatheusAraujo.svg"
+                     alt="Imagem 3"
+                     width={450}
+                     height={450}
+                  />
+               </div>
+               <div className={styles.card}>
+                  <Image
+                     src="/images/CardMateusRodrigues.svg"
+                     alt="Imagem 4"
+                     width={450}
+                     height={450}
+                  />
                </div>
             </div>
          </div>
