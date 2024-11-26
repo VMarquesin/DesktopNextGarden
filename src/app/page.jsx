@@ -6,8 +6,6 @@ import styles from "./page.module.css";
 import { useEffect } from "react";
 import Link from "next/link";
 
-// import TeamCarousel from "./carrosselTeam/index";
-
 const Footer = () => {
    return (
       <div className={styles.Footer}>

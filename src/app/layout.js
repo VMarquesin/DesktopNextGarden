@@ -22,6 +22,8 @@ export const metadata = {
 //       </html>
 // }
 
+<link rel="icon" href="./gardentp.ico" type="image/x-icon" />;
+
 export default function RootLayout({ children }) {
    return (
       <html lang="pt-br">
