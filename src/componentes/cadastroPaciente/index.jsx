@@ -8,7 +8,7 @@ import Image from "next/image";
 import api from "@/services/api";
 import { UserContext } from "../../../context/userContext";
 
-export default function CadastroPaciente({ onClose }) {
+export default function CadastroPaciente({ get_pacientes,onClose }) {
    //busca as informado psicologo no context
    const { psicologoInfo } = useContext(UserContext);
 
@@ -75,6 +75,8 @@ export default function CadastroPaciente({ onClose }) {
          console.error(error);
          alert("Erro ao cadastrar paciente: " + error.message);
       }
+
+      await get_pacientes();
    };
 
    //fecha o modal se clicar fora
@@ -236,14 +238,4 @@ function InputCadastro({ label, inputType, name, value, handleChange, error }) {
          {error && <span className={styles.error}>{error}</span>}
       </div>
    );
-}
-
-{
-   /* <InputCadastro 
-                  label="Data de nascimento"
-                  inputType="text"
-                  name="pac_data_nasc"
-                  value={formData.pac_data_nasce}
-                  handleChange={handleChange}
-               /> */
 }

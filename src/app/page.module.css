@@ -404,50 +404,6 @@
 
 /* rodapé */
 
-.Footer {
-   background-color: #ffffff;
-   padding: 1rem;
-   text-align: center;
-   gap: 5rem;
-   flex-direction: row;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   text-decoration: none !important;
-   color: inherit !important;
-   /* margin-top: 50px; */
-}
-
-.footerAnimation {
-   background-color: #bdecb6;
-   padding: 1rem;
-   text-align: center;
-   gap: 5rem;
-   flex-direction: row;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   text-decoration: none;
-   /* margin-top: 50px; */
-}
-
-.footerAnimation nav a {
-   margin-right: 10px;
-   text-decoration: none;
-   color: #fa0505;
-   padding: 1rem;
-   margin-top: 5rem;
-   scroll-behavior: smooth;
-}
-
-.footer nav a {
-   margin-right: 10px;
-   text-decoration: none;
-   color: #000000;
-   padding: 1rem;
-   margin-top: 5rem;
-   scroll-behavior: smooth;
-}
 
 .rodape {
    background: linear-gradient(to bottom, #0c7a08, #002621);
@@ -536,12 +492,57 @@
    align-items: center;
    justify-content: center;
    /* background-color: #ffffff;  */
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .card:hover {
    transform: scale(1.05);
-   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.Footer {
+   background-color: #ffffff;
+   padding: 1rem;
+   text-align: center;
+   gap: 5rem;
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none !important;
+   color: inherit !important;
+   padding-bottom: 3rem;
+   /* margin-top: 50px; */
+}
+
+.footerAnimation {
+   background-color: #bdecb6;
+   padding: 1rem;
+   text-align: center;
+   gap: 5rem;
+   flex-direction: row;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   /* margin-top: 50px; */
+}
+
+.footerAnimation nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   color: #fa0505;
+   padding: 1rem;
+   margin-top: 5rem;
+   scroll-behavior: smooth;
+}
+
+.footer nav a {
+   margin-right: 10px;
+   text-decoration: none;
+   color: #000000;
+   padding: 1rem;
+   margin-top: 5rem;
+   scroll-behavior: smooth;
 }
 
 /* Responsivo para 1366x768 */
@@ -930,6 +931,7 @@
       align-items: center;
       justify-content: center;
       /* margin-top: 50px; */
+      margin-bottom: 50px;
    }
 
    .footerAnimation {

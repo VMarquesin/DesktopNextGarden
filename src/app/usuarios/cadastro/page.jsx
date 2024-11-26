@@ -4,10 +4,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-// import InputMask from 'react-input-mask';
 import Image from "next/image";
-
 import styles from "./page.module.css";
+
 import api from "@/services/api";
 import axios from "axios";
 import { handleClientScriptLoad } from "next/script";
@@ -392,7 +391,7 @@ export default function Cadastro() {
          confirmaCad = response.data.sucesso;
 
          if (confirmaCad) {
-            router.push("/");
+            router.push("/usuarios/login");
          }
       } catch (error) {
          if (error.response) {
@@ -485,7 +484,7 @@ export default function Cadastro() {
                         className={styles.InputField}
                      />
                      <Image
-                        src="/icones/OcultaSenha.svg"
+                        src="/icones/OcultaSenhaBlack.svg"
                         width={25}
                         height={25}
                         onClick={toggleSenhaVisivel}
@@ -504,7 +503,7 @@ export default function Cadastro() {
                         className={styles.InputField}
                      />
                      <Image
-                        src="/icones/OcultaSenha.svg"
+                        src="/icones/OcultaSenhaBlack.svg"
                         width={25}
                         height={25}
                         onClick={toggleConfirmVisivel}

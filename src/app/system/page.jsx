@@ -52,7 +52,7 @@ export default function Home() {
    const get_pacientes = async (psi_id) => {
       const response = await api.get(`/paciente_psi_relacao/${psi_id}`);
       const dados = response.data.dados;
-
+      console.log(dados)
       setPacientes(dados);
    };
 
@@ -202,7 +202,7 @@ export default function Home() {
                         />
                         <p>Novo Paciente</p>
                      </button>
-                     {isModalOpen && <CadastroPaciente onClose={closeModal} />}
+                     {isModalOpen && <CadastroPaciente get_pacientes={()=>get_pacientes(psicologoInfo.psi_id)} onClose={closeModal} />}
                   </li>
                </ul>
             </aside>

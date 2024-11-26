@@ -53,12 +53,24 @@ function Login() {
       <div className={styles.LoginContainer}>
          <div className={styles.LoginAcess}>
             <div className={styles.LoginForm}>
+               <div className={styles.ButtonContainer}>
+               <Link href="/#" className={styles.HomeButton}>
+               <Image
+                        src="/Icones/SetaVoltar.svg"
+                        width={45}
+                        height={45}
+                        alt="Voltar Home"
+                        // className={styles.Icons}
+                     />
+               </Link>
                <Link
                   href="/usuarios/cadastro"
                   className={styles.ButtonCadastro}
                >
                   CRIAR CONTA
                </Link>
+               
+</div>
 
                <div className={styles.Titulo}>
                   <label htmlFor="nomeProjeto">GARDEN</label>
@@ -97,7 +109,7 @@ function Login() {
                         className={styles.InputField}
                      />
                      <Image
-                        src="/Icones/OcultaSenha.svg"
+                        src="/Icones/OcultaSenhaBlack.svg"
                         width={25}
                         height={25}
                         onClick={toggleSenhaVisivel}
@@ -120,6 +132,7 @@ function Login() {
                   >
                      {loading ? "Carregando..." : "ENTRAR"}
                   </button>
+                  
                </form>
 
                {/* <label

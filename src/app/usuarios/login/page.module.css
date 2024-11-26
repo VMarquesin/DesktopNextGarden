@@ -85,6 +85,18 @@
    grid-area: button;
 }
 
+.ButtonContainer {
+   margin-top: -1.3rem;
+   display: flex;
+   justify-content: space-between; 
+   width: 100%; 
+}
+
+
+.HomeButton{
+   text-decoration: none;
+}
+
 .ButtonCadastro {
    text-decoration: none;
    padding: 2rem;
