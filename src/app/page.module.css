@@ -506,6 +506,7 @@
    gap: 5rem;
    flex-direction: row;
    display: flex;
+   text-align: center;
    align-items: center;
    justify-content: center;
    text-decoration: none !important;
@@ -544,6 +545,7 @@
    margin-top: 5rem;
    scroll-behavior: smooth;
 }
+
 
 /* Responsivo para 1366x768 */
 

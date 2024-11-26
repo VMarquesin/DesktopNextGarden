@@ -9,8 +9,7 @@ import { UserContext } from "../../../context/userContext";
 export default function PacientePerfil({ paciente }) {
    //texto da nota
    const [nota, setNota] = useState("");
-   //mensagem save nota
-   const [statusMensagem, setStatusMensagem] = useState("");
+   // const [statusMensagem, setStatusMensagem] = useState("");
    //informações do paciente
    const [usuario, setUsuario] = useState(null);
    //exibição do componente
@@ -92,30 +91,7 @@ export default function PacientePerfil({ paciente }) {
                <p>Trabalho: {paciente.pac_trabalho}</p>
                <p>Estado Civil: {paciente.pac_estado_civil}</p>
             </div>
-
-            {/* campo nota */}
-            <div className={styles.containerNotaSave}>
-               {/* atualiza o estado */}
-               <textarea
-                  placeholder="Adicionar nota..."
-                  value={nota}
-                  onChange={handleNoteChange}
-                  className={styles.notaTextarea}
-               />
-               <div className={styles.containerButton}>
-                  {/* salvar a nota */}
-                  <button
-                     onClick={handleSaveNote}
-                     className={styles.saveButton}
-                  >
-                     Salvar Nota
-                  </button>
-               </div>
             </div>
-            {statusMensagem && (
-               <p className={styles.statusMensagem}>{statusMensagem}</p>
-            )}
-         </div>
       </div>
    );
 }
