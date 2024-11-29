@@ -70,7 +70,7 @@ function Login() {
                   CRIAR CONTA
                </Link>
                
-</div>
+          </div>
 
                <div className={styles.Titulo}>
                   <label htmlFor="nomeProjeto">GARDEN</label>
