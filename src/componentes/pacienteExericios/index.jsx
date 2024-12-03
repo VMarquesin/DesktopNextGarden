@@ -7,7 +7,7 @@ import api from "../../services/api";
 import { UserContext } from "../../../context/userContext";
 // import { get } from "https";
 
-export default function PacienteExercicios(pacienteId) {
+export default function PacienteExercicios({ paciente }) {
    //armazenar lista de exercícios
    const [exercicios, setExercicios] = useState([]);
    //conteúdo criado do exercício
@@ -49,18 +49,20 @@ export default function PacienteExercicios(pacienteId) {
 
       return dados;
    };
-
    async function fetchExercicios() {
       try {
-         const response = await api.get(`/atividade/${psicologoInfo.psi_id}`);
+         console.log(paciente);
+         const response = await api.get(`/atividade_pac/${paciente.pac_id}`);
+         console.log(response);
          setExercicios(response.data.dados);
+         console.log(pacienteId);
       } catch (error) {
          console.error("Erro ao buscar atividades:", error);
       }
    }
+
    //buscar as atividades
    useEffect(() => {
-    
       //buscar os pacientes
       async function fetchPacientes() {
          try {
@@ -74,7 +76,7 @@ export default function PacienteExercicios(pacienteId) {
 
       fetchExercicios();
       fetchPacientes();
-   }, [pacienteId]); //muda se escolher ou paciente
+   }, [paciente]); //muda se escolher ou paciente
 
    //modal detalhes do exercício
    const openModal = (exercicio) => {
@@ -104,17 +106,10 @@ export default function PacienteExercicios(pacienteId) {
             });
          }
          //atualiza a lista dos exercícios
-         setExercicios([
-            ...exercicios,
-            {
-               ati_id,
-               ati_descricao: conteudo,
-               ati_data: new Date().toISOString().split("T")[0],
-            },
-         ]);
          setConteudo("");
          setPacientesSelecionados([]);
          setShowModal(false);
+         await fetchExercicios();
       } catch (error) {
          console.error("Erro ao salvar exercício:", error);
       }

@@ -115,6 +115,7 @@
    flex: 1;
    padding: 30px;
    justify-content: center;
+   text-align: left;
    align-items: center;
    background-color: #f4f8f5; /* Tom mais suave para o fundo */
    overflow: hidden;
